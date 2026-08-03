@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; color: #2C2C2A; max-width: 680px; margin: 0 auto; width: 100%; }
+
+/* ── STICKY SECTION NAV ── */
+.lll-nav {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 680px;
+  z-index: 99999;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 0.5px solid #D3D1C7;
+  padding: 0 16px;
+  display: flex; align-items: stretch;
+}
+.lll-nav-item {
+  flex: 1; text-align: center;
+  padding: 11px 4px 9px;
+  color: #B4B2A9;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+}
+.lll-nav-item.active { color: #2C2C2A; border-bottom-color: #C69352; }
+.lll-nav-item.done { color: #888780; }
+.lll-nav-num { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+.lll-nav-title { font-size: 11px; font-weight: 400; }
+.lll-nav-item.active .lll-nav-num { color: #C69352; }
+
+/* ── SECTION 1 ── */
+#section-profile {
+  background-color: #F1EFE8;
+  padding-top: 52px;
+}
+#octane-quiz-outer-wrapper {
+  padding-top: 0 !important;
+}
+
+/* ── SECTION DIVIDER ── */
+.lll-section-divider { padding: 16px 16px 18px; }
+.lll-section-step { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #C69352; margin-bottom: 4px; }
+.lll-section-title { font-size: 26px; font-weight: 600; color: #2C2C2A; line-height: 1.2; }
+.lll-section-diagnosis { font-size: 22px; font-weight: 400; color: #2C2C2A; line-height: 1.3; margin-top: 2px; }
+
+/* ── SECTION 1 CONTENT ── */
+.lll-profile { padding: 0 16px 8px; }
+.lll-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+.lll-pill { display: inline-flex; align-items: center; gap: 5px; background: white; border-radius: 20px; padding: 4px 10px; font-size: 11px; color: #5F5E5A; }
+.lll-pill strong { color: #2C2C2A; font-weight: 500; }
+.lll-summary { background: white; border-radius: 12px; padding: 16px 18px; margin-bottom: 14px; }
+.lll-summary p { font-size: 13px; color: #2C2C2A; line-height: 1.7; }
+.lll-proof { border-left: 2px solid #D85A30; padding: 8px 14px; margin-bottom: 20px; }
+.lll-proof p { font-size: 13px; color: #5F5E5A; line-height: 1.6; font-style: italic; }
+.lll-proof-name { font-size: 11px; color: #888780; font-style: normal; margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<nav class="lll-nav" id="lll-nav">
+  <div class="lll-nav-item active" id="lll-nav-profile" onclick="lllScrollTo('section-profile')">
+    <span class="lll-nav-num">1</span>
+    <span class="lll-nav-title">Hair Profile</span>
+  </div>
+  <div class="lll-nav-item" id="lll-nav-products" onclick="lllScrollTo('section-products')">
+    <span class="lll-nav-num">2</span>
+    <span class="lll-nav-title">Products</span>
+  </div>
+  <div class="lll-nav-item" id="lll-nav-routine" onclick="lllScrollTo('section-routine')">
+    <span class="lll-nav-num">3</span>
+    <span class="lll-nav-title">Routine</span>
+  </div>
+</nav>
+
+<!-- SECTION 1: HAIR PROFILE -->
+<div id="section-profile">
+
+  <div class="lll-section-divider">
+    <p class="lll-section-step">Section 1 of 3</p>
+    <p class="lll-section-title">Your Hair Profile:</p>
+    <p class="lll-section-diagnosis" id="headline">Dry fine hair</p>
+  </div>
+
+  <div class="lll-profile">
+    <div class="lll-pills">
+      <span class="lll-pill">Hair type <strong id="val-hairtype"></strong></span>
+      <span class="lll-pill">Frustration <strong id="val-frustration">Dry hair</strong></span>
+      <span class="lll-pill">Damage <strong id="val-damage">&mdash;</strong></span>
+      <span class="lll-pill">Heat tools <strong id="val-heat">&mdash;</strong></span>
+      <span class="lll-pill">Volume preference <strong id="val-volume">Sleek And Smooth</strong></span>
+    </div>
+
+    <div class="lll-summary">
+      <p id="summary-text"></p>
+    </div>
+
+    <div class="lll-proof">
+      <p id="testimonial-text"></p>
+      <p class="lll-proof-name" id="testimonial-name"></p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ─────────────────────────────────────────────
+   HEAT TOOL DISPLAY LABELS
+───────────────────────────────────────────── */
+var HEAT_LABELS = {
+  blow_dryer: 'Blow Dryer or Blow Dryer Brush',
+  iron:       'Flat Iron, Curling Iron or Wand',
+  both:       'Blow Dryer and Iron',
+  none:       'None'
+};
+
+/* ─────────────────────────────────────────────
+   VOLUME DISPLAY LABELS
+───────────────────────────────────────────── */
+var VOLUME_LABELS = {
+  max:      'Big hair',
+  moderate: 'Some Volume',
+  none:     'Sleek And Smooth'
+};
+
+/* ─────────────────────────────────────────────
+   FRUSTRATION PILL LABELS
+   Keys match lowercase hair_pain_point values
+───────────────────────────────────────────── */
+var FRUSTRATION_LABELS = {
+  dry:    { Mild: 'Mildly dry hair',       Moderate: 'Moderately dry hair',       Severe: 'Severely dry hair'       },
+  frizzy: { Mild: 'Mild frizz',            Moderate: 'Moderate frizz',            Severe: 'Severe frizz'            },
+  growth: { Mild: 'Mild breakage',         Moderate: 'Moderate breakage',         Severe: 'Severe breakage'         },
+  oily:   { Mild: 'Mildly oily scalp',     Moderate: 'Moderately oily scalp',     Severe: 'Severely oily scalp'     },
+  volume: { Mild: 'Mild volume loss',      Moderate: 'Moderate volume loss',      Severe: 'Severe volume loss'      },
+  damage: { Mild: 'Mildly damaged hair',   Moderate: 'Moderately damaged hair',   Severe: 'Severely damaged hair'   }
+};
+
+/* ─────────────────────────────────────────────
+   HEADLINE BUILDER
+   Generates e.g. "Mildly dry fine hair",
+   "Severely frizzy coarse hair" etc.
+───────────────────────────────────────────── */
+var HEADLINE_SEV = { mild: 'Mildly', moderate: 'Moderately', severe: 'Severely' };
+var HEADLINE_PAIN = {
+  dry:    'dry',
+  frizzy: 'frizzy',
+  growth: 'breakage-prone',
+  oily:   'oily-scalp',   // handled specially below
+  volume: 'flat',
+  damage: 'damaged'
+};
+
+function buildHeadline(pain, severity, hairType) {
+  var sev  = HEADLINE_SEV[(severity || '').toLowerCase()] || '';
+  var ht   = hairType.charAt(0).toUpperCase() + hairType.slice(1).toLowerCase();
+  var raw;
+  if (pain === 'oily') {
+    raw = (sev ? sev + ' ' : '') + ht + ' hair with oily scalp';
+  } else {
+    var painLabel = HEADLINE_PAIN[pain] || pain;
+    raw = (sev ? sev + ' ' : '') + painLabel + ' ' + ht.toLowerCase() + ' hair';
+  }
+  return raw.replace(/\b\w/g, function(c){ return c.toUpperCase(); });
+}
+
+/* ─────────────────────────────────────────────
+   SUMMARY COPY
+   Keys: SUMMARY_COPY[pain][hairType]
+   pain    = lowercase hair_pain_point value
+   hairType = 'fine' | 'medium' | 'coarse'
+
+   DRY PATH — production ready
+   ALL OTHER PATHS — [DRAFT: review before live]
+───────────────────────────────────────────── */
+var SUMMARY_COPY = {
+
+  dry: {
+    fine:   'Your fine hair gets oily at the roots but is dry towards the ends. The fix isn\u2019t products that coat the outside. It\u2019s lightweight formulas that moisturize the inside of your hair shaft. Done right, your hair stays smooth, soft and shiny for three days.',
+    medium: 'Good news. Medium hair is the easiest hair type to work with. It sits between fine and coarse, not too oily, not too dry. The fix is lightweight formulas that absorb into the shaft instead of coating the outside. Done right, your hair stays smooth and frizz-free for four to five days.',
+    coarse: 'Coarse hair looks tough but the cuticle is thin and fragile. When it lifts, moisture escapes and frizz moves in. The fix is lightweight formulas that deliver moisture inside the shaft, and heat tools to seal the cuticle and lock it in. Done right, your hair stays soft and frizz-free for five days or more.'
+  },
+
+  frizzy: {
+    fine:   'Frizz in fine hair is a moisture problem. The fix isn\u2019t heavy products that make your hair flat. It\u2019s lightweight moisture that absorbs into your hair shaft, eliminating frizz without sacrificing volume.',
+    medium: 'Frizz in medium hair needs two things to stay gone. Lightweight moisture that absorbs into the shaft. And heat tools that seal the cuticle closed after every wash. One without the other only gets you halfway there.',
+    coarse: 'Frizz in coarse hair needs two things to stay gone. Moisture that penetrates deep inside the shaft. And heat tools that seal the cuticle closed to lock that moisture in. One without the other only gets you halfway there.'
+  },
+
+  growth: {
+    fine:   'Your hair will only grow to the length your hair routine can support. When ends break off faster than your hair grows, adding length is impossible. The fix is keeping your ends flexible and strong so they stop splitting and the length you\u2019re growing finally sticks around.',
+    medium: 'Your hair will only grow to the length your hair routine can support. When ends break off faster than your hair grows, adding length is impossible. The fix is keeping your ends flexible and strong so they stop splitting and the length you\u2019re growing finally sticks around.',
+    coarse: 'Your hair will only grow to the length your hair routine can support. When ends break off faster than your hair grows, adding length is impossible. The fix is keeping your ends flexible and strong so they stop splitting and the length you\u2019re growing finally sticks around.'
+  },
+
+  oily: {
+    fine:   'Fine hair gets oily faster than any other type because it has more oil glands packed into the same space. The fix isn\u2019t washing more. It\u2019s a strong cleanser and dry shampoo working together to push your wash days to three days.',
+    medium: 'Medium hair gets oily when heavy products build up and a weak shampoo can\u2019t remove them. The fix isn\u2019t washing more. It\u2019s a strong cleanser that fully resets your scalp and lighter products that stop the buildup before it starts.',
+    coarse: 'Coarse hair rarely gets oily on its own. When it does, heavy products coating the hair are almost always the cause. The fix isn\u2019t washing more. It\u2019s a strong cleanser that cuts through buildup and lighter products that stop it from coming back.'
+  },
+
+  volume: {
+    fine:   'Fine hair struggles with volume more than any other hair type. The strands are straighter so they lay flat on top of each other with nothing to create lift. The fix is a lightweight volume product that creates real lift without the sticky or crunchy feeling that kills it.',
+    medium: 'Medium hair is great at holding volume, but one heavy product can flatten it completely. The fix is a lightweight volume routine and a blow dry technique that locks volume in while your hair sets.',
+    coarse: 'Coarse hair has lots of natural volume but tends to go wide rather than up. The thickness that should create volume often just creates bulk. The fix is volume at the crown and smoothness at the mids and ends, lifting where it counts without adding width.'
+  },
+
+  damage: {
+    fine:   'Repairing damage is more straightforward than most people think. Damage is just holes in the outer layer of the shaft. The fix is a repair product that rebuilds the outer layer and a mask that restores moisture and locks in progress. It takes a few weeks but you\u2019ll notice a difference on the very first wash.',
+    medium: 'Repairing damage is more straightforward than most people think. Damage is just holes in the outer layer of the shaft. The fix is a repair product that rebuilds the outer layer and a mask that restores moisture and locks in progress. It takes a few weeks but you\u2019ll notice a difference on the very first wash.',
+    coarse: 'Repairing damage is more straightforward than most people think. Damage is just holes in the outer layer of the shaft. The fix is a repair product that rebuilds the outer layer and a mask that restores moisture and locks in progress. It takes a few weeks but you\u2019ll notice a difference on the very first wash.'
+  }
+
+};
+
+/* ─────────────────────────────────────────────
+   TESTIMONIALS
+   Keyed by pain path first, then hair type.
+   Dry has hair-type specific quotes.
+   All other paths share one quote across hair types.
+───────────────────────────────────────────── */
+var TESTIMONIALS = {
+  dry: {
+    fine:   { text: '\u201cI have hair that craved to be washed daily. I can now go 3 days between washes. Ends are shiny, healthy, and silk.\u201d', name: '\u2014 Jamie O., verified customer' },
+    medium: { text: '\u201cI have medium hair and struggle with oily scalp and dry ends. So far the shampoo really gets my hair clean. And I am in love with the conditioner as it really adds moisture to my lengths and improved shine.\u201d', name: '\u2014 Zorka K., verified customer' },
+    coarse: { text: '\u201cI\u2019ve been fighting my coarse, thick, frizzy hair for years. After the first wash I saw results. FIRST wash. It\u2019s been a month and it just keeps getting healthier.\u201d', name: '\u2014 Sharron C., verified customer' }
+  },
+  frizzy: {
+    fine:   { text: '\u201cLove the leave in conditioner. It is the only product that I have found that actually works that makes my hair not look so frizzy.\u201d', name: '\u2014 Sandra B., verified customer' },
+    medium: { text: '\u201cLove the leave in conditioner. It is the only product that I have found that actually works that makes my hair not look so frizzy.\u201d', name: '\u2014 Sandra B., verified customer' },
+    coarse: { text: '\u201cLove the leave in conditioner. It is the only product that I have found that actually works that makes my hair not look so frizzy.\u201d', name: '\u2014 Sandra B., verified customer' }
+  },
+  growth: {
+    fine:   { text: '\u201cSince watching the videos on how to take care of my hair to get length, look how much it\u2019s grown. I\u2019m not cutting til I get it to my booty! The shampoo and conditioner is definitely weightless on my hair. I swear by this and oil.\u201d', name: '\u2014 Wendy B., verified customer' },
+    medium: { text: '\u201cSince watching the videos on how to take care of my hair to get length, look how much it\u2019s grown. I\u2019m not cutting til I get it to my booty! The shampoo and conditioner is definitely weightless on my hair. I swear by this and oil.\u201d', name: '\u2014 Wendy B., verified customer' },
+    coarse: { text: '\u201cSince watching the videos on how to take care of my hair to get length, look how much it\u2019s grown. I\u2019m not cutting til I get it to my booty! The shampoo and conditioner is definitely weightless on my hair. I swear by this and oil.\u201d', name: '\u2014 Wendy B., verified customer' }
+  },
+  oily: {
+    fine:   { text: '\u201cI love how clean my hair got using this shampoo. I get oily really fast. I was able to go 4 days before washing it again. That has never happened before.\u201d', name: '\u2014 Carrie P., verified customer' },
+    medium: { text: '\u201cI love how clean my hair got using this shampoo. I get oily really fast. I was able to go 4 days before washing it again. That has never happened before.\u201d', name: '\u2014 Carrie P., verified customer' },
+    coarse: { text: '\u201cI love how clean my hair got using this shampoo. I get oily really fast. I was able to go 4 days before washing it again. That has never happened before.\u201d', name: '\u2014 Carrie P., verified customer' }
+  },
+  volume: {
+    fine:   { text: '\u201cIn November 2025, I started using the Live Love Locks Shampoo, Conditioner, and Leave-In, and with them I finally have the volume and texture I\u2019ve always wanted for my hair. Strangers both male and female have complimented my hair, which is pretty new to me.\u201d', name: '\u2014 Paige E., verified customer' },
+    medium: { text: '\u201cIn November 2025, I started using the Live Love Locks Shampoo, Conditioner, and Leave-In, and with them I finally have the volume and texture I\u2019ve always wanted for my hair. Strangers both male and female have complimented my hair, which is pretty new to me.\u201d', name: '\u2014 Paige E., verified customer' },
+    coarse: { text: '\u201cIn November 2025, I started using the Live Love Locks Shampoo, Conditioner, and Leave-In, and with them I finally have the volume and texture I\u2019ve always wanted for my hair. Strangers both male and female have complimented my hair, which is pretty new to me.\u201d', name: '\u2014 Paige E., verified customer' }
+  },
+  damage: {
+    fine:   { text: '\u201cMy ends were literally frayed and I had a lot of breakage. I used the routine once and my hair looked so much better right away. I was so impressed.\u201d', name: '\u2014 Sam B., verified customer' },
+    medium: { text: '\u201cMy ends were literally frayed and I had a lot of breakage. I used the routine once and my hair looked so much better right away. I was so impressed.\u201d', name: '\u2014 Sam B., verified customer' },
+    coarse: { text: '\u201cMy ends were literally frayed and I had a lot of breakage. I used the routine once and my hair looked so much better right away. I was so impressed.\u201d', name: '\u2014 Sam B., verified customer' }
+  }
+};
+
+/* ─────────────────────────────────────────────
+   MAIN — READ localStorage AND APPLY
+───────────────────────────────────────────── */
+try {
+  var stored = localStorage.getItem('octane_answers');
+  if (stored) {
+    var answers = JSON.parse(stored);
+
+    // ── Pain point & severity
+    var pain     = (answers['hair_pain_point'] || 'dry').toLowerCase();
+    var severity = (answers['pain_severity']   || '').toLowerCase();
+    var damage   = answers['damage_level']     || '\u2014';
+    var heat     = (answers['heat_tools']      || 'none').toLowerCase();
+    var volume   = (answers['wants_volume']    || 'none').toLowerCase();
+
+    // ── Hair type — lives inside smart_properties_outputs
+    var smartProps = answers['smart_properties_outputs'] || {};
+    var hairType   = (smartProps['hair_type'] || 'Fine').toLowerCase();
+    if (['fine', 'medium', 'coarse'].indexOf(hairType) === -1) hairType = 'fine'; // safe fallback
+
+    // ── Headline
+    document.getElementById('headline').textContent = buildHeadline(pain, severity, hairType);
+
+    // ── Hair type pill
+    document.getElementById('val-hairtype').textContent =
+      hairType.charAt(0).toUpperCase() + hairType.slice(1);
+
+    // ── Frustration pill
+    var sevKey = severity.charAt(0).toUpperCase() + severity.slice(1).toLowerCase();
+    var frustrationMap = FRUSTRATION_LABELS[pain] || {};
+    var frustrationLabel = frustrationMap[sevKey] || pain;
+    document.getElementById('val-frustration').textContent = frustrationLabel.replace(/\b\w/g, function(c){ return c.toUpperCase(); });
+
+    // ── Damage pill
+    document.getElementById('val-damage').textContent = damage;
+
+    // ── Heat tools pill
+    document.getElementById('val-heat').textContent = HEAT_LABELS[heat] || heat;
+
+    // ── Volume pill
+    document.getElementById('val-volume').textContent = VOLUME_LABELS[volume] || 'Sleek And Smooth';
+
+    // ── Summary paragraph
+    var summaryByPath = SUMMARY_COPY[pain] || SUMMARY_COPY['dry'];
+    var summaryText   = summaryByPath[hairType] || summaryByPath['fine'];
+    document.getElementById('summary-text').textContent = summaryText;
+
+    // ── Testimonial — keyed by path then hair type
+    var testiByPath = TESTIMONIALS[pain] || TESTIMONIALS['dry'];
+    var testi = testiByPath[hairType] || testiByPath['fine'];
+    document.getElementById('testimonial-text').textContent = testi.text;
+    document.getElementById('testimonial-name').textContent = testi.name;
+  }
+} catch(e) {}
+
+/* ─────────────────────────────────────────────
+   NAV SCROLL + ACTIVE STATE
+───────────────────────────────────────────── */
+function lllScrollTo(id) {
+  var el = document.getElementById(id);
+  if (el) {
+    var top = el.getBoundingClientRect().top + window.scrollY - 52;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+}
+
+function lllUpdateNav() {
+  var ids    = ['profile', 'products', 'routine'];
+  var scrollY = window.scrollY + 60;
+  var active = 'profile';
+  ids.forEach(function(id) {
+    var el = document.getElementById('section-' + id);
+    if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) active = id;
+  });
+  ids.forEach(function(id) {
+    var nav = document.getElementById('lll-nav-' + id);
+    if (!nav) return;
+    var idx       = ids.indexOf(id);
+    var activeIdx = ids.indexOf(active);
+    nav.classList.toggle('active', id === active);
+    nav.classList.toggle('done',   idx < activeIdx);
+  });
+}
+window.addEventListener('scroll', lllUpdateNav, { passive: true });
+
+/* ─────────────────────────────────────────────
+   FIX OCTANE TOP PADDING — survives re-renders
+───────────────────────────────────────────── */
+function lllFixPadding() {
+  var outer = document.getElementById('octane-quiz-outer-wrapper');
+  if (outer) outer.style.setProperty('padding-top', '0', 'important');
+}
+lllFixPadding();
+setTimeout(lllFixPadding, 100);
+setTimeout(lllFixPadding, 500);
+setTimeout(lllFixPadding, 1000);
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+node_modules
+dist
+.env
+data/
+captured/
+.playwright-mcp
+*.log
+.DS_Store
+quiz-buttons-fixed.png
+results-bg-fixed.png
+results-fixed.png

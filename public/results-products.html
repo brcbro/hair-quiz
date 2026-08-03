@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; color: #2C2C2A; max-width: 680px; margin: 0 auto; width: 100%; }
+
+/* SECTION DIVIDERS */
+.lll-section-divider { background: white; border-top: 3px solid #C69352; padding: 20px 16px 18px; margin-top: 0; }
+.lll-section-divider-step { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #C69352; margin-bottom: 4px; }
+.lll-section-divider-title { font-size: 26px; font-weight: 600; color: #2C2C2A; line-height: 1.2; }
+.lll-section-divider-sub { font-size: 12px; color: #888780; margin-top: 4px; }
+
+/* SECTION BACKGROUNDS */
+#section-products { background-color: #F1EFE8; }
+#section-routine  { background-color: #F1EFE8; }
+
+/* CATEGORY HEADERS */
+.category-header { display: flex; align-items: center; gap: 8px; margin: 16px 0 10px; }
+.category-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #C69352; white-space: nowrap; }
+.category-line { flex: 1; height: 1px; background: #D3D1C7; }
+
+/* BADGES */
+.badge { display: inline-block; font-size: 10px; font-weight: 500; padding: 3px 7px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
+.badge-essential   { background: #FCEBEB; color: #A32D2D; }
+.badge-recommended { background: #FAEEDA; color: #854F0B; }
+.badge-low         { background: #E8E6DF; color: #5F5E5A; }
+
+/* CART BANNER */
+.view-cart-banner { display: none; background: #2C2C2A; color: #F1EFE8; padding: 12px 16px; align-items: center; justify-content: space-between; margin: 16px 0 0; }
+.view-cart-banner p { font-size: 13px; font-weight: 500; }
+.view-cart-banner a { background: #F1EFE8; color: #2C2C2A; border-radius: 6px; padding: 7px 14px; font-size: 12px; font-weight: 500; text-decoration: none; white-space: nowrap; }
+
+/* PRODUCT CARDS — LLL products with ATC */
+.product-card { background: white; border-radius: 12px; overflow: hidden; margin-bottom: 8px; }
+.product-card.hidden { display: none; }
+.product-card-top { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px 10px; }
+.product-card-img-col { display: flex; flex-direction: column; align-items: center; gap: 5px; flex-shrink: 0; }
+.product-card-img { width: 48px; height: 48px; border-radius: 8px; object-fit: cover; object-position: center; }
+.product-card-img-col .badge { font-size: 9px; padding: 1px 5px; }
+.product-card-info { flex: 1; min-width: 0; }
+.product-card-name { font-size: 13px; font-weight: 500; color: #2C2C2A; margin-bottom: 3px; line-height: 1.3; }
+.product-card-note { font-size: 11px; color: #888780; line-height: 1.5; }
+
+/* BEIGE FOOTER */
+.product-card-footer { background: #E0DDD4; padding: 8px 14px; }
+.product-card-footer-row { display: flex; align-items: center; gap: 5px; margin-bottom: 5px; }
+.product-price-main { font-size: 14px; font-weight: 700; color: #2C2C2A; }
+.product-price-orig { font-size: 11px; color: #B4B2A9; text-decoration: line-through; margin-left: 2px; }
+.product-price-save { font-size: 10px; font-weight: 600; color: #27AE60; margin-left: 2px; }
+.product-card-footer-row2 { display: flex; align-items: center; gap: 8px; }
+.sub-info { font-size: 9px; color: #888780; flex: 1; }
+
+/* SUBSCRIBE LABEL + iOS SLIDER */
+.sub-control { margin-left: auto; display: flex; align-items: center; gap: 5px; }
+.sub-label { font-size: 10px; font-weight: 600; color: #2C2C2A; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+.ios-sw { position: relative; width: 34px; height: 20px; flex-shrink: 0; cursor: pointer; }
+.ios-track { position: absolute; inset: 0; border-radius: 20px; background: #27AE60; transition: background 0.2s; }
+.ios-track.off { background: #C8C5BC; }
+.ios-thumb { position: absolute; top: 2px; left: 16px; width: 16px; height: 16px; border-radius: 50%; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.3); transition: left 0.2s; }
+.ios-track.off .ios-thumb { left: 2px; }
+
+/* ATC BUTTON */
+.atc-btn { background: #2C2C2A; color: #F1EFE8; border: none; border-radius: 7px; padding: 6px 13px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; flex-shrink: 0; font-family: inherit; letter-spacing: 0.02em; }
+.atc-btn:active { opacity: 0.85; }
+.atc-btn.loading { opacity: 0.6; pointer-events: none; }
+
+/* PRODUCT ROWS — 3rd party display only */
+.product-row { background: white; border-radius: 12px; padding: 12px 14px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+.product-row.hidden { display: none; }
+.product-img { width: 38px; height: 38px; border-radius: 8px; object-fit: contain; object-position: center; flex-shrink: 0; background: white; }
+.product-body { flex: 1; min-width: 0; }
+.product-brand { font-size: 10px; color: #B4B2A9; font-weight: 400; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+.product-name-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 3px; }
+.product-name { font-size: 13px; font-weight: 500; color: #2C2C2A; line-height: 1.3; flex: 1; min-width: 0; }
+.product-note { font-size: 11px; color: #888780; line-height: 1.5; }
+
+/* NOTES — gold left border cards */
+.lll-note { background: white; border-radius: 0 10px 10px 0; border-left: 3px solid #C69352; padding: 12px 14px; margin: 10px 0; font-size: 12px; color: #5F5E5A; line-height: 1.7; display: none; }
+.lll-note.visible { display: block; }
+
+/* SUCCESS */
+.success-msg { font-size: 11px; color: #27AE60; text-align: center; margin-top: 4px; display: none; }
+.success-msg.visible { display: block; }
+
+/* SECTION-LEVEL ACCORDION */
+.routine-section-acc { background: white; border-radius: 12px; margin-bottom: 8px; overflow: hidden; }
+.routine-section-acc.hidden { display: none; }
+.routine-section-acc-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; cursor: pointer; user-select: none; gap: 10px; }
+.routine-section-acc-left { flex: 1; min-width: 0; }
+.routine-section-acc-title { font-size: 14px; font-weight: 600; color: #2C2C2A; }
+.routine-section-acc-sub { font-size: 11px; color: #888780; margin-top: 3px; }
+.routine-section-acc-chevron { font-size: 20px; color: #2C2C2A; font-weight: 400; line-height: 1; flex-shrink: 0; display: inline-block; transition: transform 0.2s; }
+.routine-section-acc.open .routine-section-acc-chevron { transform: rotate(90deg); }
+.routine-section-acc-body { display: none; border-top: 0.5px solid #F1EFE8; padding: 12px 14px 14px; }
+.routine-section-acc.open .routine-section-acc-body { display: block; }
+
+/* ROUTINE STEPS */
+.routine-step-inner { margin-bottom: 14px; }
+.routine-step-inner:last-child { margin-bottom: 0; }
+.routine-step-inner.hidden { display: none; }
+.step-inner-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.step-pill { background: #2C2C2A; color: white; font-size: 10px; font-weight: 700; padding: 4px 9px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; letter-spacing: 0.04em; }
+.step-pill.weekly { background: #D85A30; }
+.step-inner-img { width: 24px; height: 24px; border-radius: 5px; object-fit: cover; object-position: center; flex-shrink: 0; }
+.step-inner-title { font-size: 12px; font-weight: 600; color: #2C2C2A; }
+.step-inner-divider { height: 0.5px; background: #F1EFE8; margin: 12px 0 14px; }
+.routine-step-inner ul { list-style: none; padding: 0; margin: 0; }
+.routine-step-inner ul li { font-size: 11px; color: #5F5E5A; line-height: 1.6; padding: 2px 0 2px 10px; position: relative; }
+.routine-step-inner ul li::before { content: '\2022'; position: absolute; left: 0; color: #D85A30; font-size: 12px; line-height: 1.5; }
+
+/* VIEW PRODUCTS BUTTON */
+@keyframes lll-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(44, 44, 42, 0.4); }
+  70%  { box-shadow: 0 0 0 10px rgba(44, 44, 42, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(44, 44, 42, 0); }
+}
+.view-products-btn { display: block; width: 100%; background: #2C2C2A; color: #F1EFE8; border: none; border-radius: 8px; padding: 13px; font-size: 13px; font-weight: 500; text-decoration: none; text-align: center; letter-spacing: 0.02em; margin-top: 24px; animation: lll-pulse 2s infinite; cursor: pointer; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+</style>
+</head>
+<body>
+
+<!-- ==================== SECTION 2: PRODUCTS ==================== -->
+<div id="section-products">
+  <div class="lll-section-divider">
+    <p class="lll-section-divider-step">Section 2 of 3</p>
+    <p class="lll-section-divider-title">Your Products</p>
+    <p class="lll-section-divider-sub">In order of priority</p>
+  </div>
+
+  <div id="lll-products-content" style="padding: 0 16px 16px;">
+
+    <!-- ══ HEALTH PRODUCTS ══ -->
+    <div class="category-header" style="margin-top: 16px;">
+      <span class="category-title">Health Products</span>
+      <div class="category-line"></div>
+    </div>
+
+    <!-- S+C: FINE / MEDIUM -->
+    <div class="product-card" id="card-sc-fm">
+      <div class="product-card-top">
+        <div class="product-card-img-col">
+          <img class="product-card-img" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/Gemini_Generated_Image_ozu529ozu529ozu5_3.jpg?v=1772639610" alt="Weightless Shampoo and Conditioner Set">
+          <span class="badge badge-essential">Must Have</span>
+        </div>
+        <div class="product-card-info">
+          <p class="product-card-name">Weightless Shampoo + Conditioner Set</p>
+          <p class="product-card-note" id="note-sc">Cleans your scalp without stripping it, so buildup stays off and your hair can go longer between washes.</p>
+        </div>
+      </div>
+      <div class="product-card-footer">
+        <div class="product-card-footer-row">
+          <span class="product-price-main" id="sc-price">$60.00</span>
+          <span class="product-price-orig" id="sc-orig">$75.00</span>
+          <span class="product-price-save" id="sc-save">Save 20%</span>
+          <div class="sub-control">
+            <span class="sub-label">Subscribe</span>
+            <div class="ios-sw" id="sc-slider" onclick="toggleSlider('sc')">
+              <div class="ios-track" id="sc-track"><div class="ios-thumb"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card-footer-row2">
+          <p class="sub-info" id="sc-info">Delivered every 12 weeks &middot; Cancel anytime</p>
+          <button class="atc-btn" id="sc-btn" onclick="addToCart('sc')">Add to Cart</button>
+        </div>
+        <p class="success-msg" id="sc-success">Added to cart!</p>
+      </div>
+    </div>
+
+    <!-- S+C: COARSE -->
+    <div class="product-card hidden" id="card-sc-coarse">
+      <div class="product-card-top">
+        <div class="product-card-img-col">
+          <img class="product-card-img" src="https://live-love-locks.com/cdn/shop/files/JPEGimage_9bbfc230-3f8a-4c36-96c9-43f37fc17ffe_300x.jpg?v=1772207275" alt="Weightless Hydrating Shampoo and Conditioner Set">
+          <span class="badge badge-essential">Must Have</span>
+        </div>
+        <div class="product-card-info">
+          <p class="product-card-name">Weightless Hydrating Shampoo + Conditioner Set</p>
+          <p class="product-card-note">Cleanses oil and buildup without stripping the moisture that keeps coarse hair soft and frizz-free.</p>
+        </div>
+      </div>
+      <div class="product-card-footer">
+        <div class="product-card-footer-row">
+          <span class="product-price-main" id="scc-price">$60.00</span>
+          <span class="product-price-orig" id="scc-orig">$75.00</span>
+          <span class="product-price-save" id="scc-save">Save 20%</span>
+          <div class="sub-control">
+            <span class="sub-label">Subscribe</span>
+            <div class="ios-sw" id="scc-slider" onclick="toggleSlider('scc')">
+              <div class="ios-track" id="scc-track"><div class="ios-thumb"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card-footer-row2">
+          <p class="sub-info" id="scc-info">Delivered every 12 weeks &middot; Cancel anytime</p>
+          <button class="atc-btn" id="scc-btn" onclick="addToCart('scc')">Add to Cart</button>
+        </div>
+        <p class="success-msg" id="scc-success">Added to cart!</p>
+      </div>
+    </div>
+
+    <!-- LEAVE-IN CONDITIONER -->
+    <div class="product-card">
+      <div class="product-card-top">
+        <div class="product-card-img-col">
+          <img class="product-card-img" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/Lic3456346Edit-Copy_1.png?v=1748639926" alt="Leave-in Conditioner">
+          <span class="badge badge-essential">Must Have</span>
+        </div>
+        <div class="product-card-info">
+          <p class="product-card-name">Leave-in Conditioner</p>
+          <p class="product-card-note" id="note-leavein">Locks in moisture so your hair keeps its shiny &lsquo;just conditioned&rsquo; look until your next wash.</p>
+        </div>
+      </div>
+      <div class="product-card-footer">
+        <div class="product-card-footer-row">
+          <span class="product-price-main" id="li-price">$20.00</span>
+          <span class="product-price-orig" id="li-orig">$25.00</span>
+          <span class="product-price-save" id="li-save">Save 20%</span>
+          <div class="sub-control">
+            <span class="sub-label">Subscribe</span>
+            <div class="ios-sw" id="li-slider" onclick="toggleSlider('li')">
+              <div class="ios-track" id="li-track"><div class="ios-thumb"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card-footer-row2">
+          <p class="sub-info" id="li-info">Delivered every 12 weeks &middot; Cancel anytime</p>
+          <button class="atc-btn" id="li-btn" onclick="addToCart('li')">Add to Cart</button>
+        </div>
+        <p class="success-msg" id="li-success">Added to cart!</p>
+      </div>
+    </div>
+
+    <!-- HAIR OIL — fine/medium LLL -->
+    <div class="product-card" id="card-oil">
+      <div class="product-card-top">
+        <div class="product-card-img-col">
+          <img class="product-card-img" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/IMG_0267.jpg?v=1764968512" alt="Weightless Oil for Fine and Medium Hair">
+          <span class="badge badge-essential">Must Have</span>
+        </div>
+        <div class="product-card-info">
+          <p class="product-card-name">Weightless Oil for Fine &amp; Medium Hair</p>
+          <p class="product-card-note" id="note-oil">Keeps mids and ends smooth and moisturized. Prevents split ends from forming.</p>
+        </div>
+      </div>
+      <div class="product-card-footer">
+        <div class="product-card-footer-row">
+          <span class="product-price-main" id="oil-price">$18.00</span>
+          <span class="product-price-orig" id="oil-orig">$22.50</span>
+          <span class="product-price-save" id="oil-save">Save 20%</span>
+          <div class="sub-control">
+            <span class="sub-label">Subscribe</span>
+            <div class="ios-sw" id="oil-slider" onclick="toggleSlider('oil')">
+              <div class="ios-track" id="oil-track"><div class="ios-thumb"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="product-card-footer-row2">
+          <p class="sub-info" id="oil-info">Delivered every 12 weeks &middot; Cancel anytime</p>
+          <button class="atc-btn" id="oil-btn" onclick="addToCart('oil')">Add to Cart</button>
+        </div>
+        <p class="success-msg" id="oil-success">Added to cart!</p>
+      </div>
+    </div>
+
+    <!-- MOROCCANOIL TREATMENT OIL — coarse only -->
+    <div class="product-row hidden" id="row-moroil">
+      <img class="product-img" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/s2030286-main-zoom.jpg?v=1774619508" alt="Moroccanoil Treatment Oil">
+      <div class="product-body">
+        <p class="product-brand">Moroccanoil</p>
+        <div class="product-name-row"><span class="product-name">Treatment Hair Oil</span><span class="badge badge-essential">Must Have</span></div>
+        <p class="product-note">Coarse hair loses its polish fast. Apply to mids and ends to bring the shine back and keep your ends looking sharp.</p>
+      </div>
+    </div>
+
+    <!-- ══ STYLING PRODUCTS ══ -->
+    <div class="category-header">
+      <span class="category-title">Styling Products</span>
+      <div class="category-line"></div>
+    </div>
+
+    <!-- BIG BLOWOUT — fine/medium, conditional -->
+    <div class="product-row hidden" id="row-bdc">
+      <img class="product-img" src="https://www.redken.com/dw/image/v2/AAFM_PRD/on/demandware.static/-/Sites-ppd-redken-master-catalog/default/dw01235b94/images/pdp/big-blowout-heat-protecting-blowout-gel/Big%20Blowout%20Heat%20Protectant%20Gel%20150ml.jpg" alt="Redken Big Blowout">
+      <div class="product-body">
+        <p class="product-brand">Redken</p>
+        <div class="product-name-row"><span class="product-name">Big Blowout</span><span class="badge badge-essential">Must Have</span></div>
+        <p class="product-note">Non-negotiable for blow dryer users. Protects from heat while dramatically improving texture and shine.</p>
+      </div>
+    </div>
+
+    <!-- REBEL TAME — coarse only, conditional -->
+    <div class="product-row hidden" id="row-rebel">
+      <img class="product-img" src="https://media.ulta.com/i/ulta/2580474" alt="Redken Rebel Tame">
+      <div class="product-body">
+        <p class="product-brand">Redken</p>
+        <div class="product-name-row"><span class="product-name">Rebel Tame</span><span class="badge badge-essential">Must Have</span></div>
+        <p class="product-note">Non-negotiable for blow dryer users. Controls frizz and smooths coarse hair while protecting from heat.</p>
+      </div>
+    </div>
+
+    <!-- THERMAL SPRAY — conditional -->
+    <div class="product-row hidden" id="row-thermal">
+      <img class="product-img" src="https://www.redken.com/dw/image/v2/AAFM_PRD/on/demandware.static/-/Sites-ppd-redken-master-catalog/default/dw4dfa7e3a/images/pdp/hot-sets-22-thermal-setting-mist/Redken-2022-Styling-Reno-Thermal-Spray-High-Hold-Ecom-ATF-Packshot-200.jpg" alt="Redken Thermal Spray High Hold">
+      <div class="product-body">
+        <p class="product-brand">Redken</p>
+        <div class="product-name-row"><span class="product-name">Thermal Spray High Hold</span><span class="badge badge-essential">Must Have</span></div>
+        <p class="product-note">Non-negotiable before any iron or wand. Protects from heat while adding shine and longevity.</p>
+      </div>
+    </div>
+
+    <!-- VOLUME MIST — conditional -->
+    <div class="product-row hidden" id="row-volume">
+      <img class="product-img" src="https://olaplex.com/cdn/shop/files/1-VBDM_product_1440_9d214cbf-772f-432f-8a52-d7613a762b52.png?v=1762279298" alt="Olaplex Volumizing Blow Dry Mist">
+      <div class="product-body">
+        <p class="product-brand">Olaplex</p>
+        <div class="product-name-row"><span class="product-name">Volumizing Blow Dry Mist</span><span class="badge badge-essential">Must Have</span></div>
+        <p class="product-note">Adds fullness without the sticky feeling most volume products leave.</p>
+      </div>
+    </div>
+
+    <!-- DRY SHAMPOO: LIVING PROOF — fine/medium -->
+    <div class="product-row" id="row-dryshampoo">
+      <img class="product-img" src="https://www.livingproof.com/cdn/shop/files/dryshampoo_new_fs.png?v=1763046210" alt="Living Proof Perfect Hair Day Dry Shampoo">
+      <div class="product-body">
+        <p class="product-brand">Living Proof</p>
+        <div class="product-name-row"><span class="product-name">Perfect Hair Day Dry Shampoo</span><span class="badge badge-recommended">Good to Have</span></div>
+        <p class="product-note">Every wash day you skip means healthier hair and less time and money spent on haircare.</p>
+      </div>
+    </div>
+
+    <!-- DRY SHAMPOO: MOROCCANOIL — coarse only -->
+    <div class="product-row hidden" id="row-dryshampoo-coarse">
+      <img class="product-img" src="https://www.planetbeauty.com/cdn/shop/products/moroccanoil_dry_shampoo_light_tones_x2000.png?v=1662145276" alt="Moroccanoil Dry Shampoo">
+      <div class="product-body">
+        <p class="product-brand">Moroccanoil</p>
+        <div class="product-name-row"><span class="product-name">Dry Shampoo</span><span class="badge badge-recommended">Good to Have</span></div>
+        <p class="product-note">Every wash day you skip means less stress on coarse hair. Dry shampoo keeps your roots fresh so you can skip more of them.</p>
+      </div>
+    </div>
+
+    <!-- CONTROL HAIRSPRAY -->
+    <div class="product-row" id="row-hairspray">
+      <img class="product-img" src="https://www.redken.com/dw/image/v2/AAFM_PRD/on/demandware.static/-/Sites-ppd-redken-master-catalog/default/dwb949d5b8/images/pdp/control-hairspray/redken-hair-styling-control-addict-anti-humidity-high-hold-hairspray-2000x2000_278.jpg" alt="Redken Control Hairspray">
+      <div class="product-body">
+        <p class="product-brand">Redken</p>
+        <div class="product-name-row"><span class="product-name">Control Hairspray</span><span class="badge badge-low">Skip It For Now</span></div>
+        <p class="product-note">All hairsprays weigh hair down and speed up oiliness. Save this for special occasions.</p>
+      </div>
+    </div>
+
+    <!-- ══ REPAIR PRODUCTS ══ -->
+    <div class="category-header">
+      <span class="category-title">Repair Products</span>
+      <div class="category-line"></div>
+    </div>
+
+    <!-- ABC MASK -->
+    <div class="product-row" id="row-repair">
+      <img class="product-img" src="https://www.redken.com/dw/image/v2/AAFM_PRD/on/demandware.static/-/Sites-ppd-redken-master-catalog/default/dwd987a274/images/pdp/acidic-bonding-concentrate-hair-mask/redken-acidic-bonding-concentrate-mask-for-damaged-hair.png" alt="Redken Acidic Bonding Concentrate Mask">
+      <div class="product-body">
+        <p class="product-brand">Redken</p>
+        <div class="product-name-row"><span class="product-name">Acidic Bonding Concentrate Mask</span><span class="badge badge-low" id="badge-repair">Skip It For Now</span></div>
+        <p class="product-note" id="note-repair">Rebuilds hair from the inside out, restoring its healthy structure.</p>
+      </div>
+    </div>
+
+    <!-- MOROCCANOIL MASK -->
+    <div class="product-row" id="row-mask" style="margin-bottom: 16px;">
+      <img class="product-img" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/31eRafhskFL_1.jpg?v=1773927685" alt="Moroccanoil Weightless Hydrating Mask" style="background:white;">
+      <div class="product-body">
+        <p class="product-brand">Moroccanoil</p>
+        <div class="product-name-row"><span class="product-name">Weightless Hydrating Mask</span><span class="badge badge-low" id="badge-mask">Skip It For Now</span></div>
+        <p class="product-note" id="note-mask">Nice to have for extra hydration. Not critical right now.</p>
+      </div>
+    </div>
+
+  </div><!-- /lll-products-content -->
+</div><!-- /section-products -->
+
+
+<!-- ==================== SECTION 3: ROUTINE ==================== -->
+<div id="section-routine">
+  <div class="lll-section-divider">
+    <p class="lll-section-divider-step">Section 3 of 3</p>
+    <p class="lll-section-divider-title">Your Routine</p>
+    <p class="lll-section-divider-sub">Wash day steps + daily morning refresh</p>
+  </div>
+
+  <div style="padding: 16px 16px 24px;">
+
+    <!-- WASH DAY ROUTINE -->
+    <div class="routine-section-acc" id="acc-washday" style="margin-top: 16px;" onclick="lllToggleAcc(this)">
+      <div class="routine-section-acc-header">
+        <div class="routine-section-acc-left">
+          <p class="routine-section-acc-title">Your Wash Day Routine</p>
+          <p class="routine-section-acc-sub" id="washday-sub">Every 3 days &middot; About 20 minutes</p>
+        </div>
+        <span class="routine-section-acc-chevron">&#8250;</span>
+      </div>
+      <div class="routine-section-acc-body">
+
+        <!-- STEP 1: SHAMPOO -->
+        <div class="routine-step-inner">
+          <div class="step-inner-header">
+            <span class="step-pill">Step 1</span>
+            <img class="step-inner-img" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/553A4502-Edit_2024-07-03T14_51_18.826Z.png?v=1720018279" alt="Shampoo">
+            <p class="step-inner-title">Shampoo</p>
+          </div>
+          <ul>
+            <li>Apply shampoo to your scalp before lathering, oil lives beneath your hair and shampoo needs to reach it as a liquid before it foams</li>
+            <li>Oil is difficult to remove. Use firm pressure from your fingertips to lift the layers off your scalp</li>
+            <li>Shampoo goes on your scalp only. Your mids and ends do not produce oil so shampoo will dry them out. Use only the suds to keep them clean</li>
+            <li>Wash twice every time. The first wash breaks down oil and buildup but doesn't remove it completely. The second wash finishes the job</li>
+          </ul>
+        </div>
+        <div class="step-inner-divider"></div>
+
+        <!-- STEP 2: CONDITIONER -->
+        <div class="routine-step-inner">
+          <div class="step-inner-header">
+            <span class="step-pill">Step 2</span>
+            <img class="step-inner-img" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/553A4533-Edit.jpg?v=1720018564" alt="Conditioner">
+            <p class="step-inner-title">Conditioner</p>
+          </div>
+          <ul>
+            <li>Apply conditioner to your mids and ends only, never your roots</li>
+            <li>Applying it to your roots will cause oiliness and force an early wash</li>
+            <li>Use enough to get a slippery feeling through your entire ponytail. Any area that doesn't feel slippery isn't getting conditioned</li>
+            <li>Let it sit for 2 minutes before rinsing</li>
+          </ul>
+        </div>
+        <div class="step-inner-divider"></div>
+
+        <!-- STEP 3: LEAVE-IN CONDITIONER -->
+        <div class="routine-step-inner">
+          <div class="step-inner-header">
+            <span class="step-pill">Step 3</span>
+            <img class="step-inner-img" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/Lic3456346Edit-Copy_1.png?v=1748639926" alt="Leave-in Conditioner">
+            <p class="step-inner-title">Leave-in Conditioner</p>
+          </div>
+          <ul>
+            <li>Towel dry your hair first. Too much water will block the product from absorbing</li>
+            <li>Hold the bottle at least 12 inches away from your hair to get an even, fine mist</li>
+            <li>Spray roots to tips covering all of your hair</li>
+            <li id="li-spray-count">Fine hair needs 8 to 12 sprays. Use enough to feel light coverage throughout</li>
+          </ul>
+        </div>
+
+        <!-- DETANGLE AFTER LEAVE-IN (no heat) -->
+        <div class="routine-step-inner hidden" id="step-detangle-after-leavein">
+          <div class="step-inner-divider"></div>
+          <div class="step-inner-header">
+            <span class="step-pill" id="pill-detangle-leavein">Step 4</span>
+            <img class="step-inner-img" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/Gemini_Generated_Image_k5mabfk5mabfk5ma.jpg?v=1765904842" alt="Detangle">
+            <p class="step-inner-title">Detangle</p>
+          </div>
+          <ul>
+            <li>Always start from the ends and work your way up</li>
+            <li>Starting from the top brings tangles down on top of each other which slows you down and causes breakage</li>
+            <li>Always use a brush with flexible bristles. Combs cause breakage when they catch</li>
+          </ul>
+        </div>
+
+        <!-- BLOW DRY CREAM -->
+        <div class="routine-step-inner hidden" id="step-bdc">
+          <div class="step-inner-divider"></div>
+          <div class="step-inner-header">
+            <span class="step-pill" id="pill-bdc">Step 4</span>
+            <img class="step-inner-img" id="img-bdc" src="https://www.redken.com/dw/image/v2/AAFM_PRD/on/demandware.static/-/Sites-ppd-redken-master-catalog/default/dw01235b94/images/pdp/big-blowout-heat-protecting-blowout-gel/Big%20Blowout%20Heat%20Protectant%20Gel%20150ml.jpg" alt="Blow Dry Cream">
+            <p class="step-inner-title">Blow Dry Cream</p>
+          </div>
+          <ul>
+            <li>Spread a pea sized amount across your palms for shoulder length hair</li>
+            <li>Longer or thicker hair can use more</li>
+            <li>Work it into your ends first, they need the most love. Then slowly work your way up so your mids get a bit less and your roots get the least</li>
+          </ul>
+        </div>
+
+        <!-- VOLUME MIST -->
+        <div class="routine-step-inner hidden" id="step-volume-step">
+          <div class="step-inner-divider"></div>
+          <div class="step-inner-header">
+            <span class="step-pill" id="pill-volume-step">Step 5</span>
+            <img class="step-inner-img" src="https://olaplex.com/cdn/shop/files/1-VBDM_product_1440_9d214cbf-772f-432f-8a52-d7613a762b52.png?v=1762279298" alt="Olaplex Volume Mist">
+            <p class="step-inner-title">Volume Blow Dry Mist</p>
+          </div>
+          <ul>
+            <li>Apply to the root area on the crown of your head only</li>
+            <li>Part your hair and spray down towards the roots. Try to avoid getting it on your mids</li>
+            <li>Use circular motions with your fingertips to spread it evenly throughout your crown</li>
+          </ul>
+        </div>
+
+        <!-- ROUGH DRY -->
+        <div class="routine-step-inner hidden" id="step-rough-dry">
+          <div class="step-inner-divider"></div>
+          <div class="step-inner-header">
+            <span class="step-pill" id="pill-rough-dry">Step 5</span>
+            <img class="step-inner-img" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/blow_dryer.jpg?v=1774020289" alt="Rough Dry">
+            <p class="step-inner-title">Rough Dry</p>
+          </div>
+          <ul>
+            <li>Focus the blow dryer on the underneath layers of your hair. The top layers will dry on their own during the blow dry</li>
+            <li>Frizz is your signal to stop. The moment it appears put the dryer down and move on to the next step. How long this takes is different for everyone</li>
+          </ul>
+        </div>
+
+        <!-- DETANGLE AFTER ROUGH DRY -->
+        <div class="routine-step-inner hidden" id="step-detangle-after-roughdry">
+          <div class="step-inner-divider"></div>
+          <div class="step-inner-header">
+            <span class="step-pill" id="pill-detangle-roughdry">Step 6</span>
+            <img class="step-inner-img" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/Gemini_Generated_Image_k5mabfk5mabfk5ma.jpg?v=1765904842" alt="Detangle">
+            <p class="step-inner-title">Detangle</p>
+          </div>
+          <ul>
+            <li>Always start from the ends and work your way up</li>
+            <li>Starting from the top brings tangles down on top of each other which slows you down and causes breakage</li>
+            <li>Always use a brush with flexible bristles. Combs cause breakage when they catch</li>
+          </ul>
+        </div>
+
+        <!-- BLOW DRY -->
+        <div class="routine-step-inner hidden" id="step-blow-dry">
+          <div class="step-inner-divider"></div>
+          <div class="step-inner-header">
+            <span class="step-pill" id="pill-blow-dry">Step 7</span>
+            <img class="step-inner-img" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/blow_dryer.jpg?v=1774020289" alt="Blow Dry">
+            <p class="step-inner-title">Blow Dry</p>
+          </div>
+          <ul>
+            <li>Always pull your hair straight with tension while drying. Loose hair dries frizzy. Tension is what creates a smooth result</li>
+            <li>Dry each section until it feels like a blanket fresh out of the dryer. Warm but not hot. That is your signal to move on. Continuing past that point causes heat damage</li>
+          </ul>
+        </div>
+
+        <!-- PRE-DRY OR AIR DRY -->
+        <div class="routine-step-inner hidden" id="step-predry-airdry">
+          <div class="step-inner-divider"></div>
+          <div class="step-inner-header">
+            <span class="step-pill" id="pill-predry-airdry">⚠️ Step 5</span>
+            <img class="step-inner-img" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/blow_dryer.jpg?v=1774020289" alt="Pre-Dry or Air Dry">
+            <p class="step-inner-title">Pre-Dry or Air Dry</p>
+          </div>
+          <ul>
+            <li>We strongly recommend blow drying your hair straight before ironing. Hair that air dries sets in a frizzy shape and requires much more heat to override. A quick blow dry first means less heat, less work, and a style that actually holds</li>
+          </ul>
+        </div>
+
+        <!-- THERMAL PROTECTANT -->
+        <div class="routine-step-inner hidden" id="step-thermal">
+          <div class="step-inner-divider"></div>
+          <div class="step-inner-header">
+            <span class="step-pill" id="pill-thermal">Step 6</span>
+            <img class="step-inner-img" src="https://www.redken.com/dw/image/v2/AAFM_PRD/on/demandware.static/-/Sites-ppd-redken-master-catalog/default/dw4dfa7e3a/images/pdp/hot-sets-22-thermal-setting-mist/Redken-2022-Styling-Reno-Thermal-Spray-High-Hold-Ecom-ATF-Packshot-200.jpg" alt="Thermal Protectant">
+            <p class="step-inner-title" id="step-thermal-title">Thermal Protectant</p>
+          </div>
+          <ul>
+            <li>Hold the bottle at least 12 inches away from your hair so it spreads into a fine mist</li>
+            <li>Make sure to spray throughout your hair, not just the outside layers</li>
+            <li>Brush through immediately after applying. If you skip this your hair will feel crunchy</li>
+          </ul>
+        </div>
+
+        <!-- FLAT IRON / CURLING IRON -->
+        <div class="routine-step-inner hidden" id="step-iron">
+          <div class="step-inner-divider"></div>
+          <div class="step-inner-header">
+            <span class="step-pill" id="pill-iron">Step 7</span>
+            <img class="step-inner-img" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/iron.jpg?v=1774020282" alt="Flat Iron">
+            <p class="step-inner-title">Flat Iron, Curling Iron or Wand</p>
+          </div>
+          <ul>
+            <li>Work in smaller sections. Large sections take so long for heat to penetrate that the outside burns while the inside is still warming up</li>
+            <li>Section shape matters. Flat iron sections should be wide and thin. Curling iron or wand sections should be narrow and tall</li>
+          </ul>
+        </div>
+
+        <!-- HAIR OIL -->
+        <div class="routine-step-inner" id="step-oil">
+          <div class="step-inner-divider"></div>
+          <div class="step-inner-header">
+            <span class="step-pill" id="pill-oil">Step 4</span>
+            <img class="step-inner-img" id="img-step-oil" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/IMG_0267.jpg?v=1764968512" alt="Hair Oil">
+            <p class="step-inner-title">Hair Oil</p>
+          </div>
+          <ul>
+            <li>Never apply oil to your roots. It will cause greasiness and force an early wash</li>
+            <li>Less is more. Start with just a few drops and add more only if you need it</li>
+            <li>Apply to your ends first, they need it most, then work your way up to your mids with whatever is left</li>
+          </ul>
+        </div>
+
+        <!-- VOLUME NOTE -->
+        <div class="lll-note" id="volume-note" style="margin-top: 12px;">
+          The most effective way to get volume is through blow drying. It's a technique that takes time to learn but pays off significantly. When you're ready to try it, come back and retake the quiz with your blow dryer selected.
+        </div>
+
+        <!-- COARSE HEAT NOTE -->
+        <div class="lll-note" id="coarse-heat-note" style="margin-top: 12px;">
+          Coarse hair is dry and frizzy because the cuticle is difficult to seal. Products help, but can only take you so far. Heat is what physically closes it. When you're ready, come back and retake the quiz with your blow dryer selected.
+        </div>
+
+      </div><!-- /washday body -->
+    </div><!-- /wash day acc -->
+
+    <!-- WEEKLY REPAIR PROTOCOL -->
+    <div class="routine-section-acc hidden" id="acc-repair" onclick="lllToggleAcc(this)">
+      <div class="routine-section-acc-header">
+        <div class="routine-section-acc-left">
+          <p class="routine-section-acc-title" id="repair-acc-title">Weekly Repair Protocol</p>
+          <p class="routine-section-acc-sub">Once a week &middot; Replaces conditioner</p>
+        </div>
+        <span class="routine-section-acc-chevron">&#8250;</span>
+      </div>
+      <div class="routine-section-acc-body">
+        <div class="routine-step-inner">
+          <div class="step-inner-header">
+            <span class="step-pill">Step 1</span>
+            <img class="step-inner-img" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/553A4502-Edit_2024-07-03T14_51_18.826Z.png?v=1720018279" alt="Shampoo">
+            <p class="step-inner-title">Shampoo</p>
+          </div>
+          <ul>
+            <li>Shampoo your hair normally — the same way you always would</li>
+            <li>Do not condition after. The repair mask replaces your conditioner on this wash</li>
+          </ul>
+        </div>
+        <div class="step-inner-divider"></div>
+        <div class="routine-step-inner">
+          <div class="step-inner-header">
+            <span class="step-pill">Step 2</span>
+            <img class="step-inner-img" src="https://www.redken.com/dw/image/v2/AAFM_PRD/on/demandware.static/-/Sites-ppd-redken-master-catalog/default/dwd987a274/images/pdp/acidic-bonding-concentrate-hair-mask/redken-acidic-bonding-concentrate-mask-for-damaged-hair.png" alt="Acidic Bonding Concentrate Mask" style="background:white;">
+            <p class="step-inner-title">Acidic Bonding Concentrate Mask</p>
+          </div>
+          <ul>
+            <li>Apply to all damaged areas of your hair — mids and ends</li>
+            <li>Let it sit for 5 minutes, then rinse thoroughly</li>
+            <li>This rebuilds the bonds inside your hair shaft that heat and chemical damage break down</li>
+          </ul>
+        </div>
+        <div class="step-inner-divider"></div>
+        <div class="routine-step-inner">
+          <div class="step-inner-header">
+            <span class="step-pill">Step 3</span>
+            <img class="step-inner-img" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/31eRafhskFL_1.jpg?v=1773927685" alt="Moroccanoil Mask" style="background:white;">
+            <p class="step-inner-title">Moroccanoil Mask</p>
+          </div>
+          <ul>
+            <li>Apply to your mids and ends immediately after rinsing the repair mask</li>
+            <li>Let it sit for 8 minutes, then rinse thoroughly</li>
+            <li>Pairing both masks in the same wash gives faster results than either one alone</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- MORNING REFRESH -->
+    <div class="routine-section-acc" id="acc-morning" onclick="lllToggleAcc(this)">
+      <div class="routine-section-acc-header">
+        <div class="routine-section-acc-left">
+          <p class="routine-section-acc-title">Your Morning Refresh</p>
+          <p class="routine-section-acc-sub">Every morning &middot; Done in 5 minutes</p>
+        </div>
+        <span class="routine-section-acc-chevron">&#8250;</span>
+      </div>
+      <div class="routine-section-acc-body">
+        <div class="routine-step-inner">
+          <div class="step-inner-header">
+            <span class="step-pill">Step 1</span>
+            <img class="step-inner-img" id="img-morning-dryshampoo" src="https://www.livingproof.com/cdn/shop/files/dryshampoo_new_fs.png?v=1763046210" alt="Dry Shampoo">
+            <p class="step-inner-title">Dry Shampoo</p>
+          </div>
+          <ul>
+            <li>Check your roots for oil. If they feel greasy, apply dry shampoo by working in sections across your entire head</li>
+            <li>Part hair to expose the roots and spray directly on your scalp. Never spray on mids or ends</li>
+          </ul>
+        </div>
+        <div class="step-inner-divider"></div>
+        <div class="routine-step-inner">
+          <div class="step-inner-header">
+            <span class="step-pill">Step 2</span>
+            <img class="step-inner-img" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/Gemini_Generated_Image_k5mabfk5mabfk5ma.jpg?v=1765904842" alt="Detangle">
+            <p class="step-inner-title">Detangle</p>
+          </div>
+          <ul>
+            <li>Use an ionic brush with flexible bristles. These do more than remove tangles — they fight frizz and add shine at the same time</li>
+          </ul>
+        </div>
+        <div class="step-inner-divider"></div>
+        <div class="routine-step-inner">
+          <div class="step-inner-header">
+            <span class="step-pill">Step 3</span>
+            <img class="step-inner-img" id="img-morning-oil" src="https://cdn.shopify.com/s/files/1/0591/5279/3794/files/IMG_0267.jpg?v=1764968512" alt="Hair Oil">
+            <p class="step-inner-title">Hair Oil</p>
+          </div>
+          <ul>
+            <li>Rub a few drops between your palms and apply ends first, working up to your mids</li>
+            <li>Never apply to your roots</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /routine padding -->
+
+  <!-- CTA BLOCK -->
+  <div style="background: white; padding: 16px;">
+    <div onclick="document.getElementById('section-products').scrollIntoView({behavior:'smooth'});" class="view-products-btn" style="margin-top: 0;">View Products &#8593;</div>
+    <div class="view-cart-banner" id="view-cart-banner">
+      <p>Your routine is in your cart</p>
+      <a href="#" onclick="window.top.location.href='/cart'; return false;">Checkout &rarr;</a>
+    </div>
+  </div>
+</div><!-- /section-routine -->
+
+<script>
+/* ── ACCORDION ── */
+function lllToggleAcc(el) { el.classList.toggle('open'); }
+
+/* ── HELPERS ── */
+function showEl(id) { var el = document.getElementById(id); if (el) el.classList.remove('hidden'); }
+function hideEl(id) { var el = document.getElementById(id); if (el) el.classList.add('hidden'); }
+function setText(id, text) { var el = document.getElementById(id); if (el) el.textContent = text; }
+function setSrc(id, src) { var el = document.getElementById(id); if (el) el.src = src; }
+function setBadge(id, label, cls) { var el = document.getElementById(id); if (!el) return; el.textContent = label; el.className = 'badge ' + cls; }
+function setPill(id, num) { var el = document.getElementById(id); if (el) el.textContent = 'Step ' + num; }
+
+/* ── PRODUCTS ── */
+var PRODUCTS = {
+  sc:  { variantId: 47024420683970, sellingPlan: 2132246722 },   // fine/medium S+C
+  scc: { variantId: 47299053682882, sellingPlan: 2132246722 },   // coarse S+C
+  li:  { variantId: 45141913370818, sellingPlan: 2132246722 },   // leave-in
+  oil: { variantId: 46157764460738, sellingPlan: 2132246722 }    // LLL oil (fine/medium)
+};
+var selections = { sc: 'sub', scc: 'sub', li: 'sub', oil: 'sub' };
+var PRICES = {
+  sc:  { sub: '$60.00', one: '$75.00' },
+  scc: { sub: '$60.00', one: '$75.00' },
+  li:  { sub: '$20.00', one: '$25.00' },
+  oil: { sub: '$18.00', one: '$22.50' }
+};
+
+function toggleSlider(product) {
+  var isSub   = selections[product] === 'sub';
+  var newType = isSub ? 'one' : 'sub';
+  selections[product] = newType;
+  var track   = document.getElementById(product + '-track');
+  var priceEl = document.getElementById(product + '-price');
+  var origEl  = document.getElementById(product + '-orig');
+  var saveEl  = document.getElementById(product + '-save');
+  var infoEl  = document.getElementById(product + '-info');
+  if (newType === 'sub') {
+    track.classList.remove('off');
+    priceEl.textContent = PRICES[product].sub;
+    origEl.style.display = '';
+    saveEl.style.display = '';
+    if (infoEl) infoEl.style.visibility = 'visible';
+  } else {
+    track.classList.add('off');
+    priceEl.textContent = PRICES[product].one;
+    origEl.style.display = 'none';
+    saveEl.style.display = 'none';
+    if (infoEl) infoEl.style.visibility = 'hidden';
+  }
+}
+
+function addToCart(product) {
+  var btn     = document.getElementById(product + '-btn');
+  var success = document.getElementById(product + '-success');
+  var p       = PRODUCTS[product];
+  var isSub   = selections[product] === 'sub';
+  btn.textContent = 'Adding...';
+  btn.classList.add('loading');
+  var body = { items: [{ id: p.variantId, quantity: 1 }] };
+  if (isSub) body.items[0].selling_plan = p.sellingPlan;
+  fetch('/cart/add.js', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(body)
+  })
+  .then(function(r) { return r.json(); })
+  .then(function() {
+    btn.textContent = 'Go to Cart';
+    btn.style.background = '#27AE60';
+    btn.classList.remove('loading');
+    btn.onclick = function() { window.top.location.href = '/cart'; };
+    success.classList.add('visible');
+    document.getElementById('view-cart-banner').style.display = 'flex';
+  })
+  .catch(function() { btn.textContent = 'Try again'; btn.classList.remove('loading'); });
+}
+
+/* ── MAIN LOGIC ── */
+function applyAnswers(answers) {
+  var pain   = (answers['hair_pain_point'] || 'dry').toLowerCase();
+  var damage = answers['damage_level'] || 'None';
+  var heat   = (answers['heat_tools']   || 'none').toLowerCase();
+  var volume = (answers['wants_volume'] || 'none').toLowerCase();
+
+  // Hair type — lives inside smart_properties_outputs
+  var smartProps = answers['smart_properties_outputs'] || {};
+  var hairType   = (smartProps['hair_type'] || 'Fine').toLowerCase();
+  if (['fine', 'medium', 'coarse'].indexOf(hairType) === -1) hairType = 'fine';
+  var isCoarse = hairType === 'coarse';
+  var isMedium = hairType === 'medium';
+
+  var isBreakage   = pain === 'growth';
+  var isDamage     = pain === 'damage';
+  var isOily       = pain === 'oily';
+  var isVolumePath = pain === 'volume';
+  var isFrizzy     = pain === 'frizzy';
+
+  /* ─────────────────────────────────
+     HAIR TYPE — product swaps
+  ───────────────────────────────── */
+  if (isCoarse) {
+    hideEl('card-sc-fm');
+    showEl('card-sc-coarse');
+    hideEl('card-oil');
+    showEl('row-moroil');
+    hideEl('row-dryshampoo');
+    showEl('row-dryshampoo-coarse');
+    setSrc('img-bdc', 'https://media.ulta.com/i/ulta/2580474');
+    setSrc('img-step-oil', 'https://cdn.shopify.com/s/files/1/0591/5279/3794/files/s2030286-main-zoom.jpg?v=1774619508');
+    setSrc('img-morning-dryshampoo', 'https://www.planetbeauty.com/cdn/shop/products/moroccanoil_dry_shampoo_light_tones_x2000.png?v=1662145276');
+    setSrc('img-morning-oil', 'https://cdn.shopify.com/s/files/1/0591/5279/3794/files/s2030286-main-zoom.jpg?v=1774619508');
+    setText('washday-sub', 'Every 5+ days \u00b7 About 20 minutes');
+    setText('li-spray-count', 'Coarse hair needs 14 to 18 sprays. Use enough to feel light coverage throughout');
+    if (heat === 'none') document.getElementById('coarse-heat-note').classList.add('visible');
+  } else if (isMedium) {
+    setText('washday-sub', 'Every 4-5 days \u00b7 About 20 minutes');
+    setText('li-spray-count', 'Medium hair needs 10 to 16 sprays. Use enough to feel light coverage throughout');
+  }
+
+  /* ─────────────────────────────────
+     S+C DESCRIPTIONS
+  ───────────────────────────────── */
+  var SC_COPY = {
+    dry:    { fine: 'Cleans your scalp without stripping it, so buildup stays off and your hair can go longer between washes.', coarse: 'Cleanses oil and buildup without stripping the moisture that keeps your hair soft and frizz-free.' },
+    frizzy: { fine: 'Cleanses your scalp without stripping, so your cuticle stays smooth and frizz stays under control.', coarse: 'Cleanses oil and buildup without stripping, so the cuticle on your hair stays sealed and frizz stays manageable.' },
+    growth: { fine: 'Cleanses without stripping, so your hair gets stronger instead of more damaged every wash day.', coarse: 'Cleanses without stripping, so your hair doesn\u2019t lose the moisture that keeps it flexible and resistant to breakage.' },
+    oily:   { fine: 'Removes oil and buildup completely without triggering more production, so you can start going longer between washes.', coarse: 'Removes scalp oil and buildup completely without triggering more production or stripping the moisture your hair needs.' },
+    volume: { fine: 'Cleanses your scalp completely so your hair starts fresh and weightless, giving you the best possible foundation for volume.', coarse: 'Cleanses completely without leaving residue, so your hair starts wash day with the best possible foundation for volume.' },
+    damage: { fine: 'Removes buildup without stripping, so each wash day preserves the moisture your hair needs to start recovering.', coarse: 'Removes buildup without stripping, so each wash day preserves the moisture your hair needs to start recovering.' }
+  };
+  var scCopy = SC_COPY[pain] || SC_COPY['dry'];
+  setText('note-sc', isCoarse ? scCopy.coarse : scCopy.fine);
+
+  /* ─────────────────────────────────
+     LEAVE-IN DESCRIPTIONS
+  ───────────────────────────────── */
+  if (isOily) {
+    setText('note-leavein', 'Lightweight moisture for lengths and ends only, never the scalp.');
+  } else if (isFrizzy) {
+    setText('note-leavein', 'Locks in moisture so your hair keeps its shiny, frizz-free \u2018just conditioned\u2019 look until your next wash.');
+  } else if (isBreakage) {
+    setText('note-leavein', 'Locks in moisture between washes so your hair stops breaking and keeps that shiny \u2018just conditioned\u2019 look.');
+  } else if (isDamage) {
+    setText('note-leavein', 'Locks in moisture so your hair recovers faster and keeps that shiny \u2018just conditioned\u2019 look until your next wash.');
+  }
+
+  /* ─────────────────────────────────
+     OIL DESCRIPTIONS
+  ───────────────────────────────── */
+  var OIL_COPY = {
+    dry:    { fine: 'Keeps mids and ends smooth and moisturized. Prevents split ends from forming.', coarse: 'Your hair loses its polish fast. Apply to mids and ends to bring the shine back and keep your ends looking sharp.' },
+    frizzy: { fine: 'Seals mids and ends so the cuticle stays closed. No frizz, no split ends, until your next wash.', coarse: 'Applied to mids and ends it seals the cuticle closed. No frizz, no dullness, no split ends until your next wash.' },
+    growth: { fine: 'Keeps mids and ends moisturized and flexible so they bend instead of breaking and split ends stop forming.', coarse: 'Keeps mids and ends flexible and polished so your hair bends instead of breaking and split ends stop forming.' },
+    oily:   { fine: 'Weightless micro-oil that absorbs instantly into mids and ends, stopping split ends and adding shine without adding weight.', coarse: 'Adds shine and smoothness, stops split ends and absorbs completely without adding weight.' },
+    volume: { fine: 'Weightless micro-oil that absorbs instantly into mids and ends, stopping split ends and adding shine without compromising volume.', coarse: 'Adds shine and smoothness, stops split ends and absorbs completely without compromising volume.' },
+    damage: { fine: 'Keeps mids and ends moisturized and flexible so they bend instead of breaking and split ends stop forming.', coarse: 'Keeps mids and ends flexible and polished so your hair bends instead of breaking and split ends stop forming.' }
+  };
+  var oilCopy = OIL_COPY[pain] || OIL_COPY['dry'];
+  setText('note-oil', isCoarse ? oilCopy.coarse : oilCopy.fine);
+
+  /* ─────────────────────────────────
+     HEAT TOOLS — products
+  ───────────────────────────────── */
+  var usesBlowDryer = heat === 'blow_dryer' || heat === 'both';
+  var usesIron      = heat === 'iron'       || heat === 'both';
+
+  if (usesBlowDryer) {
+    if (isCoarse) {
+      showEl('row-rebel');   // Rebel Tame for coarse
+    } else {
+      showEl('row-bdc');     // Big Blowout for fine/medium
+    }
+  }
+  if (usesIron) showEl('row-thermal');
+
+  /* ─────────────────────────────────
+     VOLUME — products
+  ───────────────────────────────── */
+  var wantsVolume = volume === 'max' || volume === 'moderate';
+  if (wantsVolume) {
+    if (usesBlowDryer) {
+      showEl('row-volume');
+    } else {
+      document.getElementById('volume-note').classList.add('visible');
+    }
+  }
+
+  /* ─────────────────────────────────
+     REPAIR PRODUCTS — badge only, no DOM moves
+  ───────────────────────────────── */
+  if ((isDamage || isBreakage) || damage === 'Severe' || damage === 'Moderate') {
+    setBadge('badge-repair', 'Must Have', 'badge-essential');
+    setBadge('badge-mask',   'Must Have', 'badge-essential');
+    setText('note-mask', 'Restores moisture deep inside the hair shaft. Pair with the repair mask for faster results.');
+  } else if (damage === 'Mild') {
+    setBadge('badge-repair', 'Good to Have', 'badge-recommended');
+    setBadge('badge-mask',   'Good to Have', 'badge-recommended');
+    setText('note-mask', 'Restores moisture deep inside the hair shaft. Pair with the repair mask for faster results.');
+  } else {
+    setBadge('badge-repair', 'Skip It For Now', 'badge-low');
+    setBadge('badge-mask',   'Skip It For Now', 'badge-low');
+    setText('note-mask', 'Nice to have for extra hydration. Not critical right now.');
+  }
+
+  /* ─────────────────────────────────
+     ROUTINE — step numbering
+  ───────────────────────────────── */
+  var stepNum = 4;
+
+  if (usesBlowDryer) {
+    showEl('step-bdc');
+    setPill('pill-bdc', stepNum); stepNum++;
+    if (wantsVolume) {
+      showEl('step-volume-step');
+      setPill('pill-volume-step', stepNum); stepNum++;
+    }
+    showEl('step-rough-dry');
+    setPill('pill-rough-dry', stepNum); stepNum++;
+    showEl('step-detangle-after-roughdry');
+    setPill('pill-detangle-roughdry', stepNum); stepNum++;
+    showEl('step-blow-dry');
+    setPill('pill-blow-dry', stepNum); stepNum++;
+    if (usesIron) {
+      setText('step-thermal-title', 'Thermal Protectant');
+      showEl('step-thermal');
+      setPill('pill-thermal', stepNum); stepNum++;
+      showEl('step-iron');
+      setPill('pill-iron', stepNum); stepNum++;
+    }
+  } else if (usesIron) {
+    showEl('step-detangle-after-leavein');
+    setPill('pill-detangle-leavein', stepNum); stepNum++;
+    showEl('step-predry-airdry');
+    var el = document.getElementById('pill-predry-airdry');
+    if (el) el.textContent = '\u26a0\ufe0f Step ' + stepNum;
+    stepNum++;
+    setText('step-thermal-title', 'Thermal Protectant (After Hair is Dry)');
+    showEl('step-thermal');
+    setPill('pill-thermal', stepNum); stepNum++;
+    showEl('step-iron');
+    setPill('pill-iron', stepNum); stepNum++;
+  } else {
+    showEl('step-detangle-after-leavein');
+    setPill('pill-detangle-leavein', stepNum); stepNum++;
+  }
+
+  setPill('pill-oil', stepNum);
+
+  /* ─────────────────────────────────
+     WEEKLY REPAIR PROTOCOL
+  ───────────────────────────────── */
+  if (isDamage || isBreakage || damage === 'Severe' || damage === 'Moderate') {
+    showEl('acc-repair');
+  } else if (damage === 'Mild') {
+    showEl('acc-repair');
+    setText('repair-acc-title', 'Weekly Repair Protocol (Optional)');
+  }
+}
+
+/* ── BOOT ── */
+try {
+  var stored = localStorage.getItem('octane_answers');
+  if (stored) applyAnswers(JSON.parse(stored));
+} catch(e) {}
+</script>
+
+</body>
+</html>

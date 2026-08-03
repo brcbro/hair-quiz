@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personalized Product List | Hair Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+  <div id="quiz-app" class="quiz-app">
+    <button class="quiz-close" aria-label="Close quiz" title="Close">&times;</button>
+
+    <div class="quiz-progress-wrapper">
+      <div class="quiz-progress-track">
+        <div class="quiz-progress-fill" id="progress-fill"></div>
+      </div>
+      <span class="quiz-progress-label" id="progress-label">7%</span>
+    </div>
+
+    <div class="quiz-content" id="quiz-content">
+      <!-- Rendered dynamically -->
+    </div>
+
+    <div class="quiz-footer" id="quiz-footer">
+      <button class="quiz-btn quiz-btn-primary" id="continue-btn" disabled>CONTINUE</button>
+      <button class="quiz-btn quiz-btn-back" id="back-btn" style="display:none">← BACK</button>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
