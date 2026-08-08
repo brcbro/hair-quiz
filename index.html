@@ -3,15 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Personalized Product List | Hair Quiz</title>
+  <title>Lookskart - Hair Questionnaire</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/src/styles.css" />
 </head>
 <body>
   <div id="quiz-app" class="quiz-app">
-    <button class="quiz-close" aria-label="Close quiz" title="Close">&times;</button>
+    <header class="quiz-header">
+      <div class="quiz-brand">Lookskart</div>
+      <button class="quiz-close" aria-label="Close quiz" title="Close">
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+    </header>
 
     <div class="quiz-progress-wrapper">
       <div class="quiz-progress-track">
@@ -25,8 +31,8 @@
     </div>
 
     <div class="quiz-footer" id="quiz-footer">
-      <button class="quiz-btn quiz-btn-primary" id="continue-btn" disabled>CONTINUE</button>
       <button class="quiz-btn quiz-btn-back" id="back-btn" style="display:none">← BACK</button>
+      <button class="quiz-btn quiz-btn-primary" id="continue-btn" disabled>CONTINUE</button>
     </div>
   </div>
 

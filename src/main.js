@@ -81,6 +81,12 @@ class HairQuiz {
     this.contentEl.innerHTML = '';
     this.contentEl.className = 'quiz-content';
 
+    const stepEl = document.createElement('p');
+    stepEl.className = 'quiz-step-label';
+    const stepNum = this.history.length + 1;
+    stepEl.textContent = `Question ${stepNum} of 9`;
+    this.contentEl.appendChild(stepEl);
+
     const titleEl = document.createElement('h2');
     titleEl.className = 'quiz-question';
     titleEl.setAttribute('role', 'heading');
@@ -108,7 +114,16 @@ class HairQuiz {
       btn.setAttribute('data-option-id', option.id);
       btn.setAttribute('aria-label', option.text);
       btn.setAttribute('aria-checked', this.selectedOption === option.id ? 'true' : 'false');
-      btn.textContent = option.text.trim();
+
+      const label = document.createElement('span');
+      label.textContent = option.text.trim();
+      const arrow = document.createElement('span');
+      arrow.className = 'quiz-option-arrow material-symbols-outlined';
+      arrow.setAttribute('aria-hidden', 'true');
+      arrow.textContent = 'east';
+      btn.appendChild(label);
+      btn.appendChild(arrow);
+
       if (this.selectedOption === option.id) btn.classList.add('selected');
       btn.addEventListener('click', () => this.selectOption(option, question));
       optionsEl.appendChild(btn);
@@ -199,7 +214,7 @@ class HairQuiz {
       question.type === 'email'
         ? !this.isValidEmail(this.answers.email)
         : !this.selectedOption;
-    this.backBtn.style.display = question.showBack ? 'block' : 'none';
+    this.backBtn.style.display = question.showBack ? 'inline-block' : 'none';
   }
 
   handleContinue() {

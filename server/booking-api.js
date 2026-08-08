@@ -11,14 +11,6 @@ dotenv.config({ path: path.join(ROOT, '.env') });
 const DATA_DIR = path.join(ROOT, 'data');
 const BOOKINGS_FILE = path.join(DATA_DIR, 'bookings.json');
 
-const SERVICES = new Set([
-  'Signature Blowout',
-  'Blowout + Scalp Massage',
-  'Blowout + Deep Conditioning',
-  'Blowout + Braid',
-  'Updo',
-]);
-
 function readBookings() {
   try {
     return JSON.parse(fs.readFileSync(BOOKINGS_FILE, 'utf8'));
@@ -30,34 +22,6 @@ function readBookings() {
 function writeBookings(list) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
   fs.writeFileSync(BOOKINGS_FILE, JSON.stringify(list, null, 2));
-}
-
-function isValidDate(dateStr) {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return false;
-  const d = new Date(dateStr + 'T12:00:00');
-  if (Number.isNaN(d.getTime())) return false;
-  const day = d.getDay(); // 0 Sun … 6 Sat
-  if (day === 0 || day === 1) return false; // closed Sun–Mon
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const pick = new Date(dateStr + 'T00:00:00');
-  return pick >= today;
-}
-
-function isValidTime(timeStr) {
-  // HH:MM 24h — slots 09:00–16:00 every 30 min
-  if (!/^\d{2}:\d{2}$/.test(timeStr)) return false;
-  const [h, m] = timeStr.split(':').map(Number);
-  if (m !== 0 && m !== 30) return false;
-  if (h < 9 || h > 16) return false;
-  if (h === 16 && m > 0) return false;
-  return true;
-}
-
-function slotTaken(bookings, date, time) {
-  return bookings.some(
-    (b) => b.date === date && b.time === time && b.status !== 'cancelled'
-  );
 }
 
 async function sendEmails(booking) {
@@ -78,19 +42,15 @@ async function sendEmails(booking) {
     auth: { user, pass },
   });
 
-  const when = `${booking.date} at ${booking.time}`;
   const summary = [
-    `New appointment request`,
+    `New consultation request`,
     ``,
     `Name: ${booking.name}`,
     `Email: ${booking.email}`,
     `Phone: ${booking.phone}`,
-    `Service: ${booking.service}`,
-    `Date: ${booking.date}`,
-    `Time: ${booking.time}`,
     booking.notes ? `Notes: ${booking.notes}` : null,
     ``,
-    `Booking ID: ${booking.id}`,
+    `Request ID: ${booking.id}`,
   ]
     .filter(Boolean)
     .join('\n');
@@ -99,26 +59,23 @@ async function sendEmails(booking) {
     from,
     to,
     replyTo: booking.email,
-    subject: `New booking — ${booking.name} — ${when}`,
+    subject: `New consultation request — ${booking.name}`,
     text: summary,
   });
 
-  // Optional confirmation to the client
   await transporter.sendMail({
     from,
     to: booking.email,
-    subject: `Appointment request received — Live Love Locks`,
+    subject: `Consultation request received`,
     text: [
       `Hi ${booking.name},`,
       ``,
-      `We received your appointment request:`,
+      `We received your consultation request.`,
       ``,
-      `Service: ${booking.service}`,
-      `When: ${when}`,
+      `Our team will contact you shortly to schedule a time.`,
+      `Questions? Call or text (239) 204-3388.`,
       ``,
-      `We'll confirm shortly. Questions? Call or text (239) 204-3388.`,
-      ``,
-      `— Live Love Locks`,
+      `— Looks Kart`,
     ].join('\n'),
   });
 
@@ -129,18 +86,6 @@ export async function handleBookingRequest(req, res) {
   if (req.method === 'OPTIONS') {
     res.statusCode = 204;
     res.end();
-    return;
-  }
-
-  if (req.method === 'GET' && (req.url === '/api/bookings/slots' || req.url?.startsWith('/api/bookings/slots?'))) {
-    const url = new URL(req.url, 'http://localhost');
-    const date = url.searchParams.get('date') || '';
-    const bookings = readBookings();
-    const taken = bookings
-      .filter((b) => b.date === date && b.status !== 'cancelled')
-      .map((b) => b.time);
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({ date, taken }));
     return;
   }
 
@@ -165,9 +110,6 @@ export async function handleBookingRequest(req, res) {
   const name = String(data.name || '').trim();
   const email = String(data.email || '').trim();
   const phone = String(data.phone || '').trim();
-  const service = String(data.service || '').trim();
-  const date = String(data.date || '').trim();
-  const time = String(data.time || '').trim();
   const notes = String(data.notes || '').trim().slice(0, 500);
 
   if (!name || name.length < 2) {
@@ -185,42 +127,19 @@ export async function handleBookingRequest(req, res) {
     res.end(JSON.stringify({ error: 'Please enter a valid phone number.' }));
     return;
   }
-  if (!SERVICES.has(service)) {
-    res.statusCode = 400;
-    res.end(JSON.stringify({ error: 'Please choose a service.' }));
-    return;
-  }
-  if (!isValidDate(date)) {
-    res.statusCode = 400;
-    res.end(JSON.stringify({ error: 'Please pick a valid date (Tue–Sat, today or later).' }));
-    return;
-  }
-  if (!isValidTime(time)) {
-    res.statusCode = 400;
-    res.end(JSON.stringify({ error: 'Please pick a valid time slot.' }));
-    return;
-  }
-
-  const bookings = readBookings();
-  if (slotTaken(bookings, date, time)) {
-    res.statusCode = 409;
-    res.end(JSON.stringify({ error: 'That time is already booked. Please choose another.' }));
-    return;
-  }
 
   const booking = {
     id: 'bk_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
+    type: 'consultation',
     name,
     email,
     phone,
-    service,
-    date,
-    time,
     notes: notes || null,
     status: 'requested',
     createdAt: new Date().toISOString(),
   };
 
+  const bookings = readBookings();
   bookings.push(booking);
   writeBookings(bookings);
 
@@ -232,14 +151,14 @@ export async function handleBookingRequest(req, res) {
     mail = { emailed: false, reason: err.message };
   }
 
-  console.log('[booking]', booking.id, booking.date, booking.time, mail.emailed ? 'emailed' : 'saved-only');
+  console.log('[booking]', booking.id, booking.name, mail.emailed ? 'emailed' : 'saved-only');
 
   res.setHeader('Content-Type', 'application/json');
   res.statusCode = 201;
   res.end(
     JSON.stringify({
       ok: true,
-      booking: { id: booking.id, date: booking.date, time: booking.time, service: booking.service },
+      booking: { id: booking.id, type: booking.type, name: booking.name },
       emailed: mail.emailed,
     })
   );

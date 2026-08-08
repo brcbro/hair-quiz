@@ -11,7 +11,25 @@ npm run dev
 
 Open http://localhost:5173/
 
-## Booking emails
+## Combo matrix (Excel)
 
-Copy `.env.example` → `.env` and set SMTP + `BOOKING_TO_EMAIL`.  
-Bookings are always saved to `data/bookings.json`. With SMTP configured, the salon and the client both get an email.
+All answer chains → outputs are exported to:
+
+- `docs/quiz-combo-matrix.xlsx` — multi-sheet workbook (open in Excel / Google Sheets)
+- `docs/hair-type-162.csv` — quick hair-type lookup only
+
+Regenerate:
+
+```bash
+node scripts/export-combo-matrix.js
+```
+
+Sheets inside the workbook:
+
+| Sheet | What it shows |
+|-------|----------------|
+| How_to_read | How to use the file |
+| Hair_Type_162 | Frustration × wash × air-dry × pattern → Fine/Medium/Coarse |
+| Q1_Q2_Severity | Frustration + severity question → severity/damage |
+| Product_Rules | When products show/hide |
+| Full_Chains | ~20k full paths: selections on the left, outputs on the right |
