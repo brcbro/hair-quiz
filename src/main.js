@@ -81,12 +81,6 @@ class HairQuiz {
     this.contentEl.innerHTML = '';
     this.contentEl.className = 'quiz-content';
 
-    const stepEl = document.createElement('p');
-    stepEl.className = 'quiz-step-label';
-    const stepNum = this.history.length + 1;
-    stepEl.textContent = `Question ${stepNum} of 9`;
-    this.contentEl.appendChild(stepEl);
-
     const titleEl = document.createElement('h2');
     titleEl.className = 'quiz-question';
     titleEl.setAttribute('role', 'heading');
