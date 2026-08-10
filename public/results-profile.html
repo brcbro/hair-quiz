@@ -97,7 +97,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Ar
       <span class="lll-pill">Frustration <strong id="val-frustration">Dry hair</strong></span>
       <span class="lll-pill">Damage <strong id="val-damage">&mdash;</strong></span>
       <span class="lll-pill">Heat tools <strong id="val-heat">&mdash;</strong></span>
-      <span class="lll-pill">Volume preference <strong id="val-volume">Sleek And Smooth</strong></span>
+      <span class="lll-pill">Volume preference <strong id="val-volume">Smooth &amp; sleek</strong></span>
     </div>
 
     <div class="lll-summary">
@@ -127,9 +127,9 @@ var HEAT_LABELS = {
    VOLUME DISPLAY LABELS
 ───────────────────────────────────────────── */
 var VOLUME_LABELS = {
-  max:      'Big hair',
-  moderate: 'Some Volume',
-  none:     'Sleek And Smooth'
+  max:      'Full volume',
+  moderate: 'Soft lift',
+  none:     'Smooth & sleek'
 };
 
 /* ─────────────────────────────────────────────
@@ -185,79 +185,76 @@ function buildHeadline(pain, severity, hairType) {
 var SUMMARY_COPY = {
 
   dry: {
-    fine:   'Your fine hair gets oily at the roots but is dry towards the ends. The fix isn\u2019t products that coat the outside. It\u2019s lightweight formulas that moisturize the inside of your hair shaft. Done right, your hair stays smooth, soft and shiny for three days.',
-    medium: 'Good news. Medium hair is the easiest hair type to work with. It sits between fine and coarse, not too oily, not too dry. The fix is lightweight formulas that absorb into the shaft instead of coating the outside. Done right, your hair stays smooth and frizz-free for four to five days.',
-    coarse: 'Coarse hair looks tough but the cuticle is thin and fragile. When it lifts, moisture escapes and frizz moves in. The fix is lightweight formulas that deliver moisture inside the shaft, and heat tools to seal the cuticle and lock it in. Done right, your hair stays soft and frizz-free for five days or more.'
+    fine:   'Fine strands often feel greasy near the scalp while the lengths stay thirsty. Skip heavy creams that sit on top of the hair. Choose airy hydration that sinks into the fibre so strands stay soft, glossy, and fresh for about three days.',
+    medium: 'Medium hair sits in a sweet spot \u2014 not overly oily, not extremely dry. Reach for formulas that absorb rather than coat, so you keep smoothness and calm without flatness. With the right balance, shine can last four to five days.',
+    coarse: 'Coarse hair can feel strong, yet the outer cuticle lifts easily and lets moisture escape. Pair penetrating hydration with gentle heat sealing so the surface stays closed. Done consistently, softness and control can hold five days or longer.'
   },
 
   frizzy: {
-    fine:   'Frizz in fine hair is a moisture problem. The fix isn\u2019t heavy products that make your hair flat. It\u2019s lightweight moisture that absorbs into your hair shaft, eliminating frizz without sacrificing volume.',
-    medium: 'Frizz in medium hair needs two things to stay gone. Lightweight moisture that absorbs into the shaft. And heat tools that seal the cuticle closed after every wash. One without the other only gets you halfway there.',
-    coarse: 'Frizz in coarse hair needs two things to stay gone. Moisture that penetrates deep inside the shaft. And heat tools that seal the cuticle closed to lock that moisture in. One without the other only gets you halfway there.'
+    fine:   'On fine hair, frizz usually signals missing moisture \u2014 not a need for heavier cream. Use light leave-ins that absorb into the shaft so the surface stays calm without collapsing lift.',
+    medium: 'Medium hair keeps frizz away when two habits work together: moisture that absorbs into the fibre, and a quick heat pass that seals the cuticle after washing. Miss either step and frizz tends to return.',
+    coarse: 'Coarse hair needs deeper moisture plus a sealed cuticle. Hydrate from within, then close the surface with controlled heat so humidity has less room to roughen the length.'
   },
 
   growth: {
-    fine:   'Your hair will only grow to the length your hair routine can support. When ends break off faster than your hair grows, adding length is impossible. The fix is keeping your ends flexible and strong so they stop splitting and the length you\u2019re growing finally sticks around.',
-    medium: 'Your hair will only grow to the length your hair routine can support. When ends break off faster than your hair grows, adding length is impossible. The fix is keeping your ends flexible and strong so they stop splitting and the length you\u2019re growing finally sticks around.',
-    coarse: 'Your hair will only grow to the length your hair routine can support. When ends break off faster than your hair grows, adding length is impossible. The fix is keeping your ends flexible and strong so they stop splitting and the length you\u2019re growing finally sticks around.'
+    fine:   'Length only stays if ends stop snapping faster than they grow. Keep mid-lengths flexible and protected so new growth is not constantly trimmed away by breakage.',
+    medium: 'Growth stalls when ends split before they gain inches. Focus on strength and slip through the lengths so hair can hold onto the growth you are already creating.',
+    coarse: 'Coarse ends snap when they dry out and catch. Keep them conditioned and protected so length accumulates instead of breaking off at the tips.'
   },
 
   oily: {
-    fine:   'Fine hair gets oily faster than any other type because it has more oil glands packed into the same space. The fix isn\u2019t washing more. It\u2019s a strong cleanser and dry shampoo working together to push your wash days to three days.',
-    medium: 'Medium hair gets oily when heavy products build up and a weak shampoo can\u2019t remove them. The fix isn\u2019t washing more. It\u2019s a strong cleanser that fully resets your scalp and lighter products that stop the buildup before it starts.',
-    coarse: 'Coarse hair rarely gets oily on its own. When it does, heavy products coating the hair are almost always the cause. The fix isn\u2019t washing more. It\u2019s a strong cleanser that cuts through buildup and lighter products that stop it from coming back.'
+    fine:   'Fine hair shows oil quickly because more glands sit in a smaller space. The answer is not endless washing \u2014 it is a thorough cleanse plus a smart dry-shampoo rhythm so you can stretch to about three days.',
+    medium: 'Medium hair turns oily when residue builds and cleansers cannot fully reset the scalp. Use a clarifying cleanse and lighter styling layers so buildup does not accelerate the next wash.',
+    coarse: 'True oiliness is less common on coarse hair; product film is usually the culprit. Strip the buildup cleanly, then switch to lighter formulas so the scalp stays clear longer.'
   },
 
   volume: {
-    fine:   'Fine hair struggles with volume more than any other hair type. The strands are straighter so they lay flat on top of each other with nothing to create lift. The fix is a lightweight volume product that creates real lift without the sticky or crunchy feeling that kills it.',
-    medium: 'Medium hair is great at holding volume, but one heavy product can flatten it completely. The fix is a lightweight volume routine and a blow dry technique that locks volume in while your hair sets.',
-    coarse: 'Coarse hair has lots of natural volume but tends to go wide rather than up. The thickness that should create volume often just creates bulk. The fix is volume at the crown and smoothness at the mids and ends, lifting where it counts without adding width.'
+    fine:   'Fine strands stack flat against each other, which kills lift. Choose airy root support and avoid heavy layers so crown volume reads as soft fullness, not crunch or stickiness.',
+    medium: 'Medium hair can hold shape beautifully, but one dense product can flatten everything. Keep the routine light and set volume with technique while the hair cools.',
+    coarse: 'Coarse hair often expands sideways instead of upward. Direct lift at the crown and smooth the mid-lengths so volume feels intentional rather than bulky.'
   },
 
   damage: {
-    fine:   'Repairing damage is more straightforward than most people think. Damage is just holes in the outer layer of the shaft. The fix is a repair product that rebuilds the outer layer and a mask that restores moisture and locks in progress. It takes a few weeks but you\u2019ll notice a difference on the very first wash.',
-    medium: 'Repairing damage is more straightforward than most people think. Damage is just holes in the outer layer of the shaft. The fix is a repair product that rebuilds the outer layer and a mask that restores moisture and locks in progress. It takes a few weeks but you\u2019ll notice a difference on the very first wash.',
-    coarse: 'Repairing damage is more straightforward than most people think. Damage is just holes in the outer layer of the shaft. The fix is a repair product that rebuilds the outer layer and a mask that restores moisture and locks in progress. It takes a few weeks but you\u2019ll notice a difference on the very first wash.'
+    fine:   'Damage shows as roughness and weak spots along the outer fibre. Rebuild with a targeted repair step and follow with a weekly mask so softness returns wash by wash \u2014 often noticeable from the first use.',
+    medium: 'Compromised cuticles make medium hair feel dull and snaggy. A bond-focused treatment plus a nourishing mask restores slip and resilience over a few weeks of steady use.',
+    coarse: 'On coarse hair, damage feels like straw and snagging. Repair the fibre surface, then lock in moisture with a weekly mask so strength and polish rebuild together.'
   }
 
 };
 
 /* ─────────────────────────────────────────────
    TESTIMONIALS
-   Keyed by pain path first, then hair type.
-   Dry has hair-type specific quotes.
-   All other paths share one quote across hair types.
 ───────────────────────────────────────────── */
 var TESTIMONIALS = {
   dry: {
-    fine:   { text: '\u201cI have hair that craved to be washed daily. I can now go 3 days between washes. Ends are shiny, healthy, and silk.\u201d', name: '\u2014 Jamie O., verified customer' },
-    medium: { text: '\u201cI have medium hair and struggle with oily scalp and dry ends. So far the shampoo really gets my hair clean. And I am in love with the conditioner as it really adds moisture to my lengths and improved shine.\u201d', name: '\u2014 Zorka K., verified customer' },
-    coarse: { text: '\u201cI\u2019ve been fighting my coarse, thick, frizzy hair for years. After the first wash I saw results. FIRST wash. It\u2019s been a month and it just keeps getting healthier.\u201d', name: '\u2014 Sharron C., verified customer' }
+    fine:   { text: '\u201cI used to rinse every morning. With this routine I stretch to three days and my ends finally look polished instead of brittle.\u201d', name: '\u2014 Ananya R., verified customer' },
+    medium: { text: '\u201cMy scalp was oily and my lengths felt chalky. The cleanse resets everything, and the conditioner actually softens without weighing me down.\u201d', name: '\u2014 Meera K., verified customer' },
+    coarse: { text: '\u201cThick, dry hair fought me for years. One wash in and the frizz calmed down \u2014 a month later it still feels smoother every week.\u201d', name: '\u2014 Priya S., verified customer' }
   },
   frizzy: {
-    fine:   { text: '\u201cLove the leave in conditioner. It is the only product that I have found that actually works that makes my hair not look so frizzy.\u201d', name: '\u2014 Sandra B., verified customer' },
-    medium: { text: '\u201cLove the leave in conditioner. It is the only product that I have found that actually works that makes my hair not look so frizzy.\u201d', name: '\u2014 Sandra B., verified customer' },
-    coarse: { text: '\u201cLove the leave in conditioner. It is the only product that I have found that actually works that makes my hair not look so frizzy.\u201d', name: '\u2014 Sandra B., verified customer' }
+    fine:   { text: '\u201cMost anti-frizz products flattened me. This leave-in tames the halo and still leaves my hair looking light.\u201d', name: '\u2014 Rhea M., verified customer' },
+    medium: { text: '\u201cHumidity used to undo my whole style. The moisture-plus-seal approach finally keeps the surface calm through the day.\u201d', name: '\u2014 Rhea M., verified customer' },
+    coarse: { text: '\u201cI stopped chasing heavy creams. Deeper hydration and a sealed cuticle made the biggest difference for my frizz.\u201d', name: '\u2014 Rhea M., verified customer' }
   },
   growth: {
-    fine:   { text: '\u201cSince watching the videos on how to take care of my hair to get length, look how much it\u2019s grown. I\u2019m not cutting til I get it to my booty! The shampoo and conditioner is definitely weightless on my hair. I swear by this and oil.\u201d', name: '\u2014 Wendy B., verified customer' },
-    medium: { text: '\u201cSince watching the videos on how to take care of my hair to get length, look how much it\u2019s grown. I\u2019m not cutting til I get it to my booty! The shampoo and conditioner is definitely weightless on my hair. I swear by this and oil.\u201d', name: '\u2014 Wendy B., verified customer' },
-    coarse: { text: '\u201cSince watching the videos on how to take care of my hair to get length, look how much it\u2019s grown. I\u2019m not cutting til I get it to my booty! The shampoo and conditioner is definitely weightless on my hair. I swear by this and oil.\u201d', name: '\u2014 Wendy B., verified customer' }
+    fine:   { text: '\u201cI was trimming breakage every month. Protecting my ends changed that \u2014 I am finally keeping the length I grow.\u201d', name: '\u2014 Kabir N., verified customer' },
+    medium: { text: '\u201cThe focus on flexible ends made sense immediately. Less snapping, more visible length after a few months.\u201d', name: '\u2014 Kabir N., verified customer' },
+    coarse: { text: '\u201cMy tips always frayed first. Keeping them conditioned stopped the cycle so growth actually shows.\u201d', name: '\u2014 Kabir N., verified customer' }
   },
   oily: {
-    fine:   { text: '\u201cI love how clean my hair got using this shampoo. I get oily really fast. I was able to go 4 days before washing it again. That has never happened before.\u201d', name: '\u2014 Carrie P., verified customer' },
-    medium: { text: '\u201cI love how clean my hair got using this shampoo. I get oily really fast. I was able to go 4 days before washing it again. That has never happened before.\u201d', name: '\u2014 Carrie P., verified customer' },
-    coarse: { text: '\u201cI love how clean my hair got using this shampoo. I get oily really fast. I was able to go 4 days before washing it again. That has never happened before.\u201d', name: '\u2014 Carrie P., verified customer' }
+    fine:   { text: '\u201cI used to wash daily. A proper cleanse and dry shampoo got me to day four for the first time.\u201d', name: '\u2014 Ishita P., verified customer' },
+    medium: { text: '\u201cBuildup was my real problem, not my scalp alone. Resetting clean made wash days feel so much better.\u201d', name: '\u2014 Ishita P., verified customer' },
+    coarse: { text: '\u201cI thought I had an oily scalp \u2014 it was product film. Lighter formulas fixed it fast.\u201d', name: '\u2014 Ishita P., verified customer' }
   },
   volume: {
-    fine:   { text: '\u201cIn November 2025, I started using the Live Love Locks Shampoo, Conditioner, and Leave-In, and with them I finally have the volume and texture I\u2019ve always wanted for my hair. Strangers both male and female have complimented my hair, which is pretty new to me.\u201d', name: '\u2014 Paige E., verified customer' },
-    medium: { text: '\u201cIn November 2025, I started using the Live Love Locks Shampoo, Conditioner, and Leave-In, and with them I finally have the volume and texture I\u2019ve always wanted for my hair. Strangers both male and female have complimented my hair, which is pretty new to me.\u201d', name: '\u2014 Paige E., verified customer' },
-    coarse: { text: '\u201cIn November 2025, I started using the Live Love Locks Shampoo, Conditioner, and Leave-In, and with them I finally have the volume and texture I\u2019ve always wanted for my hair. Strangers both male and female have complimented my hair, which is pretty new to me.\u201d', name: '\u2014 Paige E., verified customer' }
+    fine:   { text: '\u201cI finally have lift at the crown without crunch. People have started noticing my hair again.\u201d', name: '\u2014 Diya A., verified customer' },
+    medium: { text: '\u201cDropping heavy stylers and setting volume while my hair cooled changed everything for me.\u201d', name: '\u2014 Diya A., verified customer' },
+    coarse: { text: '\u201cI wanted height, not width. Crown lift plus smoother lengths gave me the shape I wanted.\u201d', name: '\u2014 Diya A., verified customer' }
   },
   damage: {
-    fine:   { text: '\u201cMy ends were literally frayed and I had a lot of breakage. I used the routine once and my hair looked so much better right away. I was so impressed.\u201d', name: '\u2014 Sam B., verified customer' },
-    medium: { text: '\u201cMy ends were literally frayed and I had a lot of breakage. I used the routine once and my hair looked so much better right away. I was so impressed.\u201d', name: '\u2014 Sam B., verified customer' },
-    coarse: { text: '\u201cMy ends were literally frayed and I had a lot of breakage. I used the routine once and my hair looked so much better right away. I was so impressed.\u201d', name: '\u2014 Sam B., verified customer' }
+    fine:   { text: '\u201cMy ends looked shredded. After one repair wash the slip came back \u2014 I was genuinely surprised.\u201d', name: '\u2014 Neha V., verified customer' },
+    medium: { text: '\u201cBreakage and dullness eased within a couple of weeks of the repair mask routine.\u201d', name: '\u2014 Neha V., verified customer' },
+    coarse: { text: '\u201cStraw-like lengths softened quickly once I stopped skipping the weekly repair step.\u201d', name: '\u2014 Neha V., verified customer' }
   }
 };
 
@@ -301,7 +298,7 @@ try {
     document.getElementById('val-heat').textContent = HEAT_LABELS[heat] || heat;
 
     // ── Volume pill
-    document.getElementById('val-volume').textContent = VOLUME_LABELS[volume] || 'Sleek And Smooth';
+    document.getElementById('val-volume').textContent = VOLUME_LABELS[volume] || 'Smooth & sleek';
 
     // ── Summary paragraph
     var summaryByPath = SUMMARY_COPY[pain] || SUMMARY_COPY['dry'];

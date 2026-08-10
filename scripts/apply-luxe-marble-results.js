@@ -8,7 +8,7 @@ let html = fs.readFileSync(file, 'utf8')
 if (!html.includes('Libre+Caslon') && !html.includes('Libre Caslon')) {
   html = html.replace(
     /<title>.*?<\/title>/,
-    `<title>Personalized Hair Profile | Lookskart</title>
+    `<title>Personalized Hair Profile</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Personalized hair care product quiz - rebuilt from live-love-locks.com",
+  "description": "Personalized hair care product quiz",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

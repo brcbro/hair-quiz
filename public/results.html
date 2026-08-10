@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Personalized Hair Profile | Lookskart</title>
+<title>Personalized Hair Profile</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
@@ -27,7 +27,12 @@
   --radius: 0.25rem;
   --font: 'Hanken Grotesk', system-ui, sans-serif;
   --font-display: 'Libre Caslon Text', Georgia, serif;
-  --marble-url: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBuBJmDlLYxyqgh8PHVJLRDuotE5VJ3lPFf8eZOfITmnqxSUDO0EouFyOyQe9Z4a4xv6JHlbyOmB0RNum8qlg5Mk_PVLKeptkPBlwyuIH27TvmG0hula3U6Ke75PYJO7XCXyYiSOk4hPjNaJqqQ7_rqWLG4KVLcoAhBcxBIUoMzPYtNFGT91PUJd7WqpETLbLVpD1KaVwas7ICAIuvrQ-Oz770oz9GXePabesO-eGn_KbiJbaD-JlOoCA');
+  --marble-url: linear-gradient(
+    125deg,
+    rgba(209, 197, 180, 0.18) 0%,
+    rgba(250, 249, 249, 0) 42%,
+    rgba(197, 160, 89, 0.06) 100%
+  );
   --chrome-h: 104px;
 }
 
@@ -101,11 +106,13 @@ html, body {
 
 .results-brand {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: clamp(16px, 4.2vw, 22px);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--on-surface);
   text-decoration: none;
+  padding-right: 12px;
+  line-height: 1.3;
 }
 
 .results-close {
@@ -913,6 +920,85 @@ html, body {
 }
 .lll-book-phone:hover { color: var(--primary); }
 
+/* Consultation confirmation modal */
+.bk-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.bk-modal.is-open { display: flex; }
+.bk-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(28, 25, 23, 0.55);
+  backdrop-filter: blur(4px);
+}
+.bk-modal-card {
+  position: relative;
+  z-index: 1;
+  width: min(420px, 100%);
+  background: var(--surface-container-lowest);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius);
+  padding: 36px 28px 28px;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(28, 25, 23, 0.18);
+  animation: bkModalIn 0.35s ease;
+}
+@keyframes bkModalIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.bk-modal-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  color: var(--primary);
+}
+.bk-modal-icon .material-symbols-outlined {
+  font-size: 28px;
+  font-variation-settings: 'FILL' 1;
+}
+.bk-modal-title {
+  margin: 0 0 10px;
+  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--on-surface);
+  line-height: 1.25;
+}
+.bk-modal-copy {
+  margin: 0 0 24px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--on-surface-variant);
+}
+.bk-modal-btn {
+  appearance: none;
+  border: 1px solid var(--primary-container);
+  background: transparent;
+  color: var(--primary);
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 12px 22px;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: background 0.2s;
+}
+.bk-modal-btn:hover {
+  background: color-mix(in srgb, var(--primary-container) 14%, transparent);
+}
+
 .view-cart-banner {
   display: none;
   background: var(--on-surface);
@@ -1041,7 +1127,7 @@ html, body {
 
 <div class="results-chrome">
   <header class="results-header">
-    <a class="results-brand" href="/">Lookskart</a>
+    <a class="results-brand" href="/">Customised Haircare routine</a>
     <button type="button" class="results-close" aria-label="Close" title="Close" onclick="window.location.href='/'">
       <span class="material-symbols-outlined" aria-hidden="true">close</span>
     </button>
@@ -1067,9 +1153,9 @@ html, body {
 <section id="section-profile">
   <div class="profile-grid">
     <div class="profile-main">
-      <p class="label-caps">Personalized Results</p>
+      <p class="label-caps">Your Results</p>
       <h1 class="section-title">Your Hair Profile</h1>
-      <p class="section-lead">A stylist-led reading of your answers — what your hair is asking for, and how we’ll restore balance.</p>
+      <p class="section-lead">Based on your answers, our consultants mapped what your hair needs most — and how to restore balance with a clear regimen.</p>
 
       <div class="diagnosis-card">
         <p class="label-caps" style="margin-bottom: 16px;">Diagnosis</p>
@@ -1077,7 +1163,7 @@ html, body {
         <blockquote class="lll-proof">
           <p id="summary-text"></p>
         </blockquote>
-        <p class="label-caps" style="margin-top: 16px; margin-bottom: 0;">— Lead Stylist Analysis</p>
+        <p class="label-caps" style="margin-top: 16px; margin-bottom: 0;">— Consultation Notes</p>
         <div class="customer-quote" style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--outline-variant);">
           <p id="testimonial-text" style="font-style: italic; color: var(--on-surface-variant); margin: 0 0 8px; line-height: 1.6;"></p>
           <cite class="lll-proof-name" id="testimonial-name"></cite>
@@ -1106,7 +1192,7 @@ html, body {
         </div>
         <div class="lll-pill">
           <span class="material-symbols-outlined pill-icon" aria-hidden="true">waves</span>
-          <span class="pill-meta"><span class="pill-label">Volume preference</span><strong id="val-volume">Sleek And Smooth</strong></span>
+          <span class="pill-meta"><span class="pill-label">Volume preference</span><strong id="val-volume">Smooth &amp; sleek</strong></span>
         </div>
       </div>
     </aside>
@@ -1120,7 +1206,7 @@ html, body {
     <div>
       <p class="label-caps">Section 2</p>
       <h2 class="section-title">Your Prescription</h2>
-      <p class="section-lead">Essential formulas chosen for your hair type, frustration, and routine — in order of priority.</p>
+      <p class="section-lead">A curated regimen matched to your hair type, concerns, and styling habits — prioritised for results.</p>
     </div>
   </div>
 
@@ -1130,80 +1216,76 @@ html, body {
     <div class="product-card product-card--hero" id="card-sc-fm">
       <div class="product-card-top">
         <div class="product-card-img-col">
-          <img class="product-card-img" src="/images/products/Gemini_Generated_Image_ozu529ozu529ozu5_3.jpg" alt="Weightless Shampoo and Conditioner Set">
+          <img class="product-card-img" src="/images/products/lookskart/biotop-911-quinoa-shampoo.jpg" alt="Biotop 911 Quinoa Shampoo">
           <span class="badge badge-essential">Must Have</span>
         </div>
         <div class="product-card-info">
-          <p class="product-card-name">Weightless Shampoo + Conditioner Set</p>
-          <p class="product-card-note" id="note-sc">Cleans your scalp without stripping it, so buildup stays off and your hair can go longer between washes.</p>
+          <p class="product-card-name">Biotop 911 Quinoa Shampoo</p>
+          <p class="product-card-note" id="note-sc">Resets the scalp cleanly while keeping lengths soft, so you can comfortably stretch time between washes.</p>
         </div>
       </div>
       <div class="product-card-footer">
         <div class="product-card-footer-row">
-          <span class="product-price-main" id="sc-price">$75.00</span>
-          <button class="atc-btn" id="sc-btn" onclick="addToCart('sc')">View Product</button>
+          <span class="product-price-main" id="sc-price">Rs. 2,070</span>
+          <button class="atc-btn" id="sc-btn" type="button" onclick="openLookskart('sc')">Shop on Lookskart</button>
         </div>
-        <p class="success-msg" id="sc-success">Added to cart!</p>
       </div>
     </div>
 
     <div class="product-card product-card--hero hidden" id="card-sc-coarse">
       <div class="product-card-top">
         <div class="product-card-img-col">
-          <img class="product-card-img" src="/images/products/JPEGimage_9bbfc230-3f8a-4c36-96c9-43f37fc17ffe_300x.jpg" alt="Weightless Hydrating Shampoo and Conditioner Set">
+          <img class="product-card-img" src="/images/products/lookskart/brasil-cacau-extreme-repair-shampoo.jpg" alt="Brasil Cacau Extreme Repair Shampoo">
           <span class="badge badge-essential">Must Have</span>
         </div>
         <div class="product-card-info">
-          <p class="product-card-name">Weightless Hydrating Shampoo + Conditioner Set</p>
-          <p class="product-card-note">Cleanses oil and buildup without stripping the moisture that keeps coarse hair soft and frizz-free.</p>
+          <p class="product-card-name">Brasil Cacau Extreme Repair Shampoo</p>
+          <p class="product-card-note">Clears oil and residue while protecting the moisture coarse hair needs to stay soft and calm.</p>
         </div>
       </div>
       <div class="product-card-footer">
         <div class="product-card-footer-row">
-          <span class="product-price-main" id="scc-price">$75.00</span>
-          <button class="atc-btn" id="scc-btn" onclick="addToCart('scc')">View Product</button>
+          <span class="product-price-main" id="scc-price">Rs. 1,646</span>
+          <button class="atc-btn" id="scc-btn" type="button" onclick="openLookskart('scc')">Shop on Lookskart</button>
         </div>
-        <p class="success-msg" id="scc-success">Added to cart!</p>
       </div>
     </div>
 
     <div class="product-card product-card--side">
       <div class="product-card-top">
         <div class="product-card-img-col">
-          <img class="product-card-img" src="/images/products/Lic3456346Edit-Copy_1.png" alt="Leave-in Conditioner">
+          <img class="product-card-img" src="/images/products/lookskart/k18-leave-in-mask-50ml.jpg" alt="K-18 Leave-in Molecular Repair Hair Mask">
           <span class="badge badge-essential">Must Have</span>
         </div>
         <div class="product-card-info">
-          <p class="product-card-name">Leave-in Conditioner</p>
-          <p class="product-card-note" id="note-leavein">Locks in moisture so your hair keeps its shiny &lsquo;just conditioned&rsquo; look until your next wash.</p>
+          <p class="product-card-name">K-18 Leave-in Molecular Repair Mask</p>
+          <p class="product-card-note" id="note-leavein">A light mist that seals in softness so hair keeps a freshly conditioned finish until your next wash.</p>
         </div>
       </div>
       <div class="product-card-footer">
         <div class="product-card-footer-row">
-          <span class="product-price-main" id="li-price">$25.00</span>
-          <button class="atc-btn" id="li-btn" onclick="addToCart('li')">View Product</button>
+          <span class="product-price-main" id="li-price">Rs. 5,625</span>
+          <button class="atc-btn" id="li-btn" type="button" onclick="openLookskart('li')">Shop on Lookskart</button>
         </div>
-        <p class="success-msg" id="li-success">Added to cart!</p>
       </div>
     </div>
 
     <div class="product-card product-card--oil" id="card-oil">
       <div class="product-card-top">
         <div class="product-card-img-col">
-          <img class="product-card-img" src="/images/products/IMG_0267.jpg" alt="Weightless Oil for Fine and Medium Hair">
+          <img class="product-card-img" src="/images/products/lookskart/moroccanoil-treatment-light.jpg" alt="Moroccanoil Treatment Light">
           <span class="badge badge-essential">Must Have</span>
         </div>
         <div class="product-card-info">
-          <p class="product-card-name">Weightless Oil for Fine &amp; Medium Hair</p>
-          <p class="product-card-note" id="note-oil">Keeps mids and ends smooth and moisturized. Prevents split ends from forming.</p>
+          <p class="product-card-name">Moroccanoil Treatment Light</p>
+          <p class="product-card-note" id="note-oil">Smooths mid-lengths and ends, adds quiet shine, and helps discourage split ends.</p>
         </div>
       </div>
       <div class="product-card-footer">
         <div class="product-card-footer-row">
-          <span class="product-price-main" id="oil-price">$22.50</span>
-          <button class="atc-btn" id="oil-btn" onclick="addToCart('oil')">View Product</button>
+          <span class="product-price-main" id="oil-price">Rs. 4,320</span>
+          <button class="atc-btn" id="oil-btn" type="button" onclick="openLookskart('oil')">Shop on Lookskart</button>
         </div>
-        <p class="success-msg" id="oil-success">Added to cart!</p>
       </div>
     </div>
 
@@ -1215,133 +1297,133 @@ html, body {
 
     <div class="product-row hidden" id="row-moroil">
       <div class="product-row-top">
-        <img class="product-img" src="/images/products/s2030286-main-zoom.jpg" alt="Moroccanoil Treatment Oil">
+        <img class="product-img" src="/images/products/lookskart/moroccanoil-treatment-original.jpg" alt="Moroccanoil Treatment Original">
         <div class="product-body">
           <p class="product-brand">Moroccanoil</p>
-          <div class="product-name-row"><span class="product-name">Treatment Hair Oil</span><span class="badge badge-essential">Must Have</span></div>
+          <div class="product-name-row"><span class="product-name">Treatment Original</span><span class="badge badge-essential">Must Have</span></div>
           <p class="product-note">Coarse hair loses its polish fast. Apply to mids and ends to bring the shine back and keep your ends looking sharp.</p>
         </div>
       </div>
       <div class="product-row-actions">
-        <button type="button" class="atc-btn atc-btn--sm">View Product</button>
+        <button type="button" class="atc-btn atc-btn--sm" onclick="openLookskart('moroil')">Shop on Lookskart</button>
       </div>
     </div>
 
     <div class="product-row hidden" id="row-bdc">
       <div class="product-row-top">
-        <img class="product-img" src="/images/products/Big-Blowout-Heat-Protectant-Gel-150ml.jpg" alt="Redken Big Blowout">
+        <img class="product-img" src="/images/products/lookskart/kerastase-nectar-thermique.webp" alt="Kerastase Nectar Thermique Blow Dry Primer">
         <div class="product-body">
-          <p class="product-brand">Redken</p>
-          <div class="product-name-row"><span class="product-name">Big Blowout</span><span class="badge badge-essential">Must Have</span></div>
+          <p class="product-brand">Kerastase</p>
+          <div class="product-name-row"><span class="product-name">Nectar Thermique Blow Dry Primer</span><span class="badge badge-essential">Must Have</span></div>
           <p class="product-note">Non-negotiable for blow dryer users. Protects from heat while dramatically improving texture and shine.</p>
         </div>
       </div>
       <div class="product-row-actions">
-        <button type="button" class="atc-btn atc-btn--sm">View Product</button>
+        <button type="button" class="atc-btn atc-btn--sm" onclick="openLookskart('bdc')">Shop on Lookskart</button>
       </div>
     </div>
 
     <div class="product-row hidden" id="row-rebel">
       <div class="product-row-top">
-        <img class="product-img" src="/images/products/ulta-2580474.png" alt="Redken Rebel Tame">
+        <img class="product-img" src="/images/products/lookskart/kerastase-gloss-absolu-heat-protectant.webp" alt="Kerastase Gloss Absolu Heat Protectant">
         <div class="product-body">
-          <p class="product-brand">Redken</p>
-          <div class="product-name-row"><span class="product-name">Rebel Tame</span><span class="badge badge-essential">Must Have</span></div>
+          <p class="product-brand">Kerastase</p>
+          <div class="product-name-row"><span class="product-name">Gloss Absolu Heat Protectant Spray</span><span class="badge badge-essential">Must Have</span></div>
           <p class="product-note">Non-negotiable for blow dryer users. Controls frizz and smooths coarse hair while protecting from heat.</p>
         </div>
       </div>
       <div class="product-row-actions">
-        <button type="button" class="atc-btn atc-btn--sm">View Product</button>
+        <button type="button" class="atc-btn atc-btn--sm" onclick="openLookskart('rebel')">Shop on Lookskart</button>
       </div>
     </div>
 
     <div class="product-row hidden" id="row-thermal">
       <div class="product-row-top">
-        <img class="product-img" src="/images/products/Redken-2022-Styling-Reno-Thermal-Spray-High-Hold-Ecom-ATF-Packshot-200.jpg" alt="Redken Thermal Spray High Hold">
+        <img class="product-img" src="/images/products/lookskart/schwarzkopf-osis-flatliner.jpg" alt="Schwarzkopf OSiS Flatliner Heat Protection">
         <div class="product-body">
-          <p class="product-brand">Redken</p>
-          <div class="product-name-row"><span class="product-name">Thermal Spray High Hold</span><span class="badge badge-essential">Must Have</span></div>
+          <p class="product-brand">Schwarzkopf</p>
+          <div class="product-name-row"><span class="product-name">OSiS+ Flatliner Heat Protection Spray</span><span class="badge badge-essential">Must Have</span></div>
           <p class="product-note">Non-negotiable before any iron or wand. Protects from heat while adding shine and longevity.</p>
         </div>
       </div>
       <div class="product-row-actions">
-        <button type="button" class="atc-btn atc-btn--sm">View Product</button>
+        <button type="button" class="atc-btn atc-btn--sm" onclick="openLookskart('thermal')">Shop on Lookskart</button>
       </div>
     </div>
 
     <div class="product-row hidden" id="row-volume">
       <div class="product-row-top">
-        <img class="product-img" src="/images/products/1-VBDM_product_1440_9d214cbf-772f-432f-8a52-d7613a762b52.png" alt="Olaplex Volumizing Blow Dry Mist">
+        <img class="product-img" src="/images/products/lookskart/moroccanoil-root-boost.jpg" alt="Moroccanoil Root Boost">
         <div class="product-body">
-          <p class="product-brand">Olaplex</p>
-          <div class="product-name-row"><span class="product-name">Volumizing Blow Dry Mist</span><span class="badge badge-essential">Must Have</span></div>
+          <p class="product-brand">Moroccanoil</p>
+          <div class="product-name-row"><span class="product-name">Root Boost</span><span class="badge badge-essential">Must Have</span></div>
           <p class="product-note">Adds fullness without the sticky feeling most volume products leave.</p>
         </div>
       </div>
       <div class="product-row-actions">
-        <button type="button" class="atc-btn atc-btn--sm">View Product</button>
+        <button type="button" class="atc-btn atc-btn--sm" onclick="openLookskart('volume')">Shop on Lookskart</button>
       </div>
     </div>
 
     <div class="product-row" id="row-dryshampoo">
       <div class="product-row-top">
-        <img class="product-img" src="/images/products/dryshampoo_new_fs.png" alt="Living Proof Perfect Hair Day Dry Shampoo">
+        <img class="product-img" src="/images/products/lookskart/moroccanoil-dry-texture-spray.jpg" alt="Moroccanoil Dry Texture Spray">
         <div class="product-body">
-          <p class="product-brand">Living Proof</p>
-          <div class="product-name-row"><span class="product-name">Perfect Hair Day Dry Shampoo</span><span class="badge badge-recommended">Good to Have</span></div>
+          <p class="product-brand">Moroccanoil</p>
+          <div class="product-name-row"><span class="product-name">Dry Texture Spray</span><span class="badge badge-recommended">Good to Have</span></div>
           <p class="product-note">Every wash day you skip means healthier hair and less time and money spent on haircare.</p>
         </div>
       </div>
       <div class="product-row-actions">
-        <button type="button" class="atc-btn atc-btn--sm">View Product</button>
+        <button type="button" class="atc-btn atc-btn--sm" onclick="openLookskart('dryshampoo')">Shop on Lookskart</button>
       </div>
     </div>
 
     <div class="product-row hidden" id="row-dryshampoo-coarse">
       <div class="product-row-top">
-        <img class="product-img" src="/images/products/moroccanoil_dry_shampoo_light_tones_x2000.png" alt="Moroccanoil Dry Shampoo">
+        <img class="product-img" src="/images/products/lookskart/moroccanoil-dry-texture-spray.jpg" alt="Moroccanoil Dry Texture Spray">
         <div class="product-body">
           <p class="product-brand">Moroccanoil</p>
-          <div class="product-name-row"><span class="product-name">Dry Shampoo</span><span class="badge badge-recommended">Good to Have</span></div>
+          <div class="product-name-row"><span class="product-name">Dry Texture Spray</span><span class="badge badge-recommended">Good to Have</span></div>
           <p class="product-note">Every wash day you skip means less stress on coarse hair. Dry shampoo keeps your roots fresh so you can skip more of them.</p>
         </div>
       </div>
       <div class="product-row-actions">
-        <button type="button" class="atc-btn atc-btn--sm">View Product</button>
+        <button type="button" class="atc-btn atc-btn--sm" onclick="openLookskart('dryshampoo-coarse')">Shop on Lookskart</button>
       </div>
     </div>
 
     <div class="product-row" id="row-hairspray">
       <div class="product-row-top">
-        <img class="product-img" src="/images/products/redken-hair-styling-control-addict-anti-humidity-high-hold-hairspray-2000x2000_278.jpg" alt="Redken Control Hairspray">
+        <img class="product-img" src="/images/products/lookskart/moroccanoil-luminous-hairspray.jpg" alt="Moroccanoil Luminous Hairspray">
         <div class="product-body">
-          <p class="product-brand">Redken</p>
-          <div class="product-name-row"><span class="product-name">Control Hairspray</span><span class="badge badge-low">Skip It For Now</span></div>
+          <p class="product-brand">Moroccanoil</p>
+          <div class="product-name-row"><span class="product-name">Luminous Hairspray Strong</span><span class="badge badge-low">Skip It For Now</span></div>
           <p class="product-note">All hairsprays weigh hair down and speed up oiliness. Save this for special occasions.</p>
         </div>
       </div>
       <div class="product-row-actions">
-        <button type="button" class="atc-btn atc-btn--sm">View Product</button>
+        <button type="button" class="atc-btn atc-btn--sm" onclick="openLookskart('hairspray')">Shop on Lookskart</button>
       </div>
     </div>
 
     <div class="product-row" id="row-repair">
       <div class="product-row-top">
-        <img class="product-img" src="/images/products/redken-acidic-bonding-concentrate-mask-for-damaged-hair.png" alt="Redken Acidic Bonding Concentrate Mask">
+        <img class="product-img" src="/images/products/lookskart/ph-plex-step-3.webp" alt="pH Plex Step 3">
         <div class="product-body">
-          <p class="product-brand">Redken</p>
-          <div class="product-name-row"><span class="product-name">Acidic Bonding Concentrate Mask</span><span class="badge badge-low" id="badge-repair">Skip It For Now</span></div>
+          <p class="product-brand">pH Plex</p>
+          <div class="product-name-row"><span class="product-name">Step 3 Bond Repair</span><span class="badge badge-low" id="badge-repair">Skip It For Now</span></div>
           <p class="product-note" id="note-repair">Rebuilds hair from the inside out, restoring its healthy structure.</p>
         </div>
       </div>
       <div class="product-row-actions">
-        <button type="button" class="atc-btn atc-btn--sm">View Product</button>
+        <button type="button" class="atc-btn atc-btn--sm" onclick="openLookskart('repair')">Shop on Lookskart</button>
       </div>
     </div>
 
     <div class="product-row" id="row-mask">
       <div class="product-row-top">
-        <img class="product-img" src="/images/products/31eRafhskFL_1.jpg" alt="Moroccanoil Weightless Hydrating Mask" style="background:white;">
+        <img class="product-img" src="/images/products/lookskart/moroccanoil-weightless-hydrating-mask.jpg" alt="Moroccanoil Weightless Hydrating Mask" style="background:white;">
         <div class="product-body">
           <p class="product-brand">Moroccanoil</p>
           <div class="product-name-row"><span class="product-name">Weightless Hydrating Mask</span><span class="badge badge-low" id="badge-mask">Skip It For Now</span></div>
@@ -1349,12 +1431,13 @@ html, body {
         </div>
       </div>
       <div class="product-row-actions">
-        <button type="button" class="atc-btn atc-btn--sm">View Product</button>
+        <button type="button" class="atc-btn atc-btn--sm" onclick="openLookskart('mask')">Shop on Lookskart</button>
       </div>
     </div>
 
       </div>
     </div>
+
   </div>
 </section>
 
@@ -1364,7 +1447,7 @@ html, body {
   <div class="section-center" style="margin-bottom: 36px;">
     <p class="label-caps">Section 3</p>
     <h2 class="section-title">Your Ritual</h2>
-    <p class="section-lead">Wash day steps, morning refresh, and a path back to healthy hair — at your pace.</p>
+    <p class="section-lead">A clear wash-day and refresh plan so your regimen performs the way it should — at your pace.</p>
   </div>
 
   <div class="routine-wrap">
@@ -1382,7 +1465,7 @@ html, body {
         <div class="routine-step-inner">
           <div class="step-inner-header">
             <span class="step-pill">Step 1</span>
-            <img class="step-inner-img" src="/images/products/553A4502-Edit_2024-07-03T14_51_18.826Z.png" alt="Shampoo">
+            <img class="step-inner-img" id="img-step-shampoo" src="/images/products/lookskart/biotop-911-quinoa-shampoo.jpg" alt="Shampoo">
             <p class="step-inner-title">Shampoo</p>
           </div>
           <ul>
@@ -1397,7 +1480,7 @@ html, body {
         <div class="routine-step-inner">
           <div class="step-inner-header">
             <span class="step-pill">Step 2</span>
-            <img class="step-inner-img" src="/images/products/553A4533-Edit.jpg" alt="Conditioner">
+            <img class="step-inner-img" id="img-step-conditioner" src="/images/products/lookskart/biotop-911-quinoa-conditioner.jpg" alt="Conditioner">
             <p class="step-inner-title">Conditioner</p>
           </div>
           <ul>
@@ -1412,7 +1495,7 @@ html, body {
         <div class="routine-step-inner">
           <div class="step-inner-header">
             <span class="step-pill">Step 3</span>
-            <img class="step-inner-img" src="/images/products/Lic3456346Edit-Copy_1.png" alt="Leave-in Conditioner">
+            <img class="step-inner-img" src="/images/products/lookskart/k18-leave-in-mask-50ml.jpg" alt="K-18 Leave-in Mask">
             <p class="step-inner-title">Leave-in Conditioner</p>
           </div>
           <ul>
@@ -1427,7 +1510,7 @@ html, body {
           <div class="step-inner-divider"></div>
           <div class="step-inner-header">
             <span class="step-pill" id="pill-detangle-leavein">Step 4</span>
-            <img class="step-inner-img" src="/images/products/Gemini_Generated_Image_k5mabfk5mabfk5ma.jpg" alt="Detangle">
+            <img class="step-inner-img" src="/images/products/lookskart/lets-shave-beard-brush.jpg" alt="Detangle">
             <p class="step-inner-title">Detangle</p>
           </div>
           <ul>
@@ -1441,7 +1524,7 @@ html, body {
           <div class="step-inner-divider"></div>
           <div class="step-inner-header">
             <span class="step-pill" id="pill-bdc">Step 4</span>
-            <img class="step-inner-img" id="img-bdc" src="/images/products/Big-Blowout-Heat-Protectant-Gel-150ml.jpg" alt="Blow Dry Cream">
+            <img class="step-inner-img" id="img-bdc" src="/images/products/lookskart/kerastase-nectar-thermique.webp" alt="Blow Dry Cream">
             <p class="step-inner-title">Blow Dry Cream</p>
           </div>
           <ul>
@@ -1455,7 +1538,7 @@ html, body {
           <div class="step-inner-divider"></div>
           <div class="step-inner-header">
             <span class="step-pill" id="pill-volume-step">Step 5</span>
-            <img class="step-inner-img" src="/images/products/1-VBDM_product_1440_9d214cbf-772f-432f-8a52-d7613a762b52.png" alt="Olaplex Volume Mist">
+            <img class="step-inner-img" src="/images/products/lookskart/moroccanoil-root-boost.jpg" alt="Moroccanoil Root Boost">
             <p class="step-inner-title">Volume Blow Dry Mist</p>
           </div>
           <ul>
@@ -1469,7 +1552,7 @@ html, body {
           <div class="step-inner-divider"></div>
           <div class="step-inner-header">
             <span class="step-pill" id="pill-rough-dry">Step 5</span>
-            <img class="step-inner-img" src="/images/products/blow_dryer.jpg" alt="Rough Dry">
+            <img class="step-inner-img" src="/images/products/lookskart/kerastase-nectar-thermique.webp" alt="Rough Dry">
             <p class="step-inner-title">Rough Dry</p>
           </div>
           <ul>
@@ -1482,7 +1565,7 @@ html, body {
           <div class="step-inner-divider"></div>
           <div class="step-inner-header">
             <span class="step-pill" id="pill-detangle-roughdry">Step 6</span>
-            <img class="step-inner-img" src="/images/products/Gemini_Generated_Image_k5mabfk5mabfk5ma.jpg" alt="Detangle">
+            <img class="step-inner-img" src="/images/products/lookskart/lets-shave-beard-brush.jpg" alt="Detangle">
             <p class="step-inner-title">Detangle</p>
           </div>
           <ul>
@@ -1496,7 +1579,7 @@ html, body {
           <div class="step-inner-divider"></div>
           <div class="step-inner-header">
             <span class="step-pill" id="pill-blow-dry">Step 7</span>
-            <img class="step-inner-img" src="/images/products/blow_dryer.jpg" alt="Blow Dry">
+            <img class="step-inner-img" src="/images/products/lookskart/kerastase-nectar-thermique.webp" alt="Blow Dry">
             <p class="step-inner-title">Blow Dry</p>
           </div>
           <ul>
@@ -1509,7 +1592,7 @@ html, body {
           <div class="step-inner-divider"></div>
           <div class="step-inner-header">
             <span class="step-pill" id="pill-predry-airdry">⚠️ Step 5</span>
-            <img class="step-inner-img" src="/images/products/blow_dryer.jpg" alt="Pre-Dry or Air Dry">
+            <img class="step-inner-img" src="/images/products/lookskart/kerastase-nectar-thermique.webp" alt="Pre-Dry or Air Dry">
             <p class="step-inner-title">Pre-Dry or Air Dry</p>
           </div>
           <ul>
@@ -1521,7 +1604,7 @@ html, body {
           <div class="step-inner-divider"></div>
           <div class="step-inner-header">
             <span class="step-pill" id="pill-thermal">Step 6</span>
-            <img class="step-inner-img" src="/images/products/Redken-2022-Styling-Reno-Thermal-Spray-High-Hold-Ecom-ATF-Packshot-200.jpg" alt="Thermal Protectant">
+            <img class="step-inner-img" src="/images/products/lookskart/schwarzkopf-osis-flatliner.jpg" alt="Thermal Protectant">
             <p class="step-inner-title" id="step-thermal-title">Thermal Protectant</p>
           </div>
           <ul>
@@ -1535,7 +1618,7 @@ html, body {
           <div class="step-inner-divider"></div>
           <div class="step-inner-header">
             <span class="step-pill" id="pill-iron">Step 7</span>
-            <img class="step-inner-img" src="/images/products/iron.jpg" alt="Flat Iron">
+            <img class="step-inner-img" src="/images/products/lookskart/schwarzkopf-osis-flatliner.jpg" alt="Flat Iron">
             <p class="step-inner-title">Flat Iron, Curling Iron or Wand</p>
           </div>
           <ul>
@@ -1548,7 +1631,7 @@ html, body {
           <div class="step-inner-divider"></div>
           <div class="step-inner-header">
             <span class="step-pill" id="pill-oil">Step 4</span>
-            <img class="step-inner-img" id="img-step-oil" src="/images/products/IMG_0267.jpg" alt="Hair Oil">
+            <img class="step-inner-img" id="img-step-oil" src="/images/products/lookskart/moroccanoil-treatment-light.jpg" alt="Hair Oil">
             <p class="step-inner-title">Hair Oil</p>
           </div>
           <ul>
@@ -1559,11 +1642,11 @@ html, body {
         </div>
 
         <div class="lll-note" id="volume-note" style="margin-top: 12px;">
-          The most effective way to get volume is through blow drying. It's a technique that takes time to learn but pays off significantly. When you're ready to try it, come back and retake the quiz with your blow dryer selected.
+          Crown lift is most reliable with a blow-dry set. It takes practice, but the shape holds longer. When you are ready, retake the quiz with your dryer selected so we can tailor the styling steps.
         </div>
 
         <div class="lll-note" id="coarse-heat-note" style="margin-top: 12px;">
-          Coarse hair is dry and frizzy because the cuticle is difficult to seal. Products help, but can only take you so far. Heat is what physically closes it. When you're ready, come back and retake the quiz with your blow dryer selected.
+          Coarse hair frizzes when the cuticle stays open. Products help, but controlled heat is what closes the surface. When you are ready, retake the quiz with your dryer selected for a fuller wash-day plan.
         </div>
 
       </div>
@@ -1581,7 +1664,7 @@ html, body {
         <div class="routine-step-inner">
           <div class="step-inner-header">
             <span class="step-pill">Step 1</span>
-            <img class="step-inner-img" src="/images/products/553A4502-Edit_2024-07-03T14_51_18.826Z.png" alt="Shampoo">
+            <img class="step-inner-img" src="/images/products/lookskart/biotop-911-quinoa-shampoo.jpg" alt="Shampoo">
             <p class="step-inner-title">Shampoo</p>
           </div>
           <ul>
@@ -1593,8 +1676,8 @@ html, body {
         <div class="routine-step-inner">
           <div class="step-inner-header">
             <span class="step-pill">Step 2</span>
-            <img class="step-inner-img" src="/images/products/redken-acidic-bonding-concentrate-mask-for-damaged-hair.png" alt="Acidic Bonding Concentrate Mask" style="background:white;">
-            <p class="step-inner-title">Acidic Bonding Concentrate Mask</p>
+            <img class="step-inner-img" src="/images/products/lookskart/ph-plex-step-3.webp" alt="pH Plex Step 3" style="background:white;">
+            <p class="step-inner-title">pH Plex Step 3 Bond Repair</p>
           </div>
           <ul>
             <li>Apply to all damaged areas of your hair — mids and ends</li>
@@ -1606,7 +1689,7 @@ html, body {
         <div class="routine-step-inner">
           <div class="step-inner-header">
             <span class="step-pill">Step 3</span>
-            <img class="step-inner-img" src="/images/products/31eRafhskFL_1.jpg" alt="Moroccanoil Mask" style="background:white;">
+            <img class="step-inner-img" src="/images/products/lookskart/moroccanoil-weightless-hydrating-mask.jpg" alt="Moroccanoil Mask" style="background:white;">
             <p class="step-inner-title">Moroccanoil Mask</p>
           </div>
           <ul>
@@ -1630,7 +1713,7 @@ html, body {
         <div class="routine-step-inner">
           <div class="step-inner-header">
             <span class="step-pill">Step 1</span>
-            <img class="step-inner-img" id="img-morning-dryshampoo" src="/images/products/dryshampoo_new_fs.png" alt="Dry Shampoo">
+            <img class="step-inner-img" id="img-morning-dryshampoo" src="/images/products/lookskart/moroccanoil-dry-texture-spray.jpg" alt="Dry Shampoo">
             <p class="step-inner-title">Dry Shampoo</p>
           </div>
           <ul>
@@ -1642,7 +1725,7 @@ html, body {
         <div class="routine-step-inner">
           <div class="step-inner-header">
             <span class="step-pill">Step 2</span>
-            <img class="step-inner-img" src="/images/products/Gemini_Generated_Image_k5mabfk5mabfk5ma.jpg" alt="Detangle">
+            <img class="step-inner-img" src="/images/products/lookskart/lets-shave-beard-brush.jpg" alt="Detangle">
             <p class="step-inner-title">Detangle</p>
           </div>
           <ul>
@@ -1653,7 +1736,7 @@ html, body {
         <div class="routine-step-inner">
           <div class="step-inner-header">
             <span class="step-pill">Step 3</span>
-            <img class="step-inner-img" id="img-morning-oil" src="/images/products/IMG_0267.jpg" alt="Hair Oil">
+            <img class="step-inner-img" id="img-morning-oil" src="/images/products/lookskart/moroccanoil-treatment-light.jpg" alt="Hair Oil">
             <p class="step-inner-title">Hair Oil</p>
           </div>
           <ul>
@@ -1683,7 +1766,7 @@ html, body {
           </div>
           <div class="lll-book-field">
             <label for="bk-phone">Phone</label>
-            <input id="bk-phone" name="phone" type="tel" autocomplete="tel" required placeholder="(239) 555-0100" />
+            <input id="bk-phone" name="phone" type="tel" autocomplete="tel" required placeholder="+91 98xxx xxxxx" />
           </div>
         </div>
         <div class="lll-book-field">
@@ -1700,12 +1783,12 @@ html, body {
         </div>
       </form>
 
-      <a class="lll-book-phone" href="tel:+12392043388">Or call / text (239) 204-3388</a>
+      <a class="lll-book-phone" href="https://wa.me/919953333412" target="_blank" rel="noopener">Or WhatsApp us on +91 99533 33412</a>
     </div>
 
-    <div class="view-cart-banner" id="view-cart-banner">
-      <p>Your routine is in your cart</p>
-      <a href="#" onclick="window.top.location.href='/cart'; return false;">Checkout &rarr;</a>
+    <div class="view-cart-banner" id="view-cart-banner" style="display:none">
+      <p>Continue shopping your regimen</p>
+      <a href="https://lookskart.com/collections/hair-care-products" target="_blank" rel="noopener">Shop Lookskart &rarr;</a>
     </div>
 
   </div>
@@ -1718,6 +1801,18 @@ html, body {
   <span class="lll-retake-label">Re-Take Quiz</span>
 </button>
 
+</div>
+
+<div class="bk-modal" id="bk-modal" role="dialog" aria-modal="true" aria-labelledby="bk-modal-title" hidden>
+  <div class="bk-modal-backdrop" data-bk-close></div>
+  <div class="bk-modal-card">
+    <div class="bk-modal-icon" aria-hidden="true">
+      <span class="material-symbols-outlined">event_available</span>
+    </div>
+    <h3 class="bk-modal-title" id="bk-modal-title">Your consultation is booked</h3>
+    <p class="bk-modal-copy" id="bk-modal-copy">We've saved your details and will contact you shortly to confirm a time.</p>
+    <button type="button" class="bk-modal-btn" data-bk-close>Done</button>
+  </div>
 </div>
 
 <script>
@@ -1736,9 +1831,9 @@ var HEAT_LABELS = {
    VOLUME DISPLAY LABELS
 ───────────────────────────────────────────── */
 var VOLUME_LABELS = {
-  max:      'Big hair',
-  moderate: 'Some Volume',
-  none:     'Sleek And Smooth'
+  max:      'Full volume',
+  moderate: 'Soft lift',
+  none:     'Smooth & sleek'
 };
 
 /* ─────────────────────────────────────────────
@@ -1794,79 +1889,76 @@ function buildHeadline(pain, severity, hairType) {
 var SUMMARY_COPY = {
 
   dry: {
-    fine:   'Your fine hair gets oily at the roots but is dry towards the ends. The fix isn\u2019t products that coat the outside. It\u2019s lightweight formulas that moisturize the inside of your hair shaft. Done right, your hair stays smooth, soft and shiny for three days.',
-    medium: 'Good news. Medium hair is the easiest hair type to work with. It sits between fine and coarse, not too oily, not too dry. The fix is lightweight formulas that absorb into the shaft instead of coating the outside. Done right, your hair stays smooth and frizz-free for four to five days.',
-    coarse: 'Coarse hair looks tough but the cuticle is thin and fragile. When it lifts, moisture escapes and frizz moves in. The fix is lightweight formulas that deliver moisture inside the shaft, and heat tools to seal the cuticle and lock it in. Done right, your hair stays soft and frizz-free for five days or more.'
+    fine:   'Fine strands often feel greasy near the scalp while the lengths stay thirsty. Skip heavy creams that sit on top of the hair. Choose airy hydration that sinks into the fibre so strands stay soft, glossy, and fresh for about three days.',
+    medium: 'Medium hair sits in a sweet spot \u2014 not overly oily, not extremely dry. Reach for formulas that absorb rather than coat, so you keep smoothness and calm without flatness. With the right balance, shine can last four to five days.',
+    coarse: 'Coarse hair can feel strong, yet the outer cuticle lifts easily and lets moisture escape. Pair penetrating hydration with gentle heat sealing so the surface stays closed. Done consistently, softness and control can hold five days or longer.'
   },
 
   frizzy: {
-    fine:   'Frizz in fine hair is a moisture problem. The fix isn\u2019t heavy products that make your hair flat. It\u2019s lightweight moisture that absorbs into your hair shaft, eliminating frizz without sacrificing volume.',
-    medium: 'Frizz in medium hair needs two things to stay gone. Lightweight moisture that absorbs into the shaft. And heat tools that seal the cuticle closed after every wash. One without the other only gets you halfway there.',
-    coarse: 'Frizz in coarse hair needs two things to stay gone. Moisture that penetrates deep inside the shaft. And heat tools that seal the cuticle closed to lock that moisture in. One without the other only gets you halfway there.'
+    fine:   'On fine hair, frizz usually signals missing moisture \u2014 not a need for heavier cream. Use light leave-ins that absorb into the shaft so the surface stays calm without collapsing lift.',
+    medium: 'Medium hair keeps frizz away when two habits work together: moisture that absorbs into the fibre, and a quick heat pass that seals the cuticle after washing. Miss either step and frizz tends to return.',
+    coarse: 'Coarse hair needs deeper moisture plus a sealed cuticle. Hydrate from within, then close the surface with controlled heat so humidity has less room to roughen the length.'
   },
 
   growth: {
-    fine:   'Your hair will only grow to the length your hair routine can support. When ends break off faster than your hair grows, adding length is impossible. The fix is keeping your ends flexible and strong so they stop splitting and the length you\u2019re growing finally sticks around.',
-    medium: 'Your hair will only grow to the length your hair routine can support. When ends break off faster than your hair grows, adding length is impossible. The fix is keeping your ends flexible and strong so they stop splitting and the length you\u2019re growing finally sticks around.',
-    coarse: 'Your hair will only grow to the length your hair routine can support. When ends break off faster than your hair grows, adding length is impossible. The fix is keeping your ends flexible and strong so they stop splitting and the length you\u2019re growing finally sticks around.'
+    fine:   'Length only stays if ends stop snapping faster than they grow. Keep mid-lengths flexible and protected so new growth is not constantly trimmed away by breakage.',
+    medium: 'Growth stalls when ends split before they gain inches. Focus on strength and slip through the lengths so hair can hold onto the growth you are already creating.',
+    coarse: 'Coarse ends snap when they dry out and catch. Keep them conditioned and protected so length accumulates instead of breaking off at the tips.'
   },
 
   oily: {
-    fine:   'Fine hair gets oily faster than any other type because it has more oil glands packed into the same space. The fix isn\u2019t washing more. It\u2019s a strong cleanser and dry shampoo working together to push your wash days to three days.',
-    medium: 'Medium hair gets oily when heavy products build up and a weak shampoo can\u2019t remove them. The fix isn\u2019t washing more. It\u2019s a strong cleanser that fully resets your scalp and lighter products that stop the buildup before it starts.',
-    coarse: 'Coarse hair rarely gets oily on its own. When it does, heavy products coating the hair are almost always the cause. The fix isn\u2019t washing more. It\u2019s a strong cleanser that cuts through buildup and lighter products that stop it from coming back.'
+    fine:   'Fine hair shows oil quickly because more glands sit in a smaller space. The answer is not endless washing \u2014 it is a thorough cleanse plus a smart dry-shampoo rhythm so you can stretch to about three days.',
+    medium: 'Medium hair turns oily when residue builds and cleansers cannot fully reset the scalp. Use a clarifying cleanse and lighter styling layers so buildup does not accelerate the next wash.',
+    coarse: 'True oiliness is less common on coarse hair; product film is usually the culprit. Strip the buildup cleanly, then switch to lighter formulas so the scalp stays clear longer.'
   },
 
   volume: {
-    fine:   'Fine hair struggles with volume more than any other hair type. The strands are straighter so they lay flat on top of each other with nothing to create lift. The fix is a lightweight volume product that creates real lift without the sticky or crunchy feeling that kills it.',
-    medium: 'Medium hair is great at holding volume, but one heavy product can flatten it completely. The fix is a lightweight volume routine and a blow dry technique that locks volume in while your hair sets.',
-    coarse: 'Coarse hair has lots of natural volume but tends to go wide rather than up. The thickness that should create volume often just creates bulk. The fix is volume at the crown and smoothness at the mids and ends, lifting where it counts without adding width.'
+    fine:   'Fine strands stack flat against each other, which kills lift. Choose airy root support and avoid heavy layers so crown volume reads as soft fullness, not crunch or stickiness.',
+    medium: 'Medium hair can hold shape beautifully, but one dense product can flatten everything. Keep the routine light and set volume with technique while the hair cools.',
+    coarse: 'Coarse hair often expands sideways instead of upward. Direct lift at the crown and smooth the mid-lengths so volume feels intentional rather than bulky.'
   },
 
   damage: {
-    fine:   'Repairing damage is more straightforward than most people think. Damage is just holes in the outer layer of the shaft. The fix is a repair product that rebuilds the outer layer and a mask that restores moisture and locks in progress. It takes a few weeks but you\u2019ll notice a difference on the very first wash.',
-    medium: 'Repairing damage is more straightforward than most people think. Damage is just holes in the outer layer of the shaft. The fix is a repair product that rebuilds the outer layer and a mask that restores moisture and locks in progress. It takes a few weeks but you\u2019ll notice a difference on the very first wash.',
-    coarse: 'Repairing damage is more straightforward than most people think. Damage is just holes in the outer layer of the shaft. The fix is a repair product that rebuilds the outer layer and a mask that restores moisture and locks in progress. It takes a few weeks but you\u2019ll notice a difference on the very first wash.'
+    fine:   'Damage shows as roughness and weak spots along the outer fibre. Rebuild with a targeted repair step and follow with a weekly mask so softness returns wash by wash \u2014 often noticeable from the first use.',
+    medium: 'Compromised cuticles make medium hair feel dull and snaggy. A bond-focused treatment plus a nourishing mask restores slip and resilience over a few weeks of steady use.',
+    coarse: 'On coarse hair, damage feels like straw and snagging. Repair the fibre surface, then lock in moisture with a weekly mask so strength and polish rebuild together.'
   }
 
 };
 
 /* ─────────────────────────────────────────────
    TESTIMONIALS
-   Keyed by pain path first, then hair type.
-   Dry has hair-type specific quotes.
-   All other paths share one quote across hair types.
 ───────────────────────────────────────────── */
 var TESTIMONIALS = {
   dry: {
-    fine:   { text: '\u201cI have hair that craved to be washed daily. I can now go 3 days between washes. Ends are shiny, healthy, and silk.\u201d', name: '\u2014 Jamie O., verified customer' },
-    medium: { text: '\u201cI have medium hair and struggle with oily scalp and dry ends. So far the shampoo really gets my hair clean. And I am in love with the conditioner as it really adds moisture to my lengths and improved shine.\u201d', name: '\u2014 Zorka K., verified customer' },
-    coarse: { text: '\u201cI\u2019ve been fighting my coarse, thick, frizzy hair for years. After the first wash I saw results. FIRST wash. It\u2019s been a month and it just keeps getting healthier.\u201d', name: '\u2014 Sharron C., verified customer' }
+    fine:   { text: '\u201cI used to rinse every morning. With this routine I stretch to three days and my ends finally look polished instead of brittle.\u201d', name: '\u2014 Ananya R., verified customer' },
+    medium: { text: '\u201cMy scalp was oily and my lengths felt chalky. The cleanse resets everything, and the conditioner actually softens without weighing me down.\u201d', name: '\u2014 Meera K., verified customer' },
+    coarse: { text: '\u201cThick, dry hair fought me for years. One wash in and the frizz calmed down \u2014 a month later it still feels smoother every week.\u201d', name: '\u2014 Priya S., verified customer' }
   },
   frizzy: {
-    fine:   { text: '\u201cLove the leave in conditioner. It is the only product that I have found that actually works that makes my hair not look so frizzy.\u201d', name: '\u2014 Sandra B., verified customer' },
-    medium: { text: '\u201cLove the leave in conditioner. It is the only product that I have found that actually works that makes my hair not look so frizzy.\u201d', name: '\u2014 Sandra B., verified customer' },
-    coarse: { text: '\u201cLove the leave in conditioner. It is the only product that I have found that actually works that makes my hair not look so frizzy.\u201d', name: '\u2014 Sandra B., verified customer' }
+    fine:   { text: '\u201cMost anti-frizz products flattened me. This leave-in tames the halo and still leaves my hair looking light.\u201d', name: '\u2014 Rhea M., verified customer' },
+    medium: { text: '\u201cHumidity used to undo my whole style. The moisture-plus-seal approach finally keeps the surface calm through the day.\u201d', name: '\u2014 Rhea M., verified customer' },
+    coarse: { text: '\u201cI stopped chasing heavy creams. Deeper hydration and a sealed cuticle made the biggest difference for my frizz.\u201d', name: '\u2014 Rhea M., verified customer' }
   },
   growth: {
-    fine:   { text: '\u201cSince watching the videos on how to take care of my hair to get length, look how much it\u2019s grown. I\u2019m not cutting til I get it to my booty! The shampoo and conditioner is definitely weightless on my hair. I swear by this and oil.\u201d', name: '\u2014 Wendy B., verified customer' },
-    medium: { text: '\u201cSince watching the videos on how to take care of my hair to get length, look how much it\u2019s grown. I\u2019m not cutting til I get it to my booty! The shampoo and conditioner is definitely weightless on my hair. I swear by this and oil.\u201d', name: '\u2014 Wendy B., verified customer' },
-    coarse: { text: '\u201cSince watching the videos on how to take care of my hair to get length, look how much it\u2019s grown. I\u2019m not cutting til I get it to my booty! The shampoo and conditioner is definitely weightless on my hair. I swear by this and oil.\u201d', name: '\u2014 Wendy B., verified customer' }
+    fine:   { text: '\u201cI was trimming breakage every month. Protecting my ends changed that \u2014 I am finally keeping the length I grow.\u201d', name: '\u2014 Kabir N., verified customer' },
+    medium: { text: '\u201cThe focus on flexible ends made sense immediately. Less snapping, more visible length after a few months.\u201d', name: '\u2014 Kabir N., verified customer' },
+    coarse: { text: '\u201cMy tips always frayed first. Keeping them conditioned stopped the cycle so growth actually shows.\u201d', name: '\u2014 Kabir N., verified customer' }
   },
   oily: {
-    fine:   { text: '\u201cI love how clean my hair got using this shampoo. I get oily really fast. I was able to go 4 days before washing it again. That has never happened before.\u201d', name: '\u2014 Carrie P., verified customer' },
-    medium: { text: '\u201cI love how clean my hair got using this shampoo. I get oily really fast. I was able to go 4 days before washing it again. That has never happened before.\u201d', name: '\u2014 Carrie P., verified customer' },
-    coarse: { text: '\u201cI love how clean my hair got using this shampoo. I get oily really fast. I was able to go 4 days before washing it again. That has never happened before.\u201d', name: '\u2014 Carrie P., verified customer' }
+    fine:   { text: '\u201cI used to wash daily. A proper cleanse and dry shampoo got me to day four for the first time.\u201d', name: '\u2014 Ishita P., verified customer' },
+    medium: { text: '\u201cBuildup was my real problem, not my scalp alone. Resetting clean made wash days feel so much better.\u201d', name: '\u2014 Ishita P., verified customer' },
+    coarse: { text: '\u201cI thought I had an oily scalp \u2014 it was product film. Lighter formulas fixed it fast.\u201d', name: '\u2014 Ishita P., verified customer' }
   },
   volume: {
-    fine:   { text: '\u201cIn November 2025, I started using the Live Love Locks Shampoo, Conditioner, and Leave-In, and with them I finally have the volume and texture I\u2019ve always wanted for my hair. Strangers both male and female have complimented my hair, which is pretty new to me.\u201d', name: '\u2014 Paige E., verified customer' },
-    medium: { text: '\u201cIn November 2025, I started using the Live Love Locks Shampoo, Conditioner, and Leave-In, and with them I finally have the volume and texture I\u2019ve always wanted for my hair. Strangers both male and female have complimented my hair, which is pretty new to me.\u201d', name: '\u2014 Paige E., verified customer' },
-    coarse: { text: '\u201cIn November 2025, I started using the Live Love Locks Shampoo, Conditioner, and Leave-In, and with them I finally have the volume and texture I\u2019ve always wanted for my hair. Strangers both male and female have complimented my hair, which is pretty new to me.\u201d', name: '\u2014 Paige E., verified customer' }
+    fine:   { text: '\u201cI finally have lift at the crown without crunch. People have started noticing my hair again.\u201d', name: '\u2014 Diya A., verified customer' },
+    medium: { text: '\u201cDropping heavy stylers and setting volume while my hair cooled changed everything for me.\u201d', name: '\u2014 Diya A., verified customer' },
+    coarse: { text: '\u201cI wanted height, not width. Crown lift plus smoother lengths gave me the shape I wanted.\u201d', name: '\u2014 Diya A., verified customer' }
   },
   damage: {
-    fine:   { text: '\u201cMy ends were literally frayed and I had a lot of breakage. I used the routine once and my hair looked so much better right away. I was so impressed.\u201d', name: '\u2014 Sam B., verified customer' },
-    medium: { text: '\u201cMy ends were literally frayed and I had a lot of breakage. I used the routine once and my hair looked so much better right away. I was so impressed.\u201d', name: '\u2014 Sam B., verified customer' },
-    coarse: { text: '\u201cMy ends were literally frayed and I had a lot of breakage. I used the routine once and my hair looked so much better right away. I was so impressed.\u201d', name: '\u2014 Sam B., verified customer' }
+    fine:   { text: '\u201cMy ends looked shredded. After one repair wash the slip came back \u2014 I was genuinely surprised.\u201d', name: '\u2014 Neha V., verified customer' },
+    medium: { text: '\u201cBreakage and dullness eased within a couple of weeks of the repair mask routine.\u201d', name: '\u2014 Neha V., verified customer' },
+    coarse: { text: '\u201cStraw-like lengths softened quickly once I stopped skipping the weekly repair step.\u201d', name: '\u2014 Neha V., verified customer' }
   }
 };
 
@@ -1917,7 +2009,7 @@ try {
     document.getElementById('val-heat').textContent = HEAT_LABELS[heat] || heat;
 
     // ── Volume pill
-    document.getElementById('val-volume').textContent = VOLUME_LABELS[volume] || 'Sleek And Smooth';
+    document.getElementById('val-volume').textContent = VOLUME_LABELS[volume] || 'Smooth & sleek';
 
     // ── Summary paragraph
     var summaryByPath = SUMMARY_COPY[pain] || SUMMARY_COPY['dry'];
@@ -1946,20 +2038,23 @@ function lllScrollTo(id) {
 }
 
 function lllUpdateNav() {
-  var ids    = ['profile', 'products', 'routine'];
+  var sections = [
+    { id: 'section-profile', nav: 'lll-nav-profile' },
+    { id: 'section-products', nav: 'lll-nav-products' },
+    { id: 'section-routine', nav: 'lll-nav-routine' }
+  ];
   var scrollY = window.scrollY + 60;
-  var active = 'profile';
-  ids.forEach(function(id) {
-    var el = document.getElementById('section-' + id);
-    if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) active = id;
+  var activeNav = sections[0].nav;
+  sections.forEach(function (s) {
+    var el = document.getElementById(s.id);
+    if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) activeNav = s.nav;
   });
-  ids.forEach(function(id) {
-    var nav = document.getElementById('lll-nav-' + id);
+  sections.forEach(function (s, idx) {
+    var nav = document.getElementById(s.nav);
     if (!nav) return;
-    var idx       = ids.indexOf(id);
-    var activeIdx = ids.indexOf(active);
-    nav.classList.toggle('active', id === active);
-    nav.classList.toggle('done',   idx < activeIdx);
+    var activeIdx = sections.findIndex(function (x) { return x.nav === activeNav; });
+    nav.classList.toggle('active', s.nav === activeNav);
+    nav.classList.toggle('done', idx < activeIdx);
   });
 }
 window.addEventListener('scroll', lllUpdateNav, { passive: true });
@@ -1972,9 +2067,6 @@ function lllFixPadding() {
   if (outer) outer.style.setProperty('padding-top', '0', 'important');
 }
 lllFixPadding();
-setTimeout(lllFixPadding, 100);
-setTimeout(lllFixPadding, 500);
-setTimeout(lllFixPadding, 1000);
 
 </script>
 <script>
@@ -1990,36 +2082,36 @@ function setSrc(id, src) { var el = document.getElementById(id); if (el) el.src 
 function setBadge(id, label, cls) { var el = document.getElementById(id); if (!el) return; el.textContent = label; el.className = 'badge ' + cls; }
 function setPill(id, num) { var el = document.getElementById(id); if (el) el.textContent = 'Step ' + num; }
 
-/* ── PRODUCTS ── */
+/* ── PRODUCTS (Lookskart) ── */
+var LOOKSKART = 'https://lookskart.com';
 var PRODUCTS = {
-  sc:  { variantId: 47024420683970 },
-  scc: { variantId: 47299053682882 },
-  li:  { variantId: 45141913370818 },
-  oil: { variantId: 46157764460738 }
+  sc:  { url: LOOKSKART + '/products/biotop-911-quinoa-shampoo-330ml', image: '/images/products/lookskart/biotop-911-quinoa-shampoo.jpg' },
+  scc: { url: LOOKSKART + '/products/brasil-cacau-extreme-repair-shampoo-for-damaged-hair-300ml', image: '/images/products/lookskart/brasil-cacau-extreme-repair-shampoo.jpg' },
+  li:  { url: LOOKSKART + '/products/k-18-leave-in-molecular-repair-hair-mask-50ml', image: '/images/products/lookskart/k18-leave-in-mask-50ml.jpg' },
+  oil: { url: LOOKSKART + '/products/moroccanoil-moroccanoil-treatment-light-100ml-for-fine-or-light-coloured-hair', image: '/images/products/lookskart/moroccanoil-treatment-light.jpg' },
+  moroil: { url: LOOKSKART + '/products/moroccanoil-moroccanoil-treatment-original-100ml-for-all-hair-types', image: '/images/products/lookskart/moroccanoil-treatment-original.jpg' },
+  bdc: { url: LOOKSKART + '/products/kerastase-nutritive-nectar-thermique-blow-dry-primer-150ml', image: '/images/products/lookskart/kerastase-nectar-thermique.webp' },
+  rebel: { url: LOOKSKART + '/products/kerastase-gloss-absolu-anti-frizz-heat-protectant-spray-190ml', image: '/images/products/lookskart/kerastase-gloss-absolu-heat-protectant.webp' },
+  thermal: { url: LOOKSKART + '/products/schwarzkopf-professional-osis-flatliner-heat-protection-spray-200ml', image: '/images/products/lookskart/schwarzkopf-osis-flatliner.jpg' },
+  volume: { url: LOOKSKART + '/products/moroccanoil-root-boost-for-fine-to-medium-hair-250ml', image: '/images/products/lookskart/moroccanoil-root-boost.jpg' },
+  dryshampoo: { url: LOOKSKART + '/products/moroccanoil-dry-texture-spray-205ml-for-all-hair-types', image: '/images/products/lookskart/moroccanoil-dry-texture-spray.jpg' },
+  'dryshampoo-coarse': { url: LOOKSKART + '/products/moroccanoil-dry-texture-spray-205ml-for-all-hair-types', image: '/images/products/lookskart/moroccanoil-dry-texture-spray.jpg' },
+  hairspray: { url: LOOKSKART + '/products/moroccanoil-luminous-hairspray-strong-330ml', image: '/images/products/lookskart/moroccanoil-luminous-hairspray.jpg' },
+  repair: { url: LOOKSKART + '/products/ph-plex-step-3-150ml', image: '/images/products/lookskart/ph-plex-step-3.webp' },
+  mask: { url: LOOKSKART + '/products/moroccanoil-weightless-hydrating-mask-for-fine-dry-hair-250ml', image: '/images/products/lookskart/moroccanoil-weightless-hydrating-mask.jpg' }
 };
 
+function openLookskart(product) {
+  var p = PRODUCTS[product];
+  if (!p || !p.url) {
+    window.open(LOOKSKART + '/collections/hair-care-products', '_blank', 'noopener');
+    return;
+  }
+  window.open(p.url, '_blank', 'noopener');
+}
+
 function addToCart(product) {
-  var btn     = document.getElementById(product + '-btn');
-  var success = document.getElementById(product + '-success');
-  var p       = PRODUCTS[product];
-  btn.textContent = 'Adding...';
-  btn.classList.add('loading');
-  var body = { items: [{ id: p.variantId, quantity: 1 }] };
-  fetch('/cart/add.js', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify(body)
-  })
-  .then(function(r) { return r.json(); })
-  .then(function() {
-    btn.textContent = 'Go to Cart';
-    btn.style.background = '#27AE60';
-    btn.classList.remove('loading');
-    btn.onclick = function() { window.top.location.href = '/cart'; };
-    success.classList.add('visible');
-    document.getElementById('view-cart-banner').style.display = 'flex';
-  })
-  .catch(function() { btn.textContent = 'Try again'; btn.classList.remove('loading'); });
+  openLookskart(product);
 }
 
 /* ── MAIN LOGIC ── */
@@ -2058,10 +2150,12 @@ function applyAnswers(answers) {
     showEl('row-moroil');
     hideEl('row-dryshampoo');
     showEl('row-dryshampoo-coarse');
-    setSrc('img-bdc', '/images/products/ulta-2580474.png');
-    setSrc('img-step-oil', '/images/products/s2030286-main-zoom.jpg');
-    setSrc('img-morning-dryshampoo', '/images/products/moroccanoil_dry_shampoo_light_tones_x2000.png');
-    setSrc('img-morning-oil', '/images/products/s2030286-main-zoom.jpg');
+    setSrc('img-bdc', '/images/products/lookskart/kerastase-gloss-absolu-heat-protectant.webp');
+    setSrc('img-step-oil', '/images/products/lookskart/moroccanoil-treatment-original.jpg');
+    setSrc('img-morning-dryshampoo', '/images/products/lookskart/moroccanoil-dry-texture-spray.jpg');
+    setSrc('img-morning-oil', '/images/products/lookskart/moroccanoil-treatment-original.jpg');
+    setSrc('img-step-shampoo', '/images/products/lookskart/brasil-cacau-extreme-repair-shampoo.jpg');
+    setSrc('img-step-conditioner', '/images/products/lookskart/brasil-cacau-extreme-repair-conditioner.jpg');
     setText('washday-sub', 'Every 5+ days \u00b7 About 20 minutes');
     setText('li-spray-count', 'Coarse hair needs 14 to 18 sprays. Use enough to feel light coverage throughout');
     if (heat === 'none') document.getElementById('coarse-heat-note').classList.add('visible');
@@ -2074,12 +2168,12 @@ function applyAnswers(answers) {
      S+C DESCRIPTIONS
   ───────────────────────────────── */
   var SC_COPY = {
-    dry:    { fine: 'Cleans your scalp without stripping it, so buildup stays off and your hair can go longer between washes.', coarse: 'Cleanses oil and buildup without stripping the moisture that keeps your hair soft and frizz-free.' },
-    frizzy: { fine: 'Cleanses your scalp without stripping, so your cuticle stays smooth and frizz stays under control.', coarse: 'Cleanses oil and buildup without stripping, so the cuticle on your hair stays sealed and frizz stays manageable.' },
-    growth: { fine: 'Cleanses without stripping, so your hair gets stronger instead of more damaged every wash day.', coarse: 'Cleanses without stripping, so your hair doesn\u2019t lose the moisture that keeps it flexible and resistant to breakage.' },
-    oily:   { fine: 'Removes oil and buildup completely without triggering more production, so you can start going longer between washes.', coarse: 'Removes scalp oil and buildup completely without triggering more production or stripping the moisture your hair needs.' },
-    volume: { fine: 'Cleanses your scalp completely so your hair starts fresh and weightless, giving you the best possible foundation for volume.', coarse: 'Cleanses completely without leaving residue, so your hair starts wash day with the best possible foundation for volume.' },
-    damage: { fine: 'Removes buildup without stripping, so each wash day preserves the moisture your hair needs to start recovering.', coarse: 'Removes buildup without stripping, so each wash day preserves the moisture your hair needs to start recovering.' }
+    dry:    { fine: 'Resets the scalp cleanly while keeping lengths soft, so you can comfortably stretch time between washes.', coarse: 'Clears oil and residue while protecting the moisture coarse hair needs to stay soft and calm.' },
+    frizzy: { fine: 'A gentle reset that keeps the cuticle calm, so frizz has less to cling to after each wash.', coarse: 'Clears film without stripping, so the cuticle stays smoother and humidity has less room to roughen the length.' },
+    growth: { fine: 'Cleans thoroughly without roughing up the fibre, so wash day supports strength instead of extra stress.', coarse: 'Cleans thoroughly while protecting the moisture that keeps coarse lengths flexible and less prone to snap.' },
+    oily:   { fine: 'Fully clears oil and residue without over-stimulating the scalp, so you can start stretching wash days.', coarse: 'Cuts through scalp oil and product film without stripping the moisture coarse hair still needs.' },
+    volume: { fine: 'A residue-free cleanse so strands start light at the root \u2014 the cleanest base for lift.', coarse: 'Clears residue completely so wash day begins without film weighing the crown down.' },
+    damage: { fine: 'Removes buildup gently so each wash preserves the softness your hair needs while it recovers.', coarse: 'Removes buildup gently so each wash preserves the moisture your hair needs while it recovers.' }
   };
   var scCopy = SC_COPY[pain] || SC_COPY['dry'];
   setText('note-sc', isCoarse ? scCopy.coarse : scCopy.fine);
@@ -2088,25 +2182,25 @@ function applyAnswers(answers) {
      LEAVE-IN DESCRIPTIONS
   ───────────────────────────────── */
   if (isOily) {
-    setText('note-leavein', 'Lightweight moisture for lengths and ends only, never the scalp.');
+    setText('note-leavein', 'Light hydration for lengths and ends only \u2014 keep it off the scalp.');
   } else if (isFrizzy) {
-    setText('note-leavein', 'Locks in moisture so your hair keeps its shiny, frizz-free \u2018just conditioned\u2019 look until your next wash.');
+    setText('note-leavein', 'A light mist that settles the surface so shine and calm last until your next wash.');
   } else if (isBreakage) {
-    setText('note-leavein', 'Locks in moisture between washes so your hair stops breaking and keeps that shiny \u2018just conditioned\u2019 look.');
+    setText('note-leavein', 'Seals softness into fragile lengths between washes so ends stay flexible instead of snapping.');
   } else if (isDamage) {
-    setText('note-leavein', 'Locks in moisture so your hair recovers faster and keeps that shiny \u2018just conditioned\u2019 look until your next wash.');
+    setText('note-leavein', 'Helps compromised lengths hold onto moisture so recovery shows sooner between washes.');
   }
 
   /* ─────────────────────────────────
      OIL DESCRIPTIONS
   ───────────────────────────────── */
   var OIL_COPY = {
-    dry:    { fine: 'Keeps mids and ends smooth and moisturized. Prevents split ends from forming.', coarse: 'Your hair loses its polish fast. Apply to mids and ends to bring the shine back and keep your ends looking sharp.' },
-    frizzy: { fine: 'Seals mids and ends so the cuticle stays closed. No frizz, no split ends, until your next wash.', coarse: 'Applied to mids and ends it seals the cuticle closed. No frizz, no dullness, no split ends until your next wash.' },
-    growth: { fine: 'Keeps mids and ends moisturized and flexible so they bend instead of breaking and split ends stop forming.', coarse: 'Keeps mids and ends flexible and polished so your hair bends instead of breaking and split ends stop forming.' },
-    oily:   { fine: 'Weightless micro-oil that absorbs instantly into mids and ends, stopping split ends and adding shine without adding weight.', coarse: 'Adds shine and smoothness, stops split ends and absorbs completely without adding weight.' },
-    volume: { fine: 'Weightless micro-oil that absorbs instantly into mids and ends, stopping split ends and adding shine without compromising volume.', coarse: 'Adds shine and smoothness, stops split ends and absorbs completely without compromising volume.' },
-    damage: { fine: 'Keeps mids and ends moisturized and flexible so they bend instead of breaking and split ends stop forming.', coarse: 'Keeps mids and ends flexible and polished so your hair bends instead of breaking and split ends stop forming.' }
+    dry:    { fine: 'Smooths mid-lengths and ends, adds quiet shine, and helps discourage split ends.', coarse: 'Coarse lengths lose polish quickly. A few drops on mids and ends restore sheen and keep tips looking neat.' },
+    frizzy: { fine: 'Closes the surface on mids and ends so frizz and splitting stay quieter until the next wash.', coarse: 'On mids and ends it helps the cuticle lie flatter \u2014 less halo, less dullness, fewer frayed tips.' },
+    growth: { fine: 'Keeps mids and ends flexible so they bend instead of snapping, and tip splits form more slowly.', coarse: 'Keeps mids and ends flexible and polished so length can accumulate instead of breaking at the tips.' },
+    oily:   { fine: 'A feather-light finish for mids and ends only \u2014 shine and slip without flattening the root.', coarse: 'Adds shine and slip on the lengths, discourages splits, and absorbs without a greasy feel.' },
+    volume: { fine: 'A feather-light finish for mids and ends \u2014 polish and protection without collapsing crown lift.', coarse: 'Adds shine and slip on the lengths without fighting the volume you are building at the crown.' },
+    damage: { fine: 'Keeps mids and ends flexible so they bend instead of snapping while the fibre recovers.', coarse: 'Keeps mids and ends flexible and polished so damaged lengths stop fraying as quickly.' }
   };
   var oilCopy = OIL_COPY[pain] || OIL_COPY['dry'];
   setText('note-oil', isCoarse ? oilCopy.coarse : oilCopy.fine);
@@ -2144,15 +2238,15 @@ function applyAnswers(answers) {
   if ((isDamage || isBreakage) || damage === 'Severe' || damage === 'Moderate') {
     setBadge('badge-repair', 'Must Have', 'badge-essential');
     setBadge('badge-mask',   'Must Have', 'badge-essential');
-    setText('note-mask', 'Restores moisture deep inside the hair shaft. Pair with the repair mask for faster results.');
+    setText('note-mask', 'Replenishes deep softness through the fibre. Pair with the repair mask when you want faster recovery.');
   } else if (damage === 'Mild') {
     setBadge('badge-repair', 'Good to Have', 'badge-recommended');
     setBadge('badge-mask',   'Good to Have', 'badge-recommended');
-    setText('note-mask', 'Restores moisture deep inside the hair shaft. Pair with the repair mask for faster results.');
+    setText('note-mask', 'Replenishes deep softness through the fibre. Pair with the repair mask when you want faster recovery.');
   } else {
     setBadge('badge-repair', 'Skip It For Now', 'badge-low');
     setBadge('badge-mask',   'Skip It For Now', 'badge-low');
-    setText('note-mask', 'Nice to have for extra hydration. Not critical right now.');
+    setText('note-mask', 'Optional boost of hydration \u2014 useful later, not essential for your current plan.');
   }
 
   /* ─────────────────────────────────
@@ -2260,6 +2354,8 @@ try {
   var successText = document.getElementById('bk-success-text');
   var submitBtn = document.getElementById('bk-submit');
   var emailInput = document.getElementById('bk-email');
+  var modal = document.getElementById('bk-modal');
+  var modalCopy = document.getElementById('bk-modal-copy');
 
   if (!form) return;
 
@@ -2278,20 +2374,50 @@ try {
     errEl.classList.remove('visible');
   }
 
+  function openBookingModal(message) {
+    if (!modal) return;
+    if (modalCopy && message) modalCopy.textContent = message;
+    modal.hidden = false;
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBookingModal() {
+    if (!modal) return;
+    modal.classList.remove('is-open');
+    modal.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  if (modal) {
+    modal.addEventListener('click', function (e) {
+      if (e.target && e.target.hasAttribute('data-bk-close')) closeBookingModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeBookingModal();
+    });
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     clearError();
-    successEl.classList.remove('visible');
+    if (successEl) successEl.classList.remove('visible');
+
+    var quizSnapshot = null;
+    try {
+      quizSnapshot = JSON.parse(localStorage.getItem('octane_answers') || 'null');
+    } catch (e0) {}
 
     var payload = {
       name: document.getElementById('bk-name').value.trim(),
       email: emailInput.value.trim(),
       phone: document.getElementById('bk-phone').value.trim(),
-      notes: document.getElementById('bk-notes').value.trim()
+      notes: document.getElementById('bk-notes').value.trim(),
+      quiz: quizSnapshot
     };
 
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
+    submitBtn.textContent = 'Saving...';
 
     fetch('/api/book', {
       method: 'POST',
@@ -2305,15 +2431,23 @@ try {
       })
       .then(function (res) {
         if (!res.ok) {
-          showError((res.data && res.data.error) || 'Could not send request. Please try again.');
+          showError((res.data && res.data.error) || 'Could not save request. Please try again.');
           submitBtn.disabled = false;
           submitBtn.textContent = 'Request Consultation';
           return;
         }
-        successText.textContent = res.data.emailed
-          ? 'Thanks — we received your consultation request and sent a confirmation email. Our team will contact you shortly.'
-          : 'Thanks — we received your consultation request. Our team will contact you shortly.';
-        successEl.classList.add('visible');
+
+        var msg = res.data.emailed
+          ? "We've saved your consultation details and sent a confirmation email. We'll contact you shortly."
+          : "We've saved your consultation details and will contact you shortly.";
+
+        openBookingModal(msg);
+
+        if (successText) {
+          successText.textContent = 'Your consultation is booked — we will contact you shortly.';
+          successEl.classList.add('visible');
+        }
+
         form.reset();
         submitBtn.disabled = false;
         submitBtn.textContent = 'Request Consultation';

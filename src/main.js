@@ -133,6 +133,8 @@ class HairQuiz {
   }
 
   renderEmail(question) {
+    this.prefetchResults();
+
     const wrapper = document.createElement('div');
     wrapper.className = 'quiz-email-wrapper';
 
@@ -153,7 +155,17 @@ class HairQuiz {
 
     wrapper.appendChild(input);
     this.contentEl.appendChild(wrapper);
-    setTimeout(() => input.focus(), 250);
+    requestAnimationFrame(() => input.focus());
+  }
+
+  prefetchResults() {
+    if (this._resultsPrefetched) return;
+    this._resultsPrefetched = true;
+    const link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = '/results.html';
+    link.as = 'document';
+    document.head.appendChild(link);
   }
 
   renderCalculating() {
@@ -166,21 +178,29 @@ class HairQuiz {
       </div>
     `;
 
-    // Persist official answer payload, then open official results HTML
+    // Fully client-side results: persist answers then go to results.
+    // Also save the quiz email as a lead on the server (best-effort).
     const octaneAnswers = buildOctaneAnswers(this.answers, this.answers.email);
     try {
       localStorage.setItem('octane_answers', JSON.stringify(octaneAnswers));
     } catch {}
 
-    setTimeout(() => {
-      this.currentQuestionId = 'results';
+    fetch('/api/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ email: this.answers.email, answers: octaneAnswers }),
+      keepalive: true,
+    }).catch(() => {});
+
+    this.currentQuestionId = 'results';
+    // Yield one frame so the spinner paints, then navigate.
+    requestAnimationFrame(() => {
       this.goToOfficialResults();
-    }, 2200);
+    });
   }
 
   goToOfficialResults() {
-    // Full-page official results (same as live Octane fullscreen end state)
-    window.location.href = '/results.html';
+    window.location.replace('/results.html');
   }
 
   selectOption(option, question) {

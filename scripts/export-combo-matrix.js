@@ -54,8 +54,8 @@ function productEffects({ hairType, heat, volume, damage, pain }) {
   else if (isMedium) washday = 'Every 4-5 days · About 20 minutes';
 
   return {
-    shampoo_set: isCoarse ? 'Weightless Hydrating S+C (coarse)' : 'Weightless S+C (fine/medium)',
-    oil: isCoarse ? 'Moroccanoil Treatment Oil' : 'LLL Weightless Oil',
+    shampoo_set: isCoarse ? 'Rich Balance Hydrating S+C (coarse)' : 'Daily Balance S+C (fine/medium)',
+    oil: isCoarse ? 'Moroccanoil Treatment Oil' : 'Silk Finish Hair Oil',
     dry_shampoo: isCoarse ? 'Moroccanoil Dry Shampoo' : 'Living Proof Dry Shampoo',
     blow_dry_product: usesBlow
       ? isCoarse
@@ -161,7 +161,7 @@ function main() {
 
   // —— Sheet: Product rules ——
   const rules = [
-    { Rule: 'Hair type Fine/Medium', Effect: 'Show Weightless S+C (fine/medium) + LLL oil + Living Proof dry shampoo' },
+    { Rule: 'Hair type Fine/Medium', Effect: 'Show Daily Balance S+C (fine/medium) + Silk Finish oil + Living Proof dry shampoo' },
     { Rule: 'Hair type Coarse', Effect: 'Swap to Hydrating S+C + Moroccanoil oil + Moroccanoil dry shampoo; longer wash-day timing' },
     { Rule: 'Heat includes blow dryer', Effect: 'Fine/Medium → Big Blowout; Coarse → Rebel Tame; add blow-dry routine steps' },
     { Rule: 'Heat includes iron', Effect: 'Show thermal protectant + iron routine steps' },

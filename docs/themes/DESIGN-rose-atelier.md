@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Rose Atelier
-description: Soft blush beauty theme for the Live Love Locks hair quiz. Same layout as baseline — blush primary, warm paper surfaces, refined serif question titles.
+description: Soft blush beauty theme for the hair quiz. Same layout as baseline — blush primary, warm paper surfaces, refined serif question titles.
 colors:
   primary: "#C45C6A"
   primary-hover: "#A84A57"
@@ -132,7 +132,7 @@ Fraunces for questions/results titles (editorial softness). DM Sans for options,
 
 ## Layout
 
-Identical to baseline Live Love Locks quiz shell. Compact stacked options, progress top, compact CTA footer.
+Identical to baseline quiz shell. Compact stacked options, progress top, compact CTA footer.
 
 ## Elevation & Depth
 

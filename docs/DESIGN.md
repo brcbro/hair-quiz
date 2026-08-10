@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Luxe Marble
-description: Affluent marble editorial theme for the Lookskart hair quiz. Soft off-white marble ground, antique gold accents, Libre Caslon Text display + Hanken Grotesk UI. Same quiz structure — visual tokens only.
+description: Affluent marble editorial theme for the hair quiz. Soft off-white marble ground, antique gold accents, Libre Caslon Text display + Hanken Grotesk UI. Same quiz structure — visual tokens only.
 colors:
   primary: "#775A19"
   primary-hover: "#5D4201"
@@ -134,11 +134,11 @@ components:
 
 ## Overview
 
-**Luxe Marble** is the active Lookskart hair-quiz theme sourced from Stitch (“Personalized Results / Q1 Frustration — Luxe Marble”). Affluent, calm, editorial — soft marble atmosphere, antique gold (`#C5A059` / `#775A19`), charcoal secondary CTAs, serif display type.
+**Luxe Marble** is the active hair-quiz theme sourced from Stitch (“Personalized Results / Q1 Frustration — Luxe Marble”). Affluent, calm, editorial — soft marble atmosphere, antique gold (`#C5A059` / `#775A19`), charcoal secondary CTAs, serif display type.
 
 **Critical rule:** Keep the same page structure, screen list, and copy. Only visual tokens change.
 
-Brand: Lookskart. Product: Personalized hair questionnaire (web).
+Product: Personalized hair questionnaire (web).
 
 ## Colors
 

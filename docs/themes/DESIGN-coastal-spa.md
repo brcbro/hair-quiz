@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Coastal Spa
-description: Cool seafoam spa theme for the Live Love Locks hair quiz. Same layout — mist backgrounds, teal primary, calm sans typography.
+description: Cool seafoam spa theme for the hair quiz. Same layout — mist backgrounds, teal primary, calm sans typography.
 colors:
   primary: "#2F6F6A"
   primary-hover: "#255A56"

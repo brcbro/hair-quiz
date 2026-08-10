@@ -1,0 +1,1841 @@
+{
+  "downloadedAt": "2026-08-10T04:29:06.777Z",
+  "totalProducts": 216,
+  "imagesOk": 216,
+  "imagesFailed": 0,
+  "imagesMissing": 0,
+  "byBrand": [
+    {
+      "Brand": "Biotop",
+      "Products": 15,
+      "Images downloaded": 15,
+      "Folder": "public/images/products/lookskart/all/biotop/"
+    },
+    {
+      "Brand": "Brasil Cacau",
+      "Products": 8,
+      "Images downloaded": 8,
+      "Folder": "public/images/products/lookskart/all/brasil-cacau/"
+    },
+    {
+      "Brand": "Kerastase",
+      "Products": 63,
+      "Images downloaded": 63,
+      "Folder": "public/images/products/lookskart/all/kerastase/"
+    },
+    {
+      "Brand": "K18",
+      "Products": 2,
+      "Images downloaded": 2,
+      "Folder": "public/images/products/lookskart/all/k18/"
+    },
+    {
+      "Brand": "L'Oreal Professionnel",
+      "Products": 53,
+      "Images downloaded": 53,
+      "Folder": "public/images/products/lookskart/all/loreal-professionnel/"
+    },
+    {
+      "Brand": "Lea Levett",
+      "Products": 6,
+      "Images downloaded": 6,
+      "Folder": "public/images/products/lookskart/all/lea-levett/"
+    },
+    {
+      "Brand": "Moroccanoil",
+      "Products": 21,
+      "Images downloaded": 21,
+      "Folder": "public/images/products/lookskart/all/moroccanoil/"
+    },
+    {
+      "Brand": "Olaplex",
+      "Products": 0,
+      "Images downloaded": 0,
+      "Folder": ""
+    },
+    {
+      "Brand": "Root Deep",
+      "Products": 1,
+      "Images downloaded": 1,
+      "Folder": "public/images/products/lookskart/all/root-deep/"
+    },
+    {
+      "Brand": "Schwarzkopf",
+      "Products": 14,
+      "Images downloaded": 14,
+      "Folder": "public/images/products/lookskart/all/schwarzkopf/"
+    },
+    {
+      "Brand": "18.21 Man Made",
+      "Products": 9,
+      "Images downloaded": 9,
+      "Folder": "public/images/products/lookskart/all/18-21-man-made/"
+    },
+    {
+      "Brand": "TAILOR'S",
+      "Products": 13,
+      "Images downloaded": 13,
+      "Folder": "public/images/products/lookskart/all/tailors/"
+    },
+    {
+      "Brand": "Wet Brush",
+      "Products": 0,
+      "Images downloaded": 0,
+      "Folder": ""
+    },
+    {
+      "Brand": "Let's Shave",
+      "Products": 8,
+      "Images downloaded": 8,
+      "Folder": "public/images/products/lookskart/all/lets-shave/"
+    },
+    {
+      "Brand": "Redken",
+      "Products": 0,
+      "Images downloaded": 0,
+      "Folder": ""
+    },
+    {
+      "Brand": "Agnaya",
+      "Products": 0,
+      "Images downloaded": 0,
+      "Folder": ""
+    },
+    {
+      "Brand": "pH Plex (Phplex)",
+      "Products": 3,
+      "Images downloaded": 3,
+      "Folder": "public/images/products/lookskart/all/ph-plex/"
+    }
+  ],
+  "products": [
+    {
+      "brand": "18.21 Man Made",
+      "title": "18.21 Man Made Original Sweet Tobacco Man Made Wash 532ml",
+      "handle": "18-21-man-made-original-sweet-tobacco-man-made-wash-532ml",
+      "url": "https://lookskart.com/products/18-21-man-made-original-sweet-tobacco-man-made-wash-532ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0002_Sweettobbacowash575ml.jpg?v=1671191984",
+      "localImage": "/images/products/lookskart/all/18-21-man-made/18-21-man-made-original-sweet-tobacco-man-made-wash-532ml.jpg"
+    },
+    {
+      "brand": "18.21 Man Made",
+      "title": "18.21 Man Made Original Sweet Tobacco Man Made Wash 950ml",
+      "handle": "18-21-man-made-original-sweet-tobacco-man-made-wash-950ml",
+      "url": "https://lookskart.com/products/18-21-man-made-original-sweet-tobacco-man-made-wash-950ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/Wash_SweetTobacco_32oz-ThickPour_600x_8b5a8b79-0308-4fd2-a1c3-5c02df4bbfad.webp?v=1739089858",
+      "localImage": "/images/products/lookskart/all/18-21-man-made/18-21-man-made-original-sweet-tobacco-man-made-wash-950ml.webp"
+    },
+    {
+      "brand": "18.21 Man Made",
+      "title": "18.21 Man Made Spiced Vanilla Glide Shave Lotion 177ml",
+      "handle": "18-21-man-made-spiced-vanilla-glide-shave-lotion-177ml",
+      "url": "https://lookskart.com/products/18-21-man-made-spiced-vanilla-glide-shave-lotion-177ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0052_Glide-Shave-Lotion-1821-Manmade.jpg?v=1671432214",
+      "localImage": "/images/products/lookskart/all/18-21-man-made/18-21-man-made-spiced-vanilla-glide-shave-lotion-177ml.jpg"
+    },
+    {
+      "brand": "18.21 Man Made",
+      "title": "18.21 Man Made Spiced Vanilla Man Made Wash 950ml",
+      "handle": "18-21-man-made-spiced-vanilla-man-made-wash-950ml",
+      "url": "https://lookskart.com/products/18-21-man-made-spiced-vanilla-man-made-wash-950ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/NEWLABEL_SpicedVanilla_32_600x_5f4df754-1919-45d2-bed5-27615ef8df22.webp?v=1739089969",
+      "localImage": "/images/products/lookskart/all/18-21-man-made/18-21-man-made-spiced-vanilla-man-made-wash-950ml.webp"
+    },
+    {
+      "brand": "18.21 Man Made",
+      "title": "18.21 Man Made Sweet Tobacco Clay",
+      "handle": "18-21-man-made-sweet-tobacco-clay",
+      "url": "https://lookskart.com/products/18-21-man-made-sweet-tobacco-clay",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/Clayv3.webp?v=1764409452",
+      "localImage": "/images/products/lookskart/all/18-21-man-made/18-21-man-made-sweet-tobacco-clay.webp"
+    },
+    {
+      "brand": "18.21 Man Made",
+      "title": "18.21 Man Made Sweet Tobacco Paste",
+      "handle": "18-21-man-made-sweet-tobacco-paste",
+      "url": "https://lookskart.com/products/18-21-man-made-sweet-tobacco-paste",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0019_paste.jpg?v=1671194827",
+      "localImage": "/images/products/lookskart/all/18-21-man-made/18-21-man-made-sweet-tobacco-paste.jpg"
+    },
+    {
+      "brand": "18.21 Man Made",
+      "title": "18.21 Man Made Sweet Tobacco Pomade",
+      "handle": "18-21-man-made-sweet-tobacco-pomade",
+      "url": "https://lookskart.com/products/18-21-man-made-sweet-tobacco-pomade",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/PomadeV2_600x_f3343553-3a34-46c7-832f-ec09b729fa5e.webp?v=1739089606",
+      "localImage": "/images/products/lookskart/all/18-21-man-made/18-21-man-made-sweet-tobacco-pomade.webp"
+    },
+    {
+      "brand": "18.21 Man Made",
+      "title": "18.21 Man Made Sweet Tobacco Premium Hairspray",
+      "handle": "18-21-man-made-sweet-tobacco-premium-hairspray",
+      "url": "https://lookskart.com/products/18-21-man-made-sweet-tobacco-premium-hairspray",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0047_hairspray.jpg?v=1671431537",
+      "localImage": "/images/products/lookskart/all/18-21-man-made/18-21-man-made-sweet-tobacco-premium-hairspray.jpg"
+    },
+    {
+      "brand": "18.21 Man Made",
+      "title": "18.21 Man Made Sweet Tobacco Wax",
+      "handle": "18-21-man-made-sweet-tobacco-wax",
+      "url": "https://lookskart.com/products/18-21-man-made-sweet-tobacco-wax",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0000_wax.jpg?v=1671191453",
+      "localImage": "/images/products/lookskart/all/18-21-man-made/18-21-man-made-sweet-tobacco-wax.jpg"
+    },
+    {
+      "brand": "Biotop",
+      "title": "Biotop 02 Eco Dandruff Shampoo 250ml",
+      "handle": "biotop-02-eco-dandruff-shampoo-330ml",
+      "url": "https://lookskart.com/products/biotop-02-eco-dandruff-shampoo-330ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-3_0092_11-min.jpg?v=1672149000",
+      "localImage": "/images/products/lookskart/all/biotop/biotop-02-eco-dandruff-shampoo-330ml.jpg"
+    },
+    {
+      "brand": "Biotop",
+      "title": "Biotop 19 Pro Silver Shampoo 250ml",
+      "handle": "biotop-19-pro-silver-shampoo-330ml",
+      "url": "https://lookskart.com/products/biotop-19-pro-silver-shampoo-330ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-3_0089_13-min.jpg?v=1672147841",
+      "localImage": "/images/products/lookskart/all/biotop/biotop-19-pro-silver-shampoo-330ml.jpg"
+    },
+    {
+      "brand": "Biotop",
+      "title": "Biotop 20 Volumizing Boost Shampoo 330ml",
+      "handle": "biotop-20-volumizing-boost-shampoo-330ml",
+      "url": "https://lookskart.com/products/biotop-20-volumizing-boost-shampoo-330ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-3_0085_15-min.jpg?v=1672147238",
+      "localImage": "/images/products/lookskart/all/biotop/biotop-20-volumizing-boost-shampoo-330ml.jpg"
+    },
+    {
+      "brand": "Biotop",
+      "title": "Biotop 700 Keratin + Kale Hair Conditioner 500 ml",
+      "handle": "biotop-700-keratin-kale-hair-conditioner-500-ml",
+      "url": "https://lookskart.com/products/biotop-700-keratin-kale-hair-conditioner-500-ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/biotop-professional-700-keratin-and-kale-hair-conditioner-250ml.webp?v=1743597180",
+      "localImage": "/images/products/lookskart/all/biotop/biotop-700-keratin-kale-hair-conditioner-500-ml.webp"
+    },
+    {
+      "brand": "Biotop",
+      "title": "Biotop 700 Keratin + Kale Hair Mask - 250ml",
+      "handle": "biotop-700-keratin-and-kale-hair-mask-250ml",
+      "url": "https://lookskart.com/products/biotop-700-keratin-and-kale-hair-mask-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/biotop-professional-700-keratin-and-kale-hair-mask-250ml.webp?v=1743596348",
+      "localImage": "/images/products/lookskart/all/biotop/biotop-700-keratin-and-kale-hair-mask-250ml.webp"
+    },
+    {
+      "brand": "Biotop",
+      "title": "Biotop 700 Keratin + Kale Hair Serum 65ml",
+      "handle": "biotop-700-keratin-and-kale-hair-serum-65ml-250ml",
+      "url": "https://lookskart.com/products/biotop-700-keratin-and-kale-hair-serum-65ml-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/Biotop700Keratin_KaleHairSerum65ml-250ml.jpg?v=1749708440",
+      "localImage": "/images/products/lookskart/all/biotop/biotop-700-keratin-and-kale-hair-serum-65ml-250ml.jpg"
+    },
+    {
+      "brand": "Biotop",
+      "title": "Biotop 700 Keratin + Kale Hair Shampoo 500 ml | Calming Chamomile|Paraben, SLS & Sulfate free|For Damaged, Coarse or Chemically Treated Hair",
+      "handle": "biotop-700-keratin-kale-shampoo-250ml-calming-chamomile-paraben-sls-sulfate-free-for-damaged-coarse-or-chemically-treated-hair-1",
+      "url": "https://lookskart.com/products/biotop-700-keratin-kale-shampoo-250ml-calming-chamomile-paraben-sls-sulfate-free-for-damaged-coarse-or-chemically-treated-hair-1",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/700-Keratin_Kale-Shampoo-500ml.webp?v=1749707903",
+      "localImage": "/images/products/lookskart/all/biotop/biotop-700-keratin-kale-shampoo-250ml-calming-chamomile-paraben-sls-sulfate-free-for-damaged-coarse-or-chemically-treated-hair-1.webp"
+    },
+    {
+      "brand": "Biotop",
+      "title": "Biotop 700 Keratin + Kale Hair Styling Cream 120ml 0ml",
+      "handle": "biotop-700-keratin-and-kale-styling-cream-120ml-0ml",
+      "url": "https://lookskart.com/products/biotop-700-keratin-and-kale-styling-cream-120ml-0ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/shopping.webp?v=1743596566",
+      "localImage": "/images/products/lookskart/all/biotop/biotop-700-keratin-and-kale-styling-cream-120ml-0ml.webp"
+    },
+    {
+      "brand": "Biotop",
+      "title": "Biotop 911 Quinoa Conditioner 250ml",
+      "handle": "biotop-911-quinoa-conditioner-330ml",
+      "url": "https://lookskart.com/products/biotop-911-quinoa-conditioner-330ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/11.jpg?v=1672231336",
+      "localImage": "/images/products/lookskart/all/biotop/biotop-911-quinoa-conditioner-330ml.jpg"
+    },
+    {
+      "brand": "Biotop",
+      "title": "Biotop 911 Quinoa Conditioner 500ml",
+      "handle": "biotop-911-quinoa-conditioner-500ml",
+      "url": "https://lookskart.com/products/biotop-911-quinoa-conditioner-500ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/U8797XRmQX-1145500_1.webp?v=1743589903",
+      "localImage": "/images/products/lookskart/all/biotop/biotop-911-quinoa-conditioner-500ml.webp"
+    },
+    {
+      "brand": "Biotop",
+      "title": "Biotop 911 Quinoa Hair Mask 250ml",
+      "handle": "biotop-911-quinoa-hair-mask-350ml",
+      "url": "https://lookskart.com/products/biotop-911-quinoa-hair-mask-350ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/21OQQRoNAvL._SX300_SY300_QL70_FMwebp.webp?v=1743588896",
+      "localImage": "/images/products/lookskart/all/biotop/biotop-911-quinoa-hair-mask-350ml.webp"
+    },
+    {
+      "brand": "Biotop",
+      "title": "Biotop 911 Quinoa Hydrating Serum 65ml",
+      "handle": "biotop-911-quinoa-oil-serum-330ml",
+      "url": "https://lookskart.com/products/biotop-911-quinoa-oil-serum-330ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/Biotop-2-BP_911-Quinoa-Serum-65ml_2023_fl712o.jpg?v=1743589147",
+      "localImage": "/images/products/lookskart/all/biotop/biotop-911-quinoa-oil-serum-330ml.jpg"
+    },
+    {
+      "brand": "Biotop",
+      "title": "Biotop 911 Quinoa Kit Apple Cider Vinegar Foaming Rinse Combo 170+70ml",
+      "handle": "biotop-911-quinoa-kit-apple-cider-vinegar-foaming-rinse-combo-170-70ml",
+      "url": "https://lookskart.com/products/biotop-911-quinoa-kit-apple-cider-vinegar-foaming-rinse-combo-170-70ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KIT-ACV-768x768.webp?v=1775299279",
+      "localImage": "/images/products/lookskart/all/biotop/biotop-911-quinoa-kit-apple-cider-vinegar-foaming-rinse-combo-170-70ml.webp"
+    },
+    {
+      "brand": "Biotop",
+      "title": "Biotop 911 Quinoa Shampoo 250ml",
+      "handle": "biotop-911-quinoa-shampoo-330ml",
+      "url": "https://lookskart.com/products/biotop-911-quinoa-shampoo-330ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-3_0108_-2-min.jpg?v=1672149696",
+      "localImage": "/images/products/lookskart/all/biotop/biotop-911-quinoa-shampoo-330ml.jpg"
+    },
+    {
+      "brand": "Biotop",
+      "title": "Biotop 911 Quinoa Shampoo 500ml",
+      "handle": "biotop-911-quinoa-shampoo-500ml",
+      "url": "https://lookskart.com/products/biotop-911-quinoa-shampoo-500ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/Biotop_911_Quinoa_Shampoo_500ml.png?v=1749709124",
+      "localImage": "/images/products/lookskart/all/biotop/biotop-911-quinoa-shampoo-500ml.png"
+    },
+    {
+      "brand": "Brasil Cacau",
+      "title": "Brasil Cacau Cadiveu Acai Oil Treatment 110ml",
+      "handle": "brasil-cacau-cadiveu-acai-oil-treatment-110ml",
+      "url": "https://lookskart.com/products/brasil-cacau-cadiveu-acai-oil-treatment-110ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/acaioil110.avif?v=1761742884",
+      "localImage": "/images/products/lookskart/all/brasil-cacau/brasil-cacau-cadiveu-acai-oil-treatment-110ml.avif"
+    },
+    {
+      "brand": "Brasil Cacau",
+      "title": "Brasil Cacau Cadiveu Acai Oil Treatment 60ml",
+      "handle": "brasil-cacau-acai-oil-treatment-60ml",
+      "url": "https://lookskart.com/products/brasil-cacau-acai-oil-treatment-60ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0151_02Acai.jpg?v=1671190559",
+      "localImage": "/images/products/lookskart/all/brasil-cacau/brasil-cacau-acai-oil-treatment-60ml.jpg"
+    },
+    {
+      "brand": "Brasil Cacau",
+      "title": "Brasil Cacau Cadiveu Anti Frizz Contiioner 300ml",
+      "handle": "brasil-cacau-cadiveu-anti-frizz-contiioner-300ml",
+      "url": "https://lookskart.com/products/brasil-cacau-cadiveu-anti-frizz-contiioner-300ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/condi.a4rHhIrcIa-958080-3.avif?v=1761743409",
+      "localImage": "/images/products/lookskart/all/brasil-cacau/brasil-cacau-cadiveu-anti-frizz-contiioner-300ml.avif"
+    },
+    {
+      "brand": "Brasil Cacau",
+      "title": "Brasil Cacau Cadiveu Anti Frizz Shampoo 300ml",
+      "handle": "brasil-cacau-anti-frizz-shampoo-300ml",
+      "url": "https://lookskart.com/products/brasil-cacau-anti-frizz-shampoo-300ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0133_06antifrizzshampoo.jpg?v=1671188773",
+      "localImage": "/images/products/lookskart/all/brasil-cacau/brasil-cacau-anti-frizz-shampoo-300ml.jpg"
+    },
+    {
+      "brand": "Brasil Cacau",
+      "title": "Brasil Cacau Cadiveu Extreme Repair Conditioner For Damaged Hair ( 300ML)",
+      "handle": "brasil-cacau-extreme-repair-conditioner-for-damaged-hair-300ml",
+      "url": "https://lookskart.com/products/brasil-cacau-extreme-repair-conditioner-for-damaged-hair-300ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0144_03brasil-cacau-extreme-condit.jpg?v=1671189673",
+      "localImage": "/images/products/lookskart/all/brasil-cacau/brasil-cacau-extreme-repair-conditioner-for-damaged-hair-300ml.jpg"
+    },
+    {
+      "brand": "Brasil Cacau",
+      "title": "Brasil Cacau Cadiveu Extreme Repair Hair Mask 200ml",
+      "handle": "brasil-cacau-extreme-repair-hair-mask-200ml",
+      "url": "https://lookskart.com/products/brasil-cacau-extreme-repair-hair-mask-200ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0159_01brasil-cacau-extreme-repair-mask.jpg?v=1671191317",
+      "localImage": "/images/products/lookskart/all/brasil-cacau/brasil-cacau-extreme-repair-hair-mask-200ml.jpg"
+    },
+    {
+      "brand": "Brasil Cacau",
+      "title": "Brasil Cacau Cadiveu Extreme Repair Shampoo For Damaged Hair ( 300ML)",
+      "handle": "brasil-cacau-extreme-repair-shampoo-for-damaged-hair-300ml",
+      "url": "https://lookskart.com/products/brasil-cacau-extreme-repair-shampoo-for-damaged-hair-300ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0140_04brasil-cacau-extreme-shampoo.jpg?v=1671189654",
+      "localImage": "/images/products/lookskart/all/brasil-cacau/brasil-cacau-extreme-repair-shampoo-for-damaged-hair-300ml.jpg"
+    },
+    {
+      "brand": "Brasil Cacau",
+      "title": "Brazil Cacau Anti Frizz Conditioner (300 ml)",
+      "handle": "brazil-cacau-anti-frizz-conditioner-300-ml",
+      "url": "https://lookskart.com/products/brazil-cacau-anti-frizz-conditioner-300-ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0136_05AntiFrizzCondi.jpg?v=1671188938",
+      "localImage": "/images/products/lookskart/all/brasil-cacau/brazil-cacau-anti-frizz-conditioner-300-ml.jpg"
+    },
+    {
+      "brand": "K18",
+      "title": "K-18 leave-in molecular repair hair mask 50ml",
+      "handle": "k-18-leave-in-molecular-repair-hair-mask-50ml",
+      "url": "https://lookskart.com/products/k-18-leave-in-molecular-repair-hair-mask-50ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0045_Layer29.jpg?v=1671431390",
+      "localImage": "/images/products/lookskart/all/k18/k-18-leave-in-molecular-repair-hair-mask-50ml.jpg"
+    },
+    {
+      "brand": "K18",
+      "title": "K-18 leave-in molecular repair hair mask 5ml",
+      "handle": "k-18-leave-in-molecular-repair-hair-mask-5ml",
+      "url": "https://lookskart.com/products/k-18-leave-in-molecular-repair-hair-mask-5ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0044_0047.jpg?v=1671429996",
+      "localImage": "/images/products/lookskart/all/k18/k-18-leave-in-molecular-repair-hair-mask-5ml.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Biotop 700 Keratin + Kale Hair Shampoo 500 ml | Calming Chamomile|Paraben, SLS & Sulfate free|For Damaged, Coarse or Chemically Treated Hair",
+      "handle": "biotop-700-keratin-kale-shampoo-250ml-calming-chamomile-paraben-sls-sulfate-free-for-damaged-coarse-or-chemically-treated-hair-1",
+      "url": "https://lookskart.com/products/biotop-700-keratin-kale-shampoo-250ml-calming-chamomile-paraben-sls-sulfate-free-for-damaged-coarse-or-chemically-treated-hair-1",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/700-Keratin_Kale-Shampoo-500ml.webp?v=1749707903",
+      "localImage": "/images/products/lookskart/all/kerastase/biotop-700-keratin-kale-shampoo-250ml-calming-chamomile-paraben-sls-sulfate-free-for-damaged-coarse-or-chemically-treated-hair-1.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Fresh Affair Dry Shampoo",
+      "handle": "fresh-affair-dry-shampoo",
+      "url": "https://lookskart.com/products/fresh-affair-dry-shampoo",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00053_1.webp?v=1727178045",
+      "localImage": "/images/products/lookskart/all/kerastase/fresh-affair-dry-shampoo.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Genesis Défense Thermique Blow Dry Primer 150 ml",
+      "handle": "kerastase-genesis-dia©fense-thermique-blow-dry-primer-150ml",
+      "url": "https://lookskart.com/products/kerastase-genesis-dia©fense-thermique-blow-dry-primer-150ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0046_10KGNFL150_2ea74d24-6060-44b1-82e8-3a1f6df1e2bb.jpg?v=1684827174",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-genesis-dia©fense-thermique-blow-dry-primer-150ml.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Genesis Défense Thermique Blow Dry Primer 150ml",
+      "handle": "kerastase-genesis-di©fense-thermique-blow-dry-primer-150ml",
+      "url": "https://lookskart.com/products/kerastase-genesis-di©fense-thermique-blow-dry-primer-150ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0046_10KGNFL150.jpg?v=1672140074",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-genesis-di©fense-thermique-blow-dry-primer-150ml.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Genesis Fondant Renforçateur Conditioner 200ml",
+      "handle": "kerastase-genesis-fondant-renfori-ateur-conditioner-200ml",
+      "url": "https://lookskart.com/products/kerastase-genesis-fondant-renfori-ateur-conditioner-200ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0047_9KGNFO200.jpg?v=1672140033",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-genesis-fondant-renfori-ateur-conditioner-200ml.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Genesis Homme Anti-Hair Fall Fortifying Serum For Men 90ML",
+      "handle": "genesis-homme-anti-hair-fall-fortifying-serum-for-men-90ml",
+      "url": "https://lookskart.com/products/genesis-homme-anti-hair-fall-fortifying-serum-for-men-90ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00178_serum_packshot_image_90ml_2.jpg?v=1781092588",
+      "localImage": "/images/products/lookskart/all/kerastase/genesis-homme-anti-hair-fall-fortifying-serum-for-men-90ml.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Genesis Homme Anti-Hair Fall Purifying Shampoo For Men 250ML",
+      "handle": "genesis-homme-anti-hair-fall-purifying-shampoo-for-men-250ml",
+      "url": "https://lookskart.com/products/genesis-homme-anti-hair-fall-purifying-shampoo-for-men-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/AKER_00175_shampoo_packshot_image_250ml_1.webp?v=1781091741",
+      "localImage": "/images/products/lookskart/all/kerastase/genesis-homme-anti-hair-fall-purifying-shampoo-for-men-250ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Genesis Homme Anti-Hair Fall Thickening Clay 75ML",
+      "handle": "genesis-homme-anti-hair-fall-thickening-clay-75ml",
+      "url": "https://lookskart.com/products/genesis-homme-anti-hair-fall-thickening-clay-75ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00177_wax_packshot_image_75ml_1_8a0e7deb-68f1-46dc-90c0-766db3c9c897.webp?v=1781092310",
+      "localImage": "/images/products/lookskart/all/kerastase/genesis-homme-anti-hair-fall-thickening-clay-75ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Genesis Homme Anti-Hair Fall Thickening Shampoo For Men 250ML",
+      "handle": "genesis-homme-anti-hair-fall-thickening-shampoo-for-men-250ml",
+      "url": "https://lookskart.com/products/genesis-homme-anti-hair-fall-thickening-shampoo-for-men-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00174_shampoo_packshot_image_250ml_1.webp?v=1781091269",
+      "localImage": "/images/products/lookskart/all/kerastase/genesis-homme-anti-hair-fall-thickening-shampoo-for-men-250ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase | Discipline |Bain Fluidealiste Gentle Shampoo (Sulphate-Free)250ml",
+      "handle": "kerastase-discipline-bain-fluidealiste-gentle-shampoosulfate-free-250ml",
+      "url": "https://lookskart.com/products/kerastase-discipline-bain-fluidealiste-gentle-shampoosulfate-free-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/Kerastase_Discipline_Bain_Fluidealiste_Gentle_Shampoo_Sulphate-Free_250ml.jpg?v=1765361427",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-discipline-bain-fluidealiste-gentle-shampoosulfate-free-250ml.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase | Nutritive |Bain Satin Riche Shampoo|250ml Nourishing for dry to very dry hair",
+      "handle": "kerastase-nutritive-bain-satin-shampoo-250ml-nourishing-for-dry-to-very-dry-hair",
+      "url": "https://lookskart.com/products/kerastase-nutritive-bain-satin-shampoo-250ml-nourishing-for-dry-to-very-dry-hair",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0044_12KNRB2250.jpg?v=1672140168",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-nutritive-bain-satin-shampoo-250ml-nourishing-for-dry-to-very-dry-hair.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase | Nutritive |Masquintense Riche Mask|200ml Highly nourishing mask",
+      "handle": "kerastase-nutritive-masquintense-epais-mask-200ml-highly-nourishing-mask",
+      "url": "https://lookskart.com/products/kerastase-nutritive-masquintense-epais-mask-200ml-highly-nourishing-mask",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0043_13KRNMF200.jpg?v=1672140195",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-nutritive-masquintense-epais-mask-200ml-highly-nourishing-mask.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase | Nutritive |Nectar Thermique Blow Dry Primer|150ml",
+      "handle": "kerastase-nutritive-nectar-thermique-blow-dry-primer-150ml",
+      "url": "https://lookskart.com/products/kerastase-nutritive-nectar-thermique-blow-dry-primer-150ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/k_nut_nectar_thermique_2048x2048_540x_9032ef89-cc16-44c3-98a2-810d31179b51.webp?v=1750155049",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-nutritive-nectar-thermique-blow-dry-primer-150ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase | Nutritive| 8H Magic Night Serum|90ml Moisturising overnight hair leave",
+      "handle": "kerastase-nutritive-8h-magic-night-serum-90ml-moisturising-overnight-hair-leave",
+      "url": "https://lookskart.com/products/kerastase-nutritive-8h-magic-night-serum-90ml-moisturising-overnight-hair-leave",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/Kerastase_Nutritive_8H_Magic_Night_Serum90ml_Moisturising_overnight_hair_leave.jpg?v=1749808056",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-nutritive-8h-magic-night-serum-90ml-moisturising-overnight-hair-leave.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase |Curl| Bain Hydratation Douceur|250ml Gentle hydrating creamy shampoo",
+      "handle": "kerastase-curl-bain-hydratation-douceur-250ml-gentle-hydrating-creamy-shampoo",
+      "url": "https://lookskart.com/products/kerastase-curl-bain-hydratation-douceur-250ml-gentle-hydrating-creamy-shampoo",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0055_1KCMBA250-00.jpg?v=1672137536",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-curl-bain-hydratation-douceur-250ml-gentle-hydrating-creamy-shampoo.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase |Curl| Cream De Jour Fondamentale|150ml",
+      "handle": "kerastase-curl-cream-de-jour-fondamentale-150ml",
+      "url": "https://lookskart.com/products/kerastase-curl-cream-de-jour-fondamentale-150ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00102_Curl_Manifesto_Cream_texture_new_720x_ecf338aa-bb0e-4e7c-b470-459a25216806.webp?v=1764410195",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-curl-cream-de-jour-fondamentale-150ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase |Curl| GelÌ©e Curl Contour|150ml Daily moisturizing",
+      "handle": "kerastase-curl-geli©e-curl-contour-150ml-daily-moisturizing",
+      "url": "https://lookskart.com/products/kerastase-curl-geli©e-curl-contour-150ml-daily-moisturizing",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0052_4KCMGC150-00.jpg?v=1672139888",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-curl-geli©e-curl-contour-150ml-daily-moisturizing.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase |Curl| Masque Beurre Haute Nutrition|200ml Extra-rich nourishing mask",
+      "handle": "kerastase-curl-masque-beurre-haute-nutrition-200ml-extra-rich-nourishing-mask",
+      "url": "https://lookskart.com/products/kerastase-curl-masque-beurre-haute-nutrition-200ml-extra-rich-nourishing-mask",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0054_2KCMMA200-00.jpg?v=1672139821",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-curl-masque-beurre-haute-nutrition-200ml-extra-rich-nourishing-mask.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase |Genesis| Bain Hydra-Fortifiant Shampoo|250ml",
+      "handle": "kerastase-genesis-bain-hydra-fortifiant-shampoo-250ml",
+      "url": "https://lookskart.com/products/kerastase-genesis-bain-hydra-fortifiant-shampoo-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0050_6KGNBA250.jpg?v=1672127546",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-genesis-bain-hydra-fortifiant-shampoo-250ml.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase |Genesis| Bain Nutri-Fortifiant Shampoo|250ml",
+      "handle": "kerastase-genesis-bain-nutri-fortifiant-shampoo-250ml",
+      "url": "https://lookskart.com/products/kerastase-genesis-bain-nutri-fortifiant-shampoo-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0049_7KGNBR250.jpg?v=1672139932",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-genesis-bain-nutri-fortifiant-shampoo-250ml.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase |Genesis| Masque Reconstituant Mask|200ml Anti hair-fall intense",
+      "handle": "kerastase-genesis-masque-reconstituant-mask-200ml-anti-hair-fall-intense",
+      "url": "https://lookskart.com/products/kerastase-genesis-masque-reconstituant-mask-200ml-anti-hair-fall-intense",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/Kerastase_Genesis_Masque_Reconstituant_Mask_m200ml_Anti_hair-fall_intense.webp?v=1750143349",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-genesis-masque-reconstituant-mask-200ml-anti-hair-fall-intense.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase |Genesis| Serum Anti-Chute Fortifiant Treatment|90ml",
+      "handle": "kerastase-genesis-serum-anti-chute-fortifiant-treatment-90ml",
+      "url": "https://lookskart.com/products/kerastase-genesis-serum-anti-chute-fortifiant-treatment-90ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0051_5KGNCU090.jpg?v=1672126447",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-genesis-serum-anti-chute-fortifiant-treatment-90ml.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Bain Chroma Respect 250ml",
+      "handle": "kerastase-bain-chroma-respect-250ml",
+      "url": "https://lookskart.com/products/kerastase-bain-chroma-respect-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/Bainchroma-absolurespect-250ml.webp?v=1683031856",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-bain-chroma-respect-250ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Bain Riche Chroma Respect 250ml",
+      "handle": "kerastase-bain-riche-chroma-respect-250ml",
+      "url": "https://lookskart.com/products/kerastase-bain-riche-chroma-respect-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/bain-riche-sans-sulfate--250ml.webp?v=1749797137",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-bain-riche-chroma-respect-250ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Blond Bain Ultra-Violet Shampoo 250ml Purple shampoo",
+      "handle": "kerastase-blond-bain-ultra-violet-shampoo-250ml-purple-shampoo",
+      "url": "https://lookskart.com/products/kerastase-blond-bain-ultra-violet-shampoo-250ml-purple-shampoo",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/40.jpg?v=1672234270",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-blond-bain-ultra-violet-shampoo-250ml-purple-shampoo.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Blond Cicaflash Conditioner 250ml",
+      "handle": "kerastase-blond-cicaflash-conditioner-250ml-healing-conditioner-for-sensitised",
+      "url": "https://lookskart.com/products/kerastase-blond-cicaflash-conditioner-250ml-healing-conditioner-for-sensitised",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-2_0019_56.jpg?v=1672040512",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-blond-cicaflash-conditioner-250ml-healing-conditioner-for-sensitised.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Chroma Absolu Hair Oil-In-Serum 75ML-Refill",
+      "handle": "kerastase-chroma-absolu-lhuile-chroma-eclat-hair-oil-refill-75ml",
+      "url": "https://lookskart.com/products/kerastase-chroma-absolu-lhuile-chroma-eclat-hair-oil-refill-75ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00323_75ml_refill_Packshot_Image1.webp?v=1744784742",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-chroma-absolu-lhuile-chroma-eclat-hair-oil-refill-75ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Chroma Absolu Hair Oil-In-Serum 75ML-Refillable",
+      "handle": "chroma-absolu-hair-oil-in-serum-75ml-refillable",
+      "url": "https://lookskart.com/products/chroma-absolu-hair-oil-in-serum-75ml-refillable",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00323_75ml_Packshot_Image1.webp?v=1744783707",
+      "localImage": "/images/products/lookskart/all/kerastase/chroma-absolu-hair-oil-in-serum-75ml-refillable.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Chroma Bain Respect 500ml Refill Shampoo for Damaged or Damaged and Coloured Hair, Nourishing Hair Bath",
+      "handle": "kerastase-shampoo-for-damaged-or-damaged-and-coloured-hair-nourishing-hair-bath-bain-riche-chroma-500ml-refill",
+      "url": "https://lookskart.com/products/kerastase-shampoo-for-damaged-or-damaged-and-coloured-hair-nourishing-hair-bath-bain-riche-chroma-500ml-refill",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00117_Refill_Packshot_Image1_720x_e8f03d8c-6edf-4b81-928d-22d2d15ca787.webp?v=1744786820",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-shampoo-for-damaged-or-damaged-and-coloured-hair-nourishing-hair-bath-bain-riche-chroma-500ml-refill.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Chroma Bain Respect 500ml Shampoo for Damaged or Damaged and Coloured Hair, Nourishing Hair Bath,",
+      "handle": "kerastase-shampoo-for-damaged-or-damaged-and-coloured-hair-nourishing-hair-bath-bain-riche-chroma-500ml",
+      "url": "https://lookskart.com/products/kerastase-shampoo-for-damaged-or-damaged-and-coloured-hair-nourishing-hair-bath-bain-riche-chroma-500ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/shop-cb-05204-01-chroma-absolu-bain-riche-chroma-respect---500ml--1.jpg?v=1744786381",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-shampoo-for-damaged-or-damaged-and-coloured-hair-nourishing-hair-bath-bain-riche-chroma-500ml.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Chronologiste – Bain Regenerant Shampoo 250ml",
+      "handle": "kerastase-chrono-bain-regenerant-shampoo-250ml-youth-revitalizing-shampoo",
+      "url": "https://lookskart.com/products/kerastase-chrono-bain-regenerant-shampoo-250ml-youth-revitalizing-shampoo",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/41.jpg?v=1672234355",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-chrono-bain-regenerant-shampoo-250ml-youth-revitalizing-shampoo.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Chronologiste Masque Intense Régénérant Hair Mask 200ml",
+      "handle": "kerastase-chrono-masque-intense-regenerant-hair-mask-200ml",
+      "url": "https://lookskart.com/products/kerastase-chrono-masque-intense-regenerant-hair-mask-200ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/Kerastase_Chronologiste_Masque_Intense_Regenerant_Hair_Mask_200ml.webp?v=1749820576",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-chrono-masque-intense-regenerant-hair-mask-200ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Curl Manifesto - Gelée Curl Contour Leave-in Gelee 150ml",
+      "handle": "kerastase-curl-gelia©e-curl-contour-150ml-daily-moisturizing",
+      "url": "https://lookskart.com/products/kerastase-curl-gelia©e-curl-contour-150ml-daily-moisturizing",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0052_4KCMGC150-00_f8107cc1-0cbe-4f1b-86c0-a22a3d496971.jpg?v=1684827163",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-curl-gelia©e-curl-contour-150ml-daily-moisturizing.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Densifique - Masque Densite 200ml",
+      "handle": "kerastase-densifique-masque-densitia©-mask-200ml-bodifying-mask",
+      "url": "https://lookskart.com/products/kerastase-densifique-masque-densitia©-mask-200ml-bodifying-mask",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-2_0016_DENSIFIQUE-MASQUE_3d0b242b-1399-49df-939b-c703001bf7ff.jpg?v=1684827170",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-densifique-masque-densitia©-mask-200ml-bodifying-mask.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Densifique Bain Densite Homme Shampoo 250ml Bodifying shampoo",
+      "handle": "kerastase-densifique-bain-densitia©-homme-shampoo-250ml-bodifying-shampoo",
+      "url": "https://lookskart.com/products/kerastase-densifique-bain-densitia©-homme-shampoo-250ml-bodifying-shampoo",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/22_7750f67d-9d86-492c-a881-1658dc237bf3.jpg?v=1684827165",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-densifique-bain-densitia©-homme-shampoo-250ml-bodifying-shampoo.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Densifique Bain Densite Shampoo 250ml",
+      "handle": "kerastase-densifique-bain-densitia©-shampoo-250ml-bodifying-shampoo",
+      "url": "https://lookskart.com/products/kerastase-densifique-bain-densitia©-shampoo-250ml-bodifying-shampoo",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/23_6cdca165-0883-4614-a926-5c1566c17623.jpg?v=1684827167",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-densifique-bain-densitia©-shampoo-250ml-bodifying-shampoo.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Densifique Bain Densite Shampoo 250ml Bodifying shampoo",
+      "handle": "kerastase-densifique-bain-densiti©-shampoo-250ml-bodifying-shampoo",
+      "url": "https://lookskart.com/products/kerastase-densifique-bain-densiti©-shampoo-250ml-bodifying-shampoo",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/23.jpg?v=1672232675",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-densifique-bain-densiti©-shampoo-250ml-bodifying-shampoo.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Densifique Cure Densifique Homme Treatment 30*6ml Hair density",
+      "handle": "kerastase-densifique-cure-densifique-homme-treatment-30-36ml-hair-density",
+      "url": "https://lookskart.com/products/kerastase-densifique-cure-densifique-homme-treatment-30-36ml-hair-density",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/24.jpg?v=1672232769",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-densifique-cure-densifique-homme-treatment-30-36ml-hair-density.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Discipline Maskeratine Mask 200ml Smoothing mask for Frizzy Hair",
+      "handle": "kerastase-discipline-maskeratine-mask-200ml-smoothing-mask-for-frizzy",
+      "url": "https://lookskart.com/products/kerastase-discipline-maskeratine-mask-200ml-smoothing-mask-for-frizzy",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0039_17KDIMA200.jpg?v=1672140292",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-discipline-maskeratine-mask-200ml-smoothing-mask-for-frizzy.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Discipline Spray Fluidissime 150ml Hair smoothing anti-frizz spray",
+      "handle": "kerastase-discipline-spray-fluidissime-150ml-hair-smoothing-anti-frizz-spray",
+      "url": "https://lookskart.com/products/kerastase-discipline-spray-fluidissime-150ml-hair-smoothing-anti-frizz-spray",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/26.jpg?v=1672233050",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-discipline-spray-fluidissime-150ml-hair-smoothing-anti-frizz-spray.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Elixir Ultime Hair Oil-In-Serum (30ml)",
+      "handle": "kerastase-elixir-ultime-hair-oil-in-serum-30ml",
+      "url": "https://lookskart.com/products/kerastase-elixir-ultime-hair-oil-in-serum-30ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00303_30ml_Packshot_Image.webp?v=1739088615",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-elixir-ultime-hair-oil-in-serum-30ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Elixir Ultime Hair Oil-In-Serum Refill (75ml)",
+      "handle": "kerastase-elixir-ultime-hair-oil-in-serum-refill-75ml",
+      "url": "https://lookskart.com/products/kerastase-elixir-ultime-hair-oil-in-serum-refill-75ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/kerastase-elixir-ultime-lhuile-originale-oil-refill-75-ml.jpg?v=1736759398",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-elixir-ultime-hair-oil-in-serum-refill-75ml.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Elixir Ultime Original Refillable Hair Oil 75ml",
+      "handle": "kerastase-elixir-ultime-original-refillable-hair-oil-75ml",
+      "url": "https://lookskart.com/products/kerastase-elixir-ultime-original-refillable-hair-oil-75ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/ElixirUltime1_b10a2319-a0c3-44a3-aa9e-001ff915988b_refillable.webp?v=1736759328",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-elixir-ultime-original-refillable-hair-oil-75ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Genesis - Bain Hydra-Fortifiant Shampoo 500ml",
+      "handle": "kerastase-genesis-bain-hydra-fortifiant-shampoo-500ml",
+      "url": "https://lookskart.com/products/kerastase-genesis-bain-hydra-fortifiant-shampoo-500ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/bainhydrafortifiantgenesiskerastase-500ml_reflexions_unisex_salon_700x700_748e8b9b-7bea-43f5-91de-02dc8d82b94b.webp?v=1736760263",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-genesis-bain-hydra-fortifiant-shampoo-500ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Genesis - Bain Hydra-Fortifiant Shampoo Refill 500ml",
+      "handle": "kerastase-genesis-bain-hydra-fortifiant-shampoo-refill-500ml",
+      "url": "https://lookskart.com/products/kerastase-genesis-bain-hydra-fortifiant-shampoo-refill-500ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/bainhydrafortifiantgenesiskerastase-refill-500ml_reflexions_unisex_salon_720x_5853764d-bfde-4af3-9dfe-c7e9b8c86650.webp?v=1749797283",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-genesis-bain-hydra-fortifiant-shampoo-refill-500ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Gloss Absolu Anti-Frizz Foaming Conditioner 250ml",
+      "handle": "kerastase-gloss-absolu-anti-frizz-foaming-conditioner-250ml",
+      "url": "https://lookskart.com/products/kerastase-gloss-absolu-anti-frizz-foaming-conditioner-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00329_conditioner_packshot_image_250ml_1.webp?v=1752052397",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-gloss-absolu-anti-frizz-foaming-conditioner-250ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Gloss Absolu Anti-Frizz Heat Protectant Spray 190ml",
+      "handle": "kerastase-gloss-absolu-anti-frizz-heat-protectant-spray-190ml",
+      "url": "https://lookskart.com/products/kerastase-gloss-absolu-anti-frizz-heat-protectant-spray-190ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00330_spray_packshot_image_190ml_1.webp?v=1752052306",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-gloss-absolu-anti-frizz-heat-protectant-spray-190ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Gloss Absolu Anti-Frizz Shampoo 250ml",
+      "handle": "kerastase-gloss-absolu-anti-frizz-shampoo-250ml",
+      "url": "https://lookskart.com/products/kerastase-gloss-absolu-anti-frizz-shampoo-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00328_shampoo_packshot_image_250ml_1.webp?v=1752048590",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-gloss-absolu-anti-frizz-shampoo-250ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Gloss Absolu Glaze Drops Oil-In-Serum 45ml",
+      "handle": "kerastase-gloss-absolu-glaze-drops-oil-in-serum-45ml",
+      "url": "https://lookskart.com/products/kerastase-gloss-absolu-glaze-drops-oil-in-serum-45ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00331_oil_packshot_image_45ml_1.webp?v=1752048127",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-gloss-absolu-glaze-drops-oil-in-serum-45ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Masque Chroma Filler 200ml",
+      "handle": "kerastase-masque-chroma-filler-200ml",
+      "url": "https://lookskart.com/products/kerastase-masque-chroma-filler-200ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_CHROMAABSOLU_2023_MASQUECHROMAFILLER_PACKSHOT_3474637059132.webp?v=1744789072",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-masque-chroma-filler-200ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Première Anti-Breakage & Repairing Mask 200ml",
+      "handle": "kerastase-premiere-anti-breakage-repairing-mask-200ml",
+      "url": "https://lookskart.com/products/kerastase-premiere-anti-breakage-repairing-mask-200ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/kerastase-premiere-masque-filler-reparateur-200ml.webp?v=1739086951",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-premiere-anti-breakage-repairing-mask-200ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Première Anti-Frizz Filler Serum 90ml",
+      "handle": "premiere-anti-frizz-filler-serum-90ml",
+      "url": "https://lookskart.com/products/premiere-anti-frizz-filler-serum-90ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00281-IMAGE1.webp?v=1727358404",
+      "localImage": "/images/products/lookskart/all/kerastase/premiere-anti-frizz-filler-serum-90ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Première Decalcifying & Repairing Concentrate 250ml",
+      "handle": "kerastase-premiere-decalcifying-repairing-shampoo-250ml-1",
+      "url": "https://lookskart.com/products/kerastase-premiere-decalcifying-repairing-shampoo-250ml-1",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/PREMIERE-PRE-SHAMPO-PerfectExecution3000w.webp?v=1727357910",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-premiere-decalcifying-repairing-shampoo-250ml-1.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Première Decalcifying Repairing Shampoo 250ml",
+      "handle": "kerastase-premiere-decalcifying-repairing-shampoo-250ml",
+      "url": "https://lookskart.com/products/kerastase-premiere-decalcifying-repairing-shampoo-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/premiere-shampoo-perfect-execution-00278.webp?v=1727356096",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-premiere-decalcifying-repairing-shampoo-250ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Resistance Bain Extentioniste 250ml Deep repairing",
+      "handle": "kerastase-resistance-bain-therapiste-shampoo-250ml-deep-repairing",
+      "url": "https://lookskart.com/products/kerastase-resistance-bain-therapiste-shampoo-250ml-deep-repairing",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0031_28KRSEX250.jpg?v=1672140841",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-resistance-bain-therapiste-shampoo-250ml-deep-repairing.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Specifique Bain Divalent Shampoo 250ml",
+      "handle": "kerastase-specifique-bain-divalent-shampoo-250ml",
+      "url": "https://lookskart.com/products/kerastase-specifique-bain-divalent-shampoo-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/34.jpg?v=1672233851",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-specifique-bain-divalent-shampoo-250ml.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Specifique Bain Prevention Shampoo 250ml",
+      "handle": "kerastase-specifique-bain-prevention-shampoo-250ml-shampoo-for-prevention",
+      "url": "https://lookskart.com/products/kerastase-specifique-bain-prevention-shampoo-250ml-shampoo-for-prevention",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-2_0021_41-KSBPR250.jpg?v=1672040732",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-specifique-bain-prevention-shampoo-250ml-shampoo-for-prevention.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Specifique Bain Vital Dermo Calm Shampoo 250ml",
+      "handle": "kerastase-specifique-bain-vital-dermo-calm-shampoo-250ml",
+      "url": "https://lookskart.com/products/kerastase-specifique-bain-vital-dermo-calm-shampoo-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/37.jpg?v=1672234036",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-specifique-bain-vital-dermo-calm-shampoo-250ml.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Specifique Potentialiste Hair & Scalp Serum 90ml",
+      "handle": "kerastase-specifique-potentialiste-hair-scalp-serum-90ml",
+      "url": "https://lookskart.com/products/kerastase-specifique-potentialiste-hair-scalp-serum-90ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/ker_serum_potentialiste_3474636954704_alt1_26af9422-d88b-46f0-b504-ad81b0ca9bdc.webp?v=1746020241",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-specifique-potentialiste-hair-scalp-serum-90ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Specifique Stimuliste Spray 125ml Nutri-energizing anti-hair loss",
+      "handle": "kerastase-specifique-stimuliste-spray-125ml-nutri-energizing-anti-hair-loss-1",
+      "url": "https://lookskart.com/products/kerastase-specifique-stimuliste-spray-125ml-nutri-energizing-anti-hair-loss-1",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/Kerastase_Specifique_Stimuliste_Spray_125ml_Nutri-energizing_anti-hair_loss.webp?v=1764234526",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-specifique-stimuliste-spray-125ml-nutri-energizing-anti-hair-loss-1.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Symbiose Anti-Dandruff Serum-90ml",
+      "handle": "kerastase-symbiose-anti-dandruff-serum-90ml",
+      "url": "https://lookskart.com/products/kerastase-symbiose-anti-dandruff-serum-90ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00229-Serum-Cellulaire-main.jpg?v=1701415987",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-symbiose-anti-dandruff-serum-90ml.jpg"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase Symbiose Bain Cream Anti-Dandruff Shampoo-250ml",
+      "handle": "kerastase-symbiose-bain-creme-anti-dandruff-shampoo-250ml",
+      "url": "https://lookskart.com/products/kerastase-symbiose-bain-creme-anti-dandruff-shampoo-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00226_shampoo_packshot_image_250ml_1.webp?v=1764415036",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-symbiose-bain-creme-anti-dandruff-shampoo-250ml.webp"
+    },
+    {
+      "brand": "Kerastase",
+      "title": "Kerastase|Densifique Cure Densite 10*6ml",
+      "handle": "kerastase-densifique-cure-denste-10-6ml",
+      "url": "https://lookskart.com/products/kerastase-densifique-cure-denste-10-6ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/3474637277789_SK_5.jpg?v=1768483085",
+      "localImage": "/images/products/lookskart/all/kerastase/kerastase-densifique-cure-denste-10-6ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "Kerastase |Curl| Bain Hydratation Douceur|250ml Gentle hydrating creamy shampoo",
+      "handle": "kerastase-curl-bain-hydratation-douceur-250ml-gentle-hydrating-creamy-shampoo",
+      "url": "https://lookskart.com/products/kerastase-curl-bain-hydratation-douceur-250ml-gentle-hydrating-creamy-shampoo",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0055_1KCMBA250-00.jpg?v=1672137536",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/kerastase-curl-bain-hydratation-douceur-250ml-gentle-hydrating-creamy-shampoo.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "Kerastase |Curl| Cream De Jour Fondamentale|150ml",
+      "handle": "kerastase-curl-cream-de-jour-fondamentale-150ml",
+      "url": "https://lookskart.com/products/kerastase-curl-cream-de-jour-fondamentale-150ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00102_Curl_Manifesto_Cream_texture_new_720x_ecf338aa-bb0e-4e7c-b470-459a25216806.webp?v=1764410195",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/kerastase-curl-cream-de-jour-fondamentale-150ml.webp"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "Kerastase |Curl| Masque Beurre Haute Nutrition|200ml Extra-rich nourishing mask",
+      "handle": "kerastase-curl-masque-beurre-haute-nutrition-200ml-extra-rich-nourishing-mask",
+      "url": "https://lookskart.com/products/kerastase-curl-masque-beurre-haute-nutrition-200ml-extra-rich-nourishing-mask",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0054_2KCMMA200-00.jpg?v=1672139821",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/kerastase-curl-masque-beurre-haute-nutrition-200ml-extra-rich-nourishing-mask.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "Kerastase Chroma Absolu Hair Oil-In-Serum 75ML-Refillable",
+      "handle": "chroma-absolu-hair-oil-in-serum-75ml-refillable",
+      "url": "https://lookskart.com/products/chroma-absolu-hair-oil-in-serum-75ml-refillable",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00323_75ml_Packshot_Image1.webp?v=1744783707",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/chroma-absolu-hair-oil-in-serum-75ml-refillable.webp"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "Kerastase Chroma Bain Respect 500ml Shampoo for Damaged or Damaged and Coloured Hair, Nourishing Hair Bath,",
+      "handle": "kerastase-shampoo-for-damaged-or-damaged-and-coloured-hair-nourishing-hair-bath-bain-riche-chroma-500ml",
+      "url": "https://lookskart.com/products/kerastase-shampoo-for-damaged-or-damaged-and-coloured-hair-nourishing-hair-bath-bain-riche-chroma-500ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/shop-cb-05204-01-chroma-absolu-bain-riche-chroma-respect---500ml--1.jpg?v=1744786381",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/kerastase-shampoo-for-damaged-or-damaged-and-coloured-hair-nourishing-hair-bath-bain-riche-chroma-500ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "Kerastase Elixir Ultime Hair Oil-In-Serum Refill (75ml)",
+      "handle": "kerastase-elixir-ultime-hair-oil-in-serum-refill-75ml",
+      "url": "https://lookskart.com/products/kerastase-elixir-ultime-hair-oil-in-serum-refill-75ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/kerastase-elixir-ultime-lhuile-originale-oil-refill-75-ml.jpg?v=1736759398",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/kerastase-elixir-ultime-hair-oil-in-serum-refill-75ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "Kerastase Elixir Ultime Original Refillable Hair Oil 75ml",
+      "handle": "kerastase-elixir-ultime-original-refillable-hair-oil-75ml",
+      "url": "https://lookskart.com/products/kerastase-elixir-ultime-original-refillable-hair-oil-75ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/ElixirUltime1_b10a2319-a0c3-44a3-aa9e-001ff915988b_refillable.webp?v=1736759328",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/kerastase-elixir-ultime-original-refillable-hair-oil-75ml.webp"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "Kerastase Genesis - Bain Hydra-Fortifiant Shampoo 500ml",
+      "handle": "kerastase-genesis-bain-hydra-fortifiant-shampoo-500ml",
+      "url": "https://lookskart.com/products/kerastase-genesis-bain-hydra-fortifiant-shampoo-500ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/bainhydrafortifiantgenesiskerastase-500ml_reflexions_unisex_salon_700x700_748e8b9b-7bea-43f5-91de-02dc8d82b94b.webp?v=1736760263",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/kerastase-genesis-bain-hydra-fortifiant-shampoo-500ml.webp"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "Kerastase Genesis - Bain Hydra-Fortifiant Shampoo Refill 500ml",
+      "handle": "kerastase-genesis-bain-hydra-fortifiant-shampoo-refill-500ml",
+      "url": "https://lookskart.com/products/kerastase-genesis-bain-hydra-fortifiant-shampoo-refill-500ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/bainhydrafortifiantgenesiskerastase-refill-500ml_reflexions_unisex_salon_720x_5853764d-bfde-4af3-9dfe-c7e9b8c86650.webp?v=1749797283",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/kerastase-genesis-bain-hydra-fortifiant-shampoo-refill-500ml.webp"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "Kerastase Gloss Absolu Anti-Frizz Heat Protectant Spray 190ml",
+      "handle": "kerastase-gloss-absolu-anti-frizz-heat-protectant-spray-190ml",
+      "url": "https://lookskart.com/products/kerastase-gloss-absolu-anti-frizz-heat-protectant-spray-190ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00330_spray_packshot_image_190ml_1.webp?v=1752052306",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/kerastase-gloss-absolu-anti-frizz-heat-protectant-spray-190ml.webp"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "Kerastase Gloss Absolu Glaze Drops Oil-In-Serum 45ml",
+      "handle": "kerastase-gloss-absolu-glaze-drops-oil-in-serum-45ml",
+      "url": "https://lookskart.com/products/kerastase-gloss-absolu-glaze-drops-oil-in-serum-45ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/KER_00331_oil_packshot_image_45ml_1.webp?v=1752048127",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/kerastase-gloss-absolu-glaze-drops-oil-in-serum-45ml.webp"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'Oreal Professionnel | Serie Expert | Absolut Repair Lipidium Masque | 250ml",
+      "handle": "loreal-professionnel-serie-expert-absolut-repair-lipidium-masque-250ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-serie-expert-absolut-repair-lipidium-masque-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0016_pl6.jpg?v=1672141890",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-serie-expert-absolut-repair-lipidium-masque-250ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'Oreal Professionnel | Serie Expert | Absolut Repair Lipidium Serum | 90ml",
+      "handle": "loreal-professionnel-serie-expert-absolut-repair-lipidium-serum-50ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-serie-expert-absolut-repair-lipidium-serum-50ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0015_pl7.jpg?v=1672142053",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-serie-expert-absolut-repair-lipidium-serum-50ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'Oreal Professionnel | Serie Expert | Absolut Repair Lipidium Shampoo | 300ml",
+      "handle": "loreal-professionnel-serie-expert-absolut-repair-lipidium-shampoo-300ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-serie-expert-absolut-repair-lipidium-shampoo-300ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0017_pl5.jpg?v=1672141875",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-serie-expert-absolut-repair-lipidium-shampoo-300ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'Oreal Professionnel | Serie Expert | Inforcer Masque | 250ml",
+      "handle": "loreal-professionnel-serie-expert-inforcer-masque-250ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-serie-expert-inforcer-masque-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-3_0022_inforcermasq-min.jpg?v=1672136415",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-serie-expert-inforcer-masque-250ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'Oreal Professionnel | Serie Expert | Inforcer Shampoo | 300ml",
+      "handle": "loreal-professionnel-serie-expert-inforcer-shampoo-300ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-serie-expert-inforcer-shampoo-300ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-3_0021_inforcershampoo-min.jpg?v=1672136381",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-serie-expert-inforcer-shampoo-300ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'Oreal Professionnel | Serie Expert | Liss Unlimited Intense Masque | 250ml",
+      "handle": "loreal-professionnel-serie-expert-liss-unlimited-intense-masque-250ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-serie-expert-liss-unlimited-intense-masque-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0005_pl23.jpg?v=1672142565",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-serie-expert-liss-unlimited-intense-masque-250ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'Oreal Professionnel | Serie Expert | Liss Unlimited Serum | 125ml",
+      "handle": "loreal-professionnel-serie-expert-liss-unlimited-serum-125ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-serie-expert-liss-unlimited-serum-125ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0004_pl24.jpg?v=1672142598",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-serie-expert-liss-unlimited-serum-125ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'Oreal Professionnel | Serie Expert | Liss Unlimited Shampoo | 300ml",
+      "handle": "loreal-professionnel-serie-expert-liss-unlimited-shampoo-300ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-serie-expert-liss-unlimited-shampoo-300ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0006_pl22.jpg?v=1672142503",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-serie-expert-liss-unlimited-shampoo-300ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'Oreal Professionnel | Serie Expert | Silver Shampoo | 300ml",
+      "handle": "loreal-professionnel-serie-expert-silver-shampoo-300ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-serie-expert-silver-shampoo-300ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/L_OrealParisSerieExpertMagnesiumSilverNeutralisingShampoo300ml.webp?v=1736598710",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-serie-expert-silver-shampoo-300ml.webp"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'Oreal Professionnel | Serie Expert | Vitamino Color Spectrum Masque for all colored hair.250ml",
+      "handle": "loreal-professionnel-serie-expert-vitamino-color-spectrum-masque-for-all-colored-hair-250ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-serie-expert-vitamino-color-spectrum-masque-for-all-colored-hair-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/vitamino-color-spectrum-mask-slider1.jpg?v=1755853974",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-serie-expert-vitamino-color-spectrum-masque-for-all-colored-hair-250ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'Oreal Professionnel | Serie Expert | Vitamino Color Spectrum] Shampoo for all colored hair.300ml",
+      "handle": "loreal-professionnel-serie-expert-vitamino-color-spectrum-shampoo-for-all-colored-hair-300ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-serie-expert-vitamino-color-spectrum-shampoo-for-all-colored-hair-300ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/vitamino-color-spectrum-shampoo-slider1.jpg?v=1755853241",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-serie-expert-vitamino-color-spectrum-shampoo-for-all-colored-hair-300ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'Oreal Professionnel | Serie Expert | Vitamino Colour Shampoo | 300ml",
+      "handle": "loreal-professionnel-serie-expert-vitamino-colour-shampoo-300ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-serie-expert-vitamino-colour-shampoo-300ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0003_pl26.jpg?v=1672142636",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-serie-expert-vitamino-colour-shampoo-300ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'Oreal Professionnel | Serie Expert | Vitamino Masque | 250ml",
+      "handle": "loreal-professionnel-serie-expert-vitamino-masque-250ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-serie-expert-vitamino-masque-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0002_pl27.jpg?v=1672142651",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-serie-expert-vitamino-masque-250ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'oreal Professionnel | Tecni Art | Elnett Hair Spray | 500ml",
+      "handle": "loreal-professionnel-tecni-art-elnett-hair-spray-500ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-tecni-art-elnett-hair-spray-500ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-3_0023_elnett-min.jpg?v=1672136483",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-tecni-art-elnett-hair-spray-500ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'oreal Professionnel | Tecni Art | Fix Max | 200ml",
+      "handle": "loreal-professionnel-tecni-art-fix-max-200ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-tecni-art-fix-max-200ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tecni-art-fix-max-slider-1.webp?v=1775564770",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-tecni-art-fix-max-200ml.webp"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'oreal Professionnel | Tecni Art | Flex Liss Control Cream | 150ml",
+      "handle": "loreal-professionnel-tecni-art-flex-liss-control-cream-150ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-tecni-art-flex-liss-control-cream-150ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tecni-art-flex-liss-control-slider-1.jpg?v=1759577246",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-tecni-art-flex-liss-control-cream-150ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'oreal Professionnel | Tecni Art | Flex Pli 190ml",
+      "handle": "loreal-professionnel-tecni-art-flex-pli-190ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-tecni-art-flex-pli-190ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tecni-art-flex-pli-slider-1.jpg?v=1759578204",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-tecni-art-flex-pli-190ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'oreal Professionnel | Tecni Art | Full Volume Extra | 250ml",
+      "handle": "loreal-professionnel-tecni-art-full-volume-extra-250ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-tecni-art-full-volume-extra-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tecni-art-volume-extra-full-slider-1_540x_e94401f1-f219-4436-a4ff-b2b2054eb311.webp?v=1751879232",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-tecni-art-full-volume-extra-250ml.webp"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'oreal Professionnel | Tecni Art Flex Blowdry 150ml",
+      "handle": "loreal-professionnel-tecni-art-flex-blowdry-150ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-tecni-art-flex-blowdry-150ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tecni-art-flex-blowdry-slider-1.webp?v=1784030854",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-tecni-art-flex-blowdry-150ml.webp"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'oreal Professionnel | Tecni Art Flex Curl Bounce 200ml",
+      "handle": "loreal-professionnel-tecni-art-flex-curl-bounce-200ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-tecni-art-flex-curl-bounce-200ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/3474637273941_1.jpg?v=1784030339",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-tecni-art-flex-curl-bounce-200ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'oreal Professionnel | Tecni Art Flex Depolish 100ml",
+      "handle": "loreal-professionnel-tecni-art-flex-depolish-100ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-tecni-art-flex-depolish-100ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tecni-art-flex-depolish-slider-1.webp?v=1784031136",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-tecni-art-flex-depolish-100ml.webp"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'oreal Professionnel | Tecni Art Volume Panace",
+      "handle": "loreal-professionnel-tecni-art-volume-panace",
+      "url": "https://lookskart.com/products/loreal-professionnel-tecni-art-volume-panace",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tecni-art-volume-panache-slider-1.webp?v=1784031565",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-tecni-art-volume-panace.webp"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'oreal Professionnel | Tecni Art Volume Rootlift Mousse 250ml",
+      "handle": "loreal-professionnel-tecni-art-volume-rootlift-mousse-250ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-tecni-art-volume-rootlift-mousse-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tecni-art-volume-root-lift-slider-1.jpg?v=1755852247",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-tecni-art-volume-rootlift-mousse-250ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'oreal Professionnel | Xtenso Care | Masque | 200ml",
+      "handle": "loreal-professionnel-xtenso-care-masque-200ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-xtenso-care-masque-200ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-3_0002_xtensomasque-min.jpg?v=1672058243",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-xtenso-care-masque-200ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'oreal Professionnel | Xtenso Care | Serum | 50ml",
+      "handle": "loreal-professionnel-xtenso-care-serum-50ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-xtenso-care-serum-50ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-3_0000_xtenso_serum-min.jpg?v=1672042450",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-xtenso-care-serum-50ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'oreal Professionnel | Xtenso Care | Shampoo | 250ml",
+      "handle": "loreal-professionnel-xtenso-care-shampoo-250ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-xtenso-care-shampoo-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0013_pl9.jpg?v=1672142140",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-xtenso-care-shampoo-250ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'oreal Professionnel | Xtenso Care | Sulphate Free Masque | 200ml",
+      "handle": "loreal-professionnel-xtenso-care-sulphate-free-masque-200ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-xtenso-care-sulphate-free-masque-200ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-3_0001_xtensosulphatemasque-min.jpg?v=1672058312",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-xtenso-care-sulphate-free-masque-200ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'oreal Professionnel | Xtenso Care | Sulphate Free Shampoo | 250ml",
+      "handle": "loreal-professionnel-xtenso-care-sulphate-free-shampoo-250ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-xtenso-care-sulphate-free-shampoo-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-4_0012_pl12.jpg?v=1672142158",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-xtenso-care-sulphate-free-shampoo-250ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'Oreal Professionnel Absolut Repair Molecular Deep Repair Rinse-Off Serum For Very Damaged Hair(250ml)",
+      "handle": "loreal-professionnel-absolut-repair-molecular-deep-repair-rinse-off-serum-for-very-damaged-hair250ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-absolut-repair-molecular-deep-repair-rinse-off-serum-for-very-damaged-hair250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/absolut_repair_molecular_rinse_off_serum.webp?v=1727332742",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-absolut-repair-molecular-deep-repair-rinse-off-serum-for-very-damaged-hair250ml.webp"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'Oreal Professionnel Absolut Repair Molecular Sulfate-Free Deep Repair Shampoo-VeryDamagedHair(300ml)",
+      "handle": "loreal-professionnel-absolut-repair-molecular-sulfate-free-deep-repair-shampoo-verydamagedhair300ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-absolut-repair-molecular-sulfate-free-deep-repair-shampoo-verydamagedhair300ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/sulfate-free-shampoo-arm.webp?v=1727332125",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-absolut-repair-molecular-sulfate-free-deep-repair-shampoo-verydamagedhair300ml.webp"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L’Oreal Professionnel Aminexil Advanced Anti-Hair Loss Activator, Leave-In Serum For Hair Loss(90ml)",
+      "handle": "l-oreal-professionnel-aminexil-advanced-anti-hair-loss-activator-leave-in-serum-for-hair-loss90ml",
+      "url": "https://lookskart.com/products/l-oreal-professionnel-aminexil-advanced-anti-hair-loss-activator-leave-in-serum-for-hair-loss90ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/loreal_professionnel_aminexil.webp?v=1727343071",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/l-oreal-professionnel-aminexil-advanced-anti-hair-loss-activator-leave-in-serum-for-hair-loss90ml.webp"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L’Oreal Professionnel Metal DX Anti-Deposit Protector Hair Mask For Hair Breakage(250ml)",
+      "handle": "l-oreal-professionnel-metal-dx-anti-deposit-protector-hair-mask-for-hair-breakage250ml",
+      "url": "https://lookskart.com/products/l-oreal-professionnel-metal-dx-anti-deposit-protector-hair-mask-for-hair-breakage250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/1-slider1.jpg?v=1727336985",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/l-oreal-professionnel-metal-dx-anti-deposit-protector-hair-mask-for-hair-breakage250ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L’Oréal Professionnel Metal DX Anti-Metal Cleansing Cream Shampoo 300ml",
+      "handle": "l-oreal-professionnel-serie-expert-metal-dx-anti-metal-cleansing-cream-shampoo-300ml",
+      "url": "https://lookskart.com/products/l-oreal-professionnel-serie-expert-metal-dx-anti-metal-cleansing-cream-shampoo-300ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/1-slider.jpg?v=1727335570",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/l-oreal-professionnel-serie-expert-metal-dx-anti-metal-cleansing-cream-shampoo-300ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L’Oreal Professionnel Metal DX Concentrated Leave-In Serum For Soft & Shiny Hair(50ml)",
+      "handle": "l-oreal-professionnel-metal-dx-concentrated-leave-in-serum-for-soft-shiny-hair50ml",
+      "url": "https://lookskart.com/products/l-oreal-professionnel-metal-dx-concentrated-leave-in-serum-for-soft-shiny-hair50ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/1-slider_1.jpg?v=1727337359",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/l-oreal-professionnel-metal-dx-concentrated-leave-in-serum-for-soft-shiny-hair50ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L’Oréal Professionnel Scalp Advanced Anti-Dandruff Dermo-Clarifier Shampoo (300 ml) Removes Dandruff",
+      "handle": "l-oreal-professionnel-scalp-advanced-anti-dandruff-dermo-clarifier-shampoo-300-ml-removes-dandruff",
+      "url": "https://lookskart.com/products/l-oreal-professionnel-scalp-advanced-anti-dandruff-dermo-clarifier-shampoo-300-ml-removes-dandruff",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/51y2kTBplLL._SX522.jpg?v=1727274059",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/l-oreal-professionnel-scalp-advanced-anti-dandruff-dermo-clarifier-shampoo-300-ml-removes-dandruff.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L’Oréal Professionnel Scalp Advanced Anti-Oiliness 2-In-1 Deep Purifier Clay 250gms",
+      "handle": "l-oreal-professionnel-scalp-advanced-anti-oiliness-2-in-1-deep-purifier-clay-250gms-for-very-oily-scalps-purifies-the-scalp-deeply-with-3-aha-6-clay-for-men-women",
+      "url": "https://lookskart.com/products/l-oreal-professionnel-scalp-advanced-anti-oiliness-2-in-1-deep-purifier-clay-250gms-for-very-oily-scalps-purifies-the-scalp-deeply-with-3-aha-6-clay-for-men-women",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/61qYJbBoHeL._SX522.jpg?v=1727275917",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/l-oreal-professionnel-scalp-advanced-anti-oiliness-2-in-1-deep-purifier-clay-250gms-for-very-oily-scalps-purifies-the-scalp-deeply-with-3-aha-6-clay-for-men-women.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L’Oréal Professionnel Scalp Advanced Anti-Oiliness Dermo-Purifier Shampoo (300 ml) for Oily Scalps",
+      "handle": "l-oreal-professionnel-scalp-advanced-anti-oiliness-dermo-purifier-shampoo-300-ml-for-oily-scalps",
+      "url": "https://lookskart.com/products/l-oreal-professionnel-scalp-advanced-anti-oiliness-dermo-purifier-shampoo-300-ml-for-oily-scalps",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/L_Oreal_Professionnel_Scalp_Advanced_Anti_Oiliness_Dermo_Purifier_Shampoo_2.webp?v=1727274660",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/l-oreal-professionnel-scalp-advanced-anti-oiliness-dermo-purifier-shampoo-300-ml-for-oily-scalps.webp"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L’Oréal Professionnel Serioxyl Advanced density activator serum | 90ml",
+      "handle": "l-oreal-professionnel-scalp-advanced-serioxyl-advanced-density-activator-serum-90ml-leave-in-serum-for-hair-growth-with-5-stemoxydine-spray-format-for-men-women",
+      "url": "https://lookskart.com/products/l-oreal-professionnel-scalp-advanced-serioxyl-advanced-density-activator-serum-90ml-leave-in-serum-for-hair-growth-with-5-stemoxydine-spray-format-for-men-women",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/loreal_professionnel_serioxyl_advanced.webp?v=1727342405",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/l-oreal-professionnel-scalp-advanced-serioxyl-advanced-density-activator-serum-90ml-leave-in-serum-for-hair-growth-with-5-stemoxydine-spray-format-for-men-women.webp"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'Oreal Professionnel Serioxyl Advanced Density Activator, Leave-In Serum 30ml",
+      "handle": "loreal-professionnel-serioxyl-advanced-density-activator-leave-in-serum-30ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-serioxyl-advanced-density-activator-leave-in-serum-30ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/51NNwE3odeL._SX522.jpg?v=1757080379",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-serioxyl-advanced-density-activator-leave-in-serum-30ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'oreal Professionnel Tecni Art Flex Web | 150ml",
+      "handle": "loreal-professionnel-tecni-art-flex-web-150ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-tecni-art-flex-web-150ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tecni-art-flex-web-slider.jpg?v=1750425638",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-tecni-art-flex-web-150ml.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "L'Oréal Professionnel TecniArt Super Dust Volume & Texture Powder 7g",
+      "handle": "loreal-professionnel-tecniart-super-dust-volume-texture-powder-7g",
+      "url": "https://lookskart.com/products/loreal-professionnel-tecniart-super-dust-volume-texture-powder-7g",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/volume-dust.jpg?v=1765198032",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-tecniart-super-dust-volume-texture-powder-7g.jpg"
+    },
+    {
+      "brand": "L'Oreal Professionnel",
+      "title": "LOreal Professionnel Absolut Molecular Deep Repairing Leave-In Masque For Damaged Hair (100 ml)",
+      "handle": "loreal-professionnel-absolut-molecular-deep-repairing-leave-in-cream-for-damaged-hair-100-ml",
+      "url": "https://lookskart.com/products/loreal-professionnel-absolut-molecular-deep-repairing-leave-in-cream-for-damaged-hair-100-ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/deep_repairing_leave_in_mask.webp?v=1750320555",
+      "localImage": "/images/products/lookskart/all/loreal-professionnel/loreal-professionnel-absolut-molecular-deep-repairing-leave-in-cream-for-damaged-hair-100-ml.webp"
+    },
+    {
+      "brand": "Lea Levett",
+      "title": "Lea Levett Botanique Condtioner 350ml",
+      "handle": "lea-levett-botanique-condtioner-350ml",
+      "url": "https://lookskart.com/products/lea-levett-botanique-condtioner-350ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/HOMECARE_CONDITIONER.png?v=1749707615",
+      "localImage": "/images/products/lookskart/all/lea-levett/lea-levett-botanique-condtioner-350ml.png"
+    },
+    {
+      "brand": "Lea Levett",
+      "title": "Lea Levett Botanique Shampoo 350ml",
+      "handle": "lea-levett-botanique-shampoo-300ml",
+      "url": "https://lookskart.com/products/lea-levett-botanique-shampoo-300ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/HOMECARE_SHAMPOO.png?v=1749707731",
+      "localImage": "/images/products/lookskart/all/lea-levett/lea-levett-botanique-shampoo-300ml.png"
+    },
+    {
+      "brand": "Lea Levett",
+      "title": "Lea Levett Eternity Serum 50ml",
+      "handle": "lea-levett-eternity-serum-50ml",
+      "url": "https://lookskart.com/products/lea-levett-eternity-serum-50ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/Lea_Levett_Eternity_Serum_50ml.webp?v=1749709676",
+      "localImage": "/images/products/lookskart/all/lea-levett/lea-levett-eternity-serum-50ml.webp"
+    },
+    {
+      "brand": "Lea Levett",
+      "title": "Lea Levett Recovery Mask 237ml",
+      "handle": "lea-levett-recovery-mask",
+      "url": "https://lookskart.com/products/lea-levett-recovery-mask",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/LLMask.png?v=1749635926",
+      "localImage": "/images/products/lookskart/all/lea-levett/lea-levett-recovery-mask.png"
+    },
+    {
+      "brand": "Lea Levett",
+      "title": "Lea Levett Remedy Conditioner 300ml",
+      "handle": "lea-levett-remedy-conditioner",
+      "url": "https://lookskart.com/products/lea-levett-remedy-conditioner",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/LeaLevettRemedyConditioner300ml.jpg?v=1749710194",
+      "localImage": "/images/products/lookskart/all/lea-levett/lea-levett-remedy-conditioner.jpg"
+    },
+    {
+      "brand": "Lea Levett",
+      "title": "Lea Levett Remedy Shampoo 300ml",
+      "handle": "lea-levett-remedy-shampoo",
+      "url": "https://lookskart.com/products/lea-levett-remedy-shampoo",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/Untitled_design_6.png?v=1748945097",
+      "localImage": "/images/products/lookskart/all/lea-levett/lea-levett-remedy-shampoo.png"
+    },
+    {
+      "brand": "Let's Shave",
+      "title": "Lets Shave After Shave Balm - 100 ml",
+      "handle": "lets-shave-after-shave-balm-100-ml",
+      "url": "https://lookskart.com/products/lets-shave-after-shave-balm-100-ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0073_aftershavebalm.jpg?v=1671436486",
+      "localImage": "/images/products/lookskart/all/lets-shave/lets-shave-after-shave-balm-100-ml.jpg"
+    },
+    {
+      "brand": "Let's Shave",
+      "title": "Lets Shave Balls, Groin and Body Trimmer",
+      "handle": "lets-shave-balls-groin-and-body-trimmer",
+      "url": "https://lookskart.com/products/lets-shave-balls-groin-and-body-trimmer",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0160_2.jpg?v=1671191351",
+      "localImage": "/images/products/lookskart/all/lets-shave/lets-shave-balls-groin-and-body-trimmer.jpg"
+    },
+    {
+      "brand": "Let's Shave",
+      "title": "Lets Shave Beard Body & Head (All In One Trimmer)",
+      "handle": "lets-shave-beard-body-head-all-in-one-trimmer",
+      "url": "https://lookskart.com/products/lets-shave-beard-body-head-all-in-one-trimmer",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0064_beardbodyheadtrimmer.jpg?v=1671433613",
+      "localImage": "/images/products/lookskart/all/lets-shave/lets-shave-beard-body-head-all-in-one-trimmer.jpg"
+    },
+    {
+      "brand": "Let's Shave",
+      "title": "Lets Shave Beard Brush",
+      "handle": "lets-shave-beard-brush",
+      "url": "https://lookskart.com/products/lets-shave-beard-brush",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0053_d7GIM5-bsCv-1.jpg?v=1671432261",
+      "localImage": "/images/products/lookskart/all/lets-shave/lets-shave-beard-brush.jpg"
+    },
+    {
+      "brand": "Let's Shave",
+      "title": "Lets Shave Shave Foam - 200gm",
+      "handle": "lets-shave-shave-foam-200gm",
+      "url": "https://lookskart.com/products/lets-shave-shave-foam-200gm",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0005_shavefoam.jpg?v=1671192199",
+      "localImage": "/images/products/lookskart/all/lets-shave/lets-shave-shave-foam-200gm.jpg"
+    },
+    {
+      "brand": "Let's Shave",
+      "title": "Lets Shave Wooden Beard Comb",
+      "handle": "lets-shave-wooden-beard-comb",
+      "url": "https://lookskart.com/products/lets-shave-wooden-beard-comb",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0085_41yDhpxhS7L._SR600_315_PIWhiteStrip_BottomLeft_0_35_SCLZZZZZZZ_FMpng_BG255_255_255.jpg?v=1671186430",
+      "localImage": "/images/products/lookskart/all/lets-shave/lets-shave-wooden-beard-comb.jpg"
+    },
+    {
+      "brand": "Let's Shave",
+      "title": "TAILOR'S Beard Oil 100% Natural 30 ml",
+      "handle": "tailor-s-beard-oil-100-natural-30-ml",
+      "url": "https://lookskart.com/products/tailor-s-beard-oil-100-natural-30-ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tailors-beard-oil-natural-30ml.jpg?v=1749559513",
+      "localImage": "/images/products/lookskart/all/lets-shave/tailor-s-beard-oil-100-natural-30-ml.jpg"
+    },
+    {
+      "brand": "Let's Shave",
+      "title": "TAILOR'S Beard Oil 30 ml",
+      "handle": "tailor-s-beard-oil-30-ml",
+      "url": "https://lookskart.com/products/tailor-s-beard-oil-30-ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tailors-beard-oil-bold-sophistication-30ml-445x445.jpg?v=1749559113",
+      "localImage": "/images/products/lookskart/all/lets-shave/tailor-s-beard-oil-30-ml.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Curl Defining Cream 250ml",
+      "handle": "moroccanoil-curl-defining-cream-250ml",
+      "url": "https://lookskart.com/products/moroccanoil-curl-defining-cream-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0040_Moroccanoil_CurlDefiningCream250ML.jpg?v=1671196414",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-curl-defining-cream-250ml.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Curl Enhancing Conditioner For All Curl Types 250ml",
+      "handle": "moroccanoil-curl-enhancing-conditioner-for-all-curl-types-250ml",
+      "url": "https://lookskart.com/products/moroccanoil-curl-enhancing-conditioner-for-all-curl-types-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0039_Moroccanoil_CurlEnhancingConditioner.jpg?v=1671196382",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-curl-enhancing-conditioner-for-all-curl-types-250ml.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Curl Enhancing Shampoo For All Curl Types 250ml",
+      "handle": "moroccanoil-curl-enhancing-shampoo-for-all-curl-types-250ml",
+      "url": "https://lookskart.com/products/moroccanoil-curl-enhancing-shampoo-for-all-curl-types-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0038_Moroccanoil_CurlEnhancingShampoo.jpg?v=1671196355",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-curl-enhancing-shampoo-for-all-curl-types-250ml.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Dry Texture Spray 205ml For All Hair Types",
+      "handle": "moroccanoil-dry-texture-spray-205ml-for-all-hair-types",
+      "url": "https://lookskart.com/products/moroccanoil-dry-texture-spray-205ml-for-all-hair-types",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0036_Moroccanoil_DryTextureSpray205ML.jpg?v=1671195522",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-dry-texture-spray-205ml-for-all-hair-types.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Extra Volume Conditioner For Fine Hair 250ml",
+      "handle": "moroccanoil-extra-volume-conditioner-for-fine-hair-250ml",
+      "url": "https://lookskart.com/products/moroccanoil-extra-volume-conditioner-for-fine-hair-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-2_0012_Moroccanoil_Extra-Volume-Conditioner.jpg?v=1672039403",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-extra-volume-conditioner-for-fine-hair-250ml.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Extra Volume Shampoo For Fine Hair 250ml",
+      "handle": "moroccanoil-extra-volume-shampoo-for-fine-hair-250ml",
+      "url": "https://lookskart.com/products/moroccanoil-extra-volume-shampoo-for-fine-hair-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-2_0011_Moroccanoil_Extra-Volume-Shampoo.jpg?v=1672039242",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-extra-volume-shampoo-for-fine-hair-250ml.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Hydrating Conditioner For All Hair Types 250ml",
+      "handle": "moroccanoil-hydrating-conditioner-for-all-hair-types-250ml",
+      "url": "https://lookskart.com/products/moroccanoil-hydrating-conditioner-for-all-hair-types-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-2_0010_Moroccanoil_Hydrating-Conditioner.jpg?v=1672039174",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-hydrating-conditioner-for-all-hair-types-250ml.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Hydrating Shampoo For All Hair Types 250ml",
+      "handle": "moroccanoil-hydrating-shampoo-for-all-hair-types-250ml",
+      "url": "https://lookskart.com/products/moroccanoil-hydrating-shampoo-for-all-hair-types-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-2_0009_Moroccanoil_Hydrating-Shampoo-For-all-hair-types-250ml.jpg?v=1672038668",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-hydrating-shampoo-for-all-hair-types-250ml.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Hydrating Styling Cream For All Hair Types 300ml",
+      "handle": "moroccanoil-hydrating-styling-cream-for-all-hair-types-300ml",
+      "url": "https://lookskart.com/products/moroccanoil-hydrating-styling-cream-for-all-hair-types-300ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-2_0008_Moroccanoil_Hydrating-Styling-Cream.jpg?v=1672038270",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-hydrating-styling-cream-for-all-hair-types-300ml.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Intense Curl Cream For Wavy To Curly Hair 300ml",
+      "handle": "moroccanoil-intense-curl-cream-for-wavy-to-curly-hair-300ml",
+      "url": "https://lookskart.com/products/moroccanoil-intense-curl-cream-for-wavy-to-curly-hair-300ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0035_Moroccanoil_IntenseCurlCream.jpg?v=1671195389",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-intense-curl-cream-for-wavy-to-curly-hair-300ml.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Intense Hydrating Mask For Medium To Thick Dry Hair 250ml",
+      "handle": "moroccanoil-intense-hydrating-mask-for-medium-to-thick-dry-hair-250ml",
+      "url": "https://lookskart.com/products/moroccanoil-intense-hydrating-mask-for-medium-to-thick-dry-hair-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-2_0007_Moroccanoil_Intense-Hydrating-Mask-For-medium-to-thick-dry-hair--250ml.jpg?v=1672036864",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-intense-hydrating-mask-for-medium-to-thick-dry-hair-250ml.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Luminous Hairspray Strong 330ml",
+      "handle": "moroccanoil-luminous-hairspray-strong-330ml",
+      "url": "https://lookskart.com/products/moroccanoil-luminous-hairspray-strong-330ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0032_Moroccanoil_LuminousHairsprayStrong330ML.jpg?v=1671195311",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-luminous-hairspray-strong-330ml.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Moisture Repair Conditioner|250ml For Weakened And Damaged Hair",
+      "handle": "moroccanoil-moisture-repair-conditioner-250ml-for-weakened-and-damaged-hair",
+      "url": "https://lookskart.com/products/moroccanoil-moisture-repair-conditioner-250ml-for-weakened-and-damaged-hair",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-2_0014_Moroccanoil-Moisture-Repair-Shampoo-250ml-For-weakened-and-damaged-hair.jpg?v=1672039570",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-moisture-repair-conditioner-250ml-for-weakened-and-damaged-hair.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Moisture Repair Shampoo|250ml For Weakened And Damaged Hair",
+      "handle": "moroccanoil-moisture-repair-shampoo-250ml-for-weakened-and-damaged-hair",
+      "url": "https://lookskart.com/products/moroccanoil-moisture-repair-shampoo-250ml-for-weakened-and-damaged-hair",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/Moroccanoil_Moisture_Repair_Shampoo250ml_For_Weakened_And_Damaged_Hair.png?v=1749711030",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-moisture-repair-shampoo-250ml-for-weakened-and-damaged-hair.png"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Moroccanoil Treatment Light|100ml For Fine Or Light-Coloured Hair",
+      "handle": "moroccanoil-moroccanoil-treatment-light-100ml-for-fine-or-light-coloured-hair",
+      "url": "https://lookskart.com/products/moroccanoil-moroccanoil-treatment-light-100ml-for-fine-or-light-coloured-hair",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/51.jpg?v=1672296722",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-moroccanoil-treatment-light-100ml-for-fine-or-light-coloured-hair.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Moroccanoil Treatment Original|100ml For All Hair Types",
+      "handle": "moroccanoil-moroccanoil-treatment-original-100ml-for-all-hair-types",
+      "url": "https://lookskart.com/products/moroccanoil-moroccanoil-treatment-original-100ml-for-all-hair-types",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-2_0006_Moroccanoil_Moroccanoil-Treatment-Original_100ml-For-all-hair-types.jpg?v=1672036585",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-moroccanoil-treatment-original-100ml-for-all-hair-types.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Restorative Hair Mask|250ml For Weakened And Damaged Hair",
+      "handle": "moroccanoil-restorative-hair-mask-250ml-for-weakened-and-damaged-hair",
+      "url": "https://lookskart.com/products/moroccanoil-restorative-hair-mask-250ml-for-weakened-and-damaged-hair",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-2_0013_Moroccanoil-Restorative-Hair-Mask-250ml-For-weakened-and-damaged-hair.jpg?v=1672039471",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-restorative-hair-mask-250ml-for-weakened-and-damaged-hair.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Root Boost For Fine To Medium Hair 250ml",
+      "handle": "moroccanoil-root-boost-for-fine-to-medium-hair-250ml",
+      "url": "https://lookskart.com/products/moroccanoil-root-boost-for-fine-to-medium-hair-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-2_0005_Moroccanoil_Root-Boost.jpg?v=1672036467",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-root-boost-for-fine-to-medium-hair-250ml.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Texture Clay 75ml For All Hair Types",
+      "handle": "moroccanoil-texture-clay-75ml-for-all-hair-types",
+      "url": "https://lookskart.com/products/moroccanoil-texture-clay-75ml-for-all-hair-types",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0060_Moroccanoil_TEXTURECLAY75ML.jpg?v=1671433218",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-texture-clay-75ml-for-all-hair-types.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Thickening Lotion For Fine To Medium Hair 100ml",
+      "handle": "moroccanoil-thickening-lotion-for-fine-to-medium-hair-100ml",
+      "url": "https://lookskart.com/products/moroccanoil-thickening-lotion-for-fine-to-medium-hair-100ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-2_0003_Moroccanoil_Thickening-Lotion.jpg?v=1672036380",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-thickening-lotion-for-fine-to-medium-hair-100ml.jpg"
+    },
+    {
+      "brand": "Moroccanoil",
+      "title": "Moroccanoil | Weightless Hydrating Mask For Fine Dry Hair 250ml",
+      "handle": "moroccanoil-weightless-hydrating-mask-for-fine-dry-hair-250ml",
+      "url": "https://lookskart.com/products/moroccanoil-weightless-hydrating-mask-for-fine-dry-hair-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks-images-2_0001_Moroccanoil_Weightless-Hydrating-Mask-For-fine-dry-hair-250ml.jpg?v=1672036258",
+      "localImage": "/images/products/lookskart/all/moroccanoil/moroccanoil-weightless-hydrating-mask-for-fine-dry-hair-250ml.jpg"
+    },
+    {
+      "brand": "pH Plex (Phplex)",
+      "title": "pH Plex Conditioner 250ml",
+      "handle": "ph-plex-conditioner-250ml",
+      "url": "https://lookskart.com/products/ph-plex-conditioner-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/condi-phpleximages_pHPlexConditioner_bottle250ml_d783f9ea-d52f-452f-b4e8-5c7ef58c17a3.webp?v=1763216175",
+      "localImage": "/images/products/lookskart/all/ph-plex/ph-plex-conditioner-250ml.webp"
+    },
+    {
+      "brand": "pH Plex (Phplex)",
+      "title": "pH Plex Shampoo 250ml",
+      "handle": "ph-plex-shampoo-250ml",
+      "url": "https://lookskart.com/products/ph-plex-shampoo-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/phpleximages_pHPlexShampoo_bottle250ml_94377e5d-8ee6-41b2-8840-55c9e4f61bd4.webp?v=1763216017",
+      "localImage": "/images/products/lookskart/all/ph-plex/ph-plex-shampoo-250ml.webp"
+    },
+    {
+      "brand": "pH Plex (Phplex)",
+      "title": "pH Plex Step 3 150ml",
+      "handle": "ph-plex-step-3-150ml",
+      "url": "https://lookskart.com/products/ph-plex-step-3-150ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/creamphpleximages_pHPlexStep3_Tube150ml_637df599-819a-4660-8cb4-7eda90cb0171.webp?v=1763216337",
+      "localImage": "/images/products/lookskart/all/ph-plex/ph-plex-step-3-150ml.webp"
+    },
+    {
+      "brand": "Root Deep",
+      "title": "Root Deep Scalp Shampoo for Hair Fall Reduction 200ML",
+      "handle": "root-deep-hair-retention-therapy-shampoo",
+      "url": "https://lookskart.com/products/root-deep-hair-retention-therapy-shampoo",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/products/looks_0008_Root-Deep-Shampoo-0.jpg?v=1671192405",
+      "localImage": "/images/products/lookskart/all/root-deep/root-deep-hair-retention-therapy-shampoo.jpg"
+    },
+    {
+      "brand": "Schwarzkopf",
+      "title": "Schwarzkopf Professional OSiS+ Bounty Balm | 150ml",
+      "handle": "schwarzkopf-professional-osis-bounty-balm-150ml",
+      "url": "https://lookskart.com/products/schwarzkopf-professional-osis-bounty-balm-150ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/Schwarzkopf_Professional_OSiS_Bounty_Balm_150ml.png?v=1749710333",
+      "localImage": "/images/products/lookskart/all/schwarzkopf/schwarzkopf-professional-osis-bounty-balm-150ml.png"
+    },
+    {
+      "brand": "Schwarzkopf",
+      "title": "Schwarzkopf Professional OSiS+ Curl Jam - Curl Defining Gel for Hair styling I 300 ml",
+      "handle": "schwarzkopf-professional-osis-curl-jam-curl-defining-gel-for-hair-styling-i-300-ml",
+      "url": "https://lookskart.com/products/schwarzkopf-professional-osis-curl-jam-curl-defining-gel-for-hair-styling-i-300-ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/Curljam.webp?v=1718084975",
+      "localImage": "/images/products/lookskart/all/schwarzkopf/schwarzkopf-professional-osis-curl-jam-curl-defining-gel-for-hair-styling-i-300-ml.webp"
+    },
+    {
+      "brand": "Schwarzkopf",
+      "title": "Schwarzkopf Professional OSiS+ Elastic Hold Hairspray | 500ml",
+      "handle": "schwarzkopf-professional-osis-elastic-hold-hairspray-500ml",
+      "url": "https://lookskart.com/products/schwarzkopf-professional-osis-elastic-hold-hairspray-500ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/elastichold.webp?v=1718085462",
+      "localImage": "/images/products/lookskart/all/schwarzkopf/schwarzkopf-professional-osis-elastic-hold-hairspray-500ml.webp"
+    },
+    {
+      "brand": "Schwarzkopf",
+      "title": "Schwarzkopf Professional Osis+ Flatliner Heat Protection Spray | 200 ml",
+      "handle": "schwarzkopf-professional-osis-flatliner-heat-protection-spray-200ml",
+      "url": "https://lookskart.com/products/schwarzkopf-professional-osis-flatliner-heat-protection-spray-200ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/B0CB98FTTQ.MAIN.jpg?v=1712047327",
+      "localImage": "/images/products/lookskart/all/schwarzkopf/schwarzkopf-professional-osis-flatliner-heat-protection-spray-200ml.jpg"
+    },
+    {
+      "brand": "Schwarzkopf",
+      "title": "Schwarzkopf Professional OSiS+ Flexwax Strong Hair styling Cream Wax | 85 ml",
+      "handle": "schwarzkopf-professional-osis-flexwax-cream-wax-85ml",
+      "url": "https://lookskart.com/products/schwarzkopf-professional-osis-flexwax-cream-wax-85ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/B0BYBBD47W.MAIN.jpg?v=1712040890",
+      "localImage": "/images/products/lookskart/all/schwarzkopf/schwarzkopf-professional-osis-flexwax-cream-wax-85ml.jpg"
+    },
+    {
+      "brand": "Schwarzkopf",
+      "title": "Schwarzkopf Professional OSiS+ Glow Anti-Frizz Shine Serum | 50 ml",
+      "handle": "schwarzkopf-professional-osis-glow-anti-frizz-shine-serum-50-ml",
+      "url": "https://lookskart.com/products/schwarzkopf-professional-osis-glow-anti-frizz-shine-serum-50-ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/glow.webp?v=1718094159",
+      "localImage": "/images/products/lookskart/all/schwarzkopf/schwarzkopf-professional-osis-glow-anti-frizz-shine-serum-50-ml.webp"
+    },
+    {
+      "brand": "Schwarzkopf",
+      "title": "Schwarzkopf Professional OSiS+ Grip Extra Strong Hair Styling Mousse | 200 ml",
+      "handle": "schwarzkopf-professional-osis-grip-extreme-hold-mousse-200ml",
+      "url": "https://lookskart.com/products/schwarzkopf-professional-osis-grip-extreme-hold-mousse-200ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/B0BZB65YG2.MAIN.jpg?v=1712048959",
+      "localImage": "/images/products/lookskart/all/schwarzkopf/schwarzkopf-professional-osis-grip-extreme-hold-mousse-200ml.jpg"
+    },
+    {
+      "brand": "Schwarzkopf",
+      "title": "Schwarzkopf Professional OSiS+ Hair Styling Dust It | 10g",
+      "handle": "schwarzkopf-professional-texture-powder-10gr",
+      "url": "https://lookskart.com/products/schwarzkopf-professional-texture-powder-10gr",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/B00B5PFYGO.MAIN.jpg?v=1749637352",
+      "localImage": "/images/products/lookskart/all/schwarzkopf/schwarzkopf-professional-texture-powder-10gr.jpg"
+    },
+    {
+      "brand": "Schwarzkopf",
+      "title": "Schwarzkopf Professional OSiS+ Mess Up Hair Styling Matte Paste | 100 ml",
+      "handle": "schwarzkopf-professional-osis-mess-up-matte-paste-100ml",
+      "url": "https://lookskart.com/products/schwarzkopf-professional-osis-mess-up-matte-paste-100ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/B0BYLG74WG.MAIN.jpg?v=1712040259",
+      "localImage": "/images/products/lookskart/all/schwarzkopf/schwarzkopf-professional-osis-mess-up-matte-paste-100ml.jpg"
+    },
+    {
+      "brand": "Schwarzkopf",
+      "title": "Schwarzkopf Professional OSiS+ Sparkler Hair Styling Shine Spray | 300 ml",
+      "handle": "schwarzkopf-professional-osis-sparkler-shine-spray-300ml",
+      "url": "https://lookskart.com/products/schwarzkopf-professional-osis-sparkler-shine-spray-300ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/B01DAFX8TQ.MAIN.jpg?v=1712046827",
+      "localImage": "/images/products/lookskart/all/schwarzkopf/schwarzkopf-professional-osis-sparkler-shine-spray-300ml.jpg"
+    },
+    {
+      "brand": "Schwarzkopf",
+      "title": "Schwarzkopf Professional Osis+ Thrill Fibre Gum | 100ml",
+      "handle": "schwarzkopf-professional-osis-thrill-fibre-gum-100ml-1",
+      "url": "https://lookskart.com/products/schwarzkopf-professional-osis-thrill-fibre-gum-100ml-1",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/B0BYBBP1J5.PT1_5a522297-45f0-46ce-a571-68585e69226f.jpg?v=1727176183",
+      "localImage": "/images/products/lookskart/all/schwarzkopf/schwarzkopf-professional-osis-thrill-fibre-gum-100ml-1.jpg"
+    },
+    {
+      "brand": "Schwarzkopf",
+      "title": "Schwarzkopf Professional Osis+ Thrill Fibre Gum 100ml",
+      "handle": "schwarzkopf-professional-osis-thrill-fibre-gum-100ml",
+      "url": "https://lookskart.com/products/schwarzkopf-professional-osis-thrill-fibre-gum-100ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/B0BYBBP1J5.MAIN.jpg?v=1712038874",
+      "localImage": "/images/products/lookskart/all/schwarzkopf/schwarzkopf-professional-osis-thrill-fibre-gum-100ml.jpg"
+    },
+    {
+      "brand": "Schwarzkopf",
+      "title": "Schwarzkopf Professional Super Dry Fix Session Label 300ml",
+      "handle": "schwarzkopf-professional-super-dry-fix-session-label-300ml",
+      "url": "https://lookskart.com/products/schwarzkopf-professional-super-dry-fix-session-label-300ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/4045787232233_2.png?v=1765360506",
+      "localImage": "/images/products/lookskart/all/schwarzkopf/schwarzkopf-professional-super-dry-fix-session-label-300ml.png"
+    },
+    {
+      "brand": "Schwarzkopf",
+      "title": "Schwarzkopf Professional Super Dry Flex Session Label Dry Firm Hold Unisex Hair Spray 300ml",
+      "handle": "schwarzkopf-professional-super-dry-flex-session-label-300ml",
+      "url": "https://lookskart.com/products/schwarzkopf-professional-super-dry-flex-session-label-300ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/1_3bd4c381-65f7-410a-8650-fdc6b0d97e6f.jpg?v=1765360530",
+      "localImage": "/images/products/lookskart/all/schwarzkopf/schwarzkopf-professional-super-dry-flex-session-label-300ml.jpg"
+    },
+    {
+      "brand": "TAILOR'S",
+      "title": "TAILOR’S Beard Balm 100 ml",
+      "handle": "tailor-s-beard-balm",
+      "url": "https://lookskart.com/products/tailor-s-beard-balm",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tailors-beard-balm-100ml.jpg?v=1749557053",
+      "localImage": "/images/products/lookskart/all/tailors/tailor-s-beard-balm.jpg"
+    },
+    {
+      "brand": "TAILOR'S",
+      "title": "TAILOR'S Beard Oil 100% Natural 30 ml",
+      "handle": "tailor-s-beard-oil-100-natural-30-ml",
+      "url": "https://lookskart.com/products/tailor-s-beard-oil-100-natural-30-ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tailors-beard-oil-natural-30ml.jpg?v=1749559513",
+      "localImage": "/images/products/lookskart/all/tailors/tailor-s-beard-oil-100-natural-30-ml.jpg"
+    },
+    {
+      "brand": "TAILOR'S",
+      "title": "TAILOR'S Beard Oil 30 ml",
+      "handle": "tailor-s-beard-oil-30-ml",
+      "url": "https://lookskart.com/products/tailor-s-beard-oil-30-ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tailors-beard-oil-bold-sophistication-30ml-445x445.jpg?v=1749559113",
+      "localImage": "/images/products/lookskart/all/tailors/tailor-s-beard-oil-30-ml.jpg"
+    },
+    {
+      "brand": "TAILOR'S",
+      "title": "TAILOR'S Beard Wash 250 ml",
+      "handle": "tailors-beard-wash",
+      "url": "https://lookskart.com/products/tailors-beard-wash",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tailors-beard-wash-100ml.jpg?v=1749556782",
+      "localImage": "/images/products/lookskart/all/tailors/tailors-beard-wash.jpg"
+    },
+    {
+      "brand": "TAILOR'S",
+      "title": "TAILOR’S Contouring Shave Gel 150 ml",
+      "handle": "tailor-s-contouring-shave-gel-150-ml",
+      "url": "https://lookskart.com/products/tailor-s-contouring-shave-gel-150-ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/Tailors-contouring-gel-150ml.jpg?v=1749557503",
+      "localImage": "/images/products/lookskart/all/tailors/tailor-s-contouring-shave-gel-150-ml.jpg"
+    },
+    {
+      "brand": "TAILOR'S",
+      "title": "TAILOR’S Cream 100 ml",
+      "handle": "tailor-s-cream",
+      "url": "https://lookskart.com/products/tailor-s-cream",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tailors-cream-100ml-445x445.jpg?v=1749556497",
+      "localImage": "/images/products/lookskart/all/tailors/tailor-s-cream.jpg"
+    },
+    {
+      "brand": "TAILOR'S",
+      "title": "TAILOR’S Gel 100 ml",
+      "handle": "tailor-s-gel",
+      "url": "https://lookskart.com/products/tailor-s-gel",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tailors-gel-100ml.jpg?v=1749820675",
+      "localImage": "/images/products/lookskart/all/tailors/tailor-s-gel.jpg"
+    },
+    {
+      "brand": "TAILOR'S",
+      "title": "TAILOR’S Pomade 100 ml",
+      "handle": "tailor-s-pomade",
+      "url": "https://lookskart.com/products/tailor-s-pomade",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tailors-pomade-100ml-445x445.jpg?v=1749556503",
+      "localImage": "/images/products/lookskart/all/tailors/tailor-s-pomade.jpg"
+    },
+    {
+      "brand": "TAILOR'S",
+      "title": "TAILOR’S Post Shave 100 ml",
+      "handle": "tailor-s-post-shave",
+      "url": "https://lookskart.com/products/tailor-s-post-shave",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tailors-post-shave-100ml.jpg?v=1749556836",
+      "localImage": "/images/products/lookskart/all/tailors/tailor-s-post-shave.jpg"
+    },
+    {
+      "brand": "TAILOR'S",
+      "title": "TAILOR’S Styling Gum 100 ml",
+      "handle": "tailor-s-styling-gum",
+      "url": "https://lookskart.com/products/tailor-s-styling-gum",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tailors-gum-100ml.jpg?v=1749556716",
+      "localImage": "/images/products/lookskart/all/tailors/tailor-s-styling-gum.jpg"
+    },
+    {
+      "brand": "TAILOR'S",
+      "title": "TAILOR’S Tea Tree Wash 250, 1000 ml",
+      "handle": "tailor-s-tea-tree-wash",
+      "url": "https://lookskart.com/products/tailor-s-tea-tree-wash",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tailors-tea-tree-wash-250ml.jpg?v=1749557353",
+      "localImage": "/images/products/lookskart/all/tailors/tailor-s-tea-tree-wash.jpg"
+    },
+    {
+      "brand": "TAILOR'S",
+      "title": "TAILOR'S Tea Tree Wash 250ml",
+      "handle": "tailors-tea-tree-wash-250ml",
+      "url": "https://lookskart.com/products/tailors-tea-tree-wash-250ml",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tailors-tea-tree-wash-250ml-445x445.jpg?v=1749556538",
+      "localImage": "/images/products/lookskart/all/tailors/tailors-tea-tree-wash-250ml.jpg"
+    },
+    {
+      "brand": "TAILOR'S",
+      "title": "TAILOR’S Tonic 250 ml",
+      "handle": "tailor-s-tonic",
+      "url": "https://lookskart.com/products/tailor-s-tonic",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0624/7618/9904/files/tailors-tonic-250ml.jpg?v=1749556523",
+      "localImage": "/images/products/lookskart/all/tailors/tailor-s-tonic.jpg"
+    }
+  ]
+}

@@ -6,7 +6,7 @@ Use these files in [Google Stitch](https://stitch.withgoogle.com) to explore **m
 
 | File | Theme |
 |------|--------|
-| [`DESIGN.md`](./DESIGN.md) | **Active — Luxe Marble** (Lookskart) |
+| [`DESIGN.md`](./DESIGN.md) | **Active — Luxe Marble** |
 | [`themes/DESIGN-luxe-marble.md`](./themes/DESIGN-luxe-marble.md) | Soft marble + antique gold + Libre Caslon |
 | [`themes/DESIGN-rose-atelier.md`](./themes/DESIGN-rose-atelier.md) | Soft blush + Fraunces |
 | [`themes/DESIGN-coastal-spa.md`](./themes/DESIGN-coastal-spa.md) | Seafoam teal spa |

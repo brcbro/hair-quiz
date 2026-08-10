@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Ink Editorial
-description: High-contrast ink editorial theme for the Live Love Locks hair quiz. Same layout — stark white, black type, single coral accent for CTAs only.
+description: High-contrast ink editorial theme for the hair quiz. Same layout — stark white, black type, single coral accent for CTAs only.
 colors:
   primary: "#E4572E"
   primary-hover: "#C94722"

@@ -49,7 +49,7 @@ const merged = `<!DOCTYPE html>
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Your Personalized Product List | Live Love Locks</title>
+<title>Your Personalized Product List</title>
 <style>
 /* Match live Octane fullscreen: white chrome, cream results column */
 html, body {

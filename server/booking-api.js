@@ -10,18 +10,35 @@ dotenv.config({ path: path.join(ROOT, '.env') });
 
 const DATA_DIR = path.join(ROOT, 'data');
 const BOOKINGS_FILE = path.join(DATA_DIR, 'bookings.json');
+const LEADS_FILE = path.join(DATA_DIR, 'leads.json');
 
-function readBookings() {
+function readJsonList(file) {
   try {
-    return JSON.parse(fs.readFileSync(BOOKINGS_FILE, 'utf8'));
+    return JSON.parse(fs.readFileSync(file, 'utf8'));
   } catch {
     return [];
   }
 }
 
-function writeBookings(list) {
+function writeJsonList(file, list) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
-  fs.writeFileSync(BOOKINGS_FILE, JSON.stringify(list, null, 2));
+  fs.writeFileSync(file, JSON.stringify(list, null, 2));
+}
+
+function readBookings() {
+  return readJsonList(BOOKINGS_FILE);
+}
+
+function writeBookings(list) {
+  writeJsonList(BOOKINGS_FILE, list);
+}
+
+function readLeads() {
+  return readJsonList(LEADS_FILE);
+}
+
+function writeLeads(list) {
+  writeJsonList(LEADS_FILE, list);
 }
 
 async function sendEmails(booking) {
@@ -73,13 +90,73 @@ async function sendEmails(booking) {
       `We received your consultation request.`,
       ``,
       `Our team will contact you shortly to schedule a time.`,
-      `Questions? Call or text (239) 204-3388.`,
+      `Questions? WhatsApp us on +91 99533 33412.`,
       ``,
-      `— Looks Kart`,
+      `— Customised Haircare / Lookskart`,
     ].join('\n'),
   });
 
   return { emailed: true };
+}
+
+async function readBody(req) {
+  let body = '';
+  for await (const chunk of req) body += chunk;
+  return body;
+}
+
+function json(res, status, payload) {
+  res.setHeader('Content-Type', 'application/json');
+  res.statusCode = status;
+  res.end(JSON.stringify(payload));
+}
+
+export async function handleLeadRequest(req, res) {
+  if (req.method === 'OPTIONS') {
+    res.statusCode = 204;
+    res.end();
+    return;
+  }
+
+  if (req.method !== 'POST' || req.url?.split('?')[0] !== '/api/lead') {
+    json(res, 404, { error: 'Not found' });
+    return;
+  }
+
+  let data;
+  try {
+    data = JSON.parse((await readBody(req)) || '{}');
+  } catch {
+    json(res, 400, { error: 'Invalid JSON' });
+    return;
+  }
+
+  const email = String(data.email || '').trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    json(res, 400, { error: 'Please enter a valid email.' });
+    return;
+  }
+
+  const answers = data.answers && typeof data.answers === 'object' ? data.answers : {};
+  const lead = {
+    id: 'lead_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
+    type: 'quiz_email',
+    email,
+    hair_pain_point: answers.hair_pain_point || null,
+    damage_level: answers.damage_level || null,
+    heat_tools: answers.heat_tools || null,
+    wants_volume: answers.wants_volume || null,
+    hair_type: answers.smart_properties_outputs?.hair_type || answers.hair_type || null,
+    answers,
+    createdAt: new Date().toISOString(),
+  };
+
+  const leads = readLeads();
+  leads.push(lead);
+  writeLeads(leads);
+  console.log('[lead]', lead.id, lead.email);
+
+  json(res, 201, { ok: true, lead: { id: lead.id, email: lead.email } });
 }
 
 export async function handleBookingRequest(req, res) {
@@ -90,20 +167,15 @@ export async function handleBookingRequest(req, res) {
   }
 
   if (req.method !== 'POST' || req.url?.split('?')[0] !== '/api/book') {
-    res.statusCode = 404;
-    res.end(JSON.stringify({ error: 'Not found' }));
+    json(res, 404, { error: 'Not found' });
     return;
   }
 
-  let body = '';
-  for await (const chunk of req) body += chunk;
-
   let data;
   try {
-    data = JSON.parse(body || '{}');
+    data = JSON.parse((await readBody(req)) || '{}');
   } catch {
-    res.statusCode = 400;
-    res.end(JSON.stringify({ error: 'Invalid JSON' }));
+    json(res, 400, { error: 'Invalid JSON' });
     return;
   }
 
@@ -111,20 +183,18 @@ export async function handleBookingRequest(req, res) {
   const email = String(data.email || '').trim();
   const phone = String(data.phone || '').trim();
   const notes = String(data.notes || '').trim().slice(0, 500);
+  const quiz = data.quiz && typeof data.quiz === 'object' ? data.quiz : null;
 
   if (!name || name.length < 2) {
-    res.statusCode = 400;
-    res.end(JSON.stringify({ error: 'Please enter your name.' }));
+    json(res, 400, { error: 'Please enter your name.' });
     return;
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    res.statusCode = 400;
-    res.end(JSON.stringify({ error: 'Please enter a valid email.' }));
+    json(res, 400, { error: 'Please enter a valid email.' });
     return;
   }
   if (!phone || phone.replace(/\D/g, '').length < 10) {
-    res.statusCode = 400;
-    res.end(JSON.stringify({ error: 'Please enter a valid phone number.' }));
+    json(res, 400, { error: 'Please enter a valid phone number.' });
     return;
   }
 
@@ -135,6 +205,7 @@ export async function handleBookingRequest(req, res) {
     email,
     phone,
     notes: notes || null,
+    quiz,
     status: 'requested',
     createdAt: new Date().toISOString(),
   };
@@ -153,15 +224,11 @@ export async function handleBookingRequest(req, res) {
 
   console.log('[booking]', booking.id, booking.name, mail.emailed ? 'emailed' : 'saved-only');
 
-  res.setHeader('Content-Type', 'application/json');
-  res.statusCode = 201;
-  res.end(
-    JSON.stringify({
-      ok: true,
-      booking: { id: booking.id, type: booking.type, name: booking.name },
-      emailed: mail.emailed,
-    })
-  );
+  json(res, 201, {
+    ok: true,
+    booking: { id: booking.id, type: booking.type, name: booking.name },
+    emailed: mail.emailed,
+  });
 }
 
 /** Vite plugin — local booking API during `npm run dev` / preview */
@@ -169,12 +236,13 @@ export function bookingApiPlugin() {
   const mount = (server) => {
     server.middlewares.use(async (req, res, next) => {
       const url = req.url || '';
-      if (!url.startsWith('/api/book')) return next();
+      if (!url.startsWith('/api/book') && !url.startsWith('/api/lead')) return next();
       res.setHeader('Access-Control-Allow-Origin', '*');
       res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
       res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
       try {
-        await handleBookingRequest(req, res);
+        if (url.startsWith('/api/lead')) await handleLeadRequest(req, res);
+        else await handleBookingRequest(req, res);
       } catch (err) {
         console.error(err);
         res.statusCode = 500;

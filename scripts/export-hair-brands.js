@@ -13,7 +13,7 @@ const rows = [
     Category: 'Hair Care & Finish',
     Focus: 'Hair care & styling',
     'Has products now': 'No (empty collection)',
-    'Collection URL': 'https://lookskart.com/collections/balmain',
+    'Collection URL': 'https://example.com/collections/balmain',
     Source: 'Brand menu > Hair Care & Finish',
   },
   {
@@ -22,7 +22,7 @@ const rows = [
     Category: 'Hair Care & Finish',
     Focus: 'Hair care (shampoo / treatments)',
     'Has products now': 'Yes',
-    'Collection URL': 'https://lookskart.com/collections/biotop',
+    'Collection URL': 'https://example.com/collections/biotop',
     Source: 'Brand menu > Hair Care & Finish; Shop by Brand; Brand filter',
   },
   {
@@ -31,7 +31,7 @@ const rows = [
     Category: 'Hair Care & Finish',
     Focus: 'Hair care / keratin treatments',
     'Has products now': 'Yes',
-    'Collection URL': 'https://lookskart.com/collections/brasil-cacau',
+    'Collection URL': 'https://example.com/collections/brasil-cacau',
     Source: 'Brand menu > Hair Care & Finish; Shop by Brand',
   },
   {
@@ -40,7 +40,7 @@ const rows = [
     Category: 'Hair Care & Finish',
     Focus: 'Hair care / keratin',
     'Has products now': 'Yes',
-    'Collection URL': 'https://lookskart.com/collections/global-keratin',
+    'Collection URL': 'https://example.com/collections/global-keratin',
     Source: 'Brand menu > Hair Care & Finish; Shop by Brand',
   },
   {
@@ -49,7 +49,7 @@ const rows = [
     Category: 'Hair Care & Finish',
     Focus: 'Professional luxury hair care',
     'Has products now': 'Yes',
-    'Collection URL': 'https://lookskart.com/collections/kerastase',
+    'Collection URL': 'https://example.com/collections/kerastase',
     Source: 'Shop by Brand; Brand filter; Hair Care bestsellers',
   },
   {
@@ -58,7 +58,7 @@ const rows = [
     Category: 'Hair Care & Finish',
     Focus: 'Hair care & styling',
     'Has products now': 'No (empty collection)',
-    'Collection URL': 'https://lookskart.com/collections/kevin-murphy',
+    'Collection URL': 'https://example.com/collections/kevin-murphy',
     Source: 'Brand menu > Hair Care & Finish; Shop by Brand',
   },
   {
@@ -67,7 +67,7 @@ const rows = [
     Category: 'Hair Care & Finish',
     Focus: 'Hair repair / treatment',
     'Has products now': 'Yes',
-    'Collection URL': 'https://lookskart.com/collections/k18',
+    'Collection URL': 'https://example.com/collections/k18',
     Source: 'Brand menu > Hair Care & Finish; Shop by Brand',
   },
   {
@@ -76,7 +76,7 @@ const rows = [
     Category: 'Hair Care & Finish',
     Focus: 'Hair care & styling',
     'Has products now': 'Yes',
-    'Collection URL': 'https://lookskart.com/collections/loreal-professional',
+    'Collection URL': 'https://example.com/collections/loreal-professional',
     Source: 'Brand menu > Hair Care & Finish; Shop by Brand; Brand filter',
   },
   {
@@ -85,7 +85,7 @@ const rows = [
     Category: 'Hair Care & Finish',
     Focus: 'Hair care',
     'Has products now': 'Yes',
-    'Collection URL': 'https://lookskart.com/collections/lea-levett',
+    'Collection URL': 'https://example.com/collections/lea-levett',
     Source: 'Brand menu > Hair Care & Finish; Shop by Brand; Brand filter',
   },
   {
@@ -94,7 +94,7 @@ const rows = [
     Category: 'Hair Care & Finish',
     Focus: 'Hair care & oil',
     'Has products now': 'Yes',
-    'Collection URL': 'https://lookskart.com/collections/moroccan-oil-hair',
+    'Collection URL': 'https://example.com/collections/moroccan-oil-hair',
     Source: 'Brand menu > Hair Care & Finish; Brand filter (Moroccanoil)',
   },
   {
@@ -103,7 +103,7 @@ const rows = [
     Category: 'Hair Care & Finish',
     Focus: 'Bond-building hair care',
     'Has products now': 'No (empty collection)',
-    'Collection URL': 'https://lookskart.com/collections/olaplex',
+    'Collection URL': 'https://example.com/collections/olaplex',
     Source: 'Brand menu > Hair Care & Finish; Shop by Brand',
   },
   {
@@ -112,7 +112,7 @@ const rows = [
     Category: 'Hair Care & Finish',
     Focus: 'Hair care',
     'Has products now': 'No (empty collection)',
-    'Collection URL': 'https://lookskart.com/collections/rene-furturer',
+    'Collection URL': 'https://example.com/collections/rene-furturer',
     Source: 'Brand menu > Hair Care & Finish; Shop by Brand',
   },
   {
@@ -121,7 +121,7 @@ const rows = [
     Category: 'Hair Care & Finish',
     Focus: 'Hair care',
     'Has products now': 'Yes',
-    'Collection URL': 'https://lookskart.com/collections/root-deep',
+    'Collection URL': 'https://example.com/collections/root-deep',
     Source: 'Brand menu > Hair Care & Finish; Shop by Brand; Brand filter',
   },
   {
@@ -130,7 +130,7 @@ const rows = [
     Category: 'Hair Care & Finish',
     Focus: 'Hair care & styling',
     'Has products now': 'Yes',
-    'Collection URL': 'https://lookskart.com/collections/schwarzkopfprof-professional',
+    'Collection URL': 'https://example.com/collections/schwarzkopfprof-professional',
     Source: 'Brand menu > Hair Care & Finish; Shop by Brand; Brand filter',
   },
   {
@@ -139,7 +139,7 @@ const rows = [
     Category: 'Mens / Tools & Accessories',
     Focus: 'Mens hair styling & care',
     'Has products now': 'No (empty collection)',
-    'Collection URL': 'https://lookskart.com/collections/american-crew',
+    'Collection URL': 'https://example.com/collections/american-crew',
     Source: 'Brand menu > Mens, Tools & Accessories; Shop by Brand',
   },
   {
@@ -148,7 +148,7 @@ const rows = [
     Category: 'Mens / Tools & Accessories',
     Focus: 'Mens hair styling & grooming',
     'Has products now': 'Yes',
-    'Collection URL': 'https://lookskart.com/collections/18-21-man',
+    'Collection URL': 'https://example.com/collections/18-21-man',
     Source: 'Brand menu > Mens, Tools & Accessories',
   },
   {
@@ -158,7 +158,7 @@ const rows = [
     Focus: 'Mens hair, beard & styling',
     'Has products now': 'Yes',
     'Collection URL':
-      'https://lookskart.com/collections/tailors-product-collection-for-whatsapp-wati',
+      'https://example.com/collections/tailors-product-collection-for-whatsapp-wati',
     Source: 'Featured banners / Curated for Men',
   },
   {
@@ -167,7 +167,7 @@ const rows = [
     Category: 'Mens / Tools & Accessories',
     Focus: 'Hair tools (dryers / stylers)',
     'Has products now': 'No (empty collection)',
-    'Collection URL': 'https://lookskart.com/collections/dyson',
+    'Collection URL': 'https://example.com/collections/dyson',
     Source: 'Brand menu > Mens, Tools & Accessories; Shop by Brand',
   },
   {
@@ -176,7 +176,7 @@ const rows = [
     Category: 'Mens / Tools & Accessories',
     Focus: 'Hair clippers / trimmers',
     'Has products now': 'No (empty collection)',
-    'Collection URL': 'https://lookskart.com/collections/wahl',
+    'Collection URL': 'https://example.com/collections/wahl',
     Source: 'Brand menu > Mens, Tools & Accessories; Shop by Brand',
   },
   {
@@ -185,7 +185,7 @@ const rows = [
     Category: 'Mens / Tools & Accessories',
     Focus: 'Hair brushes',
     'Has products now': 'No (empty collection)',
-    'Collection URL': 'https://lookskart.com/collections/wet-brush',
+    'Collection URL': 'https://example.com/collections/wet-brush',
     Source: 'Brand menu > Mens, Tools & Accessories; Shop by Brand',
   },
   {
@@ -194,13 +194,13 @@ const rows = [
     Category: 'Mens / Tools & Accessories',
     Focus: 'Shaving / grooming (beard & body)',
     'Has products now': 'Yes',
-    'Collection URL': 'https://lookskart.com/collections/lets-shave',
+    'Collection URL': 'https://example.com/collections/lets-shave',
     Source: 'Brand menu > Mens, Tools & Accessories; Brand filter',
   },
 ]
 
 const notes = [
-  { Note: 'Source site', Detail: 'https://lookskart.com/' },
+  { Note: 'Source site', Detail: 'https://example.com/' },
   { Note: 'Scraped on', Detail: '2026-08-08' },
   {
     Note: 'Hair Care & Finish brands',
@@ -236,8 +236,8 @@ const ws2 = XLSX.utils.json_to_sheet(notes)
 ws2['!cols'] = [{ wch: 28 }, { wch: 110 }]
 XLSX.utils.book_append_sheet(wb, ws2, 'Notes')
 
-const outXlsx = path.join(docsDir, 'lookskart-hair-brands.xlsx')
-const outCsv = path.join(docsDir, 'lookskart-hair-brands.csv')
+const outXlsx = path.join(docsDir, 'hair-brands.xlsx')
+const outCsv = path.join(docsDir, 'hair-brands.csv')
 XLSX.writeFile(wb, outXlsx)
 
 const headers = Object.keys(rows[0])

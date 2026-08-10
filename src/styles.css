@@ -35,7 +35,12 @@
   --btn-radius: 0.25rem;
   --font: 'Hanken Grotesk', system-ui, sans-serif;
   --font-display: 'Libre Caslon Text', Georgia, 'Times New Roman', serif;
-  --marble-url: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBuBJmDlLYxyqgh8PHVJLRDuotE5VJ3lPFf8eZOfITmnqxSUDO0EouFyOyQe9Z4a4xv6JHlbyOmB0RNum8qlg5Mk_PVLKeptkPBlwyuIH27TvmG0hula3U6Ke75PYJO7XCXyYiSOk4hPjNaJqqQ7_rqWLG4KVLcoAhBcxBIUoMzPYtNFGT91PUJd7WqpETLbLVpD1KaVwas7ICAIuvrQ-Oz770oz9GXePabesO-eGn_KbiJbaD-JlOoCA');
+  --marble-url: linear-gradient(
+    125deg,
+    rgba(209, 197, 180, 0.22) 0%,
+    rgba(250, 249, 249, 0) 45%,
+    rgba(197, 160, 89, 0.08) 100%
+  );
 }
 
 html, body {
@@ -94,11 +99,12 @@ html, body {
 
 .quiz-brand {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: clamp(16px, 4.2vw, 24px);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text);
-  line-height: 1.4;
+  line-height: 1.3;
+  padding-right: 12px;
 }
 
 .quiz-close {

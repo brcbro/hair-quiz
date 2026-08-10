@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Midnight Luxe
-description: Dark editorial luxury theme for the Live Love Locks hair quiz. Same layout — charcoal canvas, champagne accent, high-contrast type.
+description: Dark editorial luxury theme for the hair quiz. Same layout — charcoal canvas, champagne accent, high-contrast type.
 colors:
   primary: "#D4B483"
   primary-hover: "#C4A372"

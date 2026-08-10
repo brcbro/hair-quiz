@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Botanical Clean
-description: Fresh botanical theme for the Live Love Locks hair quiz. Same layout — soft sage, leaf-green primary, friendly rounded sans.
+description: Fresh botanical theme for the hair quiz. Same layout — soft sage, leaf-green primary, friendly rounded sans.
 colors:
   primary: "#4F7A4E"
   primary-hover: "#3F633E"

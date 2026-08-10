@@ -9,7 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const BOT_ID = '6xnk6k967vfn9q42';
 const QUIZ_ID = 'DlMPazSzrDmsEi0U';
 const BASE = 'https://app.octaneai.com';
-const QUIZ_URL = 'https://live-love-locks.com/pages/personalized-product-list';
+const QUIZ_URL = 'https://example.com/pages/personalized-product-list';
 const PAGE_PATH = '/pages/personalized-product-list';
 
 const uid = () => 'cli_' + Math.random().toString(36).slice(2) + Date.now().toString(36);
@@ -20,7 +20,7 @@ async function postJson(endpoint, body) {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Origin: 'https://live-love-locks.com',
+      Origin: 'https://example.com',
       Referer: QUIZ_URL,
     },
     body: JSON.stringify(body),
@@ -39,7 +39,7 @@ async function postForm(endpoint, body) {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       Accept: 'application/json',
-      Origin: 'https://live-love-locks.com',
+      Origin: 'https://example.com',
       Referer: QUIZ_URL,
     },
     body: form.toString(),
