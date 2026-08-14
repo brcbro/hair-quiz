@@ -53,22 +53,34 @@ function productEffects({ hairType, heat, volume, damage, pain }) {
   if (isCoarse) washday = 'Every 5+ days · About 20 minutes';
   else if (isMedium) washday = 'Every 4-5 days · About 20 minutes';
 
+  // Names match live Lookskart lineup in public/results.html applyAnswers()
   return {
-    shampoo_set: isCoarse ? 'Rich Balance Hydrating S+C (coarse)' : 'Daily Balance S+C (fine/medium)',
-    oil: isCoarse ? 'Moroccanoil Treatment Oil' : 'Silk Finish Hair Oil',
-    dry_shampoo: isCoarse ? 'Moroccanoil Dry Shampoo' : 'Living Proof Dry Shampoo',
+    shampoo: isCoarse
+      ? 'Brasil Cacau Extreme Repair Shampoo'
+      : 'Biotop 911 Quinoa Shampoo',
+    conditioner: isCoarse
+      ? 'Brasil Cacau Extreme Repair Conditioner'
+      : 'Biotop 911 Quinoa Conditioner',
+    leave_in: 'K-18 Leave-in Molecular Repair Mask',
+    oil: isCoarse ? 'Moroccanoil Treatment Original' : 'Moroccanoil Treatment Light',
+    dry_texture_spray: 'Moroccanoil Dry Texture Spray',
     blow_dry_product: usesBlow
       ? isCoarse
-        ? 'Redken Rebel Tame'
-        : 'Redken Big Blowout'
+        ? 'Kerastase Gloss Absolu Heat Protectant Spray'
+        : 'Kerastase Nectar Thermique Blow Dry Primer'
       : '— (hidden)',
-    thermal_protectant: usesIron ? 'Redken Thermal Spray' : '— (hidden)',
+    thermal_protectant: usesIron
+      ? 'Schwarzkopf OSiS+ Flatliner Heat Protection Spray'
+      : '— (hidden)',
     volume_product:
       wantsVol && usesBlow
-        ? 'Olaplex Volume Mist'
+        ? 'Moroccanoil Root Boost'
         : wantsVol && !usesBlow
           ? 'Note only (needs blow dryer)'
           : '— (hidden)',
+    hairspray: 'Moroccanoil Luminous Hairspray Strong (always Skip It For Now)',
+    repair_product: 'pH Plex Step 3',
+    weekly_mask: 'Moroccanoil Weightless Hydrating Mask',
     repair_mask_badge: repair,
     washday_timing: washday,
     spray_count_hint: isCoarse
@@ -114,13 +126,23 @@ function main() {
       Detail: 'Q1 frustration → Q2 question options → pain_severity (and damage_level on damage path).',
     },
     {
-      Topic: 'Sheet: Full_Chains',
+      Topic: 'Sheet: Products_List',
       Detail:
-        'Every full answer path (~30k rows). Columns on the left are selections; columns on the right are outputs. Use AutoFilter.',
+        'All Lookskart products used in quiz recommendations — name, price, when suggested, badge, URL.',
     },
     {
       Topic: 'Sheet: Product_Rules',
       Detail: 'Human-readable rules for when products show/hide and badge levels change.',
+    },
+    {
+      Topic: 'Sheet: Full_Chains',
+      Detail:
+        'Every full answer path (~20k rows). Left columns = quiz answers; right columns = products/outputs. Use AutoFilter.',
+    },
+    {
+      Topic: 'Google Sheets',
+      Detail:
+        'Upload this .xlsx to Google Drive → Open with Google Sheets. Or File → Import in an existing Sheet.',
     },
     {
       Topic: 'Counts',
@@ -161,17 +183,209 @@ function main() {
 
   // —— Sheet: Product rules ——
   const rules = [
-    { Rule: 'Hair type Fine/Medium', Effect: 'Show Daily Balance S+C (fine/medium) + Silk Finish oil + Living Proof dry shampoo' },
-    { Rule: 'Hair type Coarse', Effect: 'Swap to Hydrating S+C + Moroccanoil oil + Moroccanoil dry shampoo; longer wash-day timing' },
-    { Rule: 'Heat includes blow dryer', Effect: 'Fine/Medium → Big Blowout; Coarse → Rebel Tame; add blow-dry routine steps' },
-    { Rule: 'Heat includes iron', Effect: 'Show thermal protectant + iron routine steps' },
-    { Rule: 'Wants volume Max/Moderate + uses blow dryer', Effect: 'Show Olaplex volume mist + volume routine step' },
-    { Rule: 'Wants volume but no blow dryer', Effect: 'Show note that volume product needs blow dryer' },
-    { Rule: 'Damage path OR growth OR damage Moderate/Severe', Effect: 'Repair mask badge = Must Have; show weekly repair accordion' },
-    { Rule: 'Damage Mild', Effect: 'Repair badge = Good to Have' },
-    { Rule: 'Damage None (and not growth/damage path)', Effect: 'Repair badge = Skip It For Now' },
-    { Rule: 'Wash frequency', Effect: 'Does not swap product SKUs by itself; it changes hair_type via the 162 lookup, which then swaps products' },
-    { Rule: 'Pain point (dry/frizzy/…)', Effect: 'Changes headline, summary copy, testimonial, and some product notes' },
+    {
+      Rule: 'Hair type Fine or Medium',
+      Effect:
+        'Biotop 911 Quinoa Shampoo (+ Conditioner in routine), Moroccanoil Treatment Light, Dry Texture Spray (fine/medium row)',
+    },
+    {
+      Rule: 'Hair type Coarse',
+      Effect:
+        'Brasil Cacau Extreme Repair Shampoo (+ Conditioner in routine), Moroccanoil Treatment Original, Dry Texture Spray (coarse row); wash day Every 5+ days',
+    },
+    {
+      Rule: 'Always shown (core)',
+      Effect:
+        'K-18 Leave-in Molecular Repair Mask (Must Have); Moroccanoil Luminous Hairspray Strong (Skip It For Now); pH Plex Step 3 + Weightless Hydrating Mask (badge varies)',
+    },
+    {
+      Rule: 'Heat includes blow dryer (or both)',
+      Effect:
+        'Fine/Medium → Kerastase Nectar Thermique; Coarse → Kerastase Gloss Absolu Heat Protectant',
+    },
+    {
+      Rule: 'Heat includes iron (or both)',
+      Effect: 'Show Schwarzkopf OSiS+ Flatliner Heat Protection Spray',
+    },
+    {
+      Rule: 'Wants volume Max/Moderate + uses blow dryer',
+      Effect: 'Show Moroccanoil Root Boost',
+    },
+    {
+      Rule: 'Wants volume but no blow dryer',
+      Effect: 'Show note only — Root Boost needs a blow dryer',
+    },
+    {
+      Rule: 'Damage path OR growth OR damage Moderate/Severe',
+      Effect: 'pH Plex + Mask badge = Must Have; show Weekly Repair accordion',
+    },
+    { Rule: 'Damage Mild', Effect: 'pH Plex + Mask badge = Good to Have; optional repair accordion' },
+    {
+      Rule: 'Damage None (and not growth/damage path)',
+      Effect: 'pH Plex + Mask badge = Skip It For Now',
+    },
+    {
+      Rule: 'Wash frequency',
+      Effect:
+        'Does not swap SKUs directly; it feeds the 162 hair-type lookup, which then swaps products',
+    },
+    {
+      Rule: 'Pain point (dry/frizzy/growth/oily/volume/damage)',
+      Effect: 'Changes headline, summary, testimonial, and product note copy — not core SKUs (except via hair type)',
+    },
+  ];
+
+  // —— Sheet: Products list (quiz catalog) ——
+  const products = [
+    {
+      Product_ID: 'sc',
+      Brand: 'Biotop',
+      Product_Name: 'Biotop 911 Quinoa Shampoo 250ml',
+      Price: 'Rs. 2,070',
+      When_Suggested: 'Hair type Fine or Medium',
+      Badge: 'Must Have',
+      Lookskart_URL:
+        'https://lookskart.com/products/biotop-911-quinoa-shampoo-330ml',
+    },
+    {
+      Product_ID: 'sc-cond',
+      Brand: 'Biotop',
+      Product_Name: 'Biotop 911 Quinoa Conditioner 250ml',
+      Price: 'Rs. 2,250',
+      When_Suggested: 'Hair type Fine or Medium (routine image; no separate ATC card)',
+      Badge: 'Must Have (with shampoo)',
+      Lookskart_URL:
+        'https://lookskart.com/products/biotop-911-quinoa-conditioner-330ml',
+    },
+    {
+      Product_ID: 'scc',
+      Brand: 'Brasil Cacau',
+      Product_Name: 'Brasil Cacau Extreme Repair Shampoo 300ml',
+      Price: 'Rs. 1,646',
+      When_Suggested: 'Hair type Coarse',
+      Badge: 'Must Have',
+      Lookskart_URL:
+        'https://lookskart.com/products/brasil-cacau-extreme-repair-shampoo-for-damaged-hair-300ml',
+    },
+    {
+      Product_ID: 'scc-cond',
+      Brand: 'Brasil Cacau',
+      Product_Name: 'Brasil Cacau Extreme Repair Conditioner 300ml',
+      Price: 'Rs. 1,850',
+      When_Suggested: 'Hair type Coarse (routine image; no separate ATC card)',
+      Badge: 'Must Have (with shampoo)',
+      Lookskart_URL:
+        'https://lookskart.com/products/brasil-cacau-extreme-repair-conditioner-for-damaged-hair-300ml',
+    },
+    {
+      Product_ID: 'li',
+      Brand: 'K-18',
+      Product_Name: 'K-18 Leave-in Molecular Repair Mask 50ml',
+      Price: 'Rs. 5,625',
+      When_Suggested: 'Always',
+      Badge: 'Must Have',
+      Lookskart_URL:
+        'https://lookskart.com/products/k-18-leave-in-molecular-repair-hair-mask-50ml',
+    },
+    {
+      Product_ID: 'oil',
+      Brand: 'Moroccanoil',
+      Product_Name: 'Moroccanoil Treatment Light 100ml',
+      Price: 'Rs. 4,320',
+      When_Suggested: 'Hair type Fine or Medium',
+      Badge: 'Must Have',
+      Lookskart_URL:
+        'https://lookskart.com/products/moroccanoil-moroccanoil-treatment-light-100ml-for-fine-or-light-coloured-hair',
+    },
+    {
+      Product_ID: 'moroil',
+      Brand: 'Moroccanoil',
+      Product_Name: 'Moroccanoil Treatment Original 100ml',
+      Price: 'Rs. 4,320',
+      When_Suggested: 'Hair type Coarse',
+      Badge: 'Must Have',
+      Lookskart_URL:
+        'https://lookskart.com/products/moroccanoil-moroccanoil-treatment-original-100ml-for-all-hair-types',
+    },
+    {
+      Product_ID: 'bdc',
+      Brand: 'Kerastase',
+      Product_Name: 'Kerastase Nectar Thermique Blow Dry Primer 150ml',
+      Price: 'Rs. 2,800',
+      When_Suggested: 'Uses blow dryer or both + Fine/Medium',
+      Badge: 'Must Have',
+      Lookskart_URL:
+        'https://lookskart.com/products/kerastase-nutritive-nectar-thermique-blow-dry-primer-150ml',
+    },
+    {
+      Product_ID: 'rebel',
+      Brand: 'Kerastase',
+      Product_Name: 'Kerastase Gloss Absolu Heat Protectant Spray 190ml',
+      Price: 'Rs. 3,000',
+      When_Suggested: 'Uses blow dryer or both + Coarse',
+      Badge: 'Must Have',
+      Lookskart_URL:
+        'https://lookskart.com/products/kerastase-gloss-absolu-anti-frizz-heat-protectant-spray-190ml',
+    },
+    {
+      Product_ID: 'thermal',
+      Brand: 'Schwarzkopf',
+      Product_Name: 'Schwarzkopf OSiS+ Flatliner Heat Protection Spray 200ml',
+      Price: 'Rs. 1,450',
+      When_Suggested: 'Uses iron or both',
+      Badge: 'Must Have',
+      Lookskart_URL:
+        'https://lookskart.com/products/schwarzkopf-professional-osis-flatliner-heat-protection-spray-200ml',
+    },
+    {
+      Product_ID: 'volume',
+      Brand: 'Moroccanoil',
+      Product_Name: 'Moroccanoil Root Boost 250ml',
+      Price: 'Rs. 2,610',
+      When_Suggested: 'Wants Max/Moderate volume AND uses blow dryer',
+      Badge: 'Must Have',
+      Lookskart_URL:
+        'https://lookskart.com/products/moroccanoil-root-boost-for-fine-to-medium-hair-250ml',
+    },
+    {
+      Product_ID: 'dryshampoo',
+      Brand: 'Moroccanoil',
+      Product_Name: 'Moroccanoil Dry Texture Spray 205ml',
+      Price: 'Rs. 2,610',
+      When_Suggested: 'Always (row swaps Fine/Medium vs Coarse)',
+      Badge: 'Good to Have',
+      Lookskart_URL:
+        'https://lookskart.com/products/moroccanoil-dry-texture-spray-205ml-for-all-hair-types',
+    },
+    {
+      Product_ID: 'hairspray',
+      Brand: 'Moroccanoil',
+      Product_Name: 'Moroccanoil Luminous Hairspray Strong 330ml',
+      Price: 'Rs. 2,610',
+      When_Suggested: 'Always shown',
+      Badge: 'Skip It For Now',
+      Lookskart_URL:
+        'https://lookskart.com/products/moroccanoil-luminous-hairspray-strong-330ml',
+    },
+    {
+      Product_ID: 'repair',
+      Brand: 'pH Plex',
+      Product_Name: 'pH Plex Step 3 150ml',
+      Price: 'Rs. 3,950',
+      When_Suggested: 'Always shown; badge from damage/growth rules',
+      Badge: 'Must Have / Good to Have / Skip It For Now',
+      Lookskart_URL: 'https://lookskart.com/products/ph-plex-step-3-150ml',
+    },
+    {
+      Product_ID: 'mask',
+      Brand: 'Moroccanoil',
+      Product_Name: 'Moroccanoil Weightless Hydrating Mask 250ml',
+      Price: 'Rs. 3,780',
+      When_Suggested: 'Always shown; badge from damage/growth rules',
+      Badge: 'Must Have / Good to Have / Skip It For Now',
+      Lookskart_URL:
+        'https://lookskart.com/products/moroccanoil-weightless-hydrating-mask-for-fine-dry-hair-250ml',
+    },
   ];
 
   // —— Sheet: Full chains ——
@@ -235,12 +449,17 @@ function main() {
                       payload.pain_severity,
                       payload.smart_properties_outputs.hair_type
                     ),
-                    Out_shampoo_set: effects.shampoo_set,
+                    Out_shampoo: effects.shampoo,
+                    Out_conditioner: effects.conditioner,
+                    Out_leave_in: effects.leave_in,
                     Out_oil: effects.oil,
-                    Out_dry_shampoo: effects.dry_shampoo,
+                    Out_dry_texture_spray: effects.dry_texture_spray,
                     Out_blow_dry_product: effects.blow_dry_product,
                     Out_thermal: effects.thermal_protectant,
                     Out_volume_product: effects.volume_product,
+                    Out_hairspray: effects.hairspray,
+                    Out_repair_product: effects.repair_product,
+                    Out_weekly_mask: effects.weekly_mask,
                     Out_repair_badge: effects.repair_mask_badge,
                     Out_washday_timing: effects.washday_timing,
                     Out_leavein_sprays: effects.spray_count_hint,
@@ -256,9 +475,10 @@ function main() {
 
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, sheetFromRows(guide), 'How_to_read');
+  XLSX.utils.book_append_sheet(wb, sheetFromRows(products), 'Products_List');
+  XLSX.utils.book_append_sheet(wb, sheetFromRows(rules), 'Product_Rules');
   XLSX.utils.book_append_sheet(wb, sheetFromRows(hairTypeRows), 'Hair_Type_162');
   XLSX.utils.book_append_sheet(wb, sheetFromRows(q1q2), 'Q1_Q2_Severity');
-  XLSX.utils.book_append_sheet(wb, sheetFromRows(rules), 'Product_Rules');
   XLSX.utils.book_append_sheet(wb, sheetFromRows(full), 'Full_Chains');
 
   XLSX.writeFile(wb, OUT_FILE);
@@ -274,11 +494,24 @@ function main() {
   ];
   fs.writeFileSync(csvHair, csvLines.join('\n'));
 
+  // Products CSV for quick Google Sheets import
+  const csvProducts = path.join(OUT_DIR, 'quiz-products-list.csv');
+  const pKeys = Object.keys(products[0]);
+  const esc = (v) => {
+    const s = String(v ?? '');
+    return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+  };
+  fs.writeFileSync(
+    csvProducts,
+    [pKeys.join(','), ...products.map((r) => pKeys.map((k) => esc(r[k])).join(','))].join('\n')
+  );
+
   console.log('Wrote', OUT_FILE);
   console.log('Hair type rows:', hairTypeRows.length);
   console.log('Q1-Q2 rows:', q1q2.length);
   console.log('Full chain rows:', full.length);
   console.log('Also:', csvHair);
+  console.log('Also:', csvProducts);
 }
 
 main();

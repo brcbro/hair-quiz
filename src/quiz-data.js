@@ -249,7 +249,7 @@ export function deriveHairType(airdry, pattern, pain, wash = '1_2_days') {
 /**
  * Build the exact `octane_answers` object the official results HTML expects.
  */
-export function buildOctaneAnswers(answers, email) {
+export function buildOctaneAnswers(answers, email, focusBrand = null) {
   const q1 = QUESTIONS.q1.options.find((o) => o.id === answers.q1);
   const pain = q1?.pain || 'dry';
 
@@ -292,6 +292,7 @@ export function buildOctaneAnswers(answers, email) {
     heat_tools: heat?.heat || 'none',
     wants_volume: volume?.volume || 'None',
     smart_properties_outputs: { hair_type: hairType },
+    focus_brand: focusBrand || null,
     klaviyo_email_sync_list_id: null,
     klaviyo_sms_sync_list_id: null,
     email: email || '',

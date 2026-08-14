@@ -4,6 +4,7 @@ import {
   buildOctaneAnswers,
   resolveNext,
 } from './quiz-data.js';
+import { pickFocusBrand } from './brand-focus.js';
 
 class HairQuiz {
   constructor() {
@@ -11,6 +12,7 @@ class HairQuiz {
     this.answers = {};
     this.history = [];
     this.selectedOption = null;
+    this.focusBrand = pickFocusBrand();
 
     this.contentEl = document.getElementById('quiz-content');
     this.footerEl = document.getElementById('quiz-footer');
@@ -20,9 +22,12 @@ class HairQuiz {
     this.progressLabel = document.getElementById('progress-label');
     this.progressWrapper = document.querySelector('.quiz-progress-wrapper');
     this.closeBtn = document.querySelector('.quiz-close');
+    this.bookBtn = document.getElementById('quiz-book-btn');
+    this.bookModal = document.getElementById('quiz-book-modal');
     this.appEl = document.getElementById('quiz-app');
 
     this.bindEvents();
+    this.bindBookModal();
     this.render();
   }
 
@@ -32,6 +37,38 @@ class HairQuiz {
     this.closeBtn.addEventListener('click', () => {
       if (confirm('Close the quiz and start over?')) this.reset();
     });
+    if (this.bookBtn) {
+      this.bookBtn.addEventListener('click', () => this.openBookConsultation());
+    }
+  }
+
+  openBookConsultation() {
+    if (!this.bookModal) return;
+    this.bookModal.hidden = false;
+    this.bookModal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeBookConsultation() {
+    if (!this.bookModal) return;
+    this.bookModal.classList.remove('is-open');
+    this.bookModal.hidden = true;
+    document.body.style.overflow = '';
+    if (this.bookBtn) this.bookBtn.focus();
+  }
+
+  bindBookModal() {
+    if (!this.bookModal) return;
+
+    this.bookModal.querySelectorAll('[data-quiz-book-close]').forEach((el) => {
+      el.addEventListener('click', () => this.closeBookConsultation());
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.bookModal.classList.contains('is-open')) {
+        this.closeBookConsultation();
+      }
+    });
   }
 
   reset() {
@@ -39,6 +76,7 @@ class HairQuiz {
     this.answers = {};
     this.history = [];
     this.selectedOption = null;
+    this.focusBrand = pickFocusBrand();
     this.footerEl.style.display = 'flex';
     this.progressWrapper.style.display = 'block';
     this.closeBtn.style.display = 'flex';
@@ -174,7 +212,7 @@ class HairQuiz {
 
     // Fully client-side results: persist answers then go to results.
     // Also save the quiz email as a lead on the server (best-effort).
-    const octaneAnswers = buildOctaneAnswers(this.answers, this.answers.email);
+    const octaneAnswers = buildOctaneAnswers(this.answers, this.answers.email, this.focusBrand);
     try {
       localStorage.setItem('octane_answers', JSON.stringify(octaneAnswers));
     } catch {}

@@ -251,6 +251,41 @@ html, body {
 .section-center { text-align: center; }
 .section-center .section-lead { margin-left: auto; margin-right: auto; }
 
+.ritual-download-wrap {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.ritual-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--primary-container);
+  border: 1px solid var(--primary-container);
+  border-radius: var(--radius);
+  padding: 12px 22px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s, opacity 0.2s;
+}
+.ritual-download-btn:hover { background: var(--surface-container); }
+.ritual-download-btn:disabled { opacity: 0.55; cursor: wait; }
+.ritual-download-btn .material-symbols-outlined { font-size: 18px; }
+.ritual-download-hint {
+  font-size: 13px;
+  color: var(--outline);
+  margin: 0;
+  max-width: 28em;
+  line-height: 1.5;
+}
+
 .profile-grid {
   display: grid;
   gap: 40px;
@@ -409,6 +444,24 @@ html, body {
   .product-card--hero .product-card-name { font-size: 28px; }
   .product-card--side { grid-column: span 4; }
   .product-card--oil { grid-column: span 4; }
+  #card-kerastase-main.product-card--hero .product-card-img-col {
+    min-height: 380px;
+    padding: 40px;
+    background: linear-gradient(145deg, #f8f4ee 0%, #efe8dc 100%);
+  }
+  #card-kerastase-main.product-card--hero .product-card-img {
+    width: 82%;
+    max-height: 340px;
+  }
+  #card-kerastase-main .product-card-brand-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--outline);
+    margin: 0 0 8px;
+  }
+  #card-kerastase-main .product-card-name { font-size: 30px; }
 }
 
 .product-card {
@@ -625,6 +678,69 @@ html, body {
 .atc-btn--sm:hover {
   background: var(--surface-container);
 }
+
+/* Same-brand variants strip */
+.same-brand-block {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--outline-variant);
+}
+.same-brand-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--outline);
+  margin: 0 0 6px;
+}
+.same-brand-lead {
+  font-size: 14px;
+  color: var(--on-surface-variant);
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+.same-brand-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scroll-snap-type: x mandatory;
+}
+.same-brand-card {
+  flex: 0 0 168px;
+  scroll-snap-align: start;
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.same-brand-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  border-radius: calc(var(--radius) - 2px);
+  background: var(--surface-container);
+}
+.same-brand-card-name {
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--on-surface);
+  margin: 0;
+  min-height: 2.7em;
+}
+.same-brand-card-price {
+  font-size: 12px;
+  color: var(--on-surface-variant);
+  margin: 0;
+}
+.same-brand-card .atc-btn--sm {
+  width: 100%;
+  justify-content: center;
+}
+
 .product-brand {
   font-size: 10px;
   color: var(--outline);
@@ -1027,9 +1143,8 @@ html, body {
 .view-products-btn { display: none; }
 .category-header { display: none; }
 
-.lll-retake {
+.lll-fab {
   position: fixed;
-  bottom: 24px;
   right: 20px;
   z-index: 100000;
   height: 52px;
@@ -1062,13 +1177,13 @@ html, body {
     box-shadow 0.25s ease,
     transform 0.15s ease;
 }
-.lll-retake .material-symbols-outlined {
+.lll-fab .material-symbols-outlined {
   font-size: 24px;
   color: inherit;
   flex-shrink: 0;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.lll-retake-label {
+.lll-fab-label {
   width: 0;
   opacity: 0;
   overflow: hidden;
@@ -1079,8 +1194,8 @@ html, body {
     opacity 0.28s ease 0.05s,
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.lll-retake:hover,
-.lll-retake:focus-visible {
+.lll-fab:hover,
+.lll-fab:focus-visible {
   width: 188px;
   padding: 0 18px 0 14px;
   border-radius: 8px;
@@ -1095,28 +1210,52 @@ html, body {
 .lll-retake:focus-visible .material-symbols-outlined {
   transform: rotate(-180deg);
 }
-.lll-retake:hover .lll-retake-label,
-.lll-retake:focus-visible .lll-retake-label {
+.lll-fab:hover .lll-fab-label,
+.lll-fab:focus-visible .lll-fab-label {
   width: 118px;
   opacity: 1;
   transform: translateX(0);
 }
-.lll-retake:active { transform: scale(0.96); }
+.lll-fab:active { transform: scale(0.96); }
+
+.lll-retake {
+  bottom: 24px;
+}
+.lll-book-fab {
+  bottom: 88px;
+}
+.lll-book-fab:hover,
+.lll-book-fab:focus-visible {
+  width: 228px;
+}
+.lll-book-fab:hover .lll-fab-label,
+.lll-book-fab:focus-visible .lll-fab-label {
+  width: 158px;
+}
+
 @media (min-width: 768px) {
-  .lll-retake { bottom: 32px; right: 32px; }
+  .lll-fab { right: 32px; }
+  .lll-retake { bottom: 32px; }
+  .lll-book-fab { bottom: 96px; }
 }
 @media (hover: none) {
-  .lll-retake {
+  .lll-fab {
     width: 188px;
     padding: 0 18px 0 14px;
     border-radius: 8px;
     gap: 10px;
     justify-content: flex-start;
   }
-  .lll-retake-label {
+  .lll-fab-label {
     width: 118px;
     opacity: 1;
     transform: none;
+  }
+  .lll-book-fab {
+    width: 228px;
+  }
+  .lll-book-fab .lll-fab-label {
+    width: 158px;
   }
 }
 
@@ -1127,7 +1266,7 @@ html, body {
 
 <div class="results-chrome">
   <header class="results-header">
-    <a class="results-brand" href="/">Customised Haircare routine</a>
+    <a class="results-brand" href="/">Your Haircare routine</a>
     <button type="button" class="results-close" aria-label="Close" title="Close" onclick="window.location.href='/'">
       <span class="material-symbols-outlined" aria-hidden="true">close</span>
     </button>
@@ -1213,7 +1352,27 @@ html, body {
   <div id="lll-products-content">
     <div class="lll-bento">
 
-    <div class="product-card product-card--hero" id="card-sc-fm">
+    <div class="product-card product-card--hero" id="card-kerastase-main">
+      <div class="product-card-top">
+        <div class="product-card-img-col">
+          <img class="product-card-img" src="/images/products/lookskart/all/kerastase/kerastase-elixir-ultime-hair-oil-in-serum-30ml.webp" alt="Kerastase Elixir Ultime Hair Oil-In-Serum">
+          <span class="badge badge-recommended">Good to Have</span>
+        </div>
+        <div class="product-card-info">
+          <p class="product-card-brand-label">Kerastase</p>
+          <p class="product-card-name">Elixir Ultime Hair Oil-In-Serum</p>
+          <p class="product-card-note" id="note-kerastase-main">A lightweight hair serum for shine, softness, and protection on mids and ends.</p>
+        </div>
+      </div>
+      <div class="product-card-footer">
+        <div class="product-card-footer-row">
+          <span class="product-price-main" id="kerastase-main-price">Rs. 2,700</span>
+          <button class="atc-btn" id="kerastase-main-btn" type="button" onclick="openLookskart('kerastase_main')">Shop on Lookskart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card product-card--side" id="card-sc-fm">
       <div class="product-card-top">
         <div class="product-card-img-col">
           <img class="product-card-img" src="/images/products/lookskart/biotop-911-quinoa-shampoo.jpg" alt="Biotop 911 Quinoa Shampoo">
@@ -1232,7 +1391,7 @@ html, body {
       </div>
     </div>
 
-    <div class="product-card product-card--hero hidden" id="card-sc-coarse">
+    <div class="product-card product-card--side hidden" id="card-sc-coarse">
       <div class="product-card-top">
         <div class="product-card-img-col">
           <img class="product-card-img" src="/images/products/lookskart/brasil-cacau-extreme-repair-shampoo.jpg" alt="Brasil Cacau Extreme Repair Shampoo">
@@ -1251,7 +1410,7 @@ html, body {
       </div>
     </div>
 
-    <div class="product-card product-card--side">
+    <div class="product-card product-card--side" id="card-leave-in">
       <div class="product-card-top">
         <div class="product-card-img-col">
           <img class="product-card-img" src="/images/products/lookskart/k18-leave-in-mask-50ml.jpg" alt="K-18 Leave-in Molecular Repair Hair Mask">
@@ -1339,10 +1498,10 @@ html, body {
 
     <div class="product-row hidden" id="row-thermal">
       <div class="product-row-top">
-        <img class="product-img" src="/images/products/lookskart/schwarzkopf-osis-flatliner.jpg" alt="Schwarzkopf OSiS Flatliner Heat Protection">
+        <img class="product-img" src="/images/products/lookskart/all/kerastase/kerastase-genesis-di©fense-thermique-blow-dry-primer-150ml.jpg" alt="Kerastase Genesis Défense Thermique">
         <div class="product-body">
-          <p class="product-brand">Schwarzkopf</p>
-          <div class="product-name-row"><span class="product-name">OSiS+ Flatliner Heat Protection Spray</span><span class="badge badge-essential">Must Have</span></div>
+          <p class="product-brand">Kerastase</p>
+          <div class="product-name-row"><span class="product-name">Genesis Défense Thermique</span><span class="badge badge-essential">Must Have</span></div>
           <p class="product-note">Non-negotiable before any iron or wand. Protects from heat while adding shine and longevity.</p>
         </div>
       </div>
@@ -1367,10 +1526,10 @@ html, body {
 
     <div class="product-row" id="row-dryshampoo">
       <div class="product-row-top">
-        <img class="product-img" src="/images/products/lookskart/moroccanoil-dry-texture-spray.jpg" alt="Moroccanoil Dry Texture Spray">
+        <img class="product-img" src="/images/products/lookskart/all/kerastase/fresh-affair-dry-shampoo.webp" alt="Kerastase Fresh Affair Dry Shampoo">
         <div class="product-body">
-          <p class="product-brand">Moroccanoil</p>
-          <div class="product-name-row"><span class="product-name">Dry Texture Spray</span><span class="badge badge-recommended">Good to Have</span></div>
+          <p class="product-brand">Kerastase</p>
+          <div class="product-name-row"><span class="product-name">Fresh Affair Dry Shampoo</span><span class="badge badge-recommended">Good to Have</span></div>
           <p class="product-note">Every wash day you skip means healthier hair and less time and money spent on haircare.</p>
         </div>
       </div>
@@ -1381,10 +1540,10 @@ html, body {
 
     <div class="product-row hidden" id="row-dryshampoo-coarse">
       <div class="product-row-top">
-        <img class="product-img" src="/images/products/lookskart/moroccanoil-dry-texture-spray.jpg" alt="Moroccanoil Dry Texture Spray">
+        <img class="product-img" src="/images/products/lookskart/all/kerastase/fresh-affair-dry-shampoo.webp" alt="Kerastase Fresh Affair Dry Shampoo">
         <div class="product-body">
-          <p class="product-brand">Moroccanoil</p>
-          <div class="product-name-row"><span class="product-name">Dry Texture Spray</span><span class="badge badge-recommended">Good to Have</span></div>
+          <p class="product-brand">Kerastase</p>
+          <div class="product-name-row"><span class="product-name">Fresh Affair Dry Shampoo</span><span class="badge badge-recommended">Good to Have</span></div>
           <p class="product-note">Every wash day you skip means less stress on coarse hair. Dry shampoo keeps your roots fresh so you can skip more of them.</p>
         </div>
       </div>
@@ -1421,12 +1580,26 @@ html, body {
       </div>
     </div>
 
+    <div class="product-row hidden" id="row-kerastase-conditioner">
+      <div class="product-row-top">
+        <img class="product-img" src="/images/products/lookskart/all/kerastase/kerastase-genesis-fondant-renfori-ateur-conditioner-200ml.jpg" alt="Kerastase Genesis Fondant Conditioner">
+        <div class="product-body">
+          <p class="product-brand">Kerastase</p>
+          <div class="product-name-row"><span class="product-name">Genesis Fondant Renforçateur Conditioner</span><span class="badge badge-recommended">Good to Have</span></div>
+          <p class="product-note">Fortifying conditioner for softer, more resilient lengths.</p>
+        </div>
+      </div>
+      <div class="product-row-actions">
+        <button type="button" class="atc-btn atc-btn--sm" onclick="openLookskart('kerastase_conditioner')">Shop on Lookskart</button>
+      </div>
+    </div>
+
     <div class="product-row" id="row-mask">
       <div class="product-row-top">
-        <img class="product-img" src="/images/products/lookskart/moroccanoil-weightless-hydrating-mask.jpg" alt="Moroccanoil Weightless Hydrating Mask" style="background:white;">
+        <img class="product-img" src="/images/products/lookskart/all/kerastase/kerastase-nutritive-masquintense-epais-mask-200ml-highly-nourishing-mask.jpg" alt="Kerastase Nutritive Masquintense Mask" style="background:white;">
         <div class="product-body">
-          <p class="product-brand">Moroccanoil</p>
-          <div class="product-name-row"><span class="product-name">Weightless Hydrating Mask</span><span class="badge badge-low" id="badge-mask">Skip It For Now</span></div>
+          <p class="product-brand">Kerastase</p>
+          <div class="product-name-row"><span class="product-name">Nutritive Masquintense Riche Mask</span><span class="badge badge-low" id="badge-mask">Skip It For Now</span></div>
           <p class="product-note" id="note-mask">Nice to have for extra hydration. Not critical right now.</p>
         </div>
       </div>
@@ -1436,6 +1609,12 @@ html, body {
     </div>
 
       </div>
+    </div>
+
+    <div class="same-brand-block hidden" id="same-brand-block">
+      <p class="same-brand-title" id="same-brand-title">More from Kerastase</p>
+      <p class="same-brand-lead" id="same-brand-lead">Other products from the same brand that suit your routine.</p>
+      <div class="same-brand-scroll" id="same-brand-scroll"></div>
     </div>
 
   </div>
@@ -1448,6 +1627,13 @@ html, body {
     <p class="label-caps">Section 3</p>
     <h2 class="section-title">Your Ritual</h2>
     <p class="section-lead">A clear wash-day and refresh plan so your regimen performs the way it should — at your pace.</p>
+    <div class="ritual-download-wrap">
+      <button type="button" class="ritual-download-btn" id="download-ritual-btn" onclick="downloadRitualGuide()">
+        <span class="material-symbols-outlined" aria-hidden="true">download</span>
+        Download Your Guide
+      </button>
+      <p class="ritual-download-hint">Save your personalised ritual with product images and shop links — open anytime, even offline.</p>
+    </div>
   </div>
 
   <div class="routine-wrap">
@@ -1465,7 +1651,7 @@ html, body {
         <div class="routine-step-inner">
           <div class="step-inner-header">
             <span class="step-pill">Step 1</span>
-            <img class="step-inner-img" id="img-step-shampoo" src="/images/products/lookskart/biotop-911-quinoa-shampoo.jpg" alt="Shampoo">
+            <img class="step-inner-img" id="img-step-shampoo" data-shop-key="sc" src="/images/products/lookskart/biotop-911-quinoa-shampoo.jpg" alt="Shampoo">
             <p class="step-inner-title">Shampoo</p>
           </div>
           <ul>
@@ -1495,7 +1681,7 @@ html, body {
         <div class="routine-step-inner">
           <div class="step-inner-header">
             <span class="step-pill">Step 3</span>
-            <img class="step-inner-img" src="/images/products/lookskart/k18-leave-in-mask-50ml.jpg" alt="K-18 Leave-in Mask">
+            <img class="step-inner-img" data-shop-key="li" src="/images/products/lookskart/k18-leave-in-mask-50ml.jpg" alt="K-18 Leave-in Mask">
             <p class="step-inner-title">Leave-in Conditioner</p>
           </div>
           <ul>
@@ -1503,6 +1689,21 @@ html, body {
             <li>Hold the bottle at least 12 inches away from your hair to get an even, fine mist</li>
             <li>Spray roots to tips covering all of your hair</li>
             <li id="li-spray-count">Fine hair needs 8 to 12 sprays. Use enough to feel light coverage throughout</li>
+          </ul>
+        </div>
+
+        <div class="step-inner-divider"></div>
+
+        <div class="routine-step-inner" id="step-kerastase-serum">
+          <div class="step-inner-header">
+            <span class="step-pill" id="pill-kerastase-serum">Step 4</span>
+            <img class="step-inner-img" id="img-step-kerastase" data-shop-key="kerastase_main" src="/images/products/lookskart/all/kerastase/kerastase-elixir-ultime-hair-oil-in-serum-30ml.webp" alt="Kerastase Elixir Ultime Hair Oil-In-Serum">
+            <p class="step-inner-title">Kerastase Hair Serum</p>
+          </div>
+          <ul>
+            <li>Apply 1–2 pumps to towel-dried mids and ends for shine, softness, and heat protection</li>
+            <li>Warm between your palms first so the serum spreads evenly without weighing hair down</li>
+            <li>Keep it off the roots — this finishes your lengths before styling or your final oil</li>
           </ul>
         </div>
 
@@ -1524,7 +1725,7 @@ html, body {
           <div class="step-inner-divider"></div>
           <div class="step-inner-header">
             <span class="step-pill" id="pill-bdc">Step 4</span>
-            <img class="step-inner-img" id="img-bdc" src="/images/products/lookskart/kerastase-nectar-thermique.webp" alt="Blow Dry Cream">
+            <img class="step-inner-img" id="img-bdc" data-shop-key="bdc" src="/images/products/lookskart/kerastase-nectar-thermique.webp" alt="Blow Dry Cream">
             <p class="step-inner-title">Blow Dry Cream</p>
           </div>
           <ul>
@@ -1538,7 +1739,7 @@ html, body {
           <div class="step-inner-divider"></div>
           <div class="step-inner-header">
             <span class="step-pill" id="pill-volume-step">Step 5</span>
-            <img class="step-inner-img" src="/images/products/lookskart/moroccanoil-root-boost.jpg" alt="Moroccanoil Root Boost">
+            <img class="step-inner-img" data-shop-key="volume" src="/images/products/lookskart/moroccanoil-root-boost.jpg" alt="Moroccanoil Root Boost">
             <p class="step-inner-title">Volume Blow Dry Mist</p>
           </div>
           <ul>
@@ -1604,7 +1805,7 @@ html, body {
           <div class="step-inner-divider"></div>
           <div class="step-inner-header">
             <span class="step-pill" id="pill-thermal">Step 6</span>
-            <img class="step-inner-img" src="/images/products/lookskart/schwarzkopf-osis-flatliner.jpg" alt="Thermal Protectant">
+            <img class="step-inner-img" data-shop-key="thermal" src="/images/products/lookskart/all/kerastase/kerastase-genesis-di©fense-thermique-blow-dry-primer-150ml.jpg" alt="Kerastase Genesis Défense Thermique">
             <p class="step-inner-title" id="step-thermal-title">Thermal Protectant</p>
           </div>
           <ul>
@@ -1618,7 +1819,7 @@ html, body {
           <div class="step-inner-divider"></div>
           <div class="step-inner-header">
             <span class="step-pill" id="pill-iron">Step 7</span>
-            <img class="step-inner-img" src="/images/products/lookskart/schwarzkopf-osis-flatliner.jpg" alt="Flat Iron">
+            <img class="step-inner-img" src="/images/products/lookskart/all/kerastase/kerastase-genesis-di©fense-thermique-blow-dry-primer-150ml.jpg" alt="Flat Iron">
             <p class="step-inner-title">Flat Iron, Curling Iron or Wand</p>
           </div>
           <ul>
@@ -1631,7 +1832,7 @@ html, body {
           <div class="step-inner-divider"></div>
           <div class="step-inner-header">
             <span class="step-pill" id="pill-oil">Step 4</span>
-            <img class="step-inner-img" id="img-step-oil" src="/images/products/lookskart/moroccanoil-treatment-light.jpg" alt="Hair Oil">
+            <img class="step-inner-img" id="img-step-oil" data-shop-key="oil" src="/images/products/lookskart/moroccanoil-treatment-light.jpg" alt="Hair Oil">
             <p class="step-inner-title">Hair Oil</p>
           </div>
           <ul>
@@ -1664,7 +1865,7 @@ html, body {
         <div class="routine-step-inner">
           <div class="step-inner-header">
             <span class="step-pill">Step 1</span>
-            <img class="step-inner-img" src="/images/products/lookskart/biotop-911-quinoa-shampoo.jpg" alt="Shampoo">
+            <img class="step-inner-img" id="img-repair-shampoo" data-shop-key="sc" src="/images/products/lookskart/biotop-911-quinoa-shampoo.jpg" alt="Shampoo">
             <p class="step-inner-title">Shampoo</p>
           </div>
           <ul>
@@ -1676,7 +1877,7 @@ html, body {
         <div class="routine-step-inner">
           <div class="step-inner-header">
             <span class="step-pill">Step 2</span>
-            <img class="step-inner-img" src="/images/products/lookskart/ph-plex-step-3.webp" alt="pH Plex Step 3" style="background:white;">
+            <img class="step-inner-img" data-shop-key="repair" src="/images/products/lookskart/ph-plex-step-3.webp" alt="pH Plex Step 3" style="background:white;">
             <p class="step-inner-title">pH Plex Step 3 Bond Repair</p>
           </div>
           <ul>
@@ -1689,7 +1890,7 @@ html, body {
         <div class="routine-step-inner">
           <div class="step-inner-header">
             <span class="step-pill">Step 3</span>
-            <img class="step-inner-img" src="/images/products/lookskart/moroccanoil-weightless-hydrating-mask.jpg" alt="Moroccanoil Mask" style="background:white;">
+            <img class="step-inner-img" data-shop-key="mask" src="/images/products/lookskart/moroccanoil-weightless-hydrating-mask.jpg" alt="Moroccanoil Mask" style="background:white;">
             <p class="step-inner-title">Moroccanoil Mask</p>
           </div>
           <ul>
@@ -1713,7 +1914,7 @@ html, body {
         <div class="routine-step-inner">
           <div class="step-inner-header">
             <span class="step-pill">Step 1</span>
-            <img class="step-inner-img" id="img-morning-dryshampoo" src="/images/products/lookskart/moroccanoil-dry-texture-spray.jpg" alt="Dry Shampoo">
+            <img class="step-inner-img" id="img-morning-dryshampoo" data-shop-key="dryshampoo" src="/images/products/lookskart/all/kerastase/fresh-affair-dry-shampoo.webp" alt="Kerastase Fresh Affair Dry Shampoo">
             <p class="step-inner-title">Dry Shampoo</p>
           </div>
           <ul>
@@ -1736,7 +1937,19 @@ html, body {
         <div class="routine-step-inner">
           <div class="step-inner-header">
             <span class="step-pill">Step 3</span>
-            <img class="step-inner-img" id="img-morning-oil" src="/images/products/lookskart/moroccanoil-treatment-light.jpg" alt="Hair Oil">
+            <img class="step-inner-img" id="img-morning-kerastase" data-shop-key="kerastase_main" src="/images/products/lookskart/all/kerastase/kerastase-elixir-ultime-hair-oil-in-serum-30ml.webp" alt="Kerastase Elixir Ultime Hair Oil-In-Serum">
+            <p class="step-inner-title">Kerastase Hair Serum</p>
+          </div>
+          <ul>
+            <li>One pump on mids and ends refreshes shine and tames flyaways between wash days</li>
+            <li>Warm between palms and skim over the surface — no need to saturate</li>
+          </ul>
+        </div>
+        <div class="step-inner-divider"></div>
+        <div class="routine-step-inner">
+          <div class="step-inner-header">
+            <span class="step-pill">Step 4</span>
+            <img class="step-inner-img" id="img-morning-oil" data-shop-key="oil" src="/images/products/lookskart/moroccanoil-treatment-light.jpg" alt="Hair Oil">
             <p class="step-inner-title">Hair Oil</p>
           </div>
           <ul>
@@ -1796,9 +2009,14 @@ html, body {
 
 </main>
 
-<button type="button" class="lll-retake" id="retake-btn" aria-label="Re-Take Quiz" title="Re-Take Quiz">
+<button type="button" class="lll-fab lll-book-fab" id="book-fab-btn" aria-label="Book a Consultation" title="Book a Consultation">
+  <span class="material-symbols-outlined" aria-hidden="true">event_available</span>
+  <span class="lll-fab-label">Book a Consultation</span>
+</button>
+
+<button type="button" class="lll-fab lll-retake" id="retake-btn" aria-label="Re-Take Quiz" title="Re-Take Quiz">
   <span class="material-symbols-outlined" aria-hidden="true">refresh</span>
-  <span class="lll-retake-label">Re-Take Quiz</span>
+  <span class="lll-fab-label">Re-Take Quiz</span>
 </button>
 
 </div>
@@ -2037,6 +2255,14 @@ function lllScrollTo(id) {
   }
 }
 
+function lllScrollToBookConsultation() {
+  lllScrollTo('book-appointment');
+  window.setTimeout(function () {
+    var nameInput = document.getElementById('bk-name');
+    if (nameInput) nameInput.focus({ preventScroll: true });
+  }, 450);
+}
+
 function lllUpdateNav() {
   var sections = [
     { id: 'section-profile', nav: 'lll-nav-profile' },
@@ -2069,9 +2295,8 @@ function lllFixPadding() {
 lllFixPadding();
 
 </script>
+<script src="/brand-focus-data.js"></script>
 <script>
-
-/* ── ACCORDION ── */
 function lllToggleAcc(el) { el.classList.toggle('open'); }
 
 /* ── HELPERS ── */
@@ -2079,6 +2304,22 @@ function showEl(id) { var el = document.getElementById(id); if (el) el.classList
 function hideEl(id) { var el = document.getElementById(id); if (el) el.classList.add('hidden'); }
 function setText(id, text) { var el = document.getElementById(id); if (el) el.textContent = text; }
 function setSrc(id, src) { var el = document.getElementById(id); if (el) el.src = src; }
+function wireHandleImage(id, handle) {
+  var el = typeof id === 'string' ? document.getElementById(id) : id;
+  if (!el || !handle) return;
+  el.dataset.handle = handle;
+  el.onerror = function () {
+    if (window.BRAND_FOCUS && window.BRAND_FOCUS.applyImageFallback) {
+      window.BRAND_FOCUS.applyImageFallback(el, handle);
+    }
+  };
+}
+function setStepImage(el, product) {
+  if (!el || !product) return;
+  el.src = product.image;
+  el.alt = product.title;
+  wireHandleImage(el, product.handle);
+}
 function setBadge(id, label, cls) { var el = document.getElementById(id); if (!el) return; el.textContent = label; el.className = 'badge ' + cls; }
 function setPill(id, num) { var el = document.getElementById(id); if (el) el.textContent = 'Step ' + num; }
 
@@ -2092,13 +2333,15 @@ var PRODUCTS = {
   moroil: { url: LOOKSKART + '/products/moroccanoil-moroccanoil-treatment-original-100ml-for-all-hair-types', image: '/images/products/lookskart/moroccanoil-treatment-original.jpg' },
   bdc: { url: LOOKSKART + '/products/kerastase-nutritive-nectar-thermique-blow-dry-primer-150ml', image: '/images/products/lookskart/kerastase-nectar-thermique.webp' },
   rebel: { url: LOOKSKART + '/products/kerastase-gloss-absolu-anti-frizz-heat-protectant-spray-190ml', image: '/images/products/lookskart/kerastase-gloss-absolu-heat-protectant.webp' },
-  thermal: { url: LOOKSKART + '/products/schwarzkopf-professional-osis-flatliner-heat-protection-spray-200ml', image: '/images/products/lookskart/schwarzkopf-osis-flatliner.jpg' },
+  thermal: { url: LOOKSKART + '/products/kerastase-genesis-di©fense-thermique-blow-dry-primer-150ml', image: '/images/products/lookskart/all/kerastase/kerastase-genesis-di©fense-thermique-blow-dry-primer-150ml.jpg' },
   volume: { url: LOOKSKART + '/products/moroccanoil-root-boost-for-fine-to-medium-hair-250ml', image: '/images/products/lookskart/moroccanoil-root-boost.jpg' },
-  dryshampoo: { url: LOOKSKART + '/products/moroccanoil-dry-texture-spray-205ml-for-all-hair-types', image: '/images/products/lookskart/moroccanoil-dry-texture-spray.jpg' },
-  'dryshampoo-coarse': { url: LOOKSKART + '/products/moroccanoil-dry-texture-spray-205ml-for-all-hair-types', image: '/images/products/lookskart/moroccanoil-dry-texture-spray.jpg' },
+  dryshampoo: { url: LOOKSKART + '/products/fresh-affair-dry-shampoo', image: '/images/products/lookskart/all/kerastase/fresh-affair-dry-shampoo.webp' },
+  'dryshampoo-coarse': { url: LOOKSKART + '/products/fresh-affair-dry-shampoo', image: '/images/products/lookskart/all/kerastase/fresh-affair-dry-shampoo.webp' },
   hairspray: { url: LOOKSKART + '/products/moroccanoil-luminous-hairspray-strong-330ml', image: '/images/products/lookskart/moroccanoil-luminous-hairspray.jpg' },
   repair: { url: LOOKSKART + '/products/ph-plex-step-3-150ml', image: '/images/products/lookskart/ph-plex-step-3.webp' },
-  mask: { url: LOOKSKART + '/products/moroccanoil-weightless-hydrating-mask-for-fine-dry-hair-250ml', image: '/images/products/lookskart/moroccanoil-weightless-hydrating-mask.jpg' }
+  mask: { url: LOOKSKART + '/products/kerastase-nutritive-masquintense-epais-mask-200ml-highly-nourishing-mask', image: '/images/products/lookskart/all/kerastase/kerastase-nutritive-masquintense-epais-mask-200ml-highly-nourishing-mask.jpg' },
+  kerastase_main: { url: LOOKSKART + '/products/kerastase-elixir-ultime-hair-oil-in-serum-30ml', image: '/images/products/lookskart/all/kerastase/kerastase-elixir-ultime-hair-oil-in-serum-30ml.webp' },
+  kerastase_conditioner: { url: LOOKSKART + '/products/kerastase-genesis-fondant-renfori-ateur-conditioner-200ml', image: '/images/products/lookskart/all/kerastase/kerastase-genesis-fondant-renfori-ateur-conditioner-200ml.jpg' }
 };
 
 function openLookskart(product) {
@@ -2112,6 +2355,411 @@ function openLookskart(product) {
 
 function addToCart(product) {
   openLookskart(product);
+}
+
+function findProductUrlByImage(src) {
+  if (!src) return null;
+  var normalized = src.split('?')[0];
+  for (var key in PRODUCTS) {
+    var img = PRODUCTS[key].image;
+    if (!img) continue;
+    if (normalized === img || normalized.endsWith(img) || normalized.indexOf(img.replace(/^\//, '')) !== -1) {
+      return PRODUCTS[key].url;
+    }
+  }
+  return null;
+}
+
+function resolveStepShopUrl(imgEl) {
+  var key = imgEl.getAttribute('data-shop-key');
+  if (key && PRODUCTS[key] && PRODUCTS[key].url) return PRODUCTS[key].url;
+  return null;
+}
+
+function setShopKey(id, key) {
+  var el = document.getElementById(id);
+  if (el) el.setAttribute('data-shop-key', key);
+}
+
+function escapeGuideHtml(str) {
+  return String(str || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function imageToDataUrl(src) {
+  return fetch(src).then(function (res) {
+    if (!res.ok) throw new Error('Image fetch failed');
+    return res.blob();
+  }).then(function (blob) {
+    return new Promise(function (resolve, reject) {
+      var reader = new FileReader();
+      reader.onloadend = function () { resolve(reader.result); };
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  });
+}
+
+function collectRitualGuideData() {
+  var sections = [];
+  document.querySelectorAll('#section-routine .routine-section-acc').forEach(function (acc) {
+    if (acc.classList.contains('hidden')) return;
+
+    var titleEl = acc.querySelector('.routine-section-acc-title');
+    var subEl = acc.querySelector('.routine-section-acc-sub');
+    var section = {
+      title: titleEl ? titleEl.textContent.trim() : '',
+      subtitle: subEl ? subEl.textContent.trim() : '',
+      steps: [],
+      notes: []
+    };
+
+    acc.querySelectorAll('.routine-step-inner').forEach(function (step) {
+      if (step.classList.contains('hidden')) return;
+      var pillEl = step.querySelector('.step-pill');
+      var titleStep = step.querySelector('.step-inner-title');
+      var imgEl = step.querySelector('.step-inner-img');
+      var bullets = [];
+      step.querySelectorAll('ul li').forEach(function (li) {
+        bullets.push(li.textContent.trim());
+      });
+      section.steps.push({
+        pill: pillEl ? pillEl.textContent.trim() : '',
+        title: titleStep ? titleStep.textContent.trim() : '',
+        imageSrc: imgEl ? imgEl.src : '',
+        imageAlt: imgEl ? (imgEl.alt || '') : '',
+        shopUrl: imgEl ? resolveStepShopUrl(imgEl) : null,
+        bullets: bullets
+      });
+    });
+
+    acc.querySelectorAll('.lll-note.visible').forEach(function (note) {
+      section.notes.push(note.textContent.trim());
+    });
+
+    if (section.steps.length) sections.push(section);
+  });
+  return sections;
+}
+
+function buildRitualGuideHtml(headline, sections, imageMap) {
+  var sectionHtml = sections.map(function (section) {
+    var stepsHtml = section.steps.map(function (step) {
+      var imgData = step.imageSrc ? (imageMap[step.imageSrc] || step.imageSrc) : '';
+      var shopLink = step.shopUrl
+        ? '<p class="shop-link"><a href="' + escapeGuideHtml(step.shopUrl) + '" target="_blank" rel="noopener">Shop on Lookskart &rarr;</a></p>'
+        : '';
+      var bulletsHtml = step.bullets.map(function (b) {
+        return '<li>' + escapeGuideHtml(b) + '</li>';
+      }).join('');
+      return '<article class="step">' +
+        '<div class="step-head">' +
+        (imgData ? '<img src="' + imgData + '" alt="' + escapeGuideHtml(step.imageAlt || step.title) + '">' : '') +
+        '<div><span class="pill">' + escapeGuideHtml(step.pill) + '</span>' +
+        '<h3>' + escapeGuideHtml(step.title) + '</h3></div></div>' +
+        (bulletsHtml ? '<ul>' + bulletsHtml + '</ul>' : '') +
+        shopLink +
+        '</article>';
+    }).join('');
+
+    var notesHtml = section.notes.map(function (note) {
+      return '<p class="note">' + escapeGuideHtml(note) + '</p>';
+    }).join('');
+
+    return '<section class="block">' +
+      '<h2>' + escapeGuideHtml(section.title) + '</h2>' +
+      (section.subtitle ? '<p class="sub">' + escapeGuideHtml(section.subtitle) + '</p>' : '') +
+      stepsHtml + notesHtml +
+      '</section>';
+  }).join('');
+
+  var productLinks = [];
+  var seenUrls = {};
+  sections.forEach(function (section) {
+    section.steps.forEach(function (step) {
+      if (!step.shopUrl || seenUrls[step.shopUrl]) return;
+      seenUrls[step.shopUrl] = true;
+      var imgData = step.imageSrc ? (imageMap[step.imageSrc] || step.imageSrc) : '';
+      productLinks.push(
+        '<a class="product-chip" href="' + escapeGuideHtml(step.shopUrl) + '" target="_blank" rel="noopener">' +
+        (imgData ? '<img src="' + imgData + '" alt="">' : '') +
+        '<span>' + escapeGuideHtml(step.title) + '</span></a>'
+      );
+    });
+  });
+
+  return '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">' +
+    '<meta name="viewport" content="width=device-width,initial-scale=1">' +
+    '<title>Your Hair Ritual Guide</title>' +
+    '<style>' +
+    'body{font-family:Georgia,"Times New Roman",serif;background:#faf8f5;color:#2c2419;margin:0;padding:32px 20px 48px;line-height:1.6}' +
+    '.wrap{max-width:720px;margin:0 auto}' +
+    'h1{font-size:2rem;font-weight:400;margin:0 0 8px;letter-spacing:-0.01em}' +
+    '.lead{color:#6b6358;margin:0 0 32px;font-size:1rem}' +
+    '.block{margin-bottom:40px;padding-bottom:32px;border-bottom:1px solid #e5dfd4}' +
+    '.block:last-of-type{border-bottom:none}' +
+    'h2{font-size:1.35rem;font-weight:400;margin:0 0 4px}' +
+    '.sub{color:#8a8175;font-size:0.875rem;margin:0 0 20px}' +
+    '.step{margin-bottom:24px;padding:16px;background:#fff;border:1px solid #e5dfd4;border-radius:8px}' +
+    '.step-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:12px}' +
+    '.step-head img{width:72px;height:72px;object-fit:contain;border-radius:6px;background:#f3f0ea;flex-shrink:0}' +
+    '.pill{display:inline-block;font-size:0.65rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8b6914;background:#f1e6d2;padding:3px 8px;border-radius:4px;margin-bottom:6px}' +
+    'h3{font-size:1.05rem;font-weight:400;margin:0}' +
+    'ul{margin:0;padding:0 0 0 18px}' +
+    'li{margin-bottom:6px;font-size:0.925rem;color:#4a4339}' +
+    '.shop-link{margin:12px 0 0;font-size:0.8rem}' +
+    '.shop-link a{color:#8b6914;font-weight:600;text-decoration:none;border-bottom:1px solid #d4c4a0}' +
+    '.note{background:#f8f5ef;border-left:3px solid #d4c4a0;padding:12px 14px;margin-top:16px;font-size:0.875rem;color:#5c554c}' +
+    '.products{margin-top:40px;padding-top:24px;border-top:1px solid #e5dfd4}' +
+    '.products h2{font-size:1.1rem;margin-bottom:16px}' +
+    '.product-grid{display:flex;flex-wrap:wrap;gap:10px}' +
+    '.product-chip{display:flex;align-items:center;gap:8px;padding:8px 12px 8px 8px;background:#fff;border:1px solid #e5dfd4;border-radius:8px;text-decoration:none;color:#2c2419;font-size:0.8rem}' +
+    '.product-chip img{width:40px;height:40px;object-fit:contain;border-radius:4px;background:#f3f0ea}' +
+    '.footer{margin-top:40px;font-size:0.75rem;color:#9a9288;text-align:center}' +
+    '</style></head><body><div class="wrap">' +
+    '<h1>Your Hair Ritual Guide</h1>' +
+    '<p class="lead">' + escapeGuideHtml(headline || 'Personalised haircare ritual') + '</p>' +
+    sectionHtml +
+    (productLinks.length
+      ? '<section class="products"><h2>Your Products</h2><div class="product-grid">' + productLinks.join('') + '</div></section>'
+      : '') +
+    '<p class="footer">Generated from your hair profile quiz &middot; lookskart.com</p>' +
+    '</div></body></html>';
+}
+
+function downloadRitualGuide() {
+  var btn = document.getElementById('download-ritual-btn');
+  if (!btn || btn.disabled) return;
+
+  var headlineEl = document.getElementById('headline');
+  var headline = headlineEl ? headlineEl.textContent.trim() : 'Your Hair Ritual';
+  var sections = collectRitualGuideData();
+  if (!sections.length) return;
+
+  btn.disabled = true;
+  var originalLabel = btn.innerHTML;
+  btn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">hourglass_empty</span> Preparing guide\u2026';
+
+  var imageSrcs = [];
+  sections.forEach(function (section) {
+    section.steps.forEach(function (step) {
+      if (step.imageSrc && imageSrcs.indexOf(step.imageSrc) === -1) {
+        imageSrcs.push(step.imageSrc);
+      }
+    });
+  });
+
+  var imageMap = {};
+  Promise.all(imageSrcs.map(function (src) {
+    return imageToDataUrl(src).then(function (dataUrl) {
+      imageMap[src] = dataUrl;
+    }).catch(function () {
+      imageMap[src] = src;
+    });
+  })).then(function () {
+    var html = buildRitualGuideHtml(headline, sections, imageMap);
+    var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var link = document.createElement('a');
+    var safeName = headline.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'hair-ritual';
+    link.href = url;
+    link.download = 'your-' + safeName + '-ritual-guide.html';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }).finally(function () {
+    btn.disabled = false;
+    btn.innerHTML = originalLabel;
+  });
+}
+
+function setProductImage(img, product) {
+  if (!img || !product) return;
+  var BF = window.BRAND_FOCUS;
+  var src = BF && BF.resolveImage ? BF.resolveImage(product) : product.image;
+  img.src = src || product.image || '';
+  img.alt = product.title || img.alt || '';
+  img.onerror = function () {
+    if (BF && BF.applyImageFallback) BF.applyImageFallback(img, product.handle);
+  };
+}
+
+function setProductRow(rowId, product) {
+  var row = document.getElementById(rowId);
+  if (!row || !product) return;
+  var img = row.querySelector('.product-img');
+  setProductImage(img, product);
+  var brandEl = row.querySelector('.product-brand');
+  if (brandEl) brandEl.textContent = product.brand;
+  var nameEl = row.querySelector('.product-name');
+  if (nameEl) nameEl.textContent = product.title;
+  if (product.key && PRODUCTS[product.key]) {
+    PRODUCTS[product.key] = { url: product.url, image: product.image };
+  }
+}
+
+function setHeroCard(cardId, product, priceId) {
+  var card = document.getElementById(cardId);
+  if (!card || !product) return;
+  var img = card.querySelector('.product-card-img');
+  setProductImage(img, product);
+  var nameEl = card.querySelector('.product-card-name');
+  if (nameEl) nameEl.textContent = product.title;
+  if (priceId) setText(priceId, product.price || '');
+  if (product.key && PRODUCTS[product.key]) {
+    PRODUCTS[product.key] = { url: product.url, image: product.image };
+  }
+}
+
+function applyUniversalKerastase() {
+  var BF = window.BRAND_FOCUS;
+  if (!BF || !BF.universalKerastaseProduct) return;
+  var product = BF.universalKerastaseProduct();
+  setHeroCard('card-kerastase-main', product, 'kerastase-main-price');
+  setText('note-kerastase-main', product.note || '');
+  PRODUCTS.kerastase_main = { url: product.url, image: product.image };
+
+  setSrc('img-step-kerastase', product.image);
+  setShopKey('img-step-kerastase', 'kerastase_main');
+  setSrc('img-morning-kerastase', product.image);
+  wireHandleImage('img-step-kerastase', product.handle);
+  wireHandleImage('img-morning-kerastase', product.handle);
+  setShopKey('img-morning-kerastase', 'kerastase_main');
+
+  var stepKerastaseImg = document.getElementById('img-step-kerastase');
+  if (stepKerastaseImg) stepKerastaseImg.alt = product.title;
+  var morningKerastaseImg = document.getElementById('img-morning-kerastase');
+  if (morningKerastaseImg) morningKerastaseImg.alt = product.title;
+}
+
+function applyFocusSlotToDom(slotKey, product, options) {
+  options = options || {};
+  var skipMainBento = options.skipMainBento;
+  var isKerastaseRoutine = options.kerastaseRoutine;
+
+  if (!skipMainBento) {
+    if (slotKey === 'shampoo_fm') setHeroCard('card-sc-fm', product, 'sc-price');
+    if (slotKey === 'shampoo_coarse') setHeroCard('card-sc-coarse', product, 'scc-price');
+    if (slotKey === 'leave_in') setHeroCard('card-leave-in', product, 'li-price');
+    if (slotKey === 'oil_fm') setHeroCard('card-oil', product, 'oil-price');
+    if (slotKey === 'oil_coarse') setProductRow('row-moroil', product);
+  }
+
+  if (slotKey === 'heat_blow_fm') setProductRow('row-bdc', product);
+  if (slotKey === 'heat_blow_coarse') setProductRow('row-rebel', product);
+  if (slotKey === 'heat_iron') {
+    setProductRow('row-thermal', product);
+    setStepImage(document.querySelector('#step-thermal .step-inner-img'), product);
+    setStepImage(document.querySelector('#step-iron .step-inner-img'), product);
+  }
+  if (slotKey === 'volume') setProductRow('row-volume', product);
+  if (slotKey === 'dry_texture') {
+    setProductRow('row-dryshampoo', product);
+    setProductRow('row-dryshampoo-coarse', product);
+    PRODUCTS['dryshampoo-coarse'] = { url: product.url, image: product.image };
+    setSrc('img-morning-dryshampoo', product.image);
+    setShopKey('img-morning-dryshampoo', 'dryshampoo');
+    wireHandleImage('img-morning-dryshampoo', product.handle);
+  }
+  if (slotKey === 'hairspray') setProductRow('row-hairspray', product);
+  if (slotKey === 'mask') setProductRow('row-mask', product);
+
+  if (slotKey === 'conditioner_fm' || slotKey === 'conditioner_coarse') {
+    setSrc('img-step-conditioner', product.image);
+    wireHandleImage('img-step-conditioner', product.handle);
+    if (isKerastaseRoutine) {
+      setProductRow('row-kerastase-conditioner', product);
+      PRODUCTS.kerastase_conditioner = { url: product.url, image: product.image };
+      setShopKey('img-step-conditioner', 'kerastase_conditioner');
+    }
+  }
+  if (slotKey === 'shampoo_fm' || slotKey === 'shampoo_coarse') {
+    setSrc('img-step-shampoo', product.image);
+    wireHandleImage('img-step-shampoo', product.handle);
+    if (isKerastaseRoutine && skipMainBento) {
+      PRODUCTS.kerastase_ritual_shampoo = { url: product.url, image: product.image };
+      setShopKey('img-step-shampoo', 'kerastase_ritual_shampoo');
+    } else if (!skipMainBento) {
+      setShopKey('img-step-shampoo', product.key || (slotKey === 'shampoo_coarse' ? 'scc' : 'sc'));
+    }
+  }
+  if (!skipMainBento && (slotKey === 'oil_fm' || slotKey === 'oil_coarse')) {
+    setSrc('img-step-oil', product.image);
+    setSrc('img-morning-oil', product.image);
+    wireHandleImage('img-step-oil', product.handle);
+    wireHandleImage('img-morning-oil', product.handle);
+  }
+}
+
+function applyBrandFocus(answers, context) {
+  applyUniversalKerastase();
+
+  var BF = window.BRAND_FOCUS;
+  if (!BF) {
+    renderSameBrandProducts(null, context);
+    return;
+  }
+
+  var focusBrand = answers.focus_brand;
+  var mainBentoSlots = { shampoo_fm: 1, shampoo_coarse: 1, leave_in: 1, oil_fm: 1, oil_coarse: 1 };
+
+  if (focusBrand === 'Kerastase') {
+    BF.activeSlots(context).forEach(function (slotKey) {
+      var product = BF.resolveSlotProduct(slotKey, 'Kerastase');
+      if (!product) return;
+      applyFocusSlotToDom(slotKey, product, {
+        skipMainBento: !!mainBentoSlots[slotKey],
+        kerastaseRoutine: true,
+      });
+    });
+    showEl('row-kerastase-conditioner');
+    renderSameBrandProducts('Kerastase', context);
+    return;
+  }
+
+  if (focusBrand === "L'Oreal Professionnel") {
+    hideEl('row-kerastase-conditioner');
+    BF.activeSlots(context).forEach(function (slotKey) {
+      var product = BF.resolveSlotProduct(slotKey, focusBrand);
+      if (!product) return;
+      applyFocusSlotToDom(slotKey, product);
+    });
+    renderSameBrandProducts(focusBrand, context);
+    return;
+  }
+
+  renderSameBrandProducts(null, context);
+}
+
+function renderSameBrandProducts(focusBrand, context) {
+  var BF = window.BRAND_FOCUS;
+  var block = document.getElementById('same-brand-block');
+  var scroll = document.getElementById('same-brand-scroll');
+  if (!BF || !block || !scroll) return;
+
+  var brandLabel = focusBrand === "L'Oreal Professionnel" ? focusBrand : 'Kerastase';
+  var items = BF.sameBrandProductsForContext(focusBrand, context);
+  if (!items.length) {
+    block.classList.add('hidden');
+    return;
+  }
+
+  setText('same-brand-title', 'More from ' + brandLabel);
+  setText('same-brand-lead', 'Other ' + brandLabel + ' products that pair well with your routine.');
+  scroll.innerHTML = items.map(function (item) {
+    var imgSrc = BF.resolveImage ? BF.resolveImage(item) : item.image;
+    return '<article class="same-brand-card">' +
+      '<img src="' + imgSrc + '" alt="' + item.title.replace(/"/g, '&quot;') + '" data-handle="' + item.handle + '" onerror="window.BRAND_FOCUS && window.BRAND_FOCUS.applyImageFallback(this, this.dataset.handle)">' +
+      '<p class="same-brand-card-name">' + item.title + '</p>' +
+      '<p class="same-brand-card-price">' + (item.price || '') + '</p>' +
+      '<button type="button" class="atc-btn atc-btn--sm" onclick="window.open(\'' + item.url + '\', \'_blank\', \'noopener\')">Shop</button>' +
+      '</article>';
+  }).join('');
+  block.classList.remove('hidden');
 }
 
 /* ── MAIN LOGIC ── */
@@ -2150,11 +2798,18 @@ function applyAnswers(answers) {
     showEl('row-moroil');
     hideEl('row-dryshampoo');
     showEl('row-dryshampoo-coarse');
+    setShopKey('img-step-shampoo', 'scc');
+    setShopKey('img-repair-shampoo', 'scc');
+    setShopKey('img-step-oil', 'moroil');
+    setShopKey('img-morning-oil', 'moroil');
+    setShopKey('img-morning-dryshampoo', 'dryshampoo-coarse');
+    setShopKey('img-bdc', 'rebel');
     setSrc('img-bdc', '/images/products/lookskart/kerastase-gloss-absolu-heat-protectant.webp');
     setSrc('img-step-oil', '/images/products/lookskart/moroccanoil-treatment-original.jpg');
-    setSrc('img-morning-dryshampoo', '/images/products/lookskart/moroccanoil-dry-texture-spray.jpg');
+    setSrc('img-morning-dryshampoo', '/images/products/lookskart/all/kerastase/fresh-affair-dry-shampoo.webp');
     setSrc('img-morning-oil', '/images/products/lookskart/moroccanoil-treatment-original.jpg');
     setSrc('img-step-shampoo', '/images/products/lookskart/brasil-cacau-extreme-repair-shampoo.jpg');
+    setSrc('img-repair-shampoo', '/images/products/lookskart/brasil-cacau-extreme-repair-shampoo.jpg');
     setSrc('img-step-conditioner', '/images/products/lookskart/brasil-cacau-extreme-repair-conditioner.jpg');
     setText('washday-sub', 'Every 5+ days \u00b7 About 20 minutes');
     setText('li-spray-count', 'Coarse hair needs 14 to 18 sprays. Use enough to feel light coverage throughout');
@@ -2214,8 +2869,10 @@ function applyAnswers(answers) {
   if (usesBlowDryer) {
     if (isCoarse) {
       showEl('row-rebel');   // Rebel Tame for coarse
+      setShopKey('img-bdc', 'rebel');
     } else {
       showEl('row-bdc');     // Big Blowout for fine/medium
+      setShopKey('img-bdc', 'bdc');
     }
   }
   if (usesIron) showEl('row-thermal');
@@ -2253,6 +2910,8 @@ function applyAnswers(answers) {
      ROUTINE — step numbering
   ───────────────────────────────── */
   var stepNum = 4;
+  setPill('pill-kerastase-serum', stepNum);
+  stepNum++;
 
   if (usesBlowDryer) {
     showEl('step-bdc');
@@ -2302,6 +2961,14 @@ function applyAnswers(answers) {
     showEl('acc-repair');
     setText('repair-acc-title', 'Weekly Repair Protocol (Optional)');
   }
+
+  var brandContext = {
+    isCoarse: isCoarse,
+    usesBlowDryer: usesBlowDryer,
+    usesIron: usesIron,
+    wantsVolume: wantsVolume,
+  };
+  applyBrandFocus(answers, brandContext);
 }
 
 /* ── BOOT ── */
@@ -2313,6 +2980,11 @@ try {
 </script>
 <script>
 (function () {
+  var bookFab = document.getElementById('book-fab-btn');
+  if (bookFab) {
+    bookFab.addEventListener('click', lllScrollToBookConsultation);
+  }
+
   var btn = document.getElementById('retake-btn');
   if (btn) {
     btn.addEventListener('click', function () {

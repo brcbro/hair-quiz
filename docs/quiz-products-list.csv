@@ -1,0 +1,16 @@
+Product_ID,Brand,Product_Name,Price,When_Suggested,Badge,Lookskart_URL
+sc,Biotop,Biotop 911 Quinoa Shampoo 250ml,"Rs. 2,070",Hair type Fine or Medium,Must Have,https://lookskart.com/products/biotop-911-quinoa-shampoo-330ml
+sc-cond,Biotop,Biotop 911 Quinoa Conditioner 250ml,"Rs. 2,250",Hair type Fine or Medium (routine image; no separate ATC card),Must Have (with shampoo),https://lookskart.com/products/biotop-911-quinoa-conditioner-330ml
+scc,Brasil Cacau,Brasil Cacau Extreme Repair Shampoo 300ml,"Rs. 1,646",Hair type Coarse,Must Have,https://lookskart.com/products/brasil-cacau-extreme-repair-shampoo-for-damaged-hair-300ml
+scc-cond,Brasil Cacau,Brasil Cacau Extreme Repair Conditioner 300ml,"Rs. 1,850",Hair type Coarse (routine image; no separate ATC card),Must Have (with shampoo),https://lookskart.com/products/brasil-cacau-extreme-repair-conditioner-for-damaged-hair-300ml
+li,K-18,K-18 Leave-in Molecular Repair Mask 50ml,"Rs. 5,625",Always,Must Have,https://lookskart.com/products/k-18-leave-in-molecular-repair-hair-mask-50ml
+oil,Moroccanoil,Moroccanoil Treatment Light 100ml,"Rs. 4,320",Hair type Fine or Medium,Must Have,https://lookskart.com/products/moroccanoil-moroccanoil-treatment-light-100ml-for-fine-or-light-coloured-hair
+moroil,Moroccanoil,Moroccanoil Treatment Original 100ml,"Rs. 4,320",Hair type Coarse,Must Have,https://lookskart.com/products/moroccanoil-moroccanoil-treatment-original-100ml-for-all-hair-types
+bdc,Kerastase,Kerastase Nectar Thermique Blow Dry Primer 150ml,"Rs. 2,800",Uses blow dryer or both + Fine/Medium,Must Have,https://lookskart.com/products/kerastase-nutritive-nectar-thermique-blow-dry-primer-150ml
+rebel,Kerastase,Kerastase Gloss Absolu Heat Protectant Spray 190ml,"Rs. 3,000",Uses blow dryer or both + Coarse,Must Have,https://lookskart.com/products/kerastase-gloss-absolu-anti-frizz-heat-protectant-spray-190ml
+thermal,Schwarzkopf,Schwarzkopf OSiS+ Flatliner Heat Protection Spray 200ml,"Rs. 1,450",Uses iron or both,Must Have,https://lookskart.com/products/schwarzkopf-professional-osis-flatliner-heat-protection-spray-200ml
+volume,Moroccanoil,Moroccanoil Root Boost 250ml,"Rs. 2,610",Wants Max/Moderate volume AND uses blow dryer,Must Have,https://lookskart.com/products/moroccanoil-root-boost-for-fine-to-medium-hair-250ml
+dryshampoo,Moroccanoil,Moroccanoil Dry Texture Spray 205ml,"Rs. 2,610",Always (row swaps Fine/Medium vs Coarse),Good to Have,https://lookskart.com/products/moroccanoil-dry-texture-spray-205ml-for-all-hair-types
+hairspray,Moroccanoil,Moroccanoil Luminous Hairspray Strong 330ml,"Rs. 2,610",Always shown,Skip It For Now,https://lookskart.com/products/moroccanoil-luminous-hairspray-strong-330ml
+repair,pH Plex,pH Plex Step 3 150ml,"Rs. 3,950",Always shown; badge from damage/growth rules,Must Have / Good to Have / Skip It For Now,https://lookskart.com/products/ph-plex-step-3-150ml
+mask,Moroccanoil,Moroccanoil Weightless Hydrating Mask 250ml,"Rs. 3,780",Always shown; badge from damage/growth rules,Must Have / Good to Have / Skip It For Now,https://lookskart.com/products/moroccanoil-weightless-hydrating-mask-for-fine-dry-hair-250ml

@@ -45,9 +45,17 @@ function extFromUrl(url) {
   try {
     const clean = url.split('?')[0]
     const ext = path.extname(clean).toLowerCase()
-    if (['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif'].includes(ext)) return ext
+    if (ext === '.avif') return '.jpg'
+    if (['.jpg', '.jpeg', '.png', '.webp', '.gif'].includes(ext)) return ext
   } catch {}
   return '.jpg'
+}
+
+function downloadUrl(url) {
+  if (/\.avif(\?|$)/i.test(url)) {
+    return url.includes('?') ? `${url}&format=jpg` : `${url}?format=jpg`
+  }
+  return url
 }
 
 function download(url, dest) {
@@ -124,7 +132,7 @@ await mapLimit(products, 8, async ({ brand, product: p }) => {
       ok++
     } else {
       try {
-        await download(imgUrl, dest)
+        await download(downloadUrl(imgUrl), dest)
         ok++
         process.stdout.write('.')
       } catch (err) {
