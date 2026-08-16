@@ -2344,13 +2344,58 @@ var PRODUCTS = {
   kerastase_conditioner: { url: LOOKSKART + '/products/kerastase-genesis-fondant-renfori-ateur-conditioner-200ml', image: '/images/products/lookskart/all/kerastase/kerastase-genesis-fondant-renfori-ateur-conditioner-200ml.jpg' }
 };
 
+function productMetaFromKey(productKey) {
+  var p = PRODUCTS[productKey] || {};
+  var btn = document.querySelector('button[onclick*="openLookskart(\'' + productKey + '\')"]');
+  var card = btn ? btn.closest('.product-card, .product-row') : null;
+  var title = '';
+  var brand = '';
+  var price = '';
+  if (card) {
+    var titleEl = card.querySelector('.product-card-name, .product-name');
+    var brandEl = card.querySelector('.product-card-brand-label, .product-brand');
+    var priceEl = card.querySelector('.product-price-main, .product-price, .same-brand-card-price');
+    title = titleEl ? titleEl.textContent.trim() : '';
+    brand = brandEl ? brandEl.textContent.trim() : '';
+    price = priceEl ? priceEl.textContent.trim() : '';
+  }
+  return {
+    title: title,
+    brand: brand,
+    price: price,
+    url: p.url || ''
+  };
+}
+
 function openLookskart(product) {
+  var meta = productMetaFromKey(product);
+  if (window.QUIZ_TRACK && window.QUIZ_TRACK.persistShopClick) {
+    window.QUIZ_TRACK.persistShopClick(product, meta);
+  }
   var p = PRODUCTS[product];
   if (!p || !p.url) {
     window.open(LOOKSKART + '/collections/hair-care-products', '_blank', 'noopener');
     return;
   }
   window.open(p.url, '_blank', 'noopener');
+}
+
+function shopSameBrand(btn) {
+  if (!btn) return;
+  var url = btn.getAttribute('data-url') || '';
+  var title = btn.getAttribute('data-title') || '';
+  var brand = btn.getAttribute('data-brand') || '';
+  var price = btn.getAttribute('data-price') || '';
+  if (window.QUIZ_TRACK && window.QUIZ_TRACK.persistShopClick) {
+    window.QUIZ_TRACK.persistShopClick('same_brand', {
+      title: title,
+      brand: brand,
+      price: price,
+      url: url,
+      source: 'same-brand'
+    });
+  }
+  if (url) window.open(url, '_blank', 'noopener');
 }
 
 function addToCart(product) {
@@ -2571,6 +2616,9 @@ function downloadRitualGuide() {
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
+    if (window.QUIZ_TRACK && window.QUIZ_TRACK.persistRitualDownload) {
+      window.QUIZ_TRACK.persistRitualDownload();
+    }
   }).finally(function () {
     btn.disabled = false;
     btn.innerHTML = originalLabel;
@@ -2756,7 +2804,7 @@ function renderSameBrandProducts(focusBrand, context) {
       '<img src="' + imgSrc + '" alt="' + item.title.replace(/"/g, '&quot;') + '" data-handle="' + item.handle + '" onerror="window.BRAND_FOCUS && window.BRAND_FOCUS.applyImageFallback(this, this.dataset.handle)">' +
       '<p class="same-brand-card-name">' + item.title + '</p>' +
       '<p class="same-brand-card-price">' + (item.price || '') + '</p>' +
-      '<button type="button" class="atc-btn atc-btn--sm" onclick="window.open(\'' + item.url + '\', \'_blank\', \'noopener\')">Shop</button>' +
+      '<button type="button" class="atc-btn atc-btn--sm" data-url="' + item.url.replace(/"/g, '&quot;') + '" data-title="' + item.title.replace(/"/g, '&quot;') + '" data-brand="' + brandLabel.replace(/"/g, '&quot;') + '" data-price="' + String(item.price || '').replace(/"/g, '&quot;') + '" onclick="shopSameBrand(this)">Shop</button>' +
       '</article>';
   }).join('');
   block.classList.remove('hidden');
@@ -2969,6 +3017,12 @@ function applyAnswers(answers) {
     wantsVolume: wantsVolume,
   };
   applyBrandFocus(answers, brandContext);
+
+  if (window.QUIZ_TRACK && window.QUIZ_TRACK.persistSuggestedProducts) {
+    window.setTimeout(function () {
+      window.QUIZ_TRACK.persistSuggestedProducts();
+    }, 200);
+  }
 }
 
 /* ── BOOT ── */
@@ -3088,6 +3142,30 @@ try {
       quiz: quizSnapshot
     };
 
+    if (payload.name.length < 2) {
+      showError('Please enter your name.');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
+      showError('Please enter a valid email.');
+      return;
+    }
+    if (payload.phone.replace(/\D/g, '').length < 10) {
+      showError('Please enter a valid phone number.');
+      return;
+    }
+
+    if (window.QUIZ_TRACK && window.QUIZ_TRACK.persistConsultation) {
+      window.QUIZ_TRACK.persistConsultation({
+        name: payload.name,
+        email: payload.email,
+        phone: payload.phone,
+        notes: payload.notes,
+        quizId: quizSnapshot && quizSnapshot._quizId,
+        status: 'requested'
+      });
+    }
+
     submitBtn.disabled = true;
     submitBtn.textContent = 'Saving...';
 
@@ -3136,5 +3214,7 @@ try {
   });
 })();
 </script>
+<script src="/firebase-config.js"></script>
+<script type="module" src="/results-tracker.js"></script>
 </body>
 </html>

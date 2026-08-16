@@ -306,3 +306,55 @@ export function resolveNext(questionId, option, answers) {
   }
   return option?.next || QUESTIONS[questionId]?.next;
 }
+
+const QUESTION_ORDER = [
+  'q1',
+  'q2_dry',
+  'q2_frizzy',
+  'q2_growth',
+  'q2_oily',
+  'q2_volume',
+  'q2_damage',
+  'q3_wash',
+  'q4_airdry',
+  'q5_strand',
+  'q6_volume_pref',
+  'q7_heat',
+  'q8_damage',
+  'q9_email',
+];
+
+/** Human-readable quiz selections for admin / Firebase. */
+export function describeSelections(answers) {
+  const items = [];
+  for (const id of QUESTION_ORDER) {
+    const question = QUESTIONS[id];
+    if (!question) continue;
+
+    if (question.type === 'email') {
+      if (!answers.email) continue;
+      items.push({
+        id,
+        title: question.title,
+        optionId: 'email',
+        optionText: answers.email,
+      });
+      continue;
+    }
+
+    const optionId = answers[id];
+    if (!optionId || !question.options) continue;
+    const option = question.options.find((o) => o.id === optionId);
+    items.push({
+      id,
+      title: question.title,
+      optionId,
+      optionText: option?.text || optionId,
+    });
+  }
+  return items;
+}
+
+export function newQuizId() {
+  return 'quiz_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+}

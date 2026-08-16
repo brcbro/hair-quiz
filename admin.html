@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/admin.css" />
+</head>
+<body>
+  <div id="admin-app" class="admin-app">
+    <section id="login-screen" class="login-screen">
+      <div class="login-card">
+        <p class="login-eyebrow">Customised Haircare</p>
+        <h1 class="login-title">Admin</h1>
+        <p class="login-copy">Sign in to view quiz emails, answers, suggested products, and shop clicks.</p>
+        <form id="login-form" class="login-form" novalidate>
+          <label>
+            Email
+            <input id="login-email" type="email" autocomplete="username" required placeholder="admin@email.com" />
+          </label>
+          <label>
+            Password
+            <input id="login-password" type="password" autocomplete="current-password" required placeholder="Password" />
+          </label>
+          <p class="login-error" id="login-error" role="alert"></p>
+          <button type="submit" class="login-btn" id="login-btn">Sign in</button>
+        </form>
+        <p class="login-hint" id="login-hint"></p>
+      </div>
+    </section>
+
+    <section id="dash-screen" class="dash-screen" hidden>
+      <header class="dash-header">
+        <div>
+          <p class="dash-eyebrow">Customised Haircare</p>
+          <h1 id="dash-title">Quiz insights</h1>
+        </div>
+        <div class="dash-header-actions">
+          <button type="button" class="ghost-btn" id="refresh-btn">Refresh</button>
+          <button type="button" class="ghost-btn" id="export-btn">Export CSV</button>
+          <button type="button" class="ghost-btn" id="logout-btn">Log out</button>
+        </div>
+      </header>
+
+      <div id="list-view">
+        <div class="stat-grid" id="stat-grid"></div>
+
+        <div class="dash-toolbar">
+          <input id="search-input" class="search-input" type="search" placeholder="Search email, hair type, product…" />
+          <p class="dash-count" id="dash-count"></p>
+        </div>
+
+        <div class="table-wrap table-wrap--full">
+          <table class="leads-table">
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>Taken</th>
+                <th>Profile</th>
+                <th>Products</th>
+                <th>Shop clicks</th>
+                <th>Consultation</th>
+                <th>Ritual</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="leads-body"></tbody>
+          </table>
+          <p class="empty-state" id="empty-state" hidden>No quiz responses yet.</p>
+        </div>
+      </div>
+
+      <div id="detail-view" hidden>
+        <button type="button" class="ghost-btn back-btn" id="back-btn">← All emails</button>
+        <div class="detail-page" id="detail-panel"></div>
+      </div>
+    </section>
+  </div>
+  <script type="module" src="/src/admin.js"></script>
+</body>
+</html>

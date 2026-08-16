@@ -13,12 +13,44 @@ Open http://localhost:5173/
 
 ## Leads & consultations
 
-When users finish the quiz or request a consultation, details are saved locally (and emailed if SMTP is set):
+When users finish the quiz or request a consultation, details are saved to **Firebase** (and still written locally during `npm run dev`):
 
-| Capture | API | Saved to |
-|---------|-----|----------|
-| Quiz email (+ answers snapshot) | `POST /api/lead` | `data/leads.json` |
-| Consultation form | `POST /api/book` | `data/bookings.json` |
+| Capture | Where it goes |
+|---------|----------------|
+| Quiz email, selected answers, hair profile | Firestore `quizResponses` |
+| Suggested products for that quiz | Same quiz document, updated on the results page |
+| Shop clicks on any product | Firestore `shopClicks` |
+| Consultation form | `POST /api/book` → `data/bookings.json` (+ email if SMTP is set) |
+
+Admin dashboard (login required): [http://localhost:5173/admin.html](http://localhost:5173/admin.html)
+
+### Firebase setup (needed for admin + live insights)
+
+1. Create a project at [Firebase Console](https://console.firebase.google.com/).
+2. **Build → Firestore Database** → Create database (start in production mode).
+3. **Build → Authentication** → Sign-in method → enable **Email/Password**.
+4. Authentication → Users → **Add user** with the admin email and password you want to use on `/admin.html`.
+5. Copy that user's **User UID**.
+6. In Firestore, create collection `admins`, document ID = that UID, fields e.g. `{ "role": "admin" }`.
+7. Project settings → Your apps → add a **Web** app. Copy the config into `.env`:
+
+```
+VITE_FIREBASE_API_KEY=...
+VITE_FIREBASE_AUTH_DOMAIN=...
+VITE_FIREBASE_PROJECT_ID=...
+VITE_FIREBASE_STORAGE_BUCKET=...
+VITE_FIREBASE_MESSAGING_SENDER_ID=...
+VITE_FIREBASE_APP_ID=...
+```
+
+8. Deploy rules from this repo (Firebase CLI) or paste `firestore.rules` in Firestore → Rules:
+
+```bash
+npx firebase-tools login
+npx firebase-tools deploy --only firestore:rules
+```
+
+9. Restart `npm run dev` after saving `.env`.
 
 Copy `.env.example` → `.env` and fill SMTP settings to also email the salon + send the customer a confirmation.
 

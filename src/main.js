@@ -3,6 +3,8 @@ import {
   getProgress,
   buildOctaneAnswers,
   resolveNext,
+  describeSelections,
+  newQuizId,
 } from './quiz-data.js';
 import { pickFocusBrand } from './brand-focus.js';
 
@@ -198,6 +200,7 @@ class HairQuiz {
     link.href = '/results.html';
     link.as = 'document';
     document.head.appendChild(link);
+    import('./firebase.js').catch(() => {});
   }
 
   renderCalculating() {
@@ -211,22 +214,53 @@ class HairQuiz {
     `;
 
     // Fully client-side results: persist answers then go to results.
-    // Also save the quiz email as a lead on the server (best-effort).
+    // Also save the quiz email as a lead on the server + Firebase (best-effort).
+    const quizId = newQuizId();
     const octaneAnswers = buildOctaneAnswers(this.answers, this.answers.email, this.focusBrand);
+    octaneAnswers._quizId = quizId;
     try {
       localStorage.setItem('octane_answers', JSON.stringify(octaneAnswers));
     } catch {}
 
-    fetch('/api/lead', {
+    const selections = describeSelections(this.answers);
+    const saveFirebase = import('./firebase.js')
+      .then(({ saveQuizResponse }) =>
+        saveQuizResponse({
+          quizId,
+          email: this.answers.email,
+          selections,
+          rawAnswers: { ...this.answers },
+          profile: {
+            hair_pain_point: octaneAnswers.hair_pain_point,
+            pain_severity: octaneAnswers.pain_severity,
+            damage_level: octaneAnswers.damage_level,
+            hair_type: octaneAnswers.smart_properties_outputs?.hair_type || null,
+            hair_air_dry: octaneAnswers.hair_air_dry,
+            hair_pattern: octaneAnswers.hair_pattern,
+            hair_wash_frequency: octaneAnswers.hair_wash_frequency,
+            heat_tools: octaneAnswers.heat_tools,
+            wants_volume: octaneAnswers.wants_volume,
+            focus_brand: octaneAnswers.focus_brand,
+          },
+        })
+      )
+      .catch(() => {});
+
+    const saveLead = fetch('/api/lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({ email: this.answers.email, answers: octaneAnswers }),
+      body: JSON.stringify({
+        email: this.answers.email,
+        quizId,
+        selections,
+        answers: octaneAnswers,
+      }),
       keepalive: true,
     }).catch(() => {});
 
     this.currentQuestionId = 'results';
-    // Yield one frame so the spinner paints, then navigate.
-    requestAnimationFrame(() => {
+    const timeout = new Promise((resolve) => setTimeout(resolve, 2000));
+    Promise.race([Promise.all([saveFirebase, saveLead]), timeout]).finally(() => {
       this.goToOfficialResults();
     });
   }

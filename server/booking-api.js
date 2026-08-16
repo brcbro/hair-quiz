@@ -138,15 +138,18 @@ export async function handleLeadRequest(req, res) {
   }
 
   const answers = data.answers && typeof data.answers === 'object' ? data.answers : {};
+  const selections = Array.isArray(data.selections) ? data.selections : [];
   const lead = {
-    id: 'lead_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
+    id: data.quizId || 'lead_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
     type: 'quiz_email',
     email,
+    quizId: data.quizId || null,
     hair_pain_point: answers.hair_pain_point || null,
     damage_level: answers.damage_level || null,
     heat_tools: answers.heat_tools || null,
     wants_volume: answers.wants_volume || null,
     hair_type: answers.smart_properties_outputs?.hair_type || answers.hair_type || null,
+    selections,
     answers,
     createdAt: new Date().toISOString(),
   };
