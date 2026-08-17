@@ -154,7 +154,7 @@ function filteredQuizzes() {
       ritualStatus(quiz).label,
       ...(quiz.suggestedProducts || []).map((p) => `${p.title} ${p.brand}`),
       ...(quiz.selections || []).map((s) => `${s.title} ${s.optionText}`),
-      ...consultationsForQuiz(quiz).map((c) => `${c.name} ${c.phone} ${c.notes}`),
+      ...consultationsForQuiz(quiz).map((c) => `${c.name} ${c.phone} ${c.city} ${c.pincode} ${c.instagram} ${c.notes}`),
     ]
       .join(' ')
       .toLowerCase();
@@ -292,6 +292,9 @@ function renderDetail(quiz) {
             <div class="consult-meta">
               <div><span>Phone</span> ${escapeHtml(c.phone || '—')}</div>
               <div><span>Email</span> ${escapeHtml(c.email || quiz.email || '—')}</div>
+              <div><span>City</span> ${escapeHtml(c.city || quiz.consultationCity || '—')}</div>
+              <div><span>Pincode</span> ${escapeHtml(c.pincode || quiz.consultationPincode || '—')}</div>
+              ${c.instagram || quiz.consultationInstagram ? `<div><span>Instagram</span> ${escapeHtml(c.instagram || quiz.consultationInstagram)}</div>` : ''}
               ${c.notes ? `<div><span>Notes</span> ${escapeHtml(c.notes)}</div>` : ''}
             </div>
           </li>`
@@ -303,6 +306,9 @@ function renderDetail(quiz) {
           <span class="muted">${escapeHtml(formatDate(quiz.consultationRequestedAt))} · ${escapeHtml(quiz.consultationStatus)}</span>
           <div class="consult-meta">
             <div><span>Phone</span> ${escapeHtml(quiz.consultationPhone || '—')}</div>
+            <div><span>City</span> ${escapeHtml(quiz.consultationCity || '—')}</div>
+            <div><span>Pincode</span> ${escapeHtml(quiz.consultationPincode || '—')}</div>
+            ${quiz.consultationInstagram ? `<div><span>Instagram</span> ${escapeHtml(quiz.consultationInstagram)}</div>` : ''}
             ${quiz.consultationNotes ? `<div><span>Notes</span> ${escapeHtml(quiz.consultationNotes)}</div>` : ''}
           </div>
         </li>`
@@ -386,6 +392,9 @@ function exportCsv() {
       'consultation_status',
       'consultation_name',
       'consultation_phone',
+      'consultation_city',
+      'consultation_pincode',
+      'consultation_instagram',
       'consultation_notes',
       'ritual_downloaded',
       'ritual_downloaded_at',
@@ -412,6 +421,9 @@ function exportCsv() {
       consultationStatus(quiz).label,
       consult.name || quiz.consultationName || '',
       consult.phone || quiz.consultationPhone || '',
+      consult.city || quiz.consultationCity || '',
+      consult.pincode || quiz.consultationPincode || '',
+      consult.instagram || quiz.consultationInstagram || '',
       consult.notes || quiz.consultationNotes || '',
       ritualStatus(quiz).label,
       quiz.ritualDownloadedAt || '',

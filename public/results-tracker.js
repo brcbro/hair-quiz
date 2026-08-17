@@ -172,7 +172,10 @@ export async function persistConsultation(details = {}) {
   const email = String(details.email || session.email || '').trim().toLowerCase();
   const name = String(details.name || '').trim();
   const phone = String(details.phone || '').trim();
-  if (!firestore || !email || !name || !phone) return;
+  const city = String(details.city || '').trim();
+  const pincode = String(details.pincode || '').trim();
+  const instagram = String(details.instagram || '').trim();
+  if (!firestore || !email || !name || !phone || !city || !pincode) return;
 
   const quizId = details.quizId || session.quizId || null;
   const now = new Date().toISOString();
@@ -181,6 +184,9 @@ export async function persistConsultation(details = {}) {
     email,
     name,
     phone,
+    city,
+    pincode,
+    instagram,
     notes: String(details.notes || '').trim(),
     status: details.status || 'requested',
     createdAt: now,
@@ -195,6 +201,9 @@ export async function persistConsultation(details = {}) {
         consultationRequestedAt: now,
         consultationName: name,
         consultationPhone: phone,
+        consultationCity: city,
+        consultationPincode: pincode,
+        consultationInstagram: instagram,
         consultationNotes: payload.notes || '',
       });
     }

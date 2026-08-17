@@ -1978,9 +1978,23 @@ html, body {
             <input id="bk-email" name="email" type="email" autocomplete="email" required placeholder="you@email.com" />
           </div>
           <div class="lll-book-field">
-            <label for="bk-phone">Phone</label>
+            <label for="bk-phone">Phone no</label>
             <input id="bk-phone" name="phone" type="tel" autocomplete="tel" required placeholder="+91 98xxx xxxxx" />
           </div>
+        </div>
+        <div class="lll-book-row">
+          <div class="lll-book-field">
+            <label for="bk-city">City / location</label>
+            <input id="bk-city" name="city" type="text" autocomplete="address-level2" required placeholder="Mumbai" />
+          </div>
+          <div class="lll-book-field">
+            <label for="bk-pincode">Pincode</label>
+            <input id="bk-pincode" name="pincode" type="text" inputmode="numeric" autocomplete="postal-code" required maxlength="6" placeholder="400001" />
+          </div>
+        </div>
+        <div class="lll-book-field">
+          <label for="bk-instagram">Instagram <span style="font-weight:400;color:#7f7667">(optional)</span></label>
+          <input id="bk-instagram" name="instagram" type="text" autocomplete="url" placeholder="https://instagram.com/yourhandle" />
         </div>
         <div class="lll-book-field">
           <label for="bk-notes">Notes <span style="font-weight:400;color:#7f7667">(optional)</span></label>
@@ -3134,10 +3148,14 @@ try {
       quizSnapshot = JSON.parse(localStorage.getItem('octane_answers') || 'null');
     } catch (e0) {}
 
+    var instagramValue = document.getElementById('bk-instagram').value.trim();
     var payload = {
       name: document.getElementById('bk-name').value.trim(),
       email: emailInput.value.trim(),
       phone: document.getElementById('bk-phone').value.trim(),
+      city: document.getElementById('bk-city').value.trim(),
+      pincode: document.getElementById('bk-pincode').value.trim(),
+      instagram: instagramValue,
       notes: document.getElementById('bk-notes').value.trim(),
       quiz: quizSnapshot
     };
@@ -3154,6 +3172,22 @@ try {
       showError('Please enter a valid phone number.');
       return;
     }
+    if (payload.city.length < 2) {
+      showError('Please enter your city or location.');
+      return;
+    }
+    if (!/^[1-9][0-9]{5}$/.test(payload.pincode)) {
+      showError('Please enter a valid 6-digit pincode.');
+      return;
+    }
+    if (instagramValue) {
+      var instagramOk = /^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._]+\/?$/i.test(instagramValue)
+        || /^@?[A-Za-z0-9._]{1,30}$/.test(instagramValue);
+      if (!instagramOk) {
+        showError('Please enter a valid Instagram handle or link.');
+        return;
+      }
+    }
 
     var savedToFirebase = false;
     if (window.QUIZ_TRACK && window.QUIZ_TRACK.persistConsultation) {
@@ -3162,6 +3196,9 @@ try {
         name: payload.name,
         email: payload.email,
         phone: payload.phone,
+        city: payload.city,
+        pincode: payload.pincode,
+        instagram: payload.instagram,
         notes: payload.notes,
         quizId: quizSnapshot && quizSnapshot._quizId,
         status: 'requested'

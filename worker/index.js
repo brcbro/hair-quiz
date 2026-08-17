@@ -52,10 +52,22 @@ export default {
       const name = String(data.name || '').trim();
       const email = String(data.email || '').trim();
       const phone = String(data.phone || '').trim();
+      const city = String(data.city || '').trim();
+      const pincode = String(data.pincode || '').trim();
+      const instagram = String(data.instagram || '').trim();
       if (!name || name.length < 2) return json({ error: 'Please enter your name.' }, 400);
       if (!isEmail(email)) return json({ error: 'Please enter a valid email.' }, 400);
       if (!phone || phone.replace(/\D/g, '').length < 10) {
         return json({ error: 'Please enter a valid phone number.' }, 400);
+      }
+      if (!city || city.length < 2) return json({ error: 'Please enter your city or location.' }, 400);
+      if (!/^[1-9][0-9]{5}$/.test(pincode)) {
+        return json({ error: 'Please enter a valid 6-digit pincode.' }, 400);
+      }
+      if (instagram) {
+        const instagramOk = /^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._]+\/?$/i.test(instagram)
+          || /^@?[A-Za-z0-9._]{1,30}$/.test(instagram);
+        if (!instagramOk) return json({ error: 'Please enter a valid Instagram handle or link.' }, 400);
       }
       return json(
         {

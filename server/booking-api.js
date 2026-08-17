@@ -65,6 +65,9 @@ async function sendEmails(booking) {
     `Name: ${booking.name}`,
     `Email: ${booking.email}`,
     `Phone: ${booking.phone}`,
+    `City: ${booking.city}`,
+    `Pincode: ${booking.pincode}`,
+    booking.instagram ? `Instagram: ${booking.instagram}` : null,
     booking.notes ? `Notes: ${booking.notes}` : null,
     ``,
     `Request ID: ${booking.id}`,
@@ -185,6 +188,9 @@ export async function handleBookingRequest(req, res) {
   const name = String(data.name || '').trim();
   const email = String(data.email || '').trim();
   const phone = String(data.phone || '').trim();
+  const city = String(data.city || '').trim();
+  const pincode = String(data.pincode || '').trim();
+  const instagram = String(data.instagram || '').trim().slice(0, 200);
   const notes = String(data.notes || '').trim().slice(0, 500);
   const quiz = data.quiz && typeof data.quiz === 'object' ? data.quiz : null;
 
@@ -200,6 +206,22 @@ export async function handleBookingRequest(req, res) {
     json(res, 400, { error: 'Please enter a valid phone number.' });
     return;
   }
+  if (!city || city.length < 2) {
+    json(res, 400, { error: 'Please enter your city or location.' });
+    return;
+  }
+  if (!/^[1-9][0-9]{5}$/.test(pincode)) {
+    json(res, 400, { error: 'Please enter a valid 6-digit pincode.' });
+    return;
+  }
+  if (instagram) {
+    const instagramOk = /^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9._]+\/?$/i.test(instagram)
+      || /^@?[A-Za-z0-9._]{1,30}$/.test(instagram);
+    if (!instagramOk) {
+      json(res, 400, { error: 'Please enter a valid Instagram handle or link.' });
+      return;
+    }
+  }
 
   const booking = {
     id: 'bk_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
@@ -207,6 +229,9 @@ export async function handleBookingRequest(req, res) {
     name,
     email,
     phone,
+    city,
+    pincode,
+    instagram: instagram || null,
     notes: notes || null,
     quiz,
     status: 'requested',
