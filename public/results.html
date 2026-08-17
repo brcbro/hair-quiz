@@ -3155,7 +3155,9 @@ try {
       return;
     }
 
+    var savedToFirebase = false;
     if (window.QUIZ_TRACK && window.QUIZ_TRACK.persistConsultation) {
+      savedToFirebase = true;
       window.QUIZ_TRACK.persistConsultation({
         name: payload.name,
         email: payload.email,
@@ -3169,6 +3171,27 @@ try {
     submitBtn.disabled = true;
     submitBtn.textContent = 'Saving...';
 
+    function finishBooking(emailed) {
+      var msg = emailed
+        ? "We've saved your consultation details and sent a confirmation email. We'll contact you shortly."
+        : "We've saved your consultation details and will contact you shortly.";
+
+      openBookingModal(msg);
+
+      if (successText) {
+        successText.textContent = 'Your consultation is booked — we will contact you shortly.';
+        successEl.classList.add('visible');
+      }
+
+      form.reset();
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Request Consultation';
+      try {
+        var ans2 = JSON.parse(localStorage.getItem('octane_answers') || '{}');
+        if (ans2.email) emailInput.value = ans2.email;
+      } catch (e2) {}
+    }
+
     fetch('/api/book', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
@@ -3177,37 +3200,29 @@ try {
       .then(function (r) {
         return r.json().then(function (data) {
           return { ok: r.ok, status: r.status, data: data };
+        }).catch(function () {
+          return { ok: false, status: r.status, data: {} };
         });
       })
       .then(function (res) {
-        if (!res.ok) {
-          showError((res.data && res.data.error) || 'Could not save request. Please try again.');
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Request Consultation';
+        if (res.ok) {
+          finishBooking(Boolean(res.data && res.data.emailed));
           return;
         }
-
-        var msg = res.data.emailed
-          ? "We've saved your consultation details and sent a confirmation email. We'll contact you shortly."
-          : "We've saved your consultation details and will contact you shortly.";
-
-        openBookingModal(msg);
-
-        if (successText) {
-          successText.textContent = 'Your consultation is booked — we will contact you shortly.';
-          successEl.classList.add('visible');
+        if (savedToFirebase) {
+          finishBooking(false);
+          return;
         }
-
-        form.reset();
+        showError((res.data && res.data.error) || 'Could not save request. Please try again.');
         submitBtn.disabled = false;
         submitBtn.textContent = 'Request Consultation';
-        try {
-          var ans2 = JSON.parse(localStorage.getItem('octane_answers') || '{}');
-          if (ans2.email) emailInput.value = ans2.email;
-        } catch (e2) {}
       })
       .catch(function () {
-        showError('Network error. Is the local server running?');
+        if (savedToFirebase) {
+          finishBooking(false);
+          return;
+        }
+        showError('Could not save request. Please try again.');
         submitBtn.disabled = false;
         submitBtn.textContent = 'Request Consultation';
       });

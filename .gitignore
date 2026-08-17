@@ -4,6 +4,10 @@ dist
 data/
 captured/
 .playwright-mcp
+.wrangler
+.dev.vars
+*-firebase-adminsdk-*.json
+serviceAccount*.json
 *.log
 .DS_Store
 quiz-buttons-fixed.png

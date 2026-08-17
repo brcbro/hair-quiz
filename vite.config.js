@@ -16,6 +16,7 @@ function firebaseConfigFromEnv(mode) {
     storageBucket: env.VITE_FIREBASE_STORAGE_BUCKET || '',
     messagingSenderId: env.VITE_FIREBASE_MESSAGING_SENDER_ID || '',
     appId: env.VITE_FIREBASE_APP_ID || '',
+    measurementId: env.VITE_FIREBASE_MEASUREMENT_ID || '',
   };
 }
 
@@ -28,7 +29,7 @@ function firebaseConfigPlugin() {
     name: 'firebase-config',
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
-        const url = req.url?.split('?')[0];
+        const url = String(req.url || '').split('?')[0];
         if (url !== '/firebase-config.js') return next();
         res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
         res.setHeader('Cache-Control', 'no-store');
@@ -37,7 +38,7 @@ function firebaseConfigPlugin() {
     },
     configurePreviewServer(server) {
       server.middlewares.use((req, res, next) => {
-        const url = req.url?.split('?')[0];
+        const url = String(req.url || '').split('?')[0];
         if (url !== '/firebase-config.js') return next();
         res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
         res.end(firebaseConfigScript(server.config.mode));

@@ -7,7 +7,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build && wrangler deploy -c wrangler.jsonc",
+    "migrate:firestore": "node scripts/migrate-firestore.js",
+    "setup:firebase": "node scripts/setup-firebase.js",
+    "firebase:rules": "npx firebase-tools deploy --only firestore:rules"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
@@ -16,6 +20,7 @@
   },
   "devDependencies": {
     "vite": "^6.0.0",
+    "wrangler": "^4.84.1",
     "xlsx": "^0.18.5"
   }
 }
