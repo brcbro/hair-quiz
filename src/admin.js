@@ -30,7 +30,9 @@ let signedIn = false;
 
 function formatDate(value) {
   if (!value) return '—';
-  const d = new Date(value);
+  if (typeof value.toDate === 'function') value = value.toDate();
+  else if (value.seconds) value = new Date(value.seconds * 1000);
+  const d = value instanceof Date ? value : new Date(value);
   if (Number.isNaN(d.getTime())) return String(value);
   return d.toLocaleString(undefined, {
     dateStyle: 'medium',
@@ -50,8 +52,8 @@ function quizIdFromUrl() {
   return new URLSearchParams(window.location.search).get('quiz');
 }
 
-function accordion(title, hint, inner) {
-  return `<details class="detail-acc">
+function accordion(title, hint, inner, open) {
+  return `<details class="detail-acc"${open ? ' open' : ''}>
     <summary>
       <span class="acc-title">${escapeHtml(title)}</span>
       ${hint ? `<span class="acc-hint">${escapeHtml(hint)}</span>` : ''}
@@ -104,6 +106,67 @@ function clicksForQuiz(quizId, email) {
     if (!quizId && email && c.email === email) return true;
     return false;
   });
+}
+
+function normalizeConsultation(raw, quiz) {
+  const q = quiz || {};
+  return {
+    name: raw.name || q.consultationName || '',
+    email: raw.email || q.consultationEmail || q.email || '',
+    phone: raw.phone || q.consultationPhone || '',
+    city: raw.city || q.consultationCity || '',
+    pincode: raw.pincode || q.consultationPincode || '',
+    instagram: raw.instagram || q.consultationInstagram || '',
+    notes: raw.notes || q.consultationNotes || '',
+    status: raw.status || q.consultationStatus || 'requested',
+    createdAt: raw.createdAt || q.consultationRequestedAt || '',
+    quizId: raw.quizId || q.quizId || q.id || '',
+  };
+}
+
+function consultationCard(record) {
+  const rows = [
+    ['Full name', record.name],
+    ['Email', record.email],
+    ['Phone', record.phone],
+    ['City / location', record.city],
+    ['Pincode', record.pincode],
+    ['Instagram', record.instagram],
+    ['Notes', record.notes],
+    ['Status', record.status],
+    ['Requested at', formatDate(record.createdAt)],
+    ['Quiz ID', record.quizId],
+  ];
+  return `<article class="consult-card">
+    <h3>${escapeHtml(record.name || 'Consultation request')}</h3>
+    <dl class="consult-grid">
+      ${rows
+        .map(
+          ([label, value]) =>
+            `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value || '—')}</dd></div>`
+        )
+        .join('')}
+    </dl>
+  </article>`;
+}
+
+function allConsultationRecords() {
+  const fromCol = (cache.consultations || []).map((c) => normalizeConsultation(c));
+  const seen = new Set(
+    fromCol.map((c) => `${String(c.email).toLowerCase()}|${c.phone}|${c.createdAt}`)
+  );
+  const extras = [];
+  for (const quiz of cache.quizzes || []) {
+    if (!quiz.consultationStatus && !quiz.consultationName) continue;
+    const rec = normalizeConsultation({}, quiz);
+    const key = `${String(rec.email).toLowerCase()}|${rec.phone}|${rec.createdAt}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    extras.push(rec);
+  }
+  return [...fromCol, ...extras].sort((a, b) =>
+    String(b.createdAt || '').localeCompare(String(a.createdAt || ''))
+  );
 }
 
 function consultationsForQuiz(quiz) {
@@ -207,7 +270,16 @@ function renderTable() {
         </td>
         <td>${products.length}</td>
         <td>${clicks.length}</td>
-        <td><span class="status-pill status-pill--${consult.kind}">${escapeHtml(consult.label)}</span></td>
+        <td>
+          <span class="status-pill status-pill--${consult.kind}">${escapeHtml(consult.label)}</span>
+          ${
+            consult.kind !== 'none'
+              ? `<div class="muted">${escapeHtml(
+                  (consultationsForQuiz(quiz)[0] || {}).name || quiz.consultationName || ''
+                )}</div>`
+              : ''
+          }
+        </td>
         <td><span class="status-pill status-pill--${ritual.kind}">${escapeHtml(ritual.label)}</span></td>
         <td><span class="view-link">View details</span></td>
       </tr>`;
@@ -284,35 +356,10 @@ function renderDetail(quiz) {
     : '<p class="muted">No other quizzes from this email.</p>';
 
   const consultRows = consults.length
-    ? consults
-        .map(
-          (c) => `<li>
-            <strong>${escapeHtml(c.name || 'Consultation request')}</strong>
-            <span class="muted">${escapeHtml(formatDate(c.createdAt))} · ${escapeHtml(c.status || 'requested')}</span>
-            <div class="consult-meta">
-              <div><span>Phone</span> ${escapeHtml(c.phone || '—')}</div>
-              <div><span>Email</span> ${escapeHtml(c.email || quiz.email || '—')}</div>
-              <div><span>City</span> ${escapeHtml(c.city || quiz.consultationCity || '—')}</div>
-              <div><span>Pincode</span> ${escapeHtml(c.pincode || quiz.consultationPincode || '—')}</div>
-              ${c.instagram || quiz.consultationInstagram ? `<div><span>Instagram</span> ${escapeHtml(c.instagram || quiz.consultationInstagram)}</div>` : ''}
-              ${c.notes ? `<div><span>Notes</span> ${escapeHtml(c.notes)}</div>` : ''}
-            </div>
-          </li>`
-        )
-        .join('')
-    : quiz.consultationStatus
-      ? `<li>
-          <strong>${escapeHtml(quiz.consultationName || 'Consultation request')}</strong>
-          <span class="muted">${escapeHtml(formatDate(quiz.consultationRequestedAt))} · ${escapeHtml(quiz.consultationStatus)}</span>
-          <div class="consult-meta">
-            <div><span>Phone</span> ${escapeHtml(quiz.consultationPhone || '—')}</div>
-            <div><span>City</span> ${escapeHtml(quiz.consultationCity || '—')}</div>
-            <div><span>Pincode</span> ${escapeHtml(quiz.consultationPincode || '—')}</div>
-            ${quiz.consultationInstagram ? `<div><span>Instagram</span> ${escapeHtml(quiz.consultationInstagram)}</div>` : ''}
-            ${quiz.consultationNotes ? `<div><span>Notes</span> ${escapeHtml(quiz.consultationNotes)}</div>` : ''}
-          </div>
-        </li>`
-      : '<li class="muted">No consultation requested.</li>';
+    ? consults.map((c) => consultationCard(normalizeConsultation(c, quiz))).join('')
+    : quiz.consultationStatus || quiz.consultationName
+      ? consultationCard(normalizeConsultation({}, quiz))
+      : '<p class="muted">No consultation requested.</p>';
 
   const ritualCount = Number(quiz.ritualDownloadCount || 0);
   const ritualInner = quiz.ritualDownloaded
@@ -335,11 +382,43 @@ function renderDetail(quiz) {
       ${accordion('Selected answers', `${quiz.selections?.length || 0}`, `<ul class="answer-list">${answers || '<li class="muted">No answers stored.</li>'}</ul>`)}
       ${accordion('Suggested products', `${quiz.suggestedProducts?.length || 0}`, `<ul class="product-list">${products || '<li class="muted">Products were not captured for this quiz yet.</li>'}</ul>`)}
       ${accordion('Shop clicks', `${clicks.length}`, `<ul class="click-list">${clickItems || '<li class="muted">No shop clicks yet.</li>'}</ul>`)}
-      ${accordion('Consultation', consult.label, `<ul class="click-list">${consultRows}</ul>`)}
+      ${accordion('Consultation', consult.label, consultRows, consult.kind !== 'none')}
       ${accordion('Ritual download', ritual.label, ritualInner)}
       ${others.length ? accordion('Other quizzes from this email', `${others.length}`, otherInner) : ''}
     </div>
   `;
+}
+
+function renderConsultations() {
+  const wrap = document.getElementById('consultations-body');
+  const countEl = document.getElementById('consultations-count');
+  if (!wrap) return;
+  const rows = allConsultationRecords();
+  if (countEl) countEl.textContent = `${rows.length} request${rows.length === 1 ? '' : 's'}`;
+  if (!rows.length) {
+    wrap.innerHTML =
+      '<tr><td colspan="9" class="muted">No consultation requests yet.</td></tr>';
+    return;
+  }
+  wrap.innerHTML = rows
+    .map((c) => {
+      const quiz = cache.quizzes.find((q) => q.id === c.quizId || q.quizId === c.quizId);
+      const quizCell = quiz
+        ? `<button type="button" class="view-link" data-id="${escapeHtml(quiz.id)}">Open quiz</button>`
+        : '—';
+      return `<tr>
+        <td>${escapeHtml(c.name || '—')}</td>
+        <td>${escapeHtml(c.email || '—')}</td>
+        <td>${escapeHtml(c.phone || '—')}</td>
+        <td>${escapeHtml(c.city || '—')}</td>
+        <td>${escapeHtml(c.pincode || '—')}</td>
+        <td>${escapeHtml(c.instagram || '—')}</td>
+        <td>${escapeHtml(c.notes || '—')}</td>
+        <td class="muted">${escapeHtml(formatDate(c.createdAt))}<div>${escapeHtml(c.status || '')}</div></td>
+        <td>${quizCell}</td>
+      </tr>`;
+    })
+    .join('');
 }
 
 function applyView() {
@@ -348,6 +427,7 @@ function applyView() {
   if (!id) {
     showListView();
     renderTable();
+    renderConsultations();
     return;
   }
   showDetailView();
@@ -391,6 +471,7 @@ function exportCsv() {
       'shop_clicks',
       'consultation_status',
       'consultation_name',
+      'consultation_email',
       'consultation_phone',
       'consultation_city',
       'consultation_pincode',
@@ -420,6 +501,7 @@ function exportCsv() {
       clicks.map((c) => c.title || c.productKey).join(' | '),
       consultationStatus(quiz).label,
       consult.name || quiz.consultationName || '',
+      consult.email || quiz.consultationEmail || quiz.email || '',
       consult.phone || quiz.consultationPhone || '',
       consult.city || quiz.consultationCity || '',
       consult.pincode || quiz.consultationPincode || '',
@@ -476,13 +558,22 @@ document.getElementById('refresh-btn').addEventListener('click', () => {
   });
 });
 document.getElementById('export-btn').addEventListener('click', exportCsv);
-searchInput.addEventListener('input', renderTable);
+searchInput.addEventListener('input', () => {
+  renderTable();
+  renderConsultations();
+});
 backBtn.addEventListener('click', goToList);
 
 leadsBody.addEventListener('click', (e) => {
   const row = e.target.closest('tr[data-id]');
   if (!row) return;
   openQuiz(row.getAttribute('data-id'));
+});
+
+document.getElementById('consultations-body')?.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-id]');
+  if (!btn) return;
+  openQuiz(btn.getAttribute('data-id'));
 });
 
 detailPanel.addEventListener('click', (e) => {

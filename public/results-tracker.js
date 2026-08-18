@@ -210,6 +210,7 @@ export async function persistConsultation(details = {}) {
         consultationStatus: payload.status,
         consultationRequestedAt: now,
         consultationName: name,
+        consultationEmail: email,
         consultationPhone: phone,
         consultationCity: city,
         consultationPincode: pincode,

@@ -289,6 +289,48 @@ html, body {
   border: 1px solid var(--success);
 }
 
+.consult-card {
+  background: var(--surface);
+  border: 1px solid var(--outline-variant);
+  border-radius: 4px;
+  padding: 18px 18px 8px;
+}
+
+.consult-card h3 {
+  margin: 0 0 14px;
+  font-family: 'Libre Caslon Text', Georgia, serif;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.consult-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 24px;
+  margin: 0 0 12px;
+}
+
+.consult-grid dt {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.consult-grid dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@media (max-width: 700px) {
+  .consult-grid { grid-template-columns: 1fr; }
+}
+
 .consult-meta {
   display: grid;
   gap: 6px;
@@ -303,6 +345,18 @@ html, body {
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  font-weight: 600;
+}
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 14px 0;
+}
+
+.table-heading h2 {
+  margin: 0;
+  font-size: 16px;
   font-weight: 600;
 }
 
