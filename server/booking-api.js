@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
+import { notifyGoogleAppsScript } from './google-apps-notify.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
@@ -244,10 +245,18 @@ export async function handleBookingRequest(req, res) {
 
   let mail = { emailed: false };
   try {
-    mail = await sendEmails(booking);
+    mail = await notifyGoogleAppsScript(process.env, booking);
   } catch (err) {
-    console.error('[booking] email failed:', err.message);
+    console.error('[booking] Google Apps Script failed:', err.message);
     mail = { emailed: false, reason: err.message };
+  }
+  if (!mail.emailed) {
+    try {
+      mail = await sendEmails(booking);
+    } catch (err) {
+      console.error('[booking] email failed:', err.message);
+      mail = { emailed: false, reason: err.message };
+    }
   }
 
   console.log('[booking]', booking.id, booking.name, mail.emailed ? 'emailed' : 'saved-only');

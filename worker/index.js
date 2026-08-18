@@ -1,3 +1,5 @@
+import { notifyGoogleAppsScript } from '../server/google-apps-notify.js';
+
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
@@ -24,7 +26,7 @@ function isEmail(value) {
 }
 
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     if (request.method === 'OPTIONS') return corsPreflight();
 
     const path = new URL(request.url).pathname;
@@ -41,7 +43,7 @@ export default {
     }
 
     // Quiz emails and consultations are stored in Firestore from the browser.
-    // These endpoints exist so the live site does not depend on the local Vite API.
+    // /api/book also posts to Google Apps Script (Sheet + Gmail notify).
     if (path === '/api/lead') {
       const email = String(data.email || '').trim().toLowerCase();
       if (!isEmail(email)) return json({ error: 'Please enter a valid email.' }, 400);
@@ -55,6 +57,8 @@ export default {
       const city = String(data.city || '').trim();
       const pincode = String(data.pincode || '').trim();
       const instagram = String(data.instagram || '').trim();
+      const notes = String(data.notes || '').trim().slice(0, 500);
+      const quiz = data.quiz && typeof data.quiz === 'object' ? data.quiz : null;
       if (!name || name.length < 2) return json({ error: 'Please enter your name.' }, 400);
       if (!isEmail(email)) return json({ error: 'Please enter a valid email.' }, 400);
       if (!phone || phone.replace(/\D/g, '').length < 10) {
@@ -69,11 +73,34 @@ export default {
           || /^@?[A-Za-z0-9._]{1,30}$/.test(instagram);
         if (!instagramOk) return json({ error: 'Please enter a valid Instagram handle or link.' }, 400);
       }
+
+      const booking = {
+        id: 'bk_cf',
+        type: 'consultation',
+        name,
+        email,
+        phone,
+        city,
+        pincode,
+        instagram: instagram || null,
+        notes: notes || null,
+        quiz,
+        quizId: quiz && quiz._quizId,
+        createdAt: new Date().toISOString(),
+      };
+
+      let mail = { emailed: false };
+      try {
+        mail = await notifyGoogleAppsScript(env, booking);
+      } catch (err) {
+        mail = { emailed: false, reason: err && err.message ? err.message : String(err) };
+      }
+
       return json(
         {
           ok: true,
-          booking: { id: 'bk_cf', type: 'consultation', name },
-          emailed: false,
+          booking: { id: booking.id, type: booking.type, name: booking.name },
+          emailed: mail.emailed,
         },
         201,
       );

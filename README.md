@@ -20,9 +20,11 @@ Admin dashboard: [http://localhost:5173/admin.html](http://localhost:5173/admin.
 | Quiz email, selected answers, hair profile | Firestore `quizResponses` |
 | Suggested products for that quiz | Same quiz document, updated on the results page |
 | Shop clicks on any product | Firestore `shopClicks` |
-| Consultation form | Firestore `consultations` (admin dashboard) |
+| Consultation form | Firestore `consultations` (admin dashboard) + Google Sheet + Gmail notify |
 
-SMTP email still works during `npm run dev` if you fill the SMTP keys in `.env`. On Cloudflare, consultations are stored in Firestore instead of sending mail.
+Each consultation submit is saved in Firebase (admin dashboard). The Worker then posts the same details to a **Google Apps Script** web app, which appends a Google Sheet row and emails you.
+
+Setup: [scripts/GOOGLE_APPS_SCRIPT_SETUP.md](scripts/GOOGLE_APPS_SCRIPT_SETUP.md). After deploying the script, store `GOOGLE_APPS_SCRIPT_URL` and `GOOGLE_APPS_SCRIPT_SECRET` with `npx wrangler secret put`. Local `npm run dev` uses the same keys in `.env`. SMTP in `.env` is only a fallback if the Apps Script URL is missing.
 
 ## 1. Firebase project (`salon-anchor`)
 
