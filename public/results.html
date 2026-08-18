@@ -3226,39 +3226,100 @@ try {
       } catch (e2) {}
     }
 
-    fetch('/api/book', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(payload)
-    })
-      .then(function (r) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Saving...';
+
+    function finishBooking(emailed) {
+      var msg = emailed
+        ? "We've saved your consultation details and sent a confirmation email. We'll contact you shortly."
+        : "We've saved your consultation details and will contact you shortly.";
+
+      openBookingModal(msg);
+
+      if (successText) {
+        successText.textContent = 'Your consultation is booked — we will contact you shortly.';
+        successEl.classList.add('visible');
+      }
+
+      form.reset();
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Request Consultation';
+      try {
+        var ans2 = JSON.parse(localStorage.getItem('octane_answers') || '{}');
+        if (ans2.email) emailInput.value = ans2.email;
+      } catch (e2) {}
+    }
+
+    var GAS_URL = 'https://script.google.com/macros/s/AKfycbxkhZKIuXUxxKV1cUHLekFMguNhFUpvPB7pxTL32mXWrDj7_aQbmU6YVNnpyfgFYII-ag/exec';
+    var GAS_SECRET = 'hvAUfwgfoiuwvioJBWIVUGIWUVBVBFIFHBIUFBCBJFABFdfujsjv';
+
+    function notifyGoogle() {
+      return fetch(GAS_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          secret: GAS_SECRET,
+          timestamp: new Date().toISOString(),
+          name: payload.name,
+          email: payload.email,
+          phone: payload.phone,
+          city: payload.city,
+          pincode: payload.pincode,
+          instagram: payload.instagram || '',
+          notes: payload.notes || '',
+          quizId: (quizSnapshot && quizSnapshot._quizId) || ''
+        })
+      }).then(function (r) {
+        return r.text();
+      }).then(function (text) {
+        try { return JSON.parse(text); } catch (e1) { return {}; }
+      });
+    }
+
+    function postLocalBook() {
+      return fetch('/api/book', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function (r) {
         return r.json().then(function (data) {
-          return { ok: r.ok, status: r.status, data: data };
+          return { ok: r.ok, data: data };
         }).catch(function () {
-          return { ok: false, status: r.status, data: {} };
+          return { ok: false, data: {} };
+        });
+      }).catch(function () {
+        return { ok: false, data: {} };
+      });
+    }
+
+    notifyGoogle()
+      .then(function (g) {
+        var emailed = !!(g && g.emailed === true);
+        postLocalBook();
+        if (emailed || savedToFirebase) {
+          finishBooking(emailed);
+          return;
+        }
+        return postLocalBook().then(function (res) {
+          if (res.ok || savedToFirebase) {
+            finishBooking(Boolean(res.data && res.data.emailed));
+            return;
+          }
+          showError((res.data && res.data.error) || 'Could not save request. Please try again.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Request Consultation';
         });
       })
-      .then(function (res) {
-        if (res.ok) {
-          finishBooking(Boolean(res.data && res.data.emailed));
-          return;
-        }
-        if (savedToFirebase) {
-          finishBooking(false);
-          return;
-        }
-        showError((res.data && res.data.error) || 'Could not save request. Please try again.');
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Request Consultation';
-      })
       .catch(function () {
-        if (savedToFirebase) {
-          finishBooking(false);
-          return;
-        }
-        showError('Could not save request. Please try again.');
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Request Consultation';
+        postLocalBook().then(function (res) {
+          if (res.ok || savedToFirebase) {
+            finishBooking(Boolean(res.data && res.data.emailed));
+            return;
+          }
+          showError('Could not save request. Please try again.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Request Consultation';
+        });
       });
   });
 })();
