@@ -65,6 +65,9 @@ function productFromCard(el, key) {
   const price =
     (el.querySelector('.product-price-main, .product-price, .same-brand-card-price') || {})
       .textContent || '';
+  const use =
+    (el.querySelector('.product-card-note, .product-note') || {}).textContent || '';
+  const badge = (el.querySelector('.badge') || {}).textContent || '';
   const img = el.querySelector('img');
   const catalog = (window.PRODUCTS && window.PRODUCTS[key]) || {};
   return {
@@ -72,6 +75,8 @@ function productFromCard(el, key) {
     title: title.trim(),
     brand: brand.trim(),
     price: price.trim(),
+    use: use.trim(),
+    badge: badge.trim(),
     url: catalog.url || '',
     image: img ? img.getAttribute('src') || '' : '',
   };
@@ -89,16 +94,21 @@ export function collectSuggestedProducts() {
   }
 
   document.querySelectorAll('.product-card:not(.hidden)').forEach((el) => {
+    if (el.closest('.hidden')) return;
     const btn = el.querySelector('button[onclick]');
     const match = btn && String(btn.getAttribute('onclick')).match(/openLookskart\('([^']+)'\)/);
-    add(productFromCard(el, match ? match[1] : ''));
+    const item = productFromCard(el, match ? match[1] : '');
+    if (/skip/i.test(item.badge)) return;
+    add(item);
   });
 
   document.querySelectorAll('.product-row:not(.hidden)').forEach((el) => {
     if (el.closest('.hidden')) return;
     const btn = el.querySelector('button[onclick]');
     const match = btn && String(btn.getAttribute('onclick')).match(/openLookskart\('([^']+)'\)/);
-    add(productFromCard(el, match ? match[1] : ''));
+    const item = productFromCard(el, match ? match[1] : '');
+    if (/skip/i.test(item.badge)) return;
+    add(item);
   });
 
   document.querySelectorAll('.same-brand-card').forEach((el) => {
@@ -242,7 +252,10 @@ function boot() {
   if (!getConfig()) return;
   window.setTimeout(() => {
     persistSuggestedProducts();
-  }, 400);
+    if (typeof window.sendQuizRegimenEmail === 'function') {
+      window.sendQuizRegimenEmail();
+    }
+  }, 800);
 }
 
 if (document.readyState === 'loading') {

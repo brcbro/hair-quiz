@@ -3033,8 +3033,11 @@ function applyAnswers(answers) {
 
   if (window.QUIZ_TRACK && window.QUIZ_TRACK.persistSuggestedProducts) {
     window.setTimeout(function () {
-      window.QUIZ_TRACK.persistSuggestedProducts();
-    }, 200);
+      if (window.QUIZ_TRACK && window.QUIZ_TRACK.persistSuggestedProducts) {
+        window.QUIZ_TRACK.persistSuggestedProducts();
+      }
+      sendQuizRegimenEmail();
+    }, 800);
   }
 }
 
@@ -3043,6 +3046,54 @@ try {
   var stored = localStorage.getItem('octane_answers');
   if (stored) applyAnswers(JSON.parse(stored));
 } catch(e) {}
+
+window.HAIR_QUIZ_GAS = {
+  url: 'https://script.google.com/macros/s/AKfycbxkhZKIuXUxxKV1cUHLekFMguNhFUpvPB7pxTL32mXWrDj7_aQbmU6YVNnpyfgFYII-ag/exec',
+  secret: 'hvAUfwgfoiuwvioJBWIVUGIWUVBVBFIFHBIUFBCBJFABFdfujsjv'
+};
+
+function sendQuizRegimenEmail() {
+  var gas = window.HAIR_QUIZ_GAS;
+  if (!gas || !gas.url) return;
+  var session = {};
+  try { session = JSON.parse(localStorage.getItem('octane_answers') || '{}'); } catch (e1) {}
+  var email = String(session.email || '').trim();
+  var quizId = String(session._quizId || '');
+  if (!email || !quizId) return;
+  if (sessionStorage.getItem('quiz_regimen_emailed_' + quizId)) return;
+  if (!window.QUIZ_TRACK || !window.QUIZ_TRACK.collectSuggestedProducts) return;
+
+  var products = window.QUIZ_TRACK.collectSuggestedProducts().filter(function (p) {
+    return p && p.title && p.source !== 'same-brand' && !/skip/i.test(p.badge || '');
+  }).slice(0, 16);
+  if (!products.length) return;
+
+  var headlineEl = document.getElementById('headline');
+  fetch(gas.url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({
+      secret: gas.secret,
+      type: 'quiz-regimen',
+      email: email,
+      quizId: quizId,
+      headline: headlineEl ? headlineEl.textContent.trim() : '',
+      products: products.map(function (p) {
+        return {
+          title: p.title,
+          brand: p.brand || '',
+          use: p.use || '',
+          badge: p.badge || '',
+          url: p.url || ''
+        };
+      })
+    })
+  }).then(function (r) { return r.text(); }).then(function (text) {
+    var data = {};
+    try { data = JSON.parse(text); } catch (e2) {}
+    if (data && data.emailed) sessionStorage.setItem('quiz_regimen_emailed_' + quizId, '1');
+  }).catch(function () {});
+}
 
 </script>
 <script>
@@ -3250,8 +3301,8 @@ try {
       } catch (e2) {}
     }
 
-    var GAS_URL = 'https://script.google.com/macros/s/AKfycbxkhZKIuXUxxKV1cUHLekFMguNhFUpvPB7pxTL32mXWrDj7_aQbmU6YVNnpyfgFYII-ag/exec';
-    var GAS_SECRET = 'hvAUfwgfoiuwvioJBWIVUGIWUVBVBFIFHBIUFBCBJFABFdfujsjv';
+    var GAS_URL = (window.HAIR_QUIZ_GAS && window.HAIR_QUIZ_GAS.url) || '';
+    var GAS_SECRET = (window.HAIR_QUIZ_GAS && window.HAIR_QUIZ_GAS.secret) || '';
 
     function notifyGoogle() {
       return fetch(GAS_URL, {
