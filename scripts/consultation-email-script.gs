@@ -156,6 +156,7 @@ function handleQuizRegimen_(data) {
     return json_({ ok: false, error: 'No products' });
   }
 
+  const userName = String(data.name || '').trim();
   const headline = String(data.headline || 'your hair').trim();
   const quizId = String(data.quizId || '').trim();
   const lines = products.map(function (p, i) {
@@ -200,9 +201,9 @@ function handleQuizRegimen_(data) {
   MailApp.sendEmail({
     to: email,
     name: 'Customised Haircare',
-    subject: 'Your haircare routine — products to use',
+    subject: userName ? (userName + ', your haircare routine is ready') : 'Your haircare routine — products to use',
     body: [
-      'Hi,',
+      'Hi' + (userName ? ' ' + userName : '') + ',',
       '',
       'Here is your personalised routine for ' + headline + '.',
       '',
@@ -215,7 +216,9 @@ function handleQuizRegimen_(data) {
     htmlBody:
       '<div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;color:#1c1917;">' +
       '<p style="font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#775a19;">Your haircare routine</p>' +
+      (userName ? '<p style="font-size:18px;line-height:1.4;color:#1c1917;">Hi ' + escapeHtml_(userName) + ',</p>' : '') +
       '<h1 style="font-size:24px;font-weight:400;line-height:1.3;">Products picked for ' +
+      (userName ? escapeHtml_(userName) + '\'s ' : '') +
       escapeHtml_(headline) +
       '</h1>' +
       '<p style="font-size:15px;line-height:1.6;color:#57534e;">Use this list as your regimen. Each product includes where it belongs in your routine and a link to buy.</p>' +
@@ -228,6 +231,7 @@ function handleQuizRegimen_(data) {
 
   const sheet = getOrCreateSheet_('Quiz regimens', [
     'Timestamp',
+    'Name',
     'Email',
     'Headline',
     'Quiz ID',
@@ -236,6 +240,7 @@ function handleQuizRegimen_(data) {
   ]);
   sheet.appendRow([
     new Date().toISOString(),
+    userName,
     email,
     headline,
     quizId,

@@ -101,6 +101,8 @@ export default {
           ok: true,
           booking: { id: booking.id, type: booking.type, name: booking.name },
           emailed: mail.emailed,
+          mailTo: mail.to || undefined,
+          mailError: mail.emailed ? undefined : mail.reason,
         },
         201,
       );

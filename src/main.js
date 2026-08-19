@@ -172,24 +172,48 @@ class HairQuiz {
     const wrapper = document.createElement('div');
     wrapper.className = 'quiz-email-wrapper';
 
-    const input = document.createElement('input');
-    input.type = 'email';
-    input.id = 'email-input';
-    input.className = 'quiz-email-input';
-    input.placeholder = question.placeholder || 'Enter email';
-    input.autocomplete = 'email';
-    input.value = this.answers.email || '';
-    input.addEventListener('input', (e) => {
-      this.answers.email = e.target.value.trim();
-      this.continueBtn.disabled = !this.isValidEmail(this.answers.email);
+    const nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.id = 'name-input';
+    nameInput.className = 'quiz-email-input';
+    nameInput.placeholder = 'Your first name';
+    nameInput.autocomplete = 'given-name';
+    nameInput.value = this.answers.quiz_name || '';
+
+    const emailInput = document.createElement('input');
+    emailInput.type = 'email';
+    emailInput.id = 'email-input';
+    emailInput.className = 'quiz-email-input';
+    emailInput.placeholder = question.placeholder || 'Enter email';
+    emailInput.autocomplete = 'email';
+    emailInput.value = this.answers.email || '';
+
+    const updateBtn = () => {
+      const nameOk = (this.answers.quiz_name || '').trim().length >= 1;
+      const emailOk = this.isValidEmail(this.answers.email);
+      this.continueBtn.disabled = !(nameOk && emailOk);
+    };
+
+    nameInput.addEventListener('input', (e) => {
+      this.answers.quiz_name = e.target.value.trim();
+      updateBtn();
     });
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && this.isValidEmail(this.answers.email)) this.handleContinue();
+    nameInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') emailInput.focus();
     });
 
-    wrapper.appendChild(input);
+    emailInput.addEventListener('input', (e) => {
+      this.answers.email = e.target.value.trim();
+      updateBtn();
+    });
+    emailInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !this.continueBtn.disabled) this.handleContinue();
+    });
+
+    wrapper.appendChild(nameInput);
+    wrapper.appendChild(emailInput);
     this.contentEl.appendChild(wrapper);
-    requestAnimationFrame(() => input.focus());
+    requestAnimationFrame(() => nameInput.focus());
   }
 
   prefetchResults() {
@@ -218,6 +242,7 @@ class HairQuiz {
     const quizId = newQuizId();
     const octaneAnswers = buildOctaneAnswers(this.answers, this.answers.email, this.focusBrand);
     octaneAnswers._quizId = quizId;
+    octaneAnswers.quiz_name = (this.answers.quiz_name || '').trim();
     try {
       localStorage.setItem('octane_answers', JSON.stringify(octaneAnswers));
     } catch {}
@@ -227,6 +252,7 @@ class HairQuiz {
       .then(({ saveQuizResponse }) =>
         saveQuizResponse({
           quizId,
+          quiz_name: (this.answers.quiz_name || '').trim(),
           email: this.answers.email,
           selections,
           rawAnswers: { ...this.answers },
@@ -298,7 +324,7 @@ class HairQuiz {
     this.continueBtn.textContent = question.buttonText || 'CONTINUE';
     this.continueBtn.disabled =
       question.type === 'email'
-        ? !this.isValidEmail(this.answers.email)
+        ? !(this.isValidEmail(this.answers.email) && (this.answers.quiz_name || '').trim().length >= 1)
         : !this.selectedOption;
     this.backBtn.style.display = question.showBack ? 'inline-block' : 'none';
   }
@@ -314,7 +340,7 @@ class HairQuiz {
       if (!selected) return;
       this.currentQuestionId = resolveNext(question.id, selected, this.answers);
     } else if (question.type === 'email') {
-      if (!this.isValidEmail(this.answers.email)) return;
+      if (!this.isValidEmail(this.answers.email) || !(this.answers.quiz_name || '').trim()) return;
       this.currentQuestionId = question.next;
     }
 

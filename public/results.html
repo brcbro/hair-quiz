@@ -3058,6 +3058,7 @@ function sendQuizRegimenEmail() {
   var session = {};
   try { session = JSON.parse(localStorage.getItem('octane_answers') || '{}'); } catch (e1) {}
   var email = String(session.email || '').trim();
+  var quizName = String(session.quiz_name || '').trim();
   var quizId = String(session._quizId || '');
   if (!email || !quizId) return;
   if (sessionStorage.getItem('quiz_regimen_emailed_' + quizId)) return;
@@ -3076,6 +3077,7 @@ function sendQuizRegimenEmail() {
       secret: gas.secret,
       type: 'quiz-regimen',
       email: email,
+      name: quizName,
       quizId: quizId,
       headline: headlineEl ? headlineEl.textContent.trim() : '',
       products: products.map(function (p) {

@@ -44,5 +44,12 @@ export async function notifyGoogleAppsScript(envLike, booking) {
     throw new Error(reason);
   }
 
-  return { emailed: Boolean(data.emailed || data.ok) };
+  if (data.emailed !== true) {
+    return {
+      emailed: false,
+      reason: data.service ? 'Apps Script GET only; POST did not run' : 'Apps Script did not send mail',
+    };
+  }
+
+  return { emailed: true, to: data.to || null };
 }
