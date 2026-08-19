@@ -272,6 +272,7 @@ function renderTable() {
       const profile = quiz.profile || {};
       const clicks = clicksForQuiz(quiz.quizId || quiz.id, quiz.email);
       const products = quiz.suggestedProducts || [];
+      const consult = consultationStatus(quiz);
       const ritual = ritualStatus(quiz);
       return `<tr data-id="${escapeHtml(quiz.id)}">
         <td>
@@ -285,6 +286,7 @@ function renderTable() {
         </td>
         <td>${products.length}</td>
         <td>${clicks.length}</td>
+        <td><span class="status-pill status-pill--${consult.kind}">${escapeHtml(consult.label)}</span></td>
         <td><span class="status-pill status-pill--${ritual.kind}">${escapeHtml(ritual.label)}</span></td>
         <td><span class="view-link">View details</span></td>
       </tr>`;
