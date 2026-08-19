@@ -86,18 +86,34 @@ function showDash() {
   dashScreen.classList.add('is-open');
 }
 
+const consultationsView = document.getElementById('consultations-view');
+
+function hideAllViews() {
+  listView.hidden = true;
+  detailView.hidden = true;
+  consultationsView.hidden = true;
+}
+
 function showListView() {
   selectedId = null;
+  hideAllViews();
   listView.hidden = false;
-  detailView.hidden = true;
   dashTitle.textContent = 'Quiz insights';
   document.title = 'Quiz Admin';
 }
 
 function showDetailView() {
-  listView.hidden = true;
+  hideAllViews();
   detailView.hidden = false;
   dashTitle.textContent = 'Quiz details';
+}
+
+function showConsultationsView() {
+  hideAllViews();
+  consultationsView.hidden = false;
+  dashTitle.textContent = 'Consultations';
+  document.title = 'Consultations · Admin';
+  renderConsultations();
 }
 
 function clicksForQuiz(quizId, email) {
@@ -236,7 +252,7 @@ function renderStats() {
     ['Quizzes taken', cache.quizzes.length],
     ['Products suggested', productViews],
     ['Shop clicks', cache.shopClicks.length],
-    ['Consultations', cache.consultations.length],
+    ['Consultations', allConsultationRecords().length],
     ['Ritual downloads', cache.quizzes.filter((q) => q.ritualDownloaded).length],
   ];
   statGrid.innerHTML = cards
@@ -256,7 +272,6 @@ function renderTable() {
       const profile = quiz.profile || {};
       const clicks = clicksForQuiz(quiz.quizId || quiz.id, quiz.email);
       const products = quiz.suggestedProducts || [];
-      const consult = consultationStatus(quiz);
       const ritual = ritualStatus(quiz);
       return `<tr data-id="${escapeHtml(quiz.id)}">
         <td>
@@ -270,16 +285,6 @@ function renderTable() {
         </td>
         <td>${products.length}</td>
         <td>${clicks.length}</td>
-        <td>
-          <span class="status-pill status-pill--${consult.kind}">${escapeHtml(consult.label)}</span>
-          ${
-            consult.kind !== 'none'
-              ? `<div class="muted">${escapeHtml(
-                  (consultationsForQuiz(quiz)[0] || {}).name || quiz.consultationName || ''
-                )}</div>`
-              : ''
-          }
-        </td>
         <td><span class="status-pill status-pill--${ritual.kind}">${escapeHtml(ritual.label)}</span></td>
         <td><span class="view-link">View details</span></td>
       </tr>`;
@@ -427,7 +432,6 @@ function applyView() {
   if (!id) {
     showListView();
     renderTable();
-    renderConsultations();
     return;
   }
   showDetailView();
@@ -560,9 +564,10 @@ document.getElementById('refresh-btn').addEventListener('click', () => {
 document.getElementById('export-btn').addEventListener('click', exportCsv);
 searchInput.addEventListener('input', () => {
   renderTable();
-  renderConsultations();
 });
 backBtn.addEventListener('click', goToList);
+document.getElementById('consult-back-btn').addEventListener('click', goToList);
+document.getElementById('consultations-nav-btn').addEventListener('click', showConsultationsView);
 
 leadsBody.addEventListener('click', (e) => {
   const row = e.target.closest('tr[data-id]');

@@ -40,6 +40,7 @@
           <h1 id="dash-title">Quiz insights</h1>
         </div>
         <div class="dash-header-actions">
+          <button type="button" class="ghost-btn" id="consultations-nav-btn">Consultations</button>
           <button type="button" class="ghost-btn" id="refresh-btn">Refresh</button>
           <button type="button" class="ghost-btn" id="export-btn">Export CSV</button>
           <button type="button" class="ghost-btn" id="logout-btn">Log out</button>
@@ -55,10 +56,36 @@
         </div>
 
         <div class="table-wrap table-wrap--full">
-          <div class="table-heading">
-            <h2>Consultation requests</h2>
-            <p class="dash-count" id="consultations-count"></p>
-          </div>
+          <table class="leads-table">
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>Taken</th>
+                <th>Profile</th>
+                <th>Products</th>
+                <th>Shop clicks</th>
+                <th>Ritual</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="leads-body"></tbody>
+          </table>
+          <p class="empty-state" id="empty-state" hidden>No quiz responses yet.</p>
+        </div>
+      </div>
+
+      <div id="detail-view" hidden>
+        <button type="button" class="ghost-btn back-btn" id="back-btn">← All emails</button>
+        <div class="detail-page" id="detail-panel"></div>
+      </div>
+
+      <div id="consultations-view" hidden>
+        <button type="button" class="ghost-btn back-btn" id="consult-back-btn">← Dashboard</button>
+        <div class="table-heading">
+          <h2>Consultation requests</h2>
+          <p class="dash-count" id="consultations-count"></p>
+        </div>
+        <div class="table-wrap table-wrap--full">
           <table class="leads-table">
             <thead>
               <tr>
@@ -76,30 +103,6 @@
             <tbody id="consultations-body"></tbody>
           </table>
         </div>
-
-        <div class="table-wrap table-wrap--full">
-          <table class="leads-table">
-            <thead>
-              <tr>
-                <th>Email</th>
-                <th>Taken</th>
-                <th>Profile</th>
-                <th>Products</th>
-                <th>Shop clicks</th>
-                <th>Consultation</th>
-                <th>Ritual</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody id="leads-body"></tbody>
-          </table>
-          <p class="empty-state" id="empty-state" hidden>No quiz responses yet.</p>
-        </div>
-      </div>
-
-      <div id="detail-view" hidden>
-        <button type="button" class="ghost-btn back-btn" id="back-btn">← All emails</button>
-        <div class="detail-page" id="detail-panel"></div>
       </div>
     </section>
   </div>
